@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://oec2003.github.io
+title: 冯威的个人博客
+subtitle: 临渊羡鱼 不如退而结网.
+author: 冯威
 simple_search: http://google.com/search
 description:
 
