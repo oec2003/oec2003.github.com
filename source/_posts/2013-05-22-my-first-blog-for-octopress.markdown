@@ -7,3 +7,7 @@ categories: Octopress
 ---
 
 欢迎访问我的Octopress博客！
+
+```js
+alert("欢迎访问我的Octopress博客！");
+```
