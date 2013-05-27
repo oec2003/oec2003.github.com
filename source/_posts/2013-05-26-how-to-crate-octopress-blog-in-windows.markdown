@@ -99,7 +99,7 @@ rake install
 rake preview
 ```
 
-![Octopress](http://www.baidupcs.com/thumbnail/23aa01d392c34d4eae93cf16910127c8?fid=2902808695-250528-1164619436&time=1369574734&rt=pr&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-XM0wmaCqar%2FXuhEJFYdBeYDoeFw%3D&expires=8h&size=c850_u580&quality=100)
+![Octopress](http://ww2.sinaimg.cn/mw690/3cefded1gw1e52yy7oi85j20lx08taaz.jpg)
 
 ##解决中文问题
 如果博客中包含中文，需要进行如下设置：
@@ -123,14 +123,14 @@ LC_ALL=zh_CN.UTF-8
 ##在Octopress中添加文章
 使用下面命令可以在Octopress中添加文章
 
-![addpost](http://www.baidupcs.com/thumbnail/d89f6ff93d50c569e038658ef2566e09?fid=2902808695-250528-1900540092&time=1369574734&rt=pr&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-%2FNaMkp5PDmUpOVIwpsHragXPeqA%3D&expires=8h&size=c850_u580&quality=100)
+![addpost](http://ww2.sinaimg.cn/mw690/3cefded1gw1e52yy8dmzcj20hm01taa5.jpg)
 
 
 **注意，`rake new_post['my first octopress blog']`中的`my first octopress blog` 并不是博客标题，而是和生成的文件名以及url地址有关，该名称不支持中文。博客标题可以在生成的markdown文件中修改。生成的markdown文件在`octopress/source/_posts`目录中。 **
 
 编辑markdown文件，将标题可以修改为中文标题，还可以设置分类等信息以及编写正文部分
 
-![content](http://www.baidupcs.com/thumbnail/faa3e1fe0956e739687e3af59950450c?fid=2902808695-250528-2661632407&time=1369574734&rt=pr&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-OQ7RIGkhJ%2FQqb7IbS5b8KIOwxN0%3D&expires=8h&size=c850_u580&quality=100)
+![content](http://ww4.sinaimg.cn/mw690/3cefded1gw1e52yy94hbij20cp06ljrx.jpg)
 
 每次执行了添加博客的命令，或是修改了现有博客的内容后，都要执行下面命令进行重新生成
 
