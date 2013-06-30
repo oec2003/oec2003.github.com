@@ -20,7 +20,7 @@ categories: Octopress
 * sass：也是在执行`rake install`后从`.themes\classic`目录中的source拷贝而来。Sass 扩展了 CSS3，增加了规则、变量、混入、选择器、继承等等特性。Sass 生成良好格式化的 CSS 代码，易于组织和维护。
 
 * public：刚clone源码时public是个空目录，当执行了`rake generate`后会编译source的内容然后将编译后的内容复制到public目录中，在执行`rake deploy`后也是讲public的内容推送到服务器上，我们最终访问到的也是public的内容。这个目录中的内容一般不用我们手动修改，执行`rake generate`来生成。
-
+<!--more-->
 ##基本设置
 在Octopress目录中有一个名为_config.yml的文件：
 
