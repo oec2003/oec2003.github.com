@@ -22,7 +22,8 @@ categories: Octopress
 使用下面命令将已存在的Octopress代码拉到本地
 
 ```
-git clone git@github.com:oec2003/oec2003.github.com.git
+git clone -b source git@github.com:oec2003/oec2003.github.com.git
+git clone  git@github.com:oec2003/oec2003.github.com.git _deploy
 
 ```
 
@@ -59,3 +60,5 @@ cd ..
 git pull origin source
 
 ```
+
+今天在家里的另一台电脑上进行生成文章时，发现当执行了命令`rake generate` 后，生成到public目录中相应的页面为空，没有任何内容，但在命令行中命令还是正常执行了，没有出现异常。最后查出原因是因为Python的安装目录没有添加到环境变量中。所以建议在准备环境时就就将git、ruby、python的安装目录都添加到环境变量中。

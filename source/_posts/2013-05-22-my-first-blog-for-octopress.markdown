@@ -11,3 +11,12 @@ categories: Octopress
 ```js
 alert("欢迎访问我的Octopress博客！");
 ```
+
+```html
+<html><head>欢迎访问我的Octopress博客！</head><body></body></html>
+```
+
+```c#
+System.Console.WriteLine("欢迎访问我的Octopress博客！");
+```
+
