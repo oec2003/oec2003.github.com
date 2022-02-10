@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>dotNet 5 中执行 Node.js - 冯威的博客</title>
+
+  
+    <meta name="description" content="在低代码产品中为了扩展功能，我们在业务编排中会扩展代码块的功能，允许用户直接在界面中进行代码（Node.js、 Python）的编写，来实现取数或者赋值的一些功能。本文简单介绍下在 dotNET 5 中怎么样进行 Node.js 的调用以及怎样部署到 CentOS 和 Docker 容器中。 环境 dotNET ：5 Node.js：14.17.4 CentOS：7.6 Docker：19.03.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dotNet 5 中执行 Node.js">
+<meta property="og:url" content="http://fwhyy.com/2021/08/dotnet5-exec-node-js/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在低代码产品中为了扩展功能，我们在业务编排中会扩展代码块的功能，允许用户直接在界面中进行代码（Node.js、 Python）的编写，来实现取数或者赋值的一些功能。本文简单介绍下在 dotNET 5 中怎么样进行 Node.js 的调用以及怎样部署到 CentOS 和 Docker 容器中。 环境 dotNET ：5 Node.js：14.17.4 CentOS：7.6 Docker：19.03.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020813752.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020813556.jpg">
+<meta property="article:published_time" content="2021-08-09T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:13:54.070Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="dotNET">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020813752.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dotNET-5-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">dotNET 5 中的代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-CentOS-%E4%B8%AD"><span class="toc-text">部署到 CentOS 中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Docker-%E5%AE%B9%E5%99%A8%E4%B8%AD%E9%83%A8%E7%BD%B2"><span class="toc-text">在 Docker 容器中部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%8C%85%E5%90%AB-Node-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="toc-text">构建包含 Node 运行环境的基础镜像</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-08-09T00:05:00.000Z">2021-08-09</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>dotNet 5 中执行 Node.js</span></h1>
+<p>在<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzU0NjgzNzQyMw==&mid=2247484621&idx=1&sn=e23179a553c2cf80f5b2d0d351c75065&chksm=fb56c20dcc214b1b17894f1afb6070024cd1321811182d202437cea4baaecf34e69f27ad0978&scene=21#wechat_redirect">低代码产品</a>中为了扩展功能，我们在业务编排中会扩展代码块的功能，允许用户直接在界面中进行代码（Node.js、 Python）的编写，来实现取数或者赋值的一些功能。本文简单介绍下在 dotNET 5 中怎么样进行 Node.js 的调用以及怎样部署到 CentOS 和 Docker 容器中。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>dotNET ：5</li>
+<li>Node.js：14.17.4</li>
+<li>CentOS：7.6</li>
+<li>Docker：19.03.13</li>
+</ul>
+<h2 id="dotNET-5-中的代码实现"><a href="#dotNET-5-中的代码实现" class="headerlink" title="dotNET 5 中的代码实现"></a>dotNET 5 中的代码实现</h2><p>1、在 VS 中创建 WebAPI 示例项目 nodejs-demo 项目，目标框架选择 .NET 5.0。</p>
+<p>![iShot2022-02-02 08.12.23](/Users/fengwei/Documents/my/typora-img/dotnet5-exec-node-js/iShot2022-02-02 08.12.23.jpg)</p>
+<p>2、在项目中引入 NuGet 包：Microsoft.AspNetCore.NodeServices ,这里我使用的是 5.0 的预览版本。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020813752.jpg" alt="iShot2022-02-02 08.13.07"></p>
+<p>3、修改 Startup 类，在 ConfigureServices 方法中添加下面代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.AddNodeServices();</span><br></pre></td></tr></table></figure>
+
+<p>4、在项目的根目录中创建一个名为 hello.js 的脚本文件，文件的属性中的「复制到输出目录」设置为「始终复制」，文件的内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function (callback, name) &#123;</span><br><span class="line">    var msg = &#x27;Hello,&#x27; + name;</span><br><span class="line">    callback(null, msg);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>5、编写一个 API 接口方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet]</span><br><span class="line">public async Task&lt;IActionResult&gt; Get([FromServices] INodeServices nodeServices)</span><br><span class="line">&#123;</span><br><span class="line">    var result = await nodeServices.InvokeAsync&lt;string&gt;(&quot;hello.js&quot;, &quot;oec2003&quot;);</span><br><span class="line">    return Ok(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、如果正常运行，结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020813556.jpg" alt="iShot2022-02-02 08.13.29"></p>
+<h2 id="部署到-CentOS-中"><a href="#部署到-CentOS-中" class="headerlink" title="部署到 CentOS 中"></a>部署到 CentOS 中</h2><p>1、在 Node.js 的中文官网 (<a target="_blank" rel="noopener" href="http://nodejs.cn/download/current/">http://nodejs.cn/download/current/</a>) 下载 Linux 二进制文件 (x64) 的安装包；</p>
+<p>2、将下载的安装包 node-v14.17.4-linux-x64.tar.xz 复制到 CentOS 系统的 root 目录中；</p>
+<p>3、执行命令 <code>tar -xvf node-v14.17.4-linux-x64.tar.xz</code> 解压安装文件；</p>
+<p>4、执行命令 <code>mv node-v14.17.4-linux-x64 nodejs</code> 将解压后的文件夹命名为 nodejs；</p>
+<p>5、执行命令 <code>cp -r nodejs /usr/local</code> 将 nodejs 目录复制到 /usr/local ；</p>
+<p>6、执行下面的命令进行软链接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/nodejs/bin/npm /usr/local/bin/</span><br><span class="line">ln -s /usr/local/nodejs/bin/node /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<p>7、输入 <code>node -v</code> 进行检查，如果有版本号出现说明安装成功；</p>
+<p>8、执行下面的命令进行 dotNET 5 安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm</span><br><span class="line">sudo yum install dotnet-sdk-5.0</span><br></pre></td></tr></table></figure>
+
+<p>9、将示例程序 nodejs-demo 发布到 pub-nodejs 目录，将发布后的目录拷贝到 CentOS 服务器的 root 目录中；</p>
+<p>10、进入到 /root/pub-nodejs 目录，执行命令 <code>dotnet nodejs-demo.dll</code> 运行。</p>
+<h2 id="在-Docker-容器中部署"><a href="#在-Docker-容器中部署" class="headerlink" title="在 Docker 容器中部署"></a>在 Docker 容器中部署</h2><p>1、在 /root/pub-nodejs 目录中创建 Dockerfile 文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim</span><br><span class="line">COPY . /app</span><br><span class="line">WORKDIR /app</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;nodejs-demo.dll&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>2、进入到 /root/pub-nodejs 目录中执行命令 <code>docker build -t nodejs-demo .</code> 进行镜像的构建；</p>
+<p>3、执行命令 <code>docker run -d -p 5000:5000 --name nodejs-demo nodejs-demo</code> 进行容器的创建，创建成功后，还不能正常运行，因为现在容器中还没有安装 Node.js 环境；</p>
+<p>4、容器中安装 Node.js 的方式和在 CentOS 中相同，执行命令 <code>docker cp nodejs 容器id:/usr/local</code> 将 Node.js 的包复制到容器中的 /usr/local 目录中；</p>
+<p>5、执行 <code>docker exec -it 容器id bash</code> 进入到容器中；</p>
+<p>6、执行下面的命令进行软链接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/nodejs/bin/npm /usr/local/bin/</span><br><span class="line">ln -s /usr/local/nodejs/bin/node /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<p>7、在网页中或用 Postman 进行接口的访问进行测试；</p>
+<h2 id="构建包含-Node-运行环境的基础镜像"><a href="#构建包含-Node-运行环境的基础镜像" class="headerlink" title="构建包含 Node 运行环境的基础镜像"></a>构建包含 Node 运行环境的基础镜像</h2><p>1、通过构建镜像是使用 Dockerfile，下面使用另一种方式来构建；</p>
+<p>2、因为在容器中部署后，容器中已经有 Node 环境了，执行下面的命令就可以将运行的容器构建成一个新的镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -a &quot;oec2003&quot; -m &quot;add nodejs&quot; 容器id aspnet-nodejs:5.0</span><br></pre></td></tr></table></figure>
+
+<p>3、执行完成后，使用 <code>docker images</code> 命令可以看到新创建的 <code>aspnet-nodejs:5.0</code> ；</p>
+<p>4、再进行镜像构建时就可以将 Dockerfile 文件内容修改如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM aspnet-nodejs:5.0</span><br><span class="line">COPY . /app</span><br><span class="line">WORKDIR /app</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;nodejs-demo.dll&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>5、这样构建出来的镜像中就包含了 Node 环境。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/08/dotnet5-exec-node-js/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/08/dotnet5-exec-node-js/&title=dotNet 5 中执行 Node.js - 冯威的博客&summary=在低代码产品中为了扩展功能，我们在业务编排中会扩展代码块的功能，允许用户直接在界面中进行代码（Node.js、 Python）的编写，来实现取数或者赋值的一些功能。本文简单介绍下在 dotNET 5 中怎么样进行 Node.js 的调..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=dotNet 5 中执行 Node.js - 冯威的博客&amp;body=http://fwhyy.com/2021/08/dotnet5-exec-node-js/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/08/dotnet5-exec-node-js/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/08/do-you-really-know-about-low-code-platforms/">你真的了解低代码平台吗？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/08/i-recently-read-two-low-code-books/">最近看了两本低代码的书（文末有福利）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

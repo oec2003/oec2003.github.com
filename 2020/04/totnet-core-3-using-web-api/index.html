@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>dotNET Core 3.X 使用 Web API - 冯威的博客</title>
+
+  
+    <meta name="description" content="现在的 Web 开发大多都是前后端分离的方式，后端接口的正确使用显得尤为重要，本文讲下在 dotNET Core 3.X 下使用 Web API 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dotNET Core 3.X 使用 Web API">
+<meta property="og:url" content="http://fwhyy.com/2020/04/totnet-core-3-using-web-api/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="现在的 Web 开发大多都是前后端分离的方式，后端接口的正确使用显得尤为重要，本文讲下在 dotNET Core 3.X 下使用 Web API 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135152.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135694.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135068.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135487.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135419.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135285.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135553.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135830.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136771.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136511.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136111.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136739.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136167.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136159.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136176.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136609.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136740.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137439.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137273.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137436.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137830.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137999.jpg">
+<meta property="article:published_time" content="2020-03-31T22:48:56.000Z">
+<meta property="article:modified_time" content="2022-01-30T13:37:45.806Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="dotNetCore">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135152.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-x-%E5%92%8C-2-x-%E5%8C%BA%E5%88%AB"><span class="toc-text">3.x 和 2.x 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ApiController-%E7%89%B9%E6%80%A7"><span class="toc-text">[ApiController] 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%A8%A1%E5%9E%8B%E7%8A%B6%E6%80%81%E9%AA%8C%E8%AF%81"><span class="toc-text">自动模型状态验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E6%96%AD%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E6%BA%90"><span class="toc-text">推断参数绑定源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF"><span class="toc-text">错误状态码详细信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%B1%BB"><span class="toc-text">基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E6%96%B9%E6%B3%95"><span class="toc-text">HTTP 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-text">HTTP 状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0"><span class="toc-text">输入参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%BB%91%E5%AE%9A"><span class="toc-text">模型绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81"><span class="toc-text">参数验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-Annotations"><span class="toc-text">Data Annotations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IValitableObject-%E6%8E%A5%E5%8F%A3"><span class="toc-text">IValitableObject 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-Attribute"><span class="toc-text">自定义 Attribute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FluentValidation"><span class="toc-text">FluentValidation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelBinder"><span class="toc-text">ModelBinder</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E-XML-%E6%A0%BC%E5%BC%8F"><span class="toc-text">返回 XML 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E"><span class="toc-text">错误信息统一返回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A1%91%E5%BD%A2"><span class="toc-text">数据塑形</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2020-03-31T22:48:56.000Z">2020-04-01</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>dotNET Core 3.X 使用 Web API</span></h1>
+<p>现在的 Web 开发大多都是前后端分离的方式，后端接口的正确使用显得尤为重要，本文讲下在 dotNET Core 3.X 下使用 Web API 。</p>
+<span id="more"></span>
+
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>操作系统：Mac</li>
+<li>IDE：Rider</li>
+<li>dotNET Core：3.1</li>
+</ul>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>如果是 Windows 操作系统当然是首选 VS2019 ，在 Mac 中虽然也有 VS2019 For Mac，但还是感觉 Rider 比较好用（调试和智能提示），在 Rider 中创建 Web API 项目：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135152.jpg" alt="iShot2022-01-30 21.23.09"></p>
+<h2 id="3-x-和-2-x-区别"><a href="#3-x-和-2-x-区别" class="headerlink" title="3.x 和 2.x 区别"></a>3.x 和 2.x 区别</h2><p>1、Program 类的 IWebHostBuilder 修改为了 IHostBuilder，这一块的改动如果是直接使用3.x可以不用过于关心，如果是从 2.x升级到3.x，就要注意了，对比结果如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135694.jpg" alt="iShot2022-01-30 21.25.02"></p>
+<p>2、Startup 类的区别如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135068.jpg" alt="iShot2022-01-30 21.25.32"></p>
+<p>最重要的还是在 3.x 中使用的是 services.AddControllers(); 来注册服务，相比较 2.x 中的 services.AddMvc() 更加轻量级，因为在 AddMvc 方法中添加了很多 WebAPI 不需要的功能，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135487.jpg" alt="iShot2022-01-30 21.26.13"></p>
+<p>3、3.x 引入了新的JSON API,新的JSON API使用更少的内存，拥有更快的执行速度,引用 <code>using System.Text.Json;</code> 就可以使用，如果需要使用原来的功能，需要引入 Nuget包：<code>Microsoft.AspNetCore.Mvc.NewtonsoftJson</code></p>
+<p>另：</p>
+<ul>
+<li><p>有关 3.x 中被删除的程序集可以参考这里：<a target="_blank" rel="noopener" href="https://github.com/dotnet/aspnetcore/issues/3755">https://github.com/dotnet/aspnetcore/issues/3755</a></p>
+</li>
+<li><p>有关 3.x 中性能提升可以参考这篇文章：<a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/">https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/</a></p>
+</li>
+</ul>
+<h2 id="ApiController-特性"><a href="#ApiController-特性" class="headerlink" title="[ApiController] 特性"></a>[ApiController] 特性</h2><p>在 3.x 中默认项目模板中会创建的一个名为 WeatherForecastController 的控制器，按照约束控制器类以 Controller 结尾。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135419.jpg" alt="iShot2022-01-30 21.26.31"></p>
+<p>可以看到在 WeatherForecastController 类的上面自动添加了 [ApiController] 特性，添加此特性后，会对 Api 功能有所加持，比如：</p>
+<h3 id="自动模型状态验证"><a href="#自动模型状态验证" class="headerlink" title="自动模型状态验证"></a>自动模型状态验证</h3><p>意思是当客户端传递的模型数据不符合要求时，在接口方法中不需要做任何处理，接口会自动返回 <code>400</code> 的错误,看下面的例子：</p>
+<p>1、创建 UserController 类，先将 [ApiController] 特性注释掉；<br>2、添加 User 类，将 Name 属性设置为 Required；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class User</span><br><span class="line">&#123;</span><br><span class="line">    [Required]</span><br><span class="line">    public  string Name &#123; get; set; &#125;</span><br><span class="line">    public string Code &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、在 UserController 类中添加 AddUser 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[HttpPost]</span><br><span class="line">[Route(&quot;adduser&quot;)]</span><br><span class="line">public ActionResult AddUser(User user)</span><br><span class="line">&#123;    </span><br><span class="line">	return Ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、使用 Postman 调用，没有添加任何参数，返回的结果为 200</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135285.jpg" alt="iShot2022-01-30 21.27.00"></p>
+<p>这个结果不是我们所期望的，之前没有 [ApiController] 特性的时候，需要在接口方法中处理，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[HttpPost]</span><br><span class="line">[Route(&quot;adduser&quot;)]</span><br><span class="line">public ActionResult AddUser(User user)</span><br><span class="line">&#123;</span><br><span class="line">    if (!ModelState.IsValid)</span><br><span class="line">    &#123;</span><br><span class="line">        return BadRequest((ModelState));</span><br><span class="line">    &#125;</span><br><span class="line">    return Ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、再用 Postman 调用，结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135553.jpg" alt="iShot2022-01-30 21.27.22"></p>
+<p>6、现在添加上 [ApiController] 特性，并将 AddUser 中的校验逻辑去掉，再次使用 Postman，结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302135830.jpg" alt="iShot2022-01-30 21.27.43"></p>
+<h3 id="推断参数绑定源"><a href="#推断参数绑定源" class="headerlink" title="推断参数绑定源"></a>推断参数绑定源</h3><p>之前需要在参数上添加 [FromBody]、[FromQuery]等特性，现在可以去掉这些特性，系统会自动推断参数的来源，比如：如果一个参数在 Route 里面定义了，会自动从先从Path 查找，没找到会从查询参数上查找然后进行绑定。</p>
+<h3 id="错误状态码详细信息"><a href="#错误状态码详细信息" class="headerlink" title="错误状态码详细信息"></a>错误状态码详细信息</h3><p>之前的版本中，如果接口返回一个 BadRequest，是没有内容的，只有状态码，如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136771.jpg" alt="iShot2022-01-30 21.28.05"></p>
+<p>加上 [ApiController] 特性后，结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136511.jpg" alt="iShot2022-01-30 21.28.30"></p>
+<h2 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h2><p>在 3.x 中创建控制器后，默认的基类为 ControllerBase ，该类中提供了 OK、BadRequest 等常用方法给我们使用。</p>
+<p>在我们实际开发中，通常会自定义添加一个所有  Controller 类的基础类，一些通用的功能可以放到基类中，比如，对 AutoMapper 的注入，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class BaseController: ControllerBase</span><br><span class="line">&#123;</span><br><span class="line">    private readonly IMapper _mapper;</span><br><span class="line">    public BaseController(IMapper mapper)</span><br><span class="line">    &#123;</span><br><span class="line">        _mapper = mapper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public IMapper Mapper =&gt; _mapper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP-方法"><a href="#HTTP-方法" class="headerlink" title="HTTP 方法"></a>HTTP 方法</h2><p>先看下面这张图</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136111.jpg" alt="iShot2022-01-30 21.28.59"></p>
+<p>按照标准的 RESTful Web API 风格，不同的请求动作需要使用相对应的方法，但实际我们最常用的是 GET 和 POST，查询使用 GET，其他的操作都是使用 POST。</p>
+<h2 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h2><p>正确的返回状态码有助于客户端分析请求返回结果和问题排查，常用的状态码如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136739.jpg" alt="iShot2022-01-30 21.29.20"></p>
+<p>常见的一个问题：由于客户端参数的问题，导致接口代码中执行异常了，最终返回了 500，导致排查问题非常复杂，还需要还原问题场景下的数据和入参。正确的做法应该是对参数做相关校验最终返回相应的 4XX 的状态码。</p>
+<h2 id="输入参数"><a href="#输入参数" class="headerlink" title="输入参数"></a>输入参数</h2><h3 id="模型绑定"><a href="#模型绑定" class="headerlink" title="模型绑定"></a>模型绑定</h3><p>接口的输入参数就是通过模型绑定将 HTTP 请求中的值映射到参数中，模型绑定有以下六种：</p>
+<ul>
+<li>[FromRoute]：通过路由的 URL 中取值，可以自动推断；</li>
+<li>[FromQuery]：获取 URL 地址中的参数，可以自动推断；</li>
+<li>[FromBody]：从HTTP Body取值，通常用于取JSON, XML，可以自动推断；</li>
+<li>[FromHeader]：获取 Request Header 中的参数信息，需要指定</li>
+<li>[FromForm]：获取 Content-Type 为 multipart/form-data 或 application/x-www-form-urlencoded 类型的参数，需要指定</li>
+<li>[FromServices]：获取依赖注入的参数，依赖注入默认是使用构造函数注入，但Controller 可能会因为每个Action用到不一样的 Service 导致很多参数，所以也可以在 Action 注入Service，需要指定。</li>
+</ul>
+<p>下面实现一个使用 [FromServices] 的示例：</p>
+<p>1、创建 IUserService 接口和 UserService 类，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public interface IUserService</span><br><span class="line">&#123;</span><br><span class="line">	string GetUserName(string userId);</span><br><span class="line">&#125;</span><br><span class="line">public class UserService:IUserService</span><br><span class="line">&#123;</span><br><span class="line">    public string GetUserName(string userId)</span><br><span class="line">    &#123;</span><br><span class="line">        return $&quot;UserName:&#123;userId&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、在 Startup 类的 ConfigureServices 方法中添加下面代码进行注册</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.AddScoped&lt;IUserService,UserService&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>3、添加 UserController 类，里面添加名为 GetUserName 的 Action 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet]</span><br><span class="line"></span><br><span class="line">public ActionResult&lt;string&gt; GetUserName(string userId, 						[FromServices]IUserService userService)</span><br><span class="line">&#123;</span><br><span class="line">    return Ok($&quot;&#123;userService.GetUserName(userId)&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、执行结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136167.jpg" alt="iShot2022-01-30 21.29.41"></p>
+<h3 id="参数验证"><a href="#参数验证" class="headerlink" title="参数验证"></a>参数验证</h3><p>参数验证是非常重要的，否则本来是 4XX 的问题就会变成 5XX 的问题，参数验证有这么几种：</p>
+<ul>
+<li>Data Annotations</li>
+<li>自定义 Attribute</li>
+<li>实现 IValitableObject 接口</li>
+<li>使用第三方的验证库，比如 FluentValidation</li>
+</ul>
+<h4 id="Data-Annotations"><a href="#Data-Annotations" class="headerlink" title="Data Annotations"></a>Data Annotations</h4><p>1、在 User 的实体类上添加相关特性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class User</span><br><span class="line">&#123;</span><br><span class="line">    [Required(ErrorMessage = &quot;姓名不能为空&quot;)]</span><br><span class="line">    public string  Name &#123; get; set; &#125;</span><br><span class="line">    </span><br><span class="line">    [EmailAddress(ErrorMessage = &quot;邮件格式不正确&quot;)]</span><br><span class="line">    public string  Email &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、调用结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136159.jpg" alt="iShot2022-01-30 21.30.44"></p>
+<p>有关更多的 Data Annotations 特性的使用，可以参考官方文档：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=netcore-3.1">https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=netcore-3.1</a></p>
+<h4 id="IValitableObject-接口"><a href="#IValitableObject-接口" class="headerlink" title="IValitableObject 接口"></a>IValitableObject 接口</h4><p>1、将 User 类继承 IValitableObject 接口，并实现 Validate 方法，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class User: IValidatableObject</span><br><span class="line">&#123;</span><br><span class="line">    [Required(ErrorMessage = &quot;姓名不能为空&quot;)]</span><br><span class="line">    public string  Name &#123; get; set; &#125;</span><br><span class="line">    </span><br><span class="line">    [EmailAddress(ErrorMessage = &quot;邮件格式不正确&quot;)]</span><br><span class="line">    public string  Email &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public IEnumerable&lt;ValidationResult&gt; Validate(ValidationContext validationContext)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Name == Email)</span><br><span class="line">        &#123;</span><br><span class="line">            yield return new ValidationResult(&quot;名称不能和邮箱相等&quot;,</span><br><span class="line">                new []&#123;nameof(Name),nameof(Email)&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、调用结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136176.jpg" alt="iShot2022-01-30 21.32.01"></p>
+<h4 id="自定义-Attribute"><a href="#自定义-Attribute" class="headerlink" title="自定义 Attribute"></a>自定义 Attribute</h4><p>自定义 Attribute 功能和IValitableObject 接口类似，但可以作用于类级别也能用于属性级别，更加灵活。</p>
+<p>1、创建 NameNotEqualEmailAttribute 类，用来实现判断 User 类中的名称和邮箱不能相等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class NameNotEqualEmailAttribute : ValidationAttribute</span><br><span class="line">&#123;</span><br><span class="line">    protected override ValidationResult IsValid(object value, </span><br><span class="line">        ValidationContext validationContext)</span><br><span class="line">    &#123;</span><br><span class="line">        var user = validationContext.ObjectInstance as User;</span><br><span class="line">        if (user.Name == user.Email)</span><br><span class="line">        &#123;</span><br><span class="line">            return new ValidationResult(&quot;名称不能和邮箱相等&quot;,</span><br><span class="line">                new []&#123;nameof(User)&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        return ValidationResult.Success;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、在 User 类上添加此特性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[NameNotEqualEmail]</span><br><span class="line">public class User</span><br><span class="line">&#123;</span><br><span class="line">    [Required(ErrorMessage = &quot;姓名不能为空&quot;)]</span><br><span class="line">    public string  Name &#123; get; set; &#125;</span><br><span class="line">    </span><br><span class="line">    [EmailAddress(ErrorMessage = &quot;邮件格式不正确&quot;)]</span><br><span class="line">    public string  Email &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、调用结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136609.jpg" alt="iShot2022-01-30 21.32.20"></p>
+<h4 id="FluentValidation"><a href="#FluentValidation" class="headerlink" title="FluentValidation"></a>FluentValidation</h4><p>FluentValidation 就不多做介绍了，可以参见官方文档：<a target="_blank" rel="noopener" href="https://fluentvalidation.net/">https://fluentvalidation.net/</a></p>
+<h3 id="ModelBinder"><a href="#ModelBinder" class="headerlink" title="ModelBinder"></a>ModelBinder</h3><p>ModelBinder 是自定义模型绑定器，可以对入参的类型进行一些转换，比如，参数中传递 001,002 这样的字符串，在接口中使用 IEnumerable<string> 来进行接收。</p>
+<p>1、创建 StringToListModelBinder 类，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class StringToListModelBinder: IModelBinder</span><br><span class="line">&#123;</span><br><span class="line">public Task BindModelAsync(ModelBindingContext bindingContext)</span><br><span class="line">&#123;</span><br><span class="line">    if (!bindingContext.ModelMetadata.IsEnumerableType)</span><br><span class="line">    &#123;</span><br><span class="line">        bindingContext.Result = ModelBindingResult.Failed();</span><br><span class="line">        return Task.CompletedTask;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName).ToString();</span><br><span class="line">    if (string.IsNullOrWhiteSpace(value))</span><br><span class="line">    &#123;</span><br><span class="line">        bindingContext.Result = ModelBindingResult.Success(null);</span><br><span class="line">        return Task.CompletedTask;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var elementType = bindingContext.ModelType.GetTypeInfo().GenericTypeArguments[0];</span><br><span class="line">    var converter = TypeDescriptor.GetConverter(elementType);</span><br><span class="line"></span><br><span class="line">    var values = value.Split(new[] &#123;&#x27;,&#x27;&#125;, StringSplitOptions.RemoveEmptyEntries)</span><br><span class="line">        .Select(x =&gt; converter.ConvertFromString(x.Trim())).ToArray();</span><br><span class="line">    </span><br><span class="line">    var typedValues = Array.CreateInstance(elementType, values.Length);</span><br><span class="line">    </span><br><span class="line">    values.CopyTo(typedValues,0);</span><br><span class="line"></span><br><span class="line">    bindingContext.Model = typedValues;</span><br><span class="line">    </span><br><span class="line">    bindingContext.Result = ModelBindingResult.Success(bindingContext.Model);</span><br><span class="line">    return Task.CompletedTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、在 UserController 类中创建 GetUsersByIds 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet(&quot;ids&quot;)]</span><br><span class="line">public ActionResult&lt;List&lt;User&gt;&gt; GetUsersByIds(</span><br><span class="line">    [ModelBinder(BinderType = typeof(StringToListModelBinder))]IEnumerable&lt;string&gt; ids)</span><br><span class="line">&#123;</span><br><span class="line">    if (ids == null)</span><br><span class="line">    &#123;</span><br><span class="line">        return BadRequest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return Ok();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、调用结果</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302136740.jpg" alt="iShot2022-01-30 21.32.42"></p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><h3 id="返回-XML-格式"><a href="#返回-XML-格式" class="headerlink" title="返回 XML 格式"></a>返回 XML 格式</h3><p>尽管使用 Web API 通常都是使用 JSON 格式，但有些时候需要返回 XML 格式，默认情况下，即使请求头中添加了 Accept=application/xml，接口依然会返回 JSON 格式的结果，想要返回 XML 格式，修改 Startup 类的 ConfigureServices 方法即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.AddControllers().AddXmlDataContractSerializerFormatters();</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137439.jpg" alt="iShot2022-01-30 21.33.12"></p>
+<h3 id="错误信息统一返回"><a href="#错误信息统一返回" class="headerlink" title="错误信息统一返回"></a>错误信息统一返回</h3><p>之前的文章中有讲过使用过滤器的方式来做到结果的统一返回。这里介绍另一种方式，使用 ConfigureApiBehaviorOptions ，可以让我们自定义错误信息的返回内容和格式。修改 Startup 类中的 ConfigureServices 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">services.AddControllers()</span><br><span class="line">            .AddXmlDataContractSerializerFormatters()</span><br><span class="line">            .ConfigureApiBehaviorOptions(setup =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                setup.InvalidModelStateResponseFactory = context =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    var details = new ValidationProblemDetails(context.ModelState)</span><br><span class="line">                    &#123;</span><br><span class="line">                        Type = &quot;http://api.oec2003.com/help&quot;,</span><br><span class="line">                        Title = &quot;实体验证错误&quot;,</span><br><span class="line">                        Status = StatusCodes.Status422UnprocessableEntity,</span><br><span class="line">                        Detail = &quot;看详细&quot;,</span><br><span class="line">                        Instance = context.HttpContext.Request.Path,</span><br><span class="line">                    &#125;;</span><br><span class="line">                    details.Extensions.Add(&quot;trachid&quot;,context.HttpContext.TraceIdentifier);</span><br><span class="line"></span><br><span class="line">                    return new UnprocessableEntityObjectResult(details)</span><br><span class="line">                    &#123;</span><br><span class="line">                        ContentTypes = &#123; &quot;application/problem+json&quot; &#125;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>当出现验证问题时，结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137273.jpg" alt="iShot2022-01-30 21.33.33"></p>
+<p>更多详细信息可以看文档：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/aspnet/core/web-api/handle-errors?view=aspnetcore-3.1">https://docs.microsoft.com/zh-cn/aspnet/core/web-api/handle-errors?view=aspnetcore-3.1</a></p>
+<h3 id="数据塑形"><a href="#数据塑形" class="headerlink" title="数据塑形"></a>数据塑形</h3><p>在 API 中返回结果到前端时，一般不会直接将底层的 Entity 返回，会创建相对应的 Dto，比如，用户的 Entity 是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class User</span><br><span class="line">&#123;</span><br><span class="line">    public string  Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public string  Email &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public string  Password &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建 User 的 Dto 类 UserDto，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class UserDto</span><br><span class="line">&#123;</span><br><span class="line">    public string  Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public string  Email &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在接口的 Action 方法中使用 AutoMapper 做下转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet(&quot;&#123;userId&#125;&quot;)]</span><br><span class="line">public ActionResult&lt;UserDto&gt; GetUserById(string userId)</span><br><span class="line">&#123;</span><br><span class="line">    User user = new User()</span><br><span class="line">    &#123;</span><br><span class="line">        Name = &quot;oec2003&quot;,</span><br><span class="line">        Email = &quot;oec2003@qq.com&quot;,</span><br><span class="line">        Password = &quot;123456&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">    return Ok(base.Mapper.Map&lt;UserDto&gt;(user));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请求结果如下</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137436.jpg" alt="iShot2022-01-30 21.33.56"></p>
+<p>同样的接口在前端不同的场景下需要返回不一样的字段数据，一种方式是创建很多不同的接口，返回不同的 Dto 的结果，但这样做非常繁琐，可以通过 ExpandoObject 来实现按客户端的需要进行返回结果，具体步骤如下：</p>
+<p>1、因为获取用户列表的接口方法的是 List<User> ,所以先创建一个 IEnumerable 的扩展方法，该扩展方法用于根据传进的字段参数来组装返回的结果，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public static class IEnumerableExtension</span><br><span class="line">&#123;</span><br><span class="line">    public static IEnumerable&lt;ExpandoObject&gt; GetData&lt;T&gt;</span><br><span class="line">        (this IEnumerable&lt;T&gt; source, string fields)</span><br><span class="line">    &#123;</span><br><span class="line">        if (source == null)</span><br><span class="line">        &#123;</span><br><span class="line">            throw new ArgumentNullException(nameof(source));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        var objectList = new List&lt;ExpandoObject&gt;(source.Count());</span><br><span class="line">        var propertyInfoList = new List&lt;PropertyInfo&gt;();</span><br><span class="line"></span><br><span class="line">        if (string.IsNullOrWhiteSpace(fields))</span><br><span class="line">        &#123;</span><br><span class="line">            var propertyInfos = typeof(T).GetProperties(BindingFlags.Public |</span><br><span class="line">                                                        BindingFlags.Instance);</span><br><span class="line">            propertyInfoList.AddRange(propertyInfos);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            var fieldSplit = fields.Split(&#x27;,&#x27;);</span><br><span class="line">            foreach (var field in fieldSplit)</span><br><span class="line">            &#123;</span><br><span class="line">                var propertyName = field.Trim();</span><br><span class="line">                var propertyInfo = typeof(T).GetProperty(propertyName,</span><br><span class="line">                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);</span><br><span class="line">                if (propertyInfo == null)</span><br><span class="line">                &#123;</span><br><span class="line">                    throw  new Exception($&quot;属性名：&#123;propertyName&#125; 没有找到&quot;);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                propertyInfoList.Add(propertyInfo);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        foreach (T t in source)</span><br><span class="line">        &#123;</span><br><span class="line">            var obj=new ExpandoObject();</span><br><span class="line">            foreach (var propertyInfo in propertyInfoList)</span><br><span class="line">            &#123;</span><br><span class="line">                var value = propertyInfo.GetValue(t);</span><br><span class="line">                ((IDictionary&lt;string, object&gt;) obj).Add(propertyInfo.Name, value);</span><br><span class="line">            &#125;</span><br><span class="line">            objectList.Add(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        return objectList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、创建获取用户列表的 Action 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet]</span><br><span class="line">public ActionResult GetUsers([FromBody]string fields)</span><br><span class="line">&#123;</span><br><span class="line">    var userList =new List&lt;User&gt;() </span><br><span class="line">    &#123;</span><br><span class="line">        new User()&#123; Name = &quot;oec2003&quot;,Email = &quot;oec2003@qq.com&quot;,Password = &quot;123456&quot;&#125;,</span><br><span class="line">        new User()&#123; Name = &quot;oec2004&quot;,Email = &quot;oec2004@qq.com&quot;,Password = &quot;123456&quot;&#125;,</span><br><span class="line">        new User()&#123; Name = &quot;oec2004&quot;,Email = &quot;oec2004@qq.com&quot;,Password = &quot;123456&quot;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    var returnResult = base.Mapper.Map&lt;List&lt;UserDto&gt;&gt;(userList);</span><br><span class="line">    //使用扩展方法按需获取</span><br><span class="line">    return Ok(returnResult.GetData(fields));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、查看调用结果</p>
+<p>返回一个属性 Name</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137830.jpg" alt="iShot2022-01-30 21.34.19"></p>
+<p>返回所有</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302137999.jpg" alt="iShot2022-01-30 21.34.37"></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>本文只是涉及了在 Web API 中比较常用的一些功能点，限于篇幅，每个点并没有写的非常深入，也较少涉及原理，但我们在学习过程中，除了实现效果外还应该深入去了解其中细节和原理。</p>
+<p>文中示例代码：<a target="_blank" rel="noopener" href="https://github.com/oec2003/DotNetCoreThreeAPIDemo">https://github.com/oec2003/DotNetCoreThreeAPIDemo</a></p>
+<p>希望本文对您有所帮助。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2020/04/totnet-core-3-using-web-api/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2020/04/totnet-core-3-using-web-api/&title=dotNET Core 3.X 使用 Web API - 冯威的博客&summary=现在的 Web 开发大多都是前后端分离的方式，后端接口的正确使用显得尤为重要，本文讲下在 dotNET Core 3.X 下使用 Web API 。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=dotNET Core 3.X 使用 Web API - 冯威的博客&amp;body=http://fwhyy.com/2020/04/totnet-core-3-using-web-api/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2020/04/totnet-core-3-using-web-api/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2020/03/is-there-a-35-year-old-bar-for-programmers/">程序员还有35岁的坎吗？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2020/04/dotnet-core-3-request-processing-pipeline-and-middleware/">dotNET Core 3.X 请求处理管道和中间件<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>12 个问题搞懂 Redis - 冯威的博客</title>
+
+  
+    <meta name="description" content="都说学习需要带着问题，带着思考进行学习，下面就以问题的形式来学习下 Redis 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12 个问题搞懂 Redis">
+<meta property="og:url" content="http://fwhyy.com/2021/09/12-questions-to-understand-redis/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="都说学习需要带着问题，带着思考进行学习，下面就以问题的形式来学习下 Redis 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020828684.jpg">
+<meta property="article:published_time" content="2021-09-13T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:28:45.504Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020828684.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-09-13T00:05:00.000Z">2021-09-13</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>12 个问题搞懂 Redis</span></h1>
+<p>都说学习需要带着问题，带着思考进行学习，下面就以问题的形式来学习下 Redis 。</p>
+<span id="more"></span>
+
+<p>1、什么是 Redis ？</p>
+<ul>
+<li>Redis 是一个高性能的 key-value 数据库；</li>
+<li>作者来自意大利西西里岛的 Salvatore Sanfilippo ；</li>
+<li>Redis 使用 ANSI C 语言编写、并遵守 BSD 开源协议；</li>
+<li>Redis 支持网络、可基于内存、分布式、也可以用来实现简易的消息队列；</li>
+<li>提供丰富的数据结构：字符串(String)、哈希(Hash)、列表(list)、集合(sets)和有序集合(sorted sets) 。</li>
+</ul>
+<p>2、都说 Redis 是单线程模型，到底是什么意思？</p>
+<ul>
+<li>单线程并不是说在 Redis 中所有的操作都是由一个线程来完成；</li>
+<li>核心功能，比如：网络 IO 和数据的读写是由一个线程来进行处理的；</li>
+<li>其他的一些辅助功能，比如：持久化、集群间的数据同步是由单独的线程进行处理；</li>
+<li>所以说 Redis 的单线程不是“真正”的单线程。</li>
+</ul>
+<p>3、为什么在数据读写处理上不使用多线程？</p>
+<ul>
+<li>多线程虽然可以增加系统的吞吐率，但线程的切换会有开销；</li>
+<li>多个线程对共享资源的并发处理问题，必然会用到各种锁，有锁就会存在等待锁的释放，反而吞吐率降低了；</li>
+<li>处理各种多线程带来的问题，会使系统变得复杂，复杂的系统就容易出现问题。</li>
+</ul>
+<p>4、为什么使用单线程，速度却很快？</p>
+<ul>
+<li>Redis 的操作是基于内存的，相比较于磁盘，速度上有先天的优势；</li>
+<li>Redis 有高效的数据结构，比如：哈希表、跳表；</li>
+<li>采用了多路复用机制，可以并发处理大量的请求，实现高吞吐率。</li>
+</ul>
+<p>5、单线程处理的瓶颈是什么？</p>
+<ul>
+<li><p>如果有耗时长的操作，后面的请求都需要进行等待；</p>
+</li>
+<li><ul>
+<li>单个 value 的内容过大，在添加、获取、删除时都会比较耗时；</li>
+<li>使用复杂的命令，比如：SORT/SUNION/ZUNIONSTORE；</li>
+<li>集合的数据非常大，而又进行了全量查询。</li>
+</ul>
+</li>
+<li><p>并发量非常大时，虽然 IO 有多路复用机制，从内核缓冲区中拷贝数据的操作仍然是同步操作，会带来性能瓶颈。</p>
+</li>
+</ul>
+<p>6、Redis 6.0 调整为多线程的原因？</p>
+<ul>
+<li>上面提到过 6.0 之前的版本是网络 IO 和数据读写是在一个线程中完成的；</li>
+<li>随着硬件性能的提升，Redis 的性能瓶颈有时会出现在网络 IO 的处理上，也就是说，单个主线程处理网络请求的速度跟不上底层网络硬件的速度，而读写的操作和网络 IO 是在一个主线程中，势必会有所影响；</li>
+<li>所以在 Redis 6.0 中，网络 IO 是由多个 IO 线程并行处理，可以充分利用服务器的多核资源，提高网络读写操作；</li>
+<li>Redis 数据的读写处理仍然在单个主线程中完成。</li>
+</ul>
+<p>7、在 Redis 中怎样做持久化？</p>
+<ul>
+<li><p>在 Redis 实现持久化有两种方式：AOF 日志 和 RDB 快照；</p>
+</li>
+<li><p>AOF 日志</p>
+</li>
+<li><ul>
+<li><p>命令执行成功后，才记录日志；</p>
+</li>
+<li><p>命令执行后进行日志记录，不会堵塞当前的写操作。</p>
+</li>
+<li><p>命令执行完，日志记录前宕机，数据会丢失；</p>
+</li>
+<li><p>AOF 日志在主线程中执行，有 IO 瓶颈时会对后面的操作有堵塞风险；</p>
+</li>
+<li><p>数据量比较大的时候，恢复很慢。</p>
+</li>
+<li><p>配置项（appendfsync）</p>
+</li>
+<li><ul>
+<li>Always，同步写回磁盘：每个写命令执行完，立即同步将日志写回磁盘；</li>
+<li>Everysec，每秒写回磁盘：每个写命令执行完，只是先把日志写到 AOF 文件的内存缓冲区，每隔一秒把缓冲区中的内容写入磁盘；</li>
+<li>No，操作系统控制的写回磁盘：每个写命令执行完，只是先把日志写到 AOF 文件的内存缓冲区，由操作系统决定何时将缓冲区内容写回磁盘。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RDB 快照</p>
+</li>
+<li><ul>
+<li><p>和 AOF 相比较，RDB 快照记录的是某一个时刻的数据，数据恢复是直接将 RDB 文件读入内存，速度很快；</p>
+</li>
+<li><p>生成 RDB 文件的两种方式：</p>
+</li>
+<li><ul>
+<li>save：在主线程中执行，会导致阻塞；</li>
+<li>bgsave：创建一个子进程，专门用于写入 RDB 文件，避免了主线程的阻塞，这也是 Redis RDB 文件生成的默认配置。子进程是由主线程 fork 生成的，可以共享主线程的所有内存数据。</li>
+</ul>
+</li>
+<li><p>RDB 快照的间隔时间不宜设置过短，因为频繁进行 Redis 的全量快照，会带来性能问题：</p>
+</li>
+<li><ul>
+<li>前一个快照还没做完，后面一个开始了，会给磁盘带来压力；</li>
+<li>bgsave 的子进程虽然不会阻塞主线程，但创建的过程会阻塞，频繁创建也会带来性能问题。</li>
+</ul>
+</li>
+<li><p>解决上面问题的一种办法就是使用增量快照；</p>
+</li>
+<li><p>在 Redis 4.0 中提出了一种混合 AOF 日志和 RDB 快照的方式：</p>
+</li>
+<li><ul>
+<li>RDB 快照的间隔时间可以设置比较大，就不会影响到主线程的操作；</li>
+<li>在快照的间隔期间可以使用 AOF 日志记录所有的操作，当下一次做全量 RDB 快照的时候，清空 AOF 日志；</li>
+<li>通过 aof-use-rdb-preamble yes 来进行设置。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>8、常说的缓存雪崩、击穿、穿透是什么？</p>
+<ul>
+<li><p>雪崩、击穿、穿透最终的结果都是请求压力会转移到数据库，导致系统崩溃，但场景有所区别；</p>
+</li>
+<li><p>雪崩</p>
+</li>
+<li><ul>
+<li>大量的不同请求无法在 Redis 中命中，导致请求都流向了数据库，数据库的压力剧增；</li>
+<li>发生雪崩的原因可能是，有大量的缓存 Key 在同一时间过期。</li>
+</ul>
+</li>
+<li><p>击穿</p>
+</li>
+<li><ul>
+<li>并发很大的情况下，针对某个特定的请求，缓存中数据不存在，导致都请求到了数据库，造成数据库压力过大；</li>
+<li>原因通常是某个 Key 过期了;</li>
+<li>和雪崩相比较，击穿是针对的单个 Key。</li>
+</ul>
+</li>
+<li><p>穿透</p>
+</li>
+<li><ul>
+<li><p>缓存穿透是指请求的数据不在 Redis 缓存中，也不在数据库中，导致访问缓存时，找不到数据，会去请求数据库，而在数据库中也找不到相应的数据；</p>
+</li>
+<li><p>并发比较大的时候，数据库会遭受巨大的压力；</p>
+</li>
+<li><p>发生穿透的原因可能有两个：</p>
+</li>
+<li><ul>
+<li>误操作导致 Redis 和数据库中的数据都被删除了；</li>
+<li>恶意攻击。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>9、怎样解决雪崩、击穿、穿透带来的问题？</p>
+<ul>
+<li><p>雪崩</p>
+</li>
+<li><ul>
+<li>缓存的数据过期时间设置随机，防止同一时间大量数据过期现象发生；</li>
+<li>如果缓存数据库是分布式部署，将热数据均匀分布在不同缓存数据库中；</li>
+<li>当发生雪崩时，可以通过服务降级来应对。</li>
+</ul>
+</li>
+<li><p>击穿</p>
+</li>
+<li><ul>
+<li>设置热数据永远不过期。</li>
+</ul>
+</li>
+<li><p>穿透</p>
+</li>
+<li><ul>
+<li>在接口层进行校验，将恶意请求直接过滤掉；</li>
+<li>使用布隆过滤器快速判断数据是否存在；</li>
+<li>缓存空值或缺省值。</li>
+</ul>
+</li>
+</ul>
+<p>10、怎样设计缓存的淘汰机制？</p>
+<ul>
+<li>业务数据在不断地增长，不可能将所有数据全部存储在 Redis 缓存中，内存的价格远远大于磁盘。所以需要做淘汰机制的设计；</li>
+<li>缓存的淘汰就是根据一定的策略，将不太重要的数据从缓存中进行删除；</li>
+<li>Redis 一共有 8 种淘汰策略，在 Redis 4.0 之前有 6 种，4.0 之后又增加了 2 种，如下图：</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020828684.jpg" alt="iShot2022-02-02 08.28.14"></p>
+<ul>
+<li><p>缓存策略的解释：</p>
+</li>
+<li><ul>
+<li>volatile-random：在设置了过期时间的数据中，进行随机删除；</li>
+<li>volatile-ttl：根据过期时间，越早过期的数据越先删除；</li>
+<li>volatile-lru：在设置了过期时间的数据中，根据 LRU 算法进行数据删除；</li>
+<li>volatile-lfu：在设置了过期时间的数据中，根据 LFU 算法进行数据删除；</li>
+<li>allkeys-lru：在所有数据中，根据 LRU 算法进行数据删除；</li>
+<li>allkeys-random：在所有数据中，进行随机删除；</li>
+<li>allkeys-lfu：在所有数据中，根据 LFU 算法进行数据删除；</li>
+</ul>
+</li>
+<li><p>默认情况下，当 Redis 的使用空间超过 maxmemory 设置的大小时，并不会淘汰数据，也就是执行的 noeviction 策略，如果写满，再有写请求时就会出错；</p>
+</li>
+<li><p>如果业务中有明显的热数据和冷数据，优先使用 allkeys-lru 策略，让热数据保留在缓存中；</p>
+</li>
+<li><p>如果业务中没有明显冷热数据，可以使用 volatile-random 或 allkeys-random。</p>
+</li>
+</ul>
+<p>11、怎样保证缓存和数据库的数据一致？</p>
+<ul>
+<li><p>缓存和数据库一致的意思是，当缓存中有数据时，缓存和数据库数据相同，当没有数据时，数据库中是最新的；</p>
+</li>
+<li><p>在做增删改操作的时候，对缓存的更新有两种方式：</p>
+</li>
+<li><ul>
+<li>新增直接添加到数据库，删除和修改时先更新缓存，然后同步或异步进行数据库的更新；</li>
+<li>新增直接添加到数据库，删除和修改时先更新数据库，再删除对应的缓存。</li>
+</ul>
+</li>
+<li><p>上面的操作都涉及到两个，操作 Redis 和操作数据库，当其中一个成功一个失败时就会出现数据不一致的情况；</p>
+</li>
+<li><p>解决不一致的问题：</p>
+</li>
+<li><ul>
+<li>将操作通过消息队列异步处理，设置重试机制，保证最终的一致性；</li>
+<li>使用分布式事务，保证操作 Redis 和数据库的两个操作在一个事务中。</li>
+</ul>
+</li>
+</ul>
+<p>12、Redis 有什么使用规范？</p>
+<ul>
+<li>Redis 单实例的内存大小都不要设置太大，建议在 2~6GB ，设置太大，会导致 RDB 快照、从 AOF 日志恢复、主从集群进行数据同步等都会耗时很长，阻塞正常请求的处理；</li>
+<li>对集合进行全量数据获取时，时间复杂度是 O(n)，所以这个 n 不宜太大；</li>
+<li>单个 key 的值不要太大，即便是最新的 6.0 版本，在读写这部分仍然是单线程，大 value 的读取会耗时，导致堵塞；</li>
+<li>根据具体的业务特点设计好淘汰策略；</li>
+<li>使用高效的序列化和压缩方法对缓存数据进行处理，来进一步提升性能；</li>
+<li>生产环境中禁止使用 KEYS、FLUSHALL、FLUSHDB 等操作，数据量大的时候耗时长，会阻塞主线程；</li>
+<li>有时为了排查错误，会使用 MONITOR 命令进行监控，该命令也会对性能造成严重影响；</li>
+</ul>
+<p>Redis 的知识远不止如此，本文总结了一些我认为比较重要的一些点，希望对您有所帮助！</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/09/12-questions-to-understand-redis/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/09/12-questions-to-understand-redis/&title=12 个问题搞懂 Redis - 冯威的博客&summary=都说学习需要带着问题，带着思考进行学习，下面就以问题的形式来学习下 Redis 。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=12 个问题搞懂 Redis - 冯威的博客&amp;body=http://fwhyy.com/2021/09/12-questions-to-understand-redis/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/09/12-questions-to-understand-redis/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/09/mastering-good-learning-methods/">掌握好的学习方法，让你在职场更有竞争力<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/09/read-the-method-of-communication/">读《沟通的方法》<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

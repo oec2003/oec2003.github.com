@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>怎样提高开发效率 - 冯威的博客</title>
+
+  
+    <meta name="description" content="前言给你一个任务,限定5天内完成,如果你实际用了6天,可以说是开发效率不高,或者同样的一个任务,你花了6天,而你的同事却只用了4天,也可以说是你的开发效率不高,影响开发效率的因素有很多,下面就我个人的理解来谈谈怎样提高开发效率. 工具俗话说，工欲善其事必先利其器，使用得心应手的工具必然会提高开发效率，做微软平台开发的肯定离不开VS，就VS本身来说，除了常用功能外一些常用的快捷键一定要能熟练运用，例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎样提高开发效率">
+<meta property="og:url" content="http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="前言给你一个任务,限定5天内完成,如果你实际用了6天,可以说是开发效率不高,或者同样的一个任务,你花了6天,而你的同事却只用了4天,也可以说是你的开发效率不高,影响开发效率的因素有很多,下面就我个人的理解来谈谈怎样提高开发效率. 工具俗话说，工欲善其事必先利其器，使用得心应手的工具必然会提高开发效率，做微软平台开发的肯定离不开VS，就VS本身来说，除了常用功能外一些常用的快捷键一定要能熟练运用，例">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2012-10-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-29T23:01:12.918Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="效率">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%B2%89%E6%B7%80"><span class="toc-text">代码沉淀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0"><span class="toc-text">业务知识学习</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2012-10-20T16:00:00.000Z">2012-10-21</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>怎样提高开发效率</span></h1>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>给你一个任务,限定5天内完成,如果你实际用了6天,可以说是开发效率不高,或者同样的一个任务,你花了6天,而你的同事却只用了4天,也可以说是你的开发效率不高,影响开发效率的因素有很多,下面就我个人的理解来谈谈怎样提高开发效率.</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>俗话说，工欲善其事必先利其器，使用得心应手的工具必然会提高开发效率，做微软平台开发的肯定离不开VS，就VS本身来说，除了常用功能外一些常用的快捷键一定要能熟练运用，例如下面是我认为比较有用的几个快捷键：</p>
+<ul>
+<li>注释： Ctrl + K + C</li>
+<li>取消注释： Ctrl + K + U</li>
+<li>全屏： Shift + Alt + Ente</li>
+<li>设置标签： CTRL + K, CTRL + K</li>
+<li>下一个、上一个标签： CTRL + K, CTRL + P 、CTRL + K, CTRL + P</li>
+<li>列出成员： Ctrl + J</li>
+<li>显示参数信息： Ctrl + Shift + Space</li>
+<li>转到定义后返回： Ctrl + –</li>
+</ul>
+<p>熟练使用快捷键对于代码编写的速率和跟踪代码的速率会有大大的提高。</p>
+<p>有时候开发工具自身的功能受到了限制，这是就需要使用插件来丰富功能，这里推荐两款插件，VS中的ReSharper和SqlServer中的SQL prompt5，ReSharper是功能很强大的一个VS插件，但会拖慢VS的速度，就看怎么去权衡了，我在之前的博文《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/10/powerful-vs-plug-in-resharper/">强大的VS插件—Resharper</a>》做过简单介绍。SQL prompt5是SqlServer的一个插件，功能也非常强大，有很强的智能提示功能，所提供的SQL Search功能可以对数据库对象进行快速查找，还提供代码片段功能，在我之前的博文《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2012/10/using-sql-prompt5/">SqlServer开发利器—SQL Prompt5</a>》中也做过介绍。</p>
+<p>除了我们每天都离不开的VS和SqlServer之外还有一些辅助的开发工具也可以来帮助我们来提高效率，我经常使用的有以下几种：</p>
+<ul>
+<li>SqlDbx：很小巧的一款数据库管理工具，但功能非常强大，支持多种数据库，经常使用他的智能提示和生成脚本等功能，但也有缺点，对中文支持的不是很好；</li>
+<li>Aptana：该工具可以说是做Web开发的利器了，我有时写JS会用到该工具，有一个亮点之处是智能提示能够显示不同浏览器是否支持；</li>
+<li>Free Javascript Editor：可以很方便的写一些简单的HTML和JS代码并运行，可以直接选择JS的代码片段进行执行，对JS的调试也很方便。</li>
+</ul>
+<p>还有一些其他的工具也非常有用，比如我在平时的工作中会经常用到Total Commander和Everything：</p>
+<ul>
+<li>Total Commander：资源管理器的代替工具，支持多标签，可以很方便的对文件进行操作；</li>
+<li>Everything：一款搜索工具，速度奇快，以前也做过介绍《软件推荐：磁盘搜索软件Everything》。</li>
+</ul>
+<h2 id="代码沉淀"><a href="#代码沉淀" class="headerlink" title="代码沉淀"></a>代码沉淀</h2><p>有点规模的软件公司都会有自己的开发框架，这些框架都是多少年积累的产物，目的就是为了提高开发效率，作为一个开发人员平时对于一些常用的代码也应该有自己的沉淀，不光自己沉淀，在组内也应互相分享，记录这些沉淀的代码就可以根据自己的喜好了，记事本、Word、Excel、OneNote等都可以。沉淀的代码还可以使用VS的代码片段功能来进行管理，VS2010中对代码片段支持的很好，上面提到的SqlServer的插件SQL Prompt5也提供了数据库中的代码片段功能。</p>
+<p>VS中给我们提供了很多现成的代码片段，要使用自定义的代码片段最方便的就是使用代码片段制作工具，工具点击<a target="_blank" rel="noopener" href="http://snippeteditor.codeplex.com/">此处</a>下载，当然也可以自己创建代码片段文件，然后在VS中导入即可，代码片段文件其实就是一个xml格式的文件，后缀为snippet。</p>
+<p>代码质量</p>
+<p>代码质量好了，产生的bug就少，和测试的交互也就少了，也就不会因为前面产生的bug而影响后面的进度，效率自然就高了。代码质量可以分三个方面来看：</p>
+<p>1 代码出错少，能够正常的运行；</p>
+<ul>
+<li>主动学习，提升自我的编程技能；</li>
+<li>勤思考，对干过的错要经常总结，一些规范性的原则要牢记，这些常常会出现一些低级错误；</li>
+<li>一个任务做完后需要进行充分的自测。</li>
+</ul>
+<p>2 代码的运行效率高，在大数据、高并发的时候能够高效运行；</p>
+<ul>
+<li>高性能的开发得从点滴做起，不放过每一个细节，可能一个小的细节点就是一个性能的瓶颈；</li>
+<li>要有重构代码的习惯，好的代码是重构出来的，高性能的代码也是重构出来的；</li>
+<li>多学习一些原理性的知识，不光要知其然还是知其所以然，基础扎实了，一些性能的问题就知道怎么去优化了；</li>
+<li>之前翻译过几篇关于C#代码简化的博文，参见《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/10/csharp-net-code-concise-optimization-techniques-1/">C#/Net代码精简优化技巧（1）</a>》、《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/10/csharp-net-code-concise-optimization-techniques-2/">C#/Net代码精简优化技巧（2）</a>》、《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/11/csharp-net-code-concise-optimization-techniques-c/">C#/Net代码精简优化技巧（3）</a>》</li>
+</ul>
+<p>3 代码最后的运行结果要和客户的要求一致；</p>
+<ul>
+<li>做需求之前把自己的理解跟需求分析进行沟通看是否能达成一致，如果是直接和客户进行沟通可以先做出小Demo，然后给客户演示，根据反馈不断改进；</li>
+<li>在做的过程中如果遇到有疑问的地方一定要和需求或客户进行沟通，不要根据自己的想法想当然的去进行代码编写；</li>
+<li>必要的时候可以引导客户，我们的主要目的能以最有效的方式帮客户解决问题，不能盲目的按照客户的要求来，有时客户说需要一双雨鞋，可能一把伞就可以解决问题。同样对于需求分析写的文档，开发也需要有质疑的精神。</li>
+</ul>
+<h2 id="业务知识学习"><a href="#业务知识学习" class="headerlink" title="业务知识学习"></a>业务知识学习</h2><p>做任何的系统都避免不了有业务背景，熟练的了解业务知识可以使我们更清楚的知道我们是在做什么。很多的开发人员可能只喜欢钻研技术，对业务往往没什么兴趣，代码写完了，可能还不知道做出的模块时做什么用的，这样写出来的代码的质量就可想而知了。</p>
+<ul>
+<li>学习业务可能很枯燥，但却是一劳永逸的事情，所以不管是否有兴趣，还是应该硬着头皮啃下来；</li>
+<li>小组内可以成立兴趣小组，探讨的方式来进行学习，互相分享各自的学习内容，关键是组内的氛围要搞起来；</li>
+<li>如果是直接跟客户沟通，需要用客户能听懂的语言，比如图文配合或是一些小Demo，否则当开发术语碰上领域术语就可能都是在对牛弹琴了。</li>
+</ul>
+<p>总之，作为一名开发人员，要时刻想着怎样来提高开发效率，开发效率的提高是你在工作中一个良性循环的开始。如果您有好的方法和建议，欢迎一起分享。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/&title=怎样提高开发效率 - 冯威的博客&summary=前言给你一个任务,限定5天内完成,如果你实际用了6天,可以说是开发效率不高,或者同样的一个任务,你花了6天,而你的同事却只用了4天,也可以说是你的开发效率不高,影响开发效率的因素有很多,下面就我个人的理解来谈谈怎样提高开发效率.
+工具..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=怎样提高开发效率 - 冯威的博客&amp;body=http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2012/10/gen-reg-in-vs2010-and-vs2008/">VS2010和VS2008使用不同编译方式在64位机器生成注册表对比<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2012/11/using-git-in-vs2010/">在VS2010中使用Git【图文】<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

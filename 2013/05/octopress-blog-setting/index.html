@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Octopress博客设置 - 冯威的博客</title>
+
+  
+    <meta name="description" content="在上一篇《Windows下搭建Octopress博客》中介绍了怎样在Windows环境中搭建Octopress博客，以及如何部署到Github中，本文主要讲解怎样对Octopress进行一些设置，比如修改博客标题、添加侧边栏等等。 Octopress文件目录首先来看下Octopress的文件目录吧，因为很多的设置就是从这里开始的。  刚clone下来的Octopress源码没有最后的三个文件，当执">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Octopress博客设置">
+<meta property="og:url" content="http://fwhyy.com/2013/05/octopress-blog-setting/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在上一篇《Windows下搭建Octopress博客》中介绍了怎样在Windows环境中搭建Octopress博客，以及如何部署到Github中，本文主要讲解怎样对Octopress进行一些设置，比如修改博客标题、添加侧边栏等等。 Octopress文件目录首先来看下Octopress的文件目录吧，因为很多的设置就是从这里开始的。  刚clone下来的Octopress源码没有最后的三个文件，当执">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600903.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600472.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600366.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600313.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301601495.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301601604.jpg">
+<meta property="article:published_time" content="2013-05-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T08:01:37.649Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="Octopress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600903.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Octopress%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-text">Octopress文件目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="toc-text">基本设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E7%9A%84description%E5%92%8Ckeywords"><span class="toc-text">设置网站的description和keywords</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A6%96%E9%A1%B5"><span class="toc-text">设置首页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0"><span class="toc-text">设置文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%AE%BE%E7%BD%AE"><span class="toc-text">导航栏设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%A7%E8%BE%B9%E6%A0%8F%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB"><span class="toc-text">添加侧边栏文章分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA"><span class="toc-text">添加评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="toc-text">添加版权声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E6%96%87%E7%AB%A0%E4%BB%A5%E6%91%98%E8%A6%81%E5%BD%A2%E5%BC%8F%E5%B1%95%E7%A4%BA"><span class="toc-text">使文章以摘要形式展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E5%8F%82%E8%80%83"><span class="toc-text">几个参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%88%90%E9%95%BF/">成长</a></div><div id="post-meta">发布于&nbsp;<time datetime="2013-05-30T16:00:00.000Z">2013-05-31</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Octopress博客设置</span></h1>
+<p>在上一篇《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2013/08/how-to-use-exist-octopress-in-windows/">Windows下搭建Octopress博客</a>》中介绍了怎样在Windows环境中搭建Octopress博客，以及如何部署到Github中，本文主要讲解怎样对Octopress进行一些设置，比如修改博客标题、添加侧边栏等等。</p>
+<h2 id="Octopress文件目录"><a href="#Octopress文件目录" class="headerlink" title="Octopress文件目录"></a>Octopress文件目录</h2><p>首先来看下Octopress的文件目录吧，因为很多的设置就是从这里开始的。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600903.jpg" alt="3cefded1gw1e52yyb8jz7j207f0e5mxp"></p>
+<p>刚clone下来的Octopress源码没有最后的三个文件，当执行了rake install后会产生最后的三个目录。</p>
+<ul>
+<li><p>source：该目录是执行rake install后从.themes\classic目录中的source拷贝而来，并且添加了一个_posts目录了，当执行了rake new_post[‘title’]后会在_post生成博文的markdown文件。包括后面的很多设置页是在该目录中进行</p>
+</li>
+<li><p>sass：也是在执行rake install后从.themes\classic目录中的source拷贝而来。Sass 扩展了 CSS3，增加了规则、变量、混入、选择器、继承等等特性。Sass 生成良好格式化的 CSS 代码，易于组织和维护</p>
+</li>
+<li><p>public：刚clone源码时public是个空目录，当执行了rake generate后会编译source的内容然后将编译后的内容复制到public目录中，在执行rake deploy后也是讲public的内容推送到服务器上，我们最终访问到的也是public的内容。这个目录中的内容一般不用我们手动修改，执行rake generate来生成。</p>
+</li>
+</ul>
+<h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><p>在Octopress目录中有一个名为_config.yml的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">url: [http://oec2003.github.io](http://oec2003.github.io/)                           #网站地址</span><br><span class="line"></span><br><span class="line">title: 冯威的个人博客                                           </span><br><span class="line">#网站标题</span><br><span class="line"></span><br><span class="line">subtitle: 临渊羡鱼 不如退而结网.                       </span><br><span class="line">#网站副标题</span><br><span class="line"></span><br><span class="line">author: 冯威                                                          #网站作者，通常显示在页尾和每篇文章的尾部</span><br><span class="line"></span><br><span class="line">simple_search: [http://google.com/search](http://google.com/search)   # 搜索引擎</span><br><span class="line"></span><br><span class="line">description:  #网站的描述，出现在HTML页面中的 meta 中的 description</span><br></pre></td></tr></table></figure>
+
+<p>在使用rake new_post[‘title’]生成的markdown文件中，可以对每篇博文进行一些设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">layout: post</span><br><span class="line"></span><br><span class="line">title: &quot;我的第一篇Octopress博客&quot;                 #文章标题</span><br><span class="line"></span><br><span class="line">date: 2013-05-26 18:49                         #文章发布时间</span><br><span class="line"></span><br><span class="line">comments: true                                 #是否允许评论</span><br><span class="line"></span><br><span class="line">categories: Octopress                          #文章分类</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置网站的description和keywords"><a href="#设置网站的description和keywords" class="headerlink" title="设置网站的description和keywords"></a>设置网站的description和keywords</h2><p>在网页的head部分设置name为description和keywords的meta元素可以让网页更容易被搜索引擎搜索到，下面说说怎样在Octopress中设置首页和每篇博文的description和keywords。</p>
+<h2 id="设置首页"><a href="#设置首页" class="headerlink" title="设置首页"></a>设置首页</h2><p>打开source/index.html文件，在文件的头部添加相应内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">layout: default</span><br><span class="line"></span><br><span class="line">#下面为添加的内容</span><br><span class="line"></span><br><span class="line">description: &quot;冯威的个人博客&quot;</span><br><span class="line"></span><br><span class="line">keywords: Asp.Net,C#</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置文章"><a href="#设置文章" class="headerlink" title="设置文章"></a>设置文章</h2><p>文章的设置直接在每篇文章对应的markdown文件的头部添加相应内容即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">layout: post</span><br><span class="line"></span><br><span class="line">title: &quot;我的第一篇Octopress博客&quot;</span><br><span class="line"></span><br><span class="line">date: 2013-05-26 18:49</span><br><span class="line"></span><br><span class="line">comments: true</span><br><span class="line"></span><br><span class="line">categories: Octopress</span><br><span class="line"></span><br><span class="line">#下面为新增内容</span><br><span class="line"></span><br><span class="line">description: &quot;我的第一篇Octopress博客&quot;</span><br><span class="line"></span><br><span class="line">keywords: Octopress</span><br></pre></td></tr></table></figure>
+
+<h2 id="导航栏设置"><a href="#导航栏设置" class="headerlink" title="导航栏设置"></a>导航栏设置</h2><p>打开文件<code>source\_includes\custom\navigation.html</code>，默认情况下如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=”&#123;&#123; root_url &#125;&#125;/”&gt;Blog&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=”&#123;&#123; root_url &#125;&#125;/blog/archives”&gt;Archives&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以将Blog和Archives修改为首页和归档，不过记得将包含有中文的文件保存为无BOM的UTF-8编码格式。也可以在此添加一个标签页，比如加上一个关于，我们可以按下面步骤实现：</p>
+<p>使用命令rake new_page[‘about’]创建一个页面，页面路径为source\about\index.markdown;</p>
+<p>修改上面的navigation.html为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=”&#123;&#123; root_url &#125;&#125;/”&gt;首页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=”&#123;&#123; root_url &#125;&#125;/blog/archives”&gt;归档&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=”&#123;&#123; root_url &#125;&#125;/about”&gt;关于&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p>显示效果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600472.jpg" alt="3cefded1gw1e55gvpiz1rj20gn070t9g"></p>
+<h2 id="添加侧边栏文章分类"><a href="#添加侧边栏文章分类" class="headerlink" title="添加侧边栏文章分类"></a>添加侧边栏文章分类</h2><p>我们知道在文章的markdown文件中有一个categories可以进行设置文章的分类，设置了categories的文章在文章的尾部会显示分类的链接，如果想在侧边栏中展示所有的分类，可以按以下步骤进行：</p>
+<ol>
+<li>在plugins目录中创建category_list_tag.rb文件，文件内容如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">module Jekyll</span><br><span class="line"></span><br><span class="line">class CategoryListTag &amp;lt; Liquid::Tag</span><br><span class="line"></span><br><span class="line">def render(context)html = &quot;&quot;categories = context.registers[:site].categories.keyscategories.sort.each do |category|</span><br><span class="line"></span><br><span class="line">posts_in_category = context.registers[:site].categories[category].size</span><br><span class="line"></span><br><span class="line">category_dir = context.registers[:site].config[&#x27;category_dir&#x27;]</span><br><span class="line"></span><br><span class="line">category_url = File.join(category_dir, category.gsub(/_|\P&#123;Word&#125;/, &#x27;-&#x27;).gsub(/-&#123;2,&#125;/, &#x27;-&#x27;).downcase)</span><br><span class="line"></span><br><span class="line">html &amp;lt;&amp;lt; &quot;&amp;lt;li class=&#x27;category&#x27;&amp;gt;&amp;lt;a href=&#x27;/#&#123;category_url&#125;/&#x27;&amp;gt;#&#123;category&#125; (#&#123;posts_in_category&#125;)&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;\n&quot;</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">html</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">Liquid::Template.register_tag(&#x27;category_list&#x27;, Jekyll::CategoryListTag)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>添加source/_includes/asides/category_list.html文件，内容如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;section&gt;</span><br><span class="line">&lt;h1&gt;文章分类&lt;/h1&gt;</span><br><span class="line">&lt;ul id=”categories”&gt;</span><br><span class="line">&#123;% category_list %&#125;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+
+<p>再次强调，文件中含有中文需要保存为无BOM的UTF-8格式</p>
+<ol start="3">
+<li>修改_config.yml文件，在default_asides项中添加asides/category_list.html，值之间以逗号隔开。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default_asides: [asides/category_list.html, asides/recent_posts.html]</span><br></pre></td></tr></table></figure>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600366.jpg" alt="3cefded1gw1e55i22u11bj208f08lmxj -1-"></p>
+<p>如果想将最新文章的Recent Posts修改为中文，修改source_includes\asides\recent_posts.html即可。</p>
+<p>在侧边栏中还可以添加其他的一些组件，如新浪微博、我的豆瓣、最新评论、标签云等，添加页面以及让其显示的方法和上面类似，只是在内容取值有所差别。</p>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>Octopress自身不支持评论功能，不过我们可以使用第三方的评论系统，国外的有Disqus，国内的有多说等。下面介绍怎样在Octopress中使用Disqus。</p>
+<p>首先需要在Disqus注册一个账号，登录后点击Dashboard，然后添加站点信息</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301600313.jpg" alt="3cefded1gw1e55j3dgu4zj20g008vt97"></p>
+<p>然后在_config.yml文件中进行下面设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Disqus Comments</span><br><span class="line"></span><br><span class="line">disqus_short_name: oec2003   # oec2003为添加站点信息时的Site Shortname</span><br><span class="line"></span><br><span class="line">disqus_show_comment_count: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加版权声明"><a href="#添加版权声明" class="headerlink" title="添加版权声明"></a>添加版权声明</h2><p>这里所说的版权声明是指每篇文章后面的版权信息</p>
+<p>首先source_includes\post目录中添加license.html文件，文件内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if site.post_license %&#125;</span><br><span class="line"></span><br><span class="line">&lt;DIV style=”font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid”&gt;</span><br><span class="line">&lt;DIV style=”MARGIN-TOP: 10px; FLOAT: left; MARGIN-LEFT: 5px; MARGIN-RIGHT: 10px”&gt;</span><br><span class="line">&lt;IMG alt=”” src=”http://images.cnblogs.com/cnblogs_com/oec2003/219566/r_fw90100.jpg” width=90 height=100&gt;&lt;/DIV&gt;</span><br><span class="line">&lt;DIV style=”LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000″&gt;</span><br><span class="line">作者： &lt;A href=”http://oec2003.github.io/”&gt;冯威&lt;/A&gt; &lt;BR&gt;</span><br><span class="line">出处： &lt;A href=”http://oec2003.github.io/”&gt;http://oec2003.github.io/&lt;/A&gt;</span><br><span class="line">&lt;BR&gt;本文基于&lt;a target=”_blank” title=”Creative Commons Attribution 2.5 China Mainland License” href=”http://creativecommons.org/licenses/by/2.5/cn/”&gt;</span><br><span class="line">署名 2.5 中国大陆&lt;/a&gt;许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名</span><br><span class="line">&lt;a href=”http://oec2003.github.io/”&gt;冯威&lt;/a&gt;（包含链接）。 &lt;/DIV&gt;&lt;/DIV&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在sass\custom_styles.scss添加如下样式信息来控制版权信息的样式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.oec2003right</span><br><span class="line">&#123;</span><br><span class="line">background: #C3D9FF;</span><br><span class="line">height:120px;</span><br><span class="line">border:1px solid #BBBBBB;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.oec2003right a:link</span><br><span class="line">&#123;</span><br><span class="line">color: #0057b6;</span><br><span class="line">text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.oec2003right a:visited</span><br><span class="line">&#123;</span><br><span class="line">color: #0057b6;</span><br><span class="line">text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.oec2003right a:active,a:hover</span><br><span class="line">&#123;</span><br><span class="line">color: #0057b6;</span><br><span class="line">text-decoration: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改文件source_layouts\post.html</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301601495.jpg" alt="3cefded1gw1e56mhiqymaj20e306zaap"></p>
+<p>在_config.yml添加配置项用来控制是否显示页面的版权信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Post License</span><br><span class="line"></span><br><span class="line">post_license: true</span><br></pre></td></tr></table></figure>
+
+<p>最终展示效果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201301601604.jpg" alt="3cefded1gw1e56nxa3e7mj20mp04vq3"></p>
+<h2 id="使文章以摘要形式展示"><a href="#使文章以摘要形式展示" class="headerlink" title="使文章以摘要形式展示"></a>使文章以摘要形式展示</h2><p>默认情况下在博客的首页是显示每篇文章的全部内容，更多时候我们只想在首页展示文章的一部分内容，当点击阅读全文时进入到文章的详细页面，在Octopress中可以很轻松实现该功能：</p>
+<ul>
+<li><p>在文章对应的markdown文件中，在需要显示在首页的文字后面添加&lt;!—more—&gt;，执行rake generate后在首页上会看到只显示&lt;!—more—&gt;前面的文字，文字后面会显示Read on链接，点击后进入文字的详细页面;</p>
+</li>
+<li><p>如果想将Read on修改为中文，可以修改_config.yml文件</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#excerpt_link: &quot;Read on &amp;amp;rarr;&quot;  # &quot;Continue reading&quot; link text at the bottom of excerpted articles</span><br><span class="line"></span><br><span class="line">excerpt_link: &quot;阅读全文&amp;amp;rarr;&quot;  # &quot;Continue reading&quot; link text at the bottom of excerpted articles</span><br></pre></td></tr></table></figure>
+
+<h2 id="几个参考"><a href="#几个参考" class="headerlink" title="几个参考"></a>几个参考</h2><p>添加最新评论到侧边栏</p>
+<p><a target="_blank" rel="noopener" href="http://yanping.me/cn/blog/2012/02/07/comment-sidebar/">http://yanping.me/cn/blog/2012/02/07/comment-sidebar/</a></p>
+<p>添加标签云</p>
+<p><a target="_blank" rel="noopener" href="http://codemacro.com/2012/07/18/add-tag-to-octopress/">http://codemacro.com/2012/07/18/add-tag-to-octopress/</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实所谓的设置都是去修改Octopress的源文件的一些内容，或是根据Octopress的文件组织方式去添加一些页面等，将Octopress的每个文件都打开看看基本就了解个大概了。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2013/05/octopress-blog-setting/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2013/05/octopress-blog-setting/&title=Octopress博客设置 - 冯威的博客&summary=在上一篇《Windows下搭建Octopress博客》中介绍了怎样在Windows环境中搭建Octopress博客，以及如何部署到Github中，本文主要讲解怎样对Octopress进行一些设置，比如修改博客标题、添加侧边栏等等。
+O..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=Octopress博客设置 - 冯威的博客&amp;body=http://fwhyy.com/2013/05/octopress-blog-setting/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2013/05/octopress-blog-setting/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2013/05/how-to-crate-octopress-blog-in-windows/">Windows下搭建Octopress博客<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2013/07/adjust-disk-c-capacity-in-windows7/">Windows7给C盘扩容<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

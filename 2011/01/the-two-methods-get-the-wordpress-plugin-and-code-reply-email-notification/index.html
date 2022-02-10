@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>插件和代码两种方法搞定WordPress回复邮件通知 - 冯威的博客</title>
+
+  
+    <meta name="description" content="为了更好的互动，当有人在博客中评论时，我们肯定是希望能够马上知晓，WordPress中默认不提供这样的功能，需要通过插件或是添加代码的方式来实现。 使用插件使用插件的方式非常简单，安装好插件在后台做相应的配置就好了。现在比较流行的插件是WordPress Thread Comment，下面详细介绍下步骤 1 下载解压后上传到plugin目录中。 2 进入WordPress后台，在“设置”选项卡中点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="插件和代码两种方法搞定WordPress回复邮件通知">
+<meta property="og:url" content="http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="为了更好的互动，当有人在博客中评论时，我们肯定是希望能够马上知晓，WordPress中默认不提供这样的功能，需要通过插件或是添加代码的方式来实现。 使用插件使用插件的方式非常简单，安装好插件在后台做相应的配置就好了。现在比较流行的插件是WordPress Thread Comment，下面详细介绍下步骤 1 下载解压后上传到plugin目录中。 2 进入WordPress后台，在“设置”选项卡中点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302117565.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118052.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118810.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118932.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302119677.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118913.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302120820.gif">
+<meta property="article:published_time" content="2011-01-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T13:20:16.109Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="插件">
+<meta property="article:tag" content="WordPress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302117565.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-text">使用插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESMTP"><span class="toc-text">配置SMTP</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%88%90%E9%95%BF/">成长</a></div><div id="post-meta">发布于&nbsp;<time datetime="2011-01-06T16:00:00.000Z">2011-01-07</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>插件和代码两种方法搞定WordPress回复邮件通知</span></h1>
+<p>为了更好的互动，当有人在博客中评论时，我们肯定是希望能够马上知晓，WordPress中默认不提供这样的功能，需要通过插件或是添加代码的方式来实现。</p>
+<h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><p>使用插件的方式非常简单，安装好插件在后台做相应的配置就好了。现在比较流行的插件是<a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wordpress-thread-comment/">WordPress Thread Comment</a>，下面详细介绍下步骤</p>
+<p>1 下载解压后上传到plugin目录中。</p>
+<p>2 进入WordPress后台，在“设置”选项卡中点击讨论，在右边的界面中配置何时发送电子邮件。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302117565.jpg"></p>
+<p>3 进入到插件管理中，启用 <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wordpress-thread-comment/">WordPress Thread Comment</a> 插件。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118052.gif" alt="2011-01-07_122446"></p>
+<p>4 启用插件后在“设置”下面会多出<a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wordpress-thread-comment/">WordPress Thread Comment</a> 选项，点击该项在右边的界面中就可以进行相关设置。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118810.gif" alt="2011-01-07_122651"></p>
+<p>使用代码</p>
+<p>使用代码的方式其实也并不复杂，代码可以很容易在网上找到。</p>
+<p>1 点击“外观”下的编辑。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118932.gif" alt="2011-01-07_123309"></p>
+<p>2 在右侧的文件列表中找到functions.php。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302119677.gif" alt="2011-01-07_123455"></p>
+<p>3 点击该文件，在中间的编辑区域添加如下代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">/* 有评论时发送邮件 函数 开始*/</span><br><span class="line">function comment_mail_notify($comment_id) &#123;</span><br><span class="line">  $admin_notify = &#x27;1&#x27;; // admin 要不要收回复通知 ( &#x27;1&#x27;=要 ; &#x27;0&#x27;=不要 )</span><br><span class="line">  $admin_email = get_bloginfo (&#x27;admin_email&#x27;); // $admin_email 可改为你指定的 e-mail.</span><br><span class="line">  $comment = get_comment($comment_id);</span><br><span class="line">  $comment_author_email = trim($comment-&gt;comment_author_email);</span><br><span class="line">  $parent_id = $comment-&gt;comment_parent ? $comment-&gt;comment_parent : &#x27;&#x27;;</span><br><span class="line">  global $wpdb;</span><br><span class="line">  if ($wpdb-&gt;query(&quot;Describe &#123;$wpdb-&gt;comments&#125; comment_mail_notify&quot;) == &#x27;&#x27;)</span><br><span class="line">    $wpdb-&gt;query(&quot;ALTER TABLE &#123;$wpdb-&gt;comments&#125; ADD COLUMN comment_mail_notify TINYINT NOT NULL DEFAULT 0;&quot;);</span><br><span class="line">  if (($comment_author_email != $admin_email &amp;&amp; isset($_POST[&#x27;comment_mail_notify&#x27;])) || ($comment_author_email == $admin_email &amp;&amp; $admin_notify == &#x27;1&#x27;))</span><br><span class="line">    $wpdb-&gt;query(&quot;UPDATE &#123;$wpdb-&gt;comments&#125; SET comment_mail_notify=&#x27;1&#x27; WHERE comment_ID=&#x27;$comment_id&#x27;&quot;);</span><br><span class="line">  $notify = $parent_id ? get_comment($parent_id)-&gt;comment_mail_notify : &#x27;0&#x27;;</span><br><span class="line">  $spam_confirmed = $comment-&gt;comment_approved;</span><br><span class="line">  if ($parent_id != &#x27;&#x27; &amp;&amp; $spam_confirmed != &#x27;spam&#x27; &amp;&amp; $notify == &#x27;1&#x27;) &#123;</span><br><span class="line">    $wp_email = &#x27;no-reply@&#x27; . preg_replace(&#x27;#^www\.#&#x27;, &#x27;&#x27;, strtolower($_SERVER[&#x27;SERVER_NAME&#x27;])); // e-mail 发出点, no-reply 可改为可用的 e-mail.</span><br><span class="line">    $to = trim(get_comment($parent_id)-&gt;comment_author_email);</span><br><span class="line">    $subject = &#x27;您在 [&#x27; . get_option(&quot;blogname&quot;) . &#x27;] 的留言有了回复&#x27;;</span><br><span class="line">    $message = &#x27;</span><br><span class="line">    &lt;div style=&quot;background-color:#eef2fa; border:1px solid #d8e3e8; color:#111; padding:0 15px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px;&quot;&gt;</span><br><span class="line">      &lt;p&gt;&#x27; . trim(get_comment($parent_id)-&gt;comment_author) . &#x27;, 您好!&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;您曾在《&#x27; . get_the_title($comment-&gt;comment_post_ID) . &#x27;》的留言:&lt;br /&gt;&#x27;</span><br><span class="line">       . trim(get_comment($parent_id)-&gt;comment_content) . &#x27;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;&#x27; . trim($comment-&gt;comment_author) . &#x27; 给您的回复:&lt;br /&gt;&#x27;</span><br><span class="line">       . trim($comment-&gt;comment_content) . &#x27;&lt;br /&gt;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;您可以点击&lt;a href=&quot;&#x27; . htmlspecialchars(get_comment_link($parent_id)) . &#x27;&quot;&gt;查看回复的完整內容&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;还要再度光临 &lt;a href=&quot;&#x27; . get_option(&#x27;home&#x27;) . &#x27;&quot;&gt;&#x27; . get_option(&#x27;blogname&#x27;) . &#x27;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;(此邮件由系统自动发送，请勿回复.)&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;&#x27;;</span><br><span class="line">    $from = &quot;From: \&quot;&quot; . get_option(&#x27;blogname&#x27;) . &quot;\&quot; &lt;$wp_email&gt;&quot;;</span><br><span class="line">    $headers = &quot;$from\nContent-Type: text/html; charset=&quot; . get_option(&#x27;blog_charset&#x27;) . &quot;\n&quot;;</span><br><span class="line">    wp_mail( $to, $subject, $message, $headers );</span><br><span class="line">    //echo &#x27;mail to &#x27;, $to, &#x27;&lt;br/&gt; &#x27; , $subject, $message; // for testing</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">add_action(&#x27;comment_post&#x27;, &#x27;comment_mail_notify&#x27;);</span><br><span class="line"></span><br><span class="line">/* 自动加勾选栏 */</span><br><span class="line">function add_checkbox() &#123;</span><br><span class="line">  echo &#x27;&lt;input type=&quot;checkbox&quot; name=&quot;comment_mail_notify&quot; id=&quot;comment_mail_notify&quot; value=&quot;comment_mail_notify&quot; checked=&quot;checked&quot; style=&quot;margin-left:20px;&quot; /&gt;&lt;label for=&quot;comment_mail_notify&quot;&gt;邮件通知&lt;/label&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">add_action(&#x27;comment_form&#x27;, &#x27;add_checkbox&#x27;);</span><br><span class="line">/* 有评论时发送邮件 函数 结束*/</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置SMTP"><a href="#配置SMTP" class="headerlink" title="配置SMTP"></a>配置SMTP</h2><p>光进行了上面的步骤可能还不行，还需要配置SMTP，装一个Configure SMTP的插件就可以很方便的进行配置，关于插件的安装启用上面已经说过。</p>
+<p>如果使用的是Gmail的邮箱就更方便了，只需选中“Send e-mail via GMail?   ”就都配置好了。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302118913.gif" alt="2011-01-07_124700"></p>
+<p>如果是其他的邮箱可以在网上搜下相关的配置方法，下面是我配置好的截图。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302120820.gif" alt="2011-01-07_125144"></p>
+<p>经过上面的步骤后当有人在你的博客中留言评论时，应该就可以及时收到邮件了。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/&title=插件和代码两种方法搞定WordPress回复邮件通知 - 冯威的博客&summary=为了更好的互动，当有人在博客中评论时，我们肯定是希望能够马上知晓，WordPress中默认不提供这样的功能，需要通过插件或是添加代码的方式来实现。
+使用插件使用插件的方式非常简单，安装好插件在后台做相应的配置就好了。现在比较流行的插件..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=插件和代码两种方法搞定WordPress回复邮件通知 - 冯威的博客&amp;body=http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2011/01/back-in-the-2010-plan-2011/">回顾2010 计划2011<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2011/01/installation-of-ad-and-dns/">SharePoint2007安装图文详解二：安装AD（活动目录）及DNS<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

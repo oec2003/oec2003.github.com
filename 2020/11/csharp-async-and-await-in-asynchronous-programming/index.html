@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>C#：异步编程中的 async 和 await - 冯威的博客</title>
+
+  
+    <meta name="description" content="async 和 await 在 C# 5.0 就已经引入了，用来处理异步编程，但之前用的相对较少，现在在 dotNet Core 时代，已经使用的非常普遍，很多的开源组件中提供了大量的后缀为 Async （异步）的方法。本文就简单讲讲 async 和 await。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#：异步编程中的 async 和 await">
+<meta property="og:url" content="http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="async 和 await 在 C# 5.0 就已经引入了，用来处理异步编程，但之前用的相对较少，现在在 dotNet Core 时代，已经使用的非常普遍，很多的开源组件中提供了大量的后缀为 Async （异步）的方法。本文就简单讲讲 async 和 await。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759107.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759870.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759689.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759181.jpg">
+<meta property="og:image" content="http://fwhyy.com/img/post/2020/16054127448068.jpg">
+<meta property="article:published_time" content="2020-11-16T01:59:19.000Z">
+<meta property="article:modified_time" content="2022-01-29T00:00:28.983Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="async">
+<meta property="article:tag" content="await">
+<meta property="article:tag" content="异步">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759107.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E6%A6%82%E5%BF%B5"><span class="toc-text">同步和异步概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">异步解决的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E5%BC%8F"><span class="toc-text">实现异步的一些方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task"><span class="toc-text">Task</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-%E5%92%8C-await"><span class="toc-text">async 和 await</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-text">结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#void"><span class="toc-text">void</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-1"><span class="toc-text">Task</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-2"><span class="toc-text">Task</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ValueTask"><span class="toc-text">ValueTask</span></a></li></ol></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2020-11-16T01:59:19.000Z">2020-11-16</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>C#：异步编程中的 async 和 await</span></h1>
+<p>async 和 await 在 C# 5.0 就已经引入了，用来处理异步编程，但之前用的相对较少，现在在 dotNet Core 时代，已经使用的非常普遍，很多的开源组件中提供了大量的后缀为 Async （异步）的方法。本文就简单讲讲 async 和 await。</p>
+<span id="more"></span>
+
+<h2 id="同步和异步概念"><a href="#同步和异步概念" class="headerlink" title="同步和异步概念"></a>同步和异步概念</h2><p>异步是相对于同步来说的，同步是指多个方法顺序执行，后一个会等待前一个执行完成后，才开始执行；异步是指调用一个方法 A ，调用后会立即返回（不用等方法 A 执行完成），接着调用后面的方法 B，举个例子：</p>
+<ul>
+<li>同步：你需要还原数据库来调试一个问题，还原数据库需要十分钟，还原的过程中你一直等着，等数据源还原完成后，写代码连接数据库进行代码调试；</li>
+<li>异步：数据库开始还原时，你可以去分析代码，中间间隔一段时间检查数据库是否还原完成，如果完成，写代码进行调试。</li>
+</ul>
+<h2 id="异步解决的问题"><a href="#异步解决的问题" class="headerlink" title="异步解决的问题"></a>异步解决的问题</h2><ul>
+<li>在 Winform 等富客户端程序中可以让 UI 线程避免阻塞；</li>
+<li>高效处理 IO 密集型任务和 CPU 密集型任务；</li>
+<li>处理执行时间比较长的操作（比如：文件转换等）。</li>
+</ul>
+<h2 id="实现异步的一些方式"><a href="#实现异步的一些方式" class="headerlink" title="实现异步的一些方式"></a>实现异步的一些方式</h2><ul>
+<li>在 .NET 2.0 时代使用 BeginInvoke、EndInvoke 和回调的方式实现；</li>
+<li>将一些耗时的操作写成同步的方法，然后起一个新的线程或 Task 进行调用；</li>
+<li>使用 async 和 await 的异步编程模型；</li>
+<li>使用消息队列。</li>
+</ul>
+<h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><p>在 Task 出来之前，使用的比较多的就是多线程，最经典的问题就是在 Winform 程序中为了能让界面中显示进度之类的动态内容时，需要创建一个新的线程来做，这样主 UI 线程才不会被堵塞卡死，例如下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private void btnTest_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Thread thread = new Thread(new ThreadStart(DoWork));</span><br><span class="line">    thread.Start();</span><br><span class="line">&#125;</span><br><span class="line">private void DoWork()</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 0; i &lt; 100; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Thread.Sleep(100);</span><br><span class="line">        this.Invoke(new Action&lt;string&gt;(this.ChangeLabel),i.ToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">private void ChangeLabel(string i)</span><br><span class="line">&#123;c</span><br><span class="line">    label1.Text = i + &quot;/100&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中的 DoWork 方法的 Thread.Sleep(100)， 真实情况可能是一个耗时操作，那么这个线程会处于阻塞状态，直到结果返回，会影响性能和造成资源浪费。</p>
+<p>在 C# 5 中引入了 Task，一个任务对象，用来实现异步编程，Task 是基于线程池，线程池避免了启动和终止线程的开销，也避免了创建太多的线程，防止系统将大量的时间耗费在线程的切换上。主线程结束后，所有的 Task 任务也将结束。下面是使用 Task 实现和上面相同的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private void btnTest_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Task.Run(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0; i &lt; 1000; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            this.Invoke(new Action(() =&gt; &#123;</span><br><span class="line">                label1.Text = i.ToString();</span><br><span class="line">            &#125;));</span><br><span class="line">            Thread.Sleep(10);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常我们会使用 Task.Run 来开始执行一个任务，在 Run 方法中传入一个委托，可以是 Action 或者 Func、一旦 Run 方法调用，委托代码会立即执行。</p>
+<p>当有多个 Task 任务的时候，可以使用 Task.WaitAll 或 Task.WaitAny 等待一个或多个任务的完成，才让主线程继续。下面例子使用 WatiAll 进行等待：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;start&quot;); </span><br><span class="line">    Task task1= Task.Run(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Thread.Sleep(2000); </span><br><span class="line">        Console.WriteLine(&quot;task1&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    Task task2=Task.Run(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Thread.Sleep(3000); </span><br><span class="line">        Console.WriteLine(&quot;task2&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    Task.WaitAll(task1,task2);</span><br><span class="line">    Console.WriteLine($&quot;task1 task2已经执行完成&quot;);</span><br><span class="line">    Task task3=Task.Run(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Thread.Sleep(5000); </span><br><span class="line">        Console.WriteLine(&quot;task3&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    Console.WriteLine(&quot;end&quot;); </span><br><span class="line">    Console.ReadLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759107.jpg"></p>
+<p>当把上面代码中的 WaitAll 换成 WaitAny ,可以看出当 task1 执行完成后等待就结束了，调用结果如下：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759870.jpg"></p>
+<h2 id="async-和-await"><a href="#async-和-await" class="headerlink" title="async 和 await"></a>async 和 await</h2><p>async 和 await 是 C# 的语法糖，用来简化异步编程模型，首先来看下 async 和 await 的代码结构。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;start&quot;);</span><br><span class="line">        Test1Async();</span><br><span class="line">        Console.WriteLine(&quot;end&quot;);</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">    static async void Test1Async()</span><br><span class="line">    &#123;</span><br><span class="line">        await Task.Delay(3000);</span><br><span class="line">        Console.WriteLine(&quot;Test1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法以 Async 结尾，这是一种约束，并不强制要求，但通常会这么做；</li>
+<li>方法添加 async 标识符，对于 async 标识符有下面几点需要说明：<ul>
+<li>async 只是表明这个方法中可能有异步调用，并不能表示这个方法就是异步方法；</li>
+<li>async 是一个专门给编译器的提示，意思是该函数的实现可能会出现await；</li>
+<li>async 唯一的用处是给await提供上下文，做向下兼容的；</li>
+<li>如果函数被标记为 async，函数体内部的 await 才会被解释成关键字，而不会当成是一个函数，所以说当方法中有使用 await 关键字调用异步方法，所在的方法必须使用 async；</li>
+<li>async不是函数声明的一部分，仅仅是一个标识符，从调用者的角度来看，不存在async。</li>
+</ul>
+</li>
+<li> 在方法的内部使用 await 关键字，只要是返回 Task 对象的方法就可以使用 await，如果没有 await，那么有 async 标识符的方法就相当于是一个同步方法。</li>
+</ul>
+<p>上面的代码中在 Task.Delay(3000); 前面添加了 await 关键字，会发现最后的执行结果为：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759689.jpg"></p>
+<p>说明添加 await 关键字之后会进行等待，就让会等待，就变成和同步一样了吗？答案当然不是：</p>
+<ul>
+<li>await 关键字后面的调用会再单独的线程中；</li>
+<li>如果是多个异步方法调用会同步进行，看下面的示例</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    static async Task Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Stopwatch watch  =Stopwatch.StartNew();</span><br><span class="line">        Console.WriteLine(&quot;start&quot;); </span><br><span class="line">        Task&lt;string&gt; task1= Test1Async();</span><br><span class="line">        Task&lt;string&gt; task2= Test2Async();</span><br><span class="line">        Console.WriteLine(&quot;end&quot;);</span><br><span class="line">        </span><br><span class="line">        Console.WriteLine($&quot;&#123;task1.Result&#125;,&#123;task2.Result&#125;&quot;);</span><br><span class="line">        watch.Stop();</span><br><span class="line">        Console.WriteLine($&quot;运行时间：&#123;watch.ElapsedMilliseconds/1000&#125; 秒&quot;);</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">    static async Task&lt;string&gt; Test1Async()</span><br><span class="line">    &#123;</span><br><span class="line">        await Task.Delay(3000);</span><br><span class="line">        return &quot;test1&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    static async Task&lt;string&gt; Test2Async()</span><br><span class="line">    &#123;</span><br><span class="line">        await Task.Delay(3000);</span><br><span class="line">        return &quot;test2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290759181.jpg"></p>
+<ul>
+<li>Test1Async 和 Test2Async 中都延迟了 3 秒，但最终也只花了 3 秒；</li>
+<li>使用异步方法的 Result 属性或者调用 Wait() 方法，会进行阻塞。</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>使用 async 标记的异步方法可以有四种类型的返回值：</p>
+<ul>
+<li>void</li>
+<li>Task</li>
+<li>Task<T></li>
+<li>ValueTask<T></li>
+</ul>
+<h4 id="void"><a href="#void" class="headerlink" title="void"></a>void</h4><p>不推荐使用，有下面几个原因：</p>
+<ul>
+<li>因为使用 void 无法确定方法在什么时候调用完成；</li>
+<li>返回 void 的异步方法没有办法在调用的时候使用 await ；</li>
+<li>无法处理异常。</li>
+</ul>
+<h4 id="Task-1"><a href="#Task-1" class="headerlink" title="Task"></a>Task</h4><p>没有返回值的异步方法，我们应该返回 Task：</p>
+<ul>
+<li>可以使用 Task 定义的变量来接收方法的返回值，该变量可以作为参数进行传递；</li>
+<li>方法在调用时可以使用 await 关键字；</li>
+<li>可以捕获状态，看下面例子：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static async Task Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;start&quot;); </span><br><span class="line">        Task task1= Test1Async();</span><br><span class="line">        Console.WriteLine($&quot;是否完成：&#123;task1.IsCompleted&#125;&quot;);</span><br><span class="line">        task1.Wait();</span><br><span class="line">        Console.WriteLine($&quot;是否完成：&#123;task1.IsCompleted&#125;&quot;);</span><br><span class="line">        Console.WriteLine(&quot;end&quot;);</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">    static async Task Test1Async()</span><br><span class="line">    &#123;</span><br><span class="line">        await Task.Delay(3000);</span><br><span class="line">        Console.WriteLine(&quot;test1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="http://fwhyy.com/img/post/2020/16054127448068.jpg"></p>
+<h4 id="Task-2"><a href="#Task-2" class="headerlink" title="Task"></a>Task<T></h4><p>当异步方法需要返回一个值，给后面的步骤使用的的时候，就使用 Task<T> ，在调用的时候使用 Result 属性进行值的获取。</p>
+<h4 id="ValueTask"><a href="#ValueTask" class="headerlink" title="ValueTask"></a>ValueTask<T></h4><p>ValueTask<T> 是在 C#7.1 中推出的一种类型，使用 ValueTask<T> 比 Task<T> 更高效，该类型是一个 struct ，为值类型，在栈上分分配，不像 Task 是个 class ，频繁地分配和回收会对 GC 造成很大的压力。正因为 ValueTask<T> 是个 struct ，在功能上要弱于 Task。 如果你的异步方法可以根据早前缓存的结果直接返回相应的值，应该使用 ValueTask<T> 。</p>
+<p>希望本文对您有所帮助。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/&title=C#：异步编程中的 async 和 await - 冯威的博客&summary=async 和 await 在 C# 5.0 就已经引入了，用来处理异步编程，但之前用的相对较少，现在在 dotNet Core 时代，已经使用的非常普遍，很多的开源组件中提供了大量的后缀为 Async （异步）的方法。本文就简单讲讲..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=C#：异步编程中的 async 和 await - 冯威的博客&amp;body=http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2020/11/great-companies-can-also-learn-from-and-learn-from/">重读《打造Facebook》<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2020/12/csharp-points-for-attention-in-asynchronous-programming/">C# ：异步编程的注意点<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

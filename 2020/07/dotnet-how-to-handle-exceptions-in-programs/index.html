@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>dotNET：怎样处理程序中的异常（理论篇）？ - 冯威的博客</title>
+
+  
+    <meta name="description" content="平时在软件开发的过程中，首先是要保证功能可以正常运行，满足业务需求，除此之外，还需要考虑代码在异常的时候怎么处理，让程序能够健壮地运行。正确合理地处理异常可以减少程序的 Bug、保证代码质量，当然也不是一件很容易的事。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dotNET：怎样处理程序中的异常（理论篇）？">
+<meta property="og:url" content="http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="平时在软件开发的过程中，首先是要保证功能可以正常运行，满足业务需求，除此之外，还需要考虑代码在异常的时候怎么处理，让程序能够健壮地运行。正确合理地处理异常可以减少程序的 Bug、保证代码质量，当然也不是一件很容易的事。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300636905.jpg">
+<meta property="article:published_time" content="2020-07-20T09:36:05.000Z">
+<meta property="article:modified_time" content="2022-01-29T22:36:44.194Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="dotNET Core">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300636905.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dotNET-%E7%BB%8F%E5%85%B8%E9%94%99%E8%AF%AF"><span class="toc-text">dotNET 经典错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%80%9D%E8%B7%AF"><span class="toc-text">正确的错误处理思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%94%99%E8%AF%AF%E7%A0%81"><span class="toc-text">全局错误码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8E%9F%E5%88%99"><span class="toc-text">异常处理的一些原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%96%B9%E6%B3%95%E4%B8%AD%E6%80%8E%E6%A0%B7%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%EF%BC%9F"><span class="toc-text">在方法中怎样处理异常？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91"><span class="toc-text">业务逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">返回值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2020-07-20T09:36:05.000Z">2020-07-20</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>dotNET：怎样处理程序中的异常（理论篇）？</span></h1>
+<p>平时在软件开发的过程中，首先是要保证功能可以正常运行，满足业务需求，除此之外，还需要考虑代码在异常的时候怎么处理，让程序能够健壮地运行。正确合理地处理异常可以减少程序的 Bug、保证代码质量，当然也不是一件很容易的事。</p>
+<span id="more"></span>
+
+<p>在日常工作中我们排查错误时经常会遇到这样一些问题，如果没有，说明你做的还不错了：</p>
+<ul>
+<li>想通过日志的方式分析错误原因，发现日志记录不完整；</li>
+<li>找到错误日志了，记录的是“未将对象引用设置到对象的实例”，也知道代码行数，然而这一行上有多个引用类型的对象，还是不知道真实原因；</li>
+<li>问题是偶发的，无法重现。</li>
+</ul>
+<p>最终需要还原数据库进行单步调试才能解决问题，然而：</p>
+<ul>
+<li>客户的数据库涉密，不能提供；</li>
+<li>客户的数据库运行多年，数据量很大，无法快速备份还原；</li>
+<li>如果是互联网 Saas 应用，更是难于将库拿到本地进行调试。</li>
+</ul>
+<p>所以需要在代码层面、在日志层面来进行优化来达到可以快速定位问题的目的。</p>
+<h2 id="dotNET-经典错误"><a href="#dotNET-经典错误" class="headerlink" title="dotNET 经典错误"></a>dotNET 经典错误</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300636905.jpg"></p>
+<p>上面这张图，经历过 dotNET Framework 时代的程序员应该都不陌生，这就是经典的「黄页」和经典的 「未将对象引用设置到对象的实例」错误。</p>
+<p>首先这个错误显示非常不友好，除了让人知道这个是 dotNET 开发的，别无他用，另外这个错误提示对排查错误也没有帮助，只知道对象为 null 了，但原因是什么并不知道，只能猜，能不能猜中就得看运气了。</p>
+<h2 id="正确的错误处理思路"><a href="#正确的错误处理思路" class="headerlink" title="正确的错误处理思路"></a>正确的错误处理思路</h2><p>一个系统一般有两类人使用，普通用户和系统管理员。不管是普通用户还是系统管理员，在操作系统时都期望所有的操作是有反馈的，要么正常返回想要的结果，要么给出友好的错误提示，能够指引进行下一步操作。</p>
+<p>当出现异常时，可以导向一个专属类型的错误提示页面，也可以以模态的方式弹出错误提示，内容包含：</p>
+<ul>
+<li>错误提示，例如：系统异常，请联系管理员，拨打 xxx 、保存失败，请联系管理员；</li>
+<li>全局错误码，下面会讲到；</li>
+<li>异常编码，可以根据此编码在后台的日志记录快速查询，异常编码使用日期加流水号即可，建议不要使用 Guid，曾经被非技术人员当成是乱码。</li>
+</ul>
+<p>如果是系统管理员使用的功能，将真实错误原因显示在错误提示中，我认为也是可以的。</p>
+<h2 id="全局错误码"><a href="#全局错误码" class="headerlink" title="全局错误码"></a>全局错误码</h2><p>设置全局错误码，可以让管理员在收到反馈的错误时能快速地根据错误码进行问题的定位和找到解决方法。所以需要有公开的全局错误码文档，记录错误的原因和解决方案参考。</p>
+<p>大类上可以分为 4xx 和 5xx，4xx 表示前端的参数问题、验证问题等，5xx 表示后端的逻辑问题。</p>
+<p>在 5xx 类型中可以再进行细分，例如：</p>
+<ul>
+<li>500100：表示数据库操作相关问题</li>
+<li>500200：表示列表展示相关问题</li>
+<li>等等</li>
+</ul>
+<h2 id="异常处理的一些原则"><a href="#异常处理的一些原则" class="headerlink" title="异常处理的一些原则"></a>异常处理的一些原则</h2><p>1、在方法中不要返回错误码，因为错误码的信息太单一；<br>2、抛异常时选择具体的异常类型，不要直接抛出 System.Exception ；<br>3、错误信息目的是为了让开发人员可以定位问题和解决问题，而不是给最终用户看，给前端用户看的信息要友好易懂；<br>4、不能吞异常，比如 catch 异常后不做任何处理，如果有些资源需要清理，可以使用 try…finally 或者使用 using ；<br>5、只有当你知道怎么样从异常中恢复时，才需要去捕获异常，在执行一些操作时，我们可能知道出现错误的原因，但无法恢复，这时不要去捕获异常。</p>
+<h2 id="在方法中怎样处理异常？"><a href="#在方法中怎样处理异常？" class="headerlink" title="在方法中怎样处理异常？"></a>在方法中怎样处理异常？</h2><p>一个方法中有三个部分：参数、业务逻辑和返回值</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>引用类型的参数，在方法的开始一定要做非空判断，判断后是抛异常还是继续下面的逻辑这个要根据具体情况来定：</p>
+<ul>
+<li>如果参数为 null 时会对后续的业务有影响，就应该抛出异常；</li>
+<li>如果我们判断 null 后能做一些初始化处理，能让程序继续正常运行，而且保证业务也是正确的，就不必抛异常。</li>
+</ul>
+<h3 id="业务逻辑"><a href="#业务逻辑" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><p>业务逻辑的部分分为三种情况：</p>
+<ul>
+<li>在方法内部调用其他类型的一个方法，比如 <code>var user= userService.GetUser();</code> 对 user 的判断，当为 null 时是否抛异常，跟上面参数的逻辑一致；</li>
+<li>多个逻辑组合到一起进行判断后，如果不能满足下一步的输入，应该抛出异常；</li>
+<li>对于更低一层的调用，有时会进行异常的捕获，当捕获到异常后，应该要抛出符合当前上下文的专有异常信息，更利于定位问题。</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>一个方法的返回值可以返回值类型，如 string、int、bool ，也可以返回引用类型，如返回一个 User 对象，不管是返回什么类型，原则是一样的，都需要更具上下文来进行判断。</p>
+<p>有个 GetUser 方法来获取用户对象 ,如果根据 Id 没有找到用户，可以直接返回 null ，而不是返回一个空的 User 对象，如果返回空对象，程序不会出错，但前端展示却没有数据，就搞不清是没找到用户，还是找到了但没值；返回 null，可以由上层来决定怎么来处理。</p>
+<p>再有个 GetUserList 方法根据条件获取用户集合，如果根据搜索条件没有找到符合的用户，可以返回空对象 List<User> ,而不是返回 null 。</p>
+<p>对于值类型也是一样，要看上下文，比如 C# 中用来查找字符在一个字符串中的索引位置的函数 IndexOf ，返回的是 int 类型，当找不到的时候返回的是 -1 ，而不是 null 。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>好的异常处理可以使我们的程序更加的健壮，也能在出现问题时更好的定位和排查问题，本文的内容偏理论，下一篇以代码示例的方式来进行演练下。</p>
+<p>希望本文对您有所帮助。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/&title=dotNET：怎样处理程序中的异常（理论篇）？ - 冯威的博客&summary=平时在软件开发的过程中，首先是要保证功能可以正常运行，满足业务需求，除此之外，还需要考虑代码在异常的时候怎么处理，让程序能够健壮地运行。正确合理地处理异常可以减少程序的 Bug、保证代码质量，当然也不是一件很容易的事。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=dotNET：怎样处理程序中的异常（理论篇）？ - 冯威的博客&amp;body=http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2020/07/nginx-some-skills-of-rewriting/">Nginx：rewrite 的几个技巧<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2020/08/dotnet-how-to-handle-exceptions-in-programs-practical/">dotNET：怎样处理程序中的异常（实战篇）？<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>jQuery知识总结 - 冯威的博客</title>
+
+  
+    <meta name="description" content="前言jQuery一直都在用，但都是在用时查查手册，并没有系统的学过，最近组内做jQuery交流，花了几天时间系统了学习了下，做了个PPT，本文是根据PPT总结而来，有些地方做了些补充。希望对jQuery初学者有些帮助。 jQuery简介简介jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写的更少,做的更多)。 jQuery在2006年1月由美">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery知识总结">
+<meta property="og:url" content="http://fwhyy.com/2013/04/jquery-knowledge-summary/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="前言jQuery一直都在用，但都是在用时查查手册，并没有系统的学过，最近组内做jQuery交流，花了几天时间系统了学习了下，做了个PPT，本文是根据PPT总结而来，有些地方做了些补充。希望对jQuery初学者有些帮助。 jQuery简介简介jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写的更少,做的更多)。 jQuery在2006年1月由美">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2013-04-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-29T23:20:21.429Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="JQuery">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E7%AE%80%E4%BB%8B"><span class="toc-text">jQuery简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-text">下载地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%9C%B0%E5%9D%80"><span class="toc-text">源码地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3"><span class="toc-text">在线文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8jQuery"><span class="toc-text">使用jQuery</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-onload%E5%92%8C-document-ready-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">window.onload和$(document).ready()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM%E5%AF%B9%E8%B1%A1%E5%92%8CjQuery%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2"><span class="toc-text">DOM对象和jQuery对象转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="toc-text">解决冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">基本选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">层级选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">基本过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">内容过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">属性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%85%83%E7%B4%A0%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">子元素过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">表单选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">表单对象属性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">使用选择器要注意的地方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">几个简单的示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery-Ajax"><span class="toc-text">jQuery-Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">传统的实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#load"><span class="toc-text">$.load</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post"><span class="toc-text">.post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ajax"><span class="toc-text">$.ajax</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E6%8F%92%E4%BB%B6"><span class="toc-text">jQuery插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#validate"><span class="toc-text">validate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form"><span class="toc-text">form</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uploadify"><span class="toc-text">uploadify</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#autocomplete"><span class="toc-text">autocomplete</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-UI"><span class="toc-text">jQuery UI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-EasyUI"><span class="toc-text">jQuery EasyUI</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2013-04-12T16:00:00.000Z">2013-04-13</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>jQuery知识总结</span></h1>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>jQuery一直都在用，但都是在用时查查手册，并没有系统的学过，最近组内做jQuery交流，花了几天时间系统了学习了下，做了个PPT，本文是根据PPT总结而来，有些地方做了些补充。希望对jQuery初学者有些帮助。</p>
+<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写的更少,做的更多)。 jQuery在2006年1月由美国人John Resig在纽约的barcamp发布，吸引了来自世界各地的众多javascript高手加入，现在由Dave Methvin率领团队进行开发。如今， jQuery已经成为最流行的javascript库，在世界前10000个访问最多的网站中，有超过55%在使用jQuery 。【摘自百度百科】</p>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a target="_blank" rel="noopener" href="http://jquery.com/">http://jquery.com/</a></p>
+<h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><p><a target="_blank" rel="noopener" href="https://github.com/jquery/jquery">https://github.com/jquery/jquery</a></p>
+<p>可以通过 <code>git clone git://github.com/jquery/jquery.git</code>来获取源码。</p>
+<h3 id="在线文档"><a href="#在线文档" class="headerlink" title="在线文档"></a>在线文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.ostools.net/apidocs/apidoc?api=jquery">http://www.ostools.net/apidocs/apidoc?api=jquery </a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ostools.net/">http://www.ostools.net/</a>上有各种在线工具，在此推荐下。</li>
+</ul>
+<h3 id="使用jQuery"><a href="#使用jQuery" class="headerlink" title="使用jQuery"></a>使用jQuery</h3><p>使用jQuery首先需要在页面中进行引用，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=”text/javascript” src=”Scripts/jquery-1.8.1.min.js”&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function () &#123;</span><br><span class="line">    $(&quot;#div1&quot;).html(&quot;hello world&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;#btnOK&quot;).bind(&quot;click&quot;, function () &#123; </span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码相当于window.onload，不过跟window.onload还是有一些区别，后面会以表格的形式来展现他们的区别。在jQuery中到处可以见到$符号，这是jQuery里的一种简写，$(“#btnOK”)和jQuery(“#btnOK”)是等价的。</p>
+<h3 id="window-onload和-document-ready-的区别"><a href="#window-onload和-document-ready-的区别" class="headerlink" title="window.onload和$(document).ready()的区别"></a>window.onload和$(document).ready()的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>WINDOW.ONLOAD</th>
+<th>$(DOCUMENT).READY()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行时间</td>
+<td>网页所有内容加载完后执行</td>
+<td>DOM结构加载完后就执行，效率更高</td>
+</tr>
+<tr>
+<td>编写个数</td>
+<td>1个</td>
+<td>多个，多个的执行顺序取决于函数的顺序以及引用文件的顺序</td>
+</tr>
+<tr>
+<td>是否支持简写</td>
+<td>不支持</td>
+<td>简写形式为：$(function(){});</td>
+</tr>
+</tbody></table>
+<h3 id="DOM对象和jQuery对象转换"><a href="#DOM对象和jQuery对象转换" class="headerlink" title="DOM对象和jQuery对象转换"></a>DOM对象和jQuery对象转换</h3><p>获取DOM对象代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取DOM对象</span><br><span class="line">var div1 = document.getElementById(&quot;div1&quot;);</span><br><span class="line"></span><br><span class="line">div1.innerHTML = &quot;oec2003&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>获取jQuery对象代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取jQuery对象</span><br><span class="line">var div1 = $(&quot;#div1&quot;);</span><br><span class="line"></span><br><span class="line">div1.html(&quot;oec2003&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>jQuery对象转DOM对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//因为ajQuery对象是一个数组对象，所以转换为DOM对象时要用索引的形式</span><br><span class="line"></span><br><span class="line">var $div1 = $(&quot;#div1&quot;); //jQuery对象</span><br><span class="line"></span><br><span class="line">var div1 = $div1[0]; //转换为了DOM对象</span><br><span class="line"></span><br><span class="line">var div2 = $div1.get(0); //和上面一行效果一样</span><br><span class="line"></span><br><span class="line">div1.innerHTML = &quot;oec2003&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>DOM对象转jQuery对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//DOM对象转jQuery只需用$包装即可</span><br><span class="line"></span><br><span class="line">var div1 = document.getElementById(&quot;div1&quot;);</span><br><span class="line"></span><br><span class="line">var $div1 = $(div1); //转换为了jQuery对象</span><br><span class="line"></span><br><span class="line">$div1.html(&quot;oec2003&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>有时会有jQuery和其他的库或自己写的一些公共脚本文件一起使用的场景，就有可能会出现$冲突的问题，冲突的解决分两种情况：</p>
+<p>1、jQuery库在其他库之后引用，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=”text/javascript” src=”Scripts/jquery-1.8.1.min.js”&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=”text/javascript” src=”Scripts/common.js”&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在common.js中有对$重新定义，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function $(id) &#123;</span><br><span class="line">    return document.getElementById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是在jQuery中解决冲突的代码，有四种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//方式1</span><br><span class="line">jQuery.noConflict(); //将$控制权移交出去，以前使用$的地方都改用jQuery</span><br><span class="line">jQuery(document).ready(function () &#123;</span><br><span class="line">    alert(jQuery(&quot;#span1&quot;).html());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    $(&quot;span1&quot;).innerHTML = &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式2</span><br><span class="line">var $j=jQuery.noConflict(); //定义快捷方式</span><br><span class="line">$j(document).ready(function () &#123;</span><br><span class="line">    alert($j(&quot;#span1&quot;).html());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    $(&quot;span1&quot;).innerHTML = &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式3</span><br><span class="line">jQuery.noConflict(); //在函数内部继续使用$</span><br><span class="line">jQuery(function ($) &#123;</span><br><span class="line">    alert($(&quot;#span1&quot;).html());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    $(&quot;span1&quot;).innerHTML = &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式4</span><br><span class="line">jQuery.noConflict(); //在函数内部继续使用$另一种方式</span><br><span class="line">(function ($) &#123;</span><br><span class="line">    $(function()&#123;</span><br><span class="line">        alert($(&quot;#span1&quot;).html());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    $(&quot;span1&quot;).innerHTML = &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、jQuery库在其他库之前使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//如果先引用jQuery脚本，可以不使用noConflict</span><br><span class="line">//jQuery.noConflict(); </span><br><span class="line">jQuery(document).ready(function () &#123;</span><br><span class="line">    alert(jQuery(&quot;#span1&quot;).html());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">window.onload = function () &#123;</span><br><span class="line">    $(&quot;span1&quot;).innerHTML = &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">            aaaaaaaaaaa&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;c1&quot;&gt;</span><br><span class="line">            bbbbbbbbb&lt;/div&gt;</span><br><span class="line">        &lt;span&gt;ccccccccc&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;#div1&quot;).html(&quot;hello world 1&quot;); //根据id匹配元素（a）</span><br><span class="line">    $(&quot;.c1&quot;).html(&quot;hello  world 2&quot;); //根据Yclass匹配元素（b）</span><br><span class="line">    $(&quot;span&quot;).html(&quot;hello world 3&quot;); //根据元素名称匹配 （c）</span><br><span class="line">    $(&quot;span,div.c1&quot;).html(&quot;hello world 4&quot;); //匹配页面所有的span 和class=c1的div（b c）</span><br><span class="line">    $(&quot;*&quot;).html(&quot;hello world 5&quot;); //匹配页面所有元素,也包含body</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;span id=&quot;span1&quot;&gt;</span><br><span class="line">        aaaaaaaaa&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;c1&quot;&gt;</span><br><span class="line">        bbbbbbbbb&lt;/span&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        ccccccccc</span><br><span class="line">        &lt;span&gt;ddddddddd&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;eeeeeeeee&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;body span&quot;).html(&quot;hello world 1&quot;); //选取body中所有的span（a b d）</span><br><span class="line">    $(&quot;body&amp;gt;span&quot;).html(&quot;hello world 2&quot;); //选取body元素的子span元素(a b)</span><br><span class="line">    $(&quot;span.c1+div&quot;).html(&quot;hello world 3&quot;); //选取class为c1的span的下一个div元素，注意是同级元素</span><br><span class="line">    $(&quot;span.c1&quot;).next().html(&quot;hello world 3&quot;); //跟上行效果相同 (c)</span><br><span class="line">    $(&quot;span.c1~div&quot;).html(&quot;hello world 4&quot;); //选取class为c1的span的后面的所有div</span><br><span class="line">    $(&quot;span.c1&quot;).nextAll().html(&quot;hello world 4&quot;); //跟上行效果相同(c e)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本过滤选择器"><a href="#基本过滤选择器" class="headerlink" title="基本过滤选择器"></a>基本过滤选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;header1&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;header2&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;header3&lt;/h3&gt;</span><br><span class="line">    &lt;span id=&quot;span1&quot;&gt;aaaaaaaaa&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;c1&quot;&gt;bbbbbbbbb&lt;/span&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        ccccccccc</span><br><span class="line">        &lt;span&gt;ddddddddd&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;eeeeeeeee&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;div:first&quot;).html(&quot;hello world 1&quot;); //选取所有div中的第一个div</span><br><span class="line">    $(&quot;span:last&quot;).html(&quot;hello world 2&quot;); //选取所有span中的最后一个</span><br><span class="line">    $(&quot;span:not(.c1)&quot;).html(&quot;hello world 3&quot;); //选取除class为c1的span外的所有span</span><br><span class="line">    $(&quot;span:even&quot;).html(&quot;hello world 4&quot;); //选取索引为偶数的span，索引从0开始</span><br><span class="line">    $(&quot;span:odd&quot;).html(&quot;hello world 5&quot;); //选取索引为奇数的span，索引从0开始</span><br><span class="line">    $(&quot;span:eq(2)&quot;).html(&quot;hello world 6&quot;); //选取指定索引的span，索引从0开始</span><br><span class="line">    $(&quot;span:gt(0)&quot;).html(&quot;hello world 7&quot;); //选取大于指定索引的span，不包含指定索引</span><br><span class="line">    $(&quot;span:lt(2)&quot;).html(&quot;hello world 8&quot;); //选取小于指定索引的span，不包含指定索引</span><br><span class="line">    $(&quot;:header&quot;).html(&quot;hello world 9&quot;); //选取页面中所有的标题元素 h1 h2 h3...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title="内容过滤选择器"></a>内容过滤选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;span id=&quot;span1&quot;&gt;aaaaaaaaa&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;c1&quot;&gt;bbbbbbbbb&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        ccccccccc</span><br><span class="line">        &lt;span id=&quot;span2&quot; class=&quot;c2&quot;&gt;ddddddddd&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;eeeeeeeee&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;span:contains(aa)&quot;).html(&quot;hello world 1&quot;); //选取内容包含aa的span元素</span><br><span class="line">    $(&quot;span:empty&quot;).html(&quot;hello world 2&quot;); //选取空的span元素</span><br><span class="line">    $(&quot;div:has(span)&quot;).html(&quot;hello world 3&quot;); //选取包含span的div元素</span><br><span class="line">    $(&quot;span:parent&quot;).html(&quot;hello world 4&quot;); //选取包含子元素的span元素，包含文本</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;span id=&quot;span1&quot;&gt;aaaaaaaaa&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;c1&quot;&gt;bbbbbbbbb&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        ccccccccc</span><br><span class="line">        &lt;span id=&quot;span2&quot; class=&quot;c2&quot;&gt;ddddddddd&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;eeeeeeeee&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;span[id]&quot;).html(&quot;hello world 1&quot;); //选取有属性id的span元素</span><br><span class="line">    $(&quot;span[id=span2]&quot;).html(&quot;hello world 2&quot;); //选取属性id等于span2的span元素</span><br><span class="line">    $(&quot;span[id!=span2]&quot;).html(&quot;hello world 3&quot;); //选取属性id不等于为span2的span元素</span><br><span class="line">    $(&quot;span[id^=span]&quot;).html(&quot;hello world 4&quot;); //选取属性id以span开始的span元素</span><br><span class="line">    $(&quot;span[id$=2]&quot;).html(&quot;hello world 5&quot;); //选取属性id以2结尾的span元素</span><br><span class="line">    $(&quot;span[id*=an]&quot;).html(&quot;hello world 6&quot;); //选取属性id包含an的span元素</span><br><span class="line">    $(&quot;span[id*=an][class$=2]&quot;).html(&quot;hello world 6&quot;); //选取属性id包含an并且class以结尾的span元素</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title="子元素过滤选择器"></a>子元素过滤选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div class=&quot;c1&quot;&gt;</span><br><span class="line">        &lt;span&gt;aaaaaaaa&lt;/span&gt;&lt;span&gt;cccccccc&lt;/span&gt;&lt;span&gt;dddddddd&lt;/span&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">   &lt;div class=&quot;c1&quot;&gt;</span><br><span class="line">        &lt;span&gt;aaaaaaaa&lt;/span&gt;&lt;span&gt;cccccccc&lt;/span&gt;&lt;span&gt;dddddddd&lt;/span&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">   &lt;div class=&quot;c1&quot;&gt;</span><br><span class="line">        &lt;span&gt;aaaaaaaa&lt;/span&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;div.c1 :nth-child(1)&quot;).html(&quot;hello world 1&quot;); //选取class等于c1的div的指定索引子元素</span><br><span class="line">    $(&quot;div.c1 :nth-child(even)&quot;).html(&quot;hello world 2&quot;); //选取class等于c1的div的偶数子元素</span><br><span class="line">    $(&quot;div.c1 :nth-child(odd)&quot;).html(&quot;hello world 3&quot;); //选取class等于c1的div的奇数子元素</span><br><span class="line">    $(&quot;div.c1 :first-child&quot;).html(&quot;hello world 4&quot;); //选取class等于c1的div的第一个子元素</span><br><span class="line">    $(&quot;div.c1 :last-child&quot;).html(&quot;hello world 5&quot;); //选取class等于c1的div的最后一个子元素</span><br><span class="line">    $(&quot;div.c1 :only-child&quot;).html(&quot;hello world 6&quot;); //选取class等于c1的div只有一个子元素的子元素</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form id=&quot;form1&quot; action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;button1&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; value=&quot;text1&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; value=&quot;text2&quot; /&gt;</span><br><span class="line">    &lt;textarea rows=&quot;8&quot; cols=&quot;40&quot;&gt;&lt;/textarea&gt;&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; /&gt;篮球</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; /&gt;足球</span><br><span class="line">    &lt;input type=&quot;password&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    &lt;select multiple=&quot;multiple&quot;&gt;</span><br><span class="line">        &lt;option selected=&quot;selected&quot;&gt;武汉&lt;/option&gt;</span><br><span class="line">        &lt;option selected=&quot;selected&quot;&gt;黄冈&lt;/option&gt;</span><br><span class="line">        &lt;option &gt;麻城&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &lt;input id=&quot;n&quot; type=&quot;radio&quot; name=&quot;s&quot;/&gt;男</span><br><span class="line">    &lt;input type=&quot;radio&quot; name=&quot;s&quot;/&gt;女&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; /&gt;&lt;input type=&quot;reset&quot; /&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    //表单中的表单元素</span><br><span class="line">    $(&quot;#form1 :input&quot;).val(&quot;hello world 1&quot;);</span><br><span class="line">    //表单中的input元素</span><br><span class="line">    $(&quot;#form1 input&quot;).val(&quot;hello world 1&quot;);</span><br><span class="line">    $(&quot;:text&quot;).val(&quot;hello world 2&quot;);</span><br><span class="line">    $(&quot;:password&quot;).val(&quot;hello world 3&quot;);</span><br><span class="line">    //男的单选框被选中</span><br><span class="line">    $(&quot;:radio[id=n]&quot;).attr(&quot;checked&quot;, true);</span><br><span class="line">    $(&quot;:checkbox[name=chk]&quot;).length;</span><br><span class="line">    $(&quot;:submmit&quot;).val(&quot;提交&quot;);</span><br><span class="line">    $(&quot;:reset&quot;).val(&quot;重置&quot;);</span><br><span class="line">    $(&quot;:button&quot;).val(&quot;hello world 4&quot;);</span><br><span class="line">    $(&quot;:hidden&quot;).val(&quot;hello world 5&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单对象属性过滤选择器"><a href="#表单对象属性过滤选择器" class="headerlink" title="表单对象属性过滤选择器"></a>表单对象属性过滤选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form id=&quot;form1&quot; action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; disabled=&quot;disabled&quot; value=&quot;禁用1&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;  value=&quot;启用1&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; disabled=&quot;disabled&quot; value=&quot;禁用2&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;  value=&quot;启用2&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; value=&quot;篮球&quot; checked=&quot;checked&quot;/&gt;篮球</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; value=&quot;足球&quot; /&gt;足球</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; value=&quot;编程&quot; checked=&quot;checked&quot;/&gt;编程</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;chk&quot; value=&quot;旅游&quot; checked=&quot;checked&quot;/&gt;旅游</span><br><span class="line">    &lt;select multiple=&quot;multiple&quot;&gt;</span><br><span class="line">        &lt;option selected=&quot;selected&quot;&gt;武汉&lt;/option&gt;</span><br><span class="line">        &lt;option selected=&quot;selected&quot;&gt;黄冈&lt;/option&gt;</span><br><span class="line">        &lt;option &gt;麻城&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;#form1 input:enabled&quot;).val(&quot;hello world 1&quot;); //选取form表单中没有禁用的文本框</span><br><span class="line">    $(&quot;#form1 input:disabled&quot;).val(&quot;hello world 2&quot;); //选取form表单中没有禁用的文本框</span><br><span class="line">    $(&quot;#form1 input:checked&quot;).attr(&quot;checked&quot;,false); //选取form表单中选的复选框</span><br><span class="line">    $(&quot;select option[selected]&quot;).each(function () &#123;</span><br><span class="line">        alert($(this).val());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用选择器要注意的地方"><a href="#使用选择器要注意的地方" class="headerlink" title="使用选择器要注意的地方"></a>使用选择器要注意的地方</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;div#1&quot;&gt;aaaaaaaaaaa&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;c[1]&quot;&gt;bbbbbbbbb&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;c1&quot;&gt;</span><br><span class="line">        &lt;div name=&quot;div&quot;&gt;ccccccccc&lt;/div&gt;</span><br><span class="line">        &lt;div name=&quot;div&quot;&gt;ddddddddd&lt;/div&gt;</span><br><span class="line">        &lt;div name=&quot;div&quot;&gt;eeeeeeeee&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;c1&quot; name=&quot;div&quot;&gt;fffffffff&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;c1&quot; name=&quot;div&quot;&gt;gggggggg&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;c1&quot; name=&quot;div&quot;&gt;hhhhhhhh&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    //有时在id或是class中有一些特殊字符如 [等，需要用反斜杠进行转义</span><br><span class="line">    $(&quot;#div\\#1&quot;).html(&quot;hello world 1&quot;);</span><br><span class="line">    $(&quot;.c\\[1\\]&quot;).html(&quot;hello world 2&quot;);</span><br><span class="line">    //有没有空格的区别</span><br><span class="line">    //有空格是选取class等于c1的div里面的name等于div的div（c d e f）</span><br><span class="line">    $(&quot;.c1 [name=div]&quot;).html(&quot;hello world 3&quot;);</span><br><span class="line">    //没有空格是选取class等于c1并且name等于div的div (f g h)</span><br><span class="line">    $(&quot;.c1[name=div]&quot;).html(&quot;hello world 4&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="几个简单的示例"><a href="#几个简单的示例" class="headerlink" title="几个简单的示例"></a>几个简单的示例</h2><p>折叠效果，很常用的一个功能，在写博客插入代码时，有些就支持代码折叠。实现代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div id=&quot;div&quot;&gt;</span><br><span class="line">    &lt;h3&gt;jQuery简ò介é&lt;/h3&gt;</span><br><span class="line">    &lt;div id=&quot;content&quot;&gt;</span><br><span class="line">        jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写的更少,做的更多)。 </span><br><span class="line">        jQuery在2006年1月由美国人John Resig在纽约的barcamp发布，吸引了来自世界各地的众多javascript高手加入，</span><br><span class="line">        现在由Dave Methvin率领团队进行开发。如今，jQuery已经成为流行的javascript库，</span><br><span class="line">        在世界前10000个访问最多的网站中，有超过55%在使用jQuery 。</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    //方法1</span><br><span class="line">    $(&quot;#div h3&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">        if ($(&quot;#content&quot;).is(&quot;:visible&quot;)) &#123;</span><br><span class="line">            $(&quot;#content&quot;).hide();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $(&quot;#content&quot;).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    //方法2</span><br><span class="line">    $(&quot;#div h3&quot;).toggle(function () &#123; $(&quot;#content&quot;).hide(); &#125;,   function () &#123; $(&quot;#content&quot;).show(); &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>斑马线，这个在列表中非常常见。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tbl&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;第一季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第二季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第三季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第四季度&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;5444&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;3453&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;453&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;5656&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;5454&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;7676&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;4454&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;333&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;333&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;556&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;44&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;55&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(function () &#123;</span><br><span class="line">        //实现单双行以不同的颜色间隔</span><br><span class="line">        $(&quot;#tbl tr:odd&quot;).addClass(&quot;trOdd&quot;);</span><br><span class="line">        //实现点击行，改变好行的背景色</span><br><span class="line">        $(&quot;#tbl tr&quot;).click(function () &#123;</span><br><span class="line">            $(this).addClass(&quot;trOdd&quot;).siblings().removeClass(&quot;trOdd&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    #tbl&#123;width:300px; border:solid 1px #666; background-color:#eee;&#125;</span><br><span class="line">    #tbl tr&#123; line-height:25px;&#125;</span><br><span class="line">    #btl tr th&#123; background-color:#ccc;color:#fff;&#125;</span><br><span class="line">    #tbl .trOdd&#123; background-color:#fff;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>CheckBox全选，列表中很常用的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tbl&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;&lt;input id=&quot;chkAll&quot; type=&quot;checkbox&quot; /&gt;&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第一季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第二季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第三季度&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;第四季度&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;input name=&quot;chk&quot; type=&quot;checkbox&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;5444&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;3453&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;453&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;5656&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;input name=&quot;chk&quot; type=&quot;checkbox&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;5454&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;7676&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;4454&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;333&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(function () &#123;</span><br><span class="line">        $(&quot;#chkAll&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">            $(&quot;input[name=&#x27;chk&#x27;]&quot;).attr(&quot;checked&quot;, $(this).attr(&quot;checked&quot;) == undefined ? false : true);</span><br><span class="line">        &#125;);</span><br><span class="line">        $(&quot;input[name=chk]&quot;).each(function () &#123;</span><br><span class="line">            $(this).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">                $(&quot;#chkAll&quot;).attr(&quot;checked&quot;, $(&quot;input[name=chk]:checked&quot;).length == $(&quot;input[name=chk]&quot;).length);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    #tbl&#123;width:300px; border:solid 1px #666; background-color:#eee;&#125;</span><br><span class="line">    #tbl tr&#123; line-height:25px;&#125;</span><br><span class="line">    #btl tr th&#123; background-color:#ccc;color:#fff;&#125;</span><br><span class="line">    #tbl .trOdd&#123; background-color:#fff;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQuery-Ajax"><a href="#jQuery-Ajax" class="headerlink" title="jQuery-Ajax"></a>jQuery-Ajax</h2><h3 id="传统的实现方式"><a href="#传统的实现方式" class="headerlink" title="传统的实现方式"></a>传统的实现方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    var xmlHttp = null;</span><br><span class="line">    $(&quot;#btn&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">        if (window.ActiveXObject) &#123;</span><br><span class="line">            xmlHttp = new ActiveXObject(&quot;MicroSoft.XMLHTTP&quot;);</span><br><span class="line">        &#125; else if (window.XMLHttpRequest) &#123;</span><br><span class="line">            xmlHttp = new XMLHttpRequest();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        xmlHttp.open(&quot;GET&quot;, &quot;JQueryAjax.ashx?name=oec2003&quot;, true);</span><br><span class="line">        xmlHttp.onreadystatechange = requestCallback;</span><br><span class="line">        xmlHttp.send(null);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    var requestCallback = function () &#123;</span><br><span class="line">        if (xmlHttp.readyState == 4) &#123;</span><br><span class="line">            if (xmlHttp.status == 200) &#123;</span><br><span class="line">                $(&quot;#div&quot;).html(xmlHttp.responseText);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="load"><a href="#load" class="headerlink" title="$.load"></a>$.load</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;Ajax&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    &lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    //加载AjaxWebForm.aspx页面的id为adiv1的部分，参数以get形式传递</span><br><span class="line">    $(&quot;#div&quot;).load(&quot;AjaxWebForm.aspx?name=oec2003 #div1&quot;, function () &#123; &#125;);</span><br><span class="line">    //加载AjaxWebForm.aspx页面的id为div2的部分，参数以post形式传递</span><br><span class="line">    $(&quot;#div&quot;).load(&quot;AjaxWebForm.aspx #div2&quot;, &#123; name1: &quot;oec2003&quot;, age: &quot;30&quot; &#125;, callBack);</span><br><span class="line"></span><br><span class="line">    function callBack(responseText, status, xmlHttpObject) &#123;</span><br><span class="line">        alert(responseText);</span><br><span class="line">        alert(status);</span><br><span class="line">        alert(xmlHttpObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="post"><a href="#post" class="headerlink" title=".post"></a>.post</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line"></span><br><span class="line">    //$.get参数以json格式收集，最终在url上进行传递</span><br><span class="line">    $(&quot;#btn&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">        $.get(&quot;JQueryAjax.ashx&quot;, &#123; name: &quot;oec2003&quot;, age: &quot;30&quot; &#125;, callBack);</span><br><span class="line">    &#125;);</span><br><span class="line">    //data的格式可以是html xml json</span><br><span class="line">    function callBack(data, status) &#123;</span><br><span class="line">        $(&quot;#div&quot;).html(data);</span><br><span class="line">    &#125;</span><br><span class="line">    //$.post</span><br><span class="line">    $(&quot;#btn&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line"></span><br><span class="line">        $.post(&quot;JQueryAjax.ashx&quot;, &#123; name: &quot;oec2003&quot;, age: &quot;30&quot; &#125;, callBack);</span><br><span class="line">    &#125;);</span><br><span class="line">    //data的格式可以是html xml json</span><br><span class="line">    function callBack(data, status) &#123;</span><br><span class="line">        $(&quot;#div&quot;).html(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax"></a>$.ajax</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form id=&quot;form1&quot; action=&quot;#&quot;&gt;</span><br><span class="line">    姓名：&lt;input name=&quot;name&quot; type=&quot;text&quot; id=&quot;txtName&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    年龄:&lt;input  name=&quot;age&quot; type=&quot;text&quot; id=&quot;txtAge&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;Ajax&quot; /&gt;&lt;br /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;#btn&quot;).bind(&quot;click&quot;, function () &#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            type: &quot;GET&quot;,</span><br><span class="line">            url: &quot;JQueryAjax.ashx&quot;,</span><br><span class="line">            async:true, //同步还是异步，默认为异步</span><br><span class="line">            dataType: &quot;html&quot;,</span><br><span class="line">            //使用serialize进行数据收集，根据type类型决定传递方式</span><br><span class="line">            data: $(&quot;#form1&quot;).serialize(),</span><br><span class="line">            beforeSend: function () &#123;</span><br><span class="line">                if ($(&quot;#txtName&quot;).val() != &quot;oec2003&quot;) &#123;</span><br><span class="line">                    alert(&quot;姓名必须为aoec2003&quot;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            complete: function () &#123;</span><br><span class="line">                //请求成功或失败均调用</span><br><span class="line">            &#125;,</span><br><span class="line">            success: function (data) &#123;</span><br><span class="line">                $(&quot;#div&quot;).html(data);</span><br><span class="line">            &#125;,</span><br><span class="line">            error: function () &#123;</span><br><span class="line">                $(&quot;#div&quot;).html(&quot;出错啦！&quot;);</span><br><span class="line">            &#125;,</span><br><span class="line">            global:true   //默认为atrue 表示是否出发Ajax全局事件</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQuery插件"><a href="#jQuery插件" class="headerlink" title="jQuery插件"></a>jQuery插件</h2><p>jQuery有非常丰富的插件，插件可以更高效帮助我们去完成特定的功能，下面列举的是我用到过的很常用的一些插件：</p>
+<h3 id="validate"><a href="#validate" class="headerlink" title="validate"></a>validate</h3><p><a target="_blank" rel="noopener" href="http://plugins.jquery.com/validate/">http://plugins.jquery.com/validate/</a></p>
+<h3 id="form"><a href="#form" class="headerlink" title="form"></a>form</h3><p><a target="_blank" rel="noopener" href="http://www.malsup.com/jquery/form/">http://www.malsup.com/jquery/form/</a></p>
+<h3 id="uploadify"><a href="#uploadify" class="headerlink" title="uploadify"></a>uploadify</h3><p><a target="_blank" rel="noopener" href="http://www.uploadify.com/download/">http://www.uploadify.com/download/</a></p>
+<p>下面链接是我10年写的一篇关于uploadify的博客，虽然现在已经跟换了很多个版本，但还是有一定的参考价值。</p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/oec2003/archive/2010/01/06/1640027.html">http://www.cnblogs.com/oec2003/archive/2010/01/06/1640027.html</a></p>
+<h3 id="autocomplete"><a href="#autocomplete" class="headerlink" title="autocomplete"></a>autocomplete</h3><p><a target="_blank" rel="noopener" href="http://plugins.jquery.com/ui.autocomplete/">http://plugins.jquery.com/ui.autocomplete/</a></p>
+<h3 id="jQuery-UI"><a href="#jQuery-UI" class="headerlink" title="jQuery UI"></a>jQuery UI</h3><p><a target="_blank" rel="noopener" href="http://jqueryui.com/">http://jqueryui.com/</a></p>
+<h3 id="jQuery-EasyUI"><a href="#jQuery-EasyUI" class="headerlink" title="jQuery EasyUI"></a>jQuery EasyUI</h3><p><a target="_blank" rel="noopener" href="http://www.jeasyui.com/index.php">http://www.jeasyui.com/index.php</a></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2013/04/jquery-knowledge-summary/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2013/04/jquery-knowledge-summary/&title=jQuery知识总结 - 冯威的博客&summary=前言jQuery一直都在用，但都是在用时查查手册，并没有系统的学过，最近组内做jQuery交流，花了几天时间系统了学习了下，做了个PPT，本文是根据PPT总结而来，有些地方做了些补充。希望对jQuery初学者有些帮助。
+jQuery简..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=jQuery知识总结 - 冯威的博客&amp;body=http://fwhyy.com/2013/04/jquery-knowledge-summary/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2013/04/jquery-knowledge-summary/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2013/03/iis7-upload-issue/">IIS7上传出现乱码问题解决<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2013/05/how-to-crate-octopress-blog-in-windows/">Windows下搭建Octopress博客<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

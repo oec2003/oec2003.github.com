@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>带你了解C#每个版本新特性 - 冯威的博客</title>
+
+  
+    <meta name="description" content="上学时学习C#和.NET，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带你了解C#每个版本新特性">
+<meta property="og:url" content="http://fwhyy.com/2019/06/learn-about-the-new-features-of-each-version-of-csharp/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="上学时学习C#和.NET，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-16T06:19:33.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:10:44.945Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1-X"><span class="toc-text">C#1.X</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2-0"><span class="toc-text">C#2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%83%A8%E7%B1%BB%EF%BC%88Partil%EF%BC%89"><span class="toc-text">分部类（Partil）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%B1%BB"><span class="toc-text">静态类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AE%BF%E9%97%AE%E7%BA%A7%E5%88%AB"><span class="toc-text">属性的访问级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%88%AB%E5%90%8D"><span class="toc-text">命名空间别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8B%E5%85%83%E7%A8%8B%E5%BA%8F%E9%9B%86"><span class="toc-text">友元程序集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%A9%BA%E7%B1%BB%E5%9E%8B"><span class="toc-text">可空类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95"><span class="toc-text">匿名方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E7%89%B9%E6%80%A7"><span class="toc-text">其他相关特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3-0"><span class="toc-text">C#3.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">自动实现的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-text">隐式类型的局部变量和扩展方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E9%9B%86%E5%90%88%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8"><span class="toc-text">对象集合初始化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-text">隐式类型的数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">匿名类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">Lambda表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91"><span class="toc-text">Lambda表达式树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linq"><span class="toc-text">Linq</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4-0"><span class="toc-text">C#4.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">可选参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E5%AE%9E%E5%8F%82"><span class="toc-text">命名实参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B"><span class="toc-text">动态类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-5-0"><span class="toc-text">C#5.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="toc-text">异步处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E4%B8%AD%E6%8D%95%E8%8E%B7%E5%8F%98%E9%87%8F"><span class="toc-text">循环中捕获变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E8%80%85%E4%BF%A1%E6%81%AF%E7%89%B9%E6%80%A7"><span class="toc-text">调用者信息特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-6-0"><span class="toc-text">C#6.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Null%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">Null条件运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B5%8C%E5%85%A5"><span class="toc-text">字符串嵌入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E7%89%B9%E6%80%A7-1"><span class="toc-text">其他相关特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-7-0"><span class="toc-text">C#7.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#out-%E5%8F%98%E9%87%8F"><span class="toc-text">out 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95"><span class="toc-text">本地方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5-main-%E6%96%B9%E6%B3%95"><span class="toc-text">异步 main 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#private-protected-%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">private protected 访问修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E7%89%B9%E6%80%A7-2"><span class="toc-text">其他相关特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-06-16T06:19:33.000Z">2019-06-16</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>带你了解C#每个版本新特性</span></h1>
+<p>上学时学习C#和.NET，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。</p>
+<span id="more"></span>
+
+<p>一直都认为学习语言应该系统的进行学习，了解每一个版本的新增特性，才能在实际应用中做到有的放矢。最近发现团队中有不少人虽然用着最新的技术，但知识储备还停留在一个比较初始的状态，这样在编码过程中会走不少弯路。</p>
+<p>本文梳理下C#从1.0到7.0版本的一些常用特性，对于不常用的或者我没有用到过的一些特性，会列出来，但不会做详细描述。另外C#8.0现在还没有正式推出，并且目前我们也只是在使用dotNet Core2.1，所以C#8.0本文也不会涉及。</p>
+<h2 id="C-1-X"><a href="#C-1-X" class="headerlink" title="C#1.X"></a>C#1.X</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>VS2002</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>VS2003</td>
+<td>1.1</td>
+<td>1.1</td>
+</tr>
+</tbody></table>
+<p>在C#1.0或1.1版本中，从语言的角度就是基本的面向对象的语法，可以说任何一本C#语言的书籍都包含了C#1.X的所有内容。</p>
+<p>如果您已经在使用C#语言编写代码，那么C#1.X的相关知识应该已经掌握。基础语法部分这里就不再赘述了。</p>
+<h2 id="C-2-0"><a href="#C-2-0" class="headerlink" title="C#2.0"></a>C#2.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2.0</td>
+<td>VS2005</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+</tbody></table>
+<p>2.0中对应VS2005我用的也不多，因为很快就被VS2008替代了，不过在语言方面却带来了很多新的东西。</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>C#2中最重要的一个特性应该就是泛型。泛型的用处就是在一些场景下可以减少强制转换来提高性能。在C#1中就有很多的强制转换，特别是对一些集合进行遍历时，如ArrayList、HashTable，因为他们是为不同数据类型设计的集合，所以他们中键和值的类型都是object，这就意味着会平凡发生装箱拆箱的操作。C#2中有了泛型，所以我们可以使用List<T>、Dictionary&lt;Tkey,TValue&gt; 。泛型能够带来很好的编译时类型检查，也不会有装箱拆箱的操作，因为类型是在使用泛型的时候就已经指定了。</p>
+<p>.NET已经通过了很多的泛型类型供我们使用，如上面提到的List<T>,Dictionary&lt;Tkey,TValue&gt;,我们也可以自己来创建泛型类型(类、接口、委托、结构)或是方法。在定义泛型类型或时可以通过定义泛型约束来对泛型参数进行限制，更好的使用编译时检查。泛型约束是通过关键字where来实现的，C#2中的泛型约束有4种：</p>
+<ul>
+<li>引用类型约束：确保类型实参是引用类型，使用where T:class来表示；</li>
+<li>值类型约束：确保类型实参是值类型，使用where T:truct来表示；</li>
+<li>构造函数类型约束，使用where T:new()来表示；</li>
+<li>转换类型约束：约束类型实参是另外的一种类型，例如：where T:IDisposable 。</li>
+</ul>
+<h3 id="分部类（Partil）"><a href="#分部类（Partil）" class="headerlink" title="分部类（Partil）"></a>分部类（Partil）</h3><p>分部类可以允许我们在多个文件中为一个类型（class、struct、interface）编写代码，在Asp.Net2.0中用的极为广泛。新建一个Aspx页面，页面的CodeBehind和页面中的控件的定义就是通过分部类来实现的。如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public partial class _Default : System.Web.UI.Page </span><br><span class="line">public partial class _Default </span><br></pre></td></tr></table></figure>
+
+<p>分部类使用关键字partial来定义，当一个类中的代码非常多时，可以使用分部类来进行拆分，这对代码的阅读很有好处，而且不会影响调用。不过现在我们前后端分离，后端代码要做到单一职责原则，不会有很多大的类，所以这个特性很少用到。</p>
+<h3 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h3><p>静态类中的公用方法必须也是静态的，可以由类名直接调用，不需要实例化，比较适用于编写一些工具类。如System.Math类就是静态类。工具类有一些特点，如：所有成员都是静态的、不需要被继承、不需要进行实例化。在C#1中我们可以通过如下代码来实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//声明为密封类防止被继承 </span><br><span class="line">public sealed class StringHelper</span><br><span class="line">&#123;</span><br><span class="line">    //添加私有无参构造函ˉ数防止被实例化，如果不添加私有构造函数 </span><br><span class="line">    //会自动生成共有无参构造函数 </span><br><span class="line">    private StringHelper()&#123;&#125;;</span><br><span class="line">    public static int StringToInt32(string input)</span><br><span class="line">    &#123;</span><br><span class="line">        int result=0;</span><br><span class="line">        Int32.TryParse(input, out result);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>C#2中可以使用静态类来实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static class StringHelper</span><br><span class="line">&#123;</span><br><span class="line">    public static int StringToInt32(string input)</span><br><span class="line">    &#123;</span><br><span class="line">        int result=0;</span><br><span class="line">        Int32.TryParse(input, out result);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性的访问级别"><a href="#属性的访问级别" class="headerlink" title="属性的访问级别"></a>属性的访问级别</h3><p>在C#1中声明属性，属性中的get和set的访问级别是和属性一致，要么都是public要么都是private，如果要实现get和set有不同的访问级别，则需要用一种变通的方式，自己写GetXXX和SetXXX方法。在C#2中可以单独设置get和set的访问级别，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private string _name;</span><br><span class="line">public string Name</span><br><span class="line">&#123;</span><br><span class="line">    get &#123; return _name; &#125;</span><br><span class="line">    private set &#123; _name = value; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，不能讲属性设置为私有的，而将其中的get或是set设置成公有的，也不能给set和get设置相同的访问级别，当set和get的访问级别相同时，我们可以直接设置在属性上。</p>
+<h3 id="命名空间别名"><a href="#命名空间别名" class="headerlink" title="命名空间别名"></a>命名空间别名</h3><p>命名空间可以用来组织类，当不同的命名空间中有相同的类时，可以使用完全限定名来防止类名的冲突，C#1中可以使用空间别名来简化书写，空间别名用using关键字实现。但还有一些特殊情况，使用using并不能完全解决，所以C#2中提供了下面几种特性：</p>
+<ul>
+<li>命名空间修饰符语法</li>
+<li>全局命名空间别名</li>
+<li>外部别名</li>
+</ul>
+<p>我们在构建命名空间和类的时候，尽量避免出现冲突的情况，这个特性也较少用到。</p>
+<h3 id="友元程序集"><a href="#友元程序集" class="headerlink" title="友元程序集"></a>友元程序集</h3><p>当我们希望一个程序集中的类型可以被外部的<strong>某些</strong>程序集访问，这时如果设置成Public，就可以被所有的外部程序集访问。怎样只让部分程序集访问，就要使用友元程序集了，具体参考之前的博文《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/11/csharp-a-friend-assembly/">C#：友元程序集（http://blog.fwhyy.com/2010/11/csharp-a-friend-assembly/）</a>》</p>
+<h3 id="可空类型"><a href="#可空类型" class="headerlink" title="可空类型"></a>可空类型</h3><p>可空类型就是允许值类型的值为null。通常值类型的值是不应该为null的，但我们很多应用是和数据库打交道的，而数据库中的类型都是可以为null值的，这就造成了我们写程序的时候有时需要将值类型设置为null。在C#1中通常使用”魔值“来处理这种情况，比如DateTiem.MinValue、Int32.MinValue。在ADO.NET中所有类型的空值可以用DBNull.Value来表示。C#2中可空类型主要是使用System.Nullable<T>的泛型类型，类型参数T有值类型约束。可以像下面这样来定义可空类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Nullable&lt;int&gt; i = 20;</span><br><span class="line">Nullable&lt;bool&gt; b = true;</span><br></pre></td></tr></table></figure>
+
+<p>C#2中也提供了更方便的定义方式，使用操作符?:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int? i = 20;</span><br><span class="line">bool? b = true;</span><br></pre></td></tr></table></figure>
+
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>C#2中对迭代器提供了更便捷的实现方式。提到迭代器，有两个概念需要了解</p>
+<ul>
+<li>可枚举对象和枚举器，实现了System.Collections.IEnumerable接口的对象是可枚举对象，这些对象可以被C#中的foreach进行迭代；</li>
+<li>实现了System.Collections.IEnumeror接口的对象被称为枚举器。在C#1中实现迭代器非常繁琐，</li>
+</ul>
+<p>看下面一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class Test </span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        Person arrPerson = new Person(&quot;oec2003&quot;,&quot;oec2004&quot;,&quot;oec2005&quot;);</span><br><span class="line">        foreach (string p in arrPerson)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(p);</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Person:IEnumerable </span><br><span class="line">&#123;</span><br><span class="line">    public Person(params string[] names)</span><br><span class="line">    &#123;</span><br><span class="line">        _names = new string[names.Length];</span><br><span class="line">        names.CopyTo(_names, 0);</span><br><span class="line">    &#125;</span><br><span class="line">    public string[] _names;</span><br><span class="line">    public IEnumerator GetEnumerator()</span><br><span class="line">    &#123;</span><br><span class="line">        return new PersonEnumerator(this);</span><br><span class="line">    &#125;</span><br><span class="line">    private string this[int index]</span><br><span class="line">    &#123;</span><br><span class="line">        get &#123; return _names[index]; &#125;</span><br><span class="line">        set &#123; _names[index] = value; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class PersonEnumerator : IEnumerator </span><br><span class="line">&#123;</span><br><span class="line">    private int _index = -1;</span><br><span class="line">    private Person _p;</span><br><span class="line">    public PersonEnumerator(Person p) &#123; _p = p; &#125;</span><br><span class="line">    public object Current</span><br><span class="line">    &#123;</span><br><span class="line">        get &#123; return _p._names[_index]; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public bool MoveNext()</span><br><span class="line">    &#123;</span><br><span class="line">        _index++;</span><br><span class="line">        return _index &lt; _p._names.Length;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Reset()</span><br><span class="line">    &#123;</span><br><span class="line">        _index = -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>C#2中的迭代器变得非常便捷，使用关键字yield return关键字实现，下面是C#2中使用yield return的重写版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Test </span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        Person arrPerson = new Person(&quot;oec2003&quot;,&quot;oec2004&quot;,&quot;oec2005&quot;);</span><br><span class="line">        foreach (string p in arrPerson)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(p);</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Person:IEnumerable </span><br><span class="line">&#123;</span><br><span class="line">    public Person(params string[] names)</span><br><span class="line">    &#123;</span><br><span class="line">        _names = new string[names.Length];</span><br><span class="line">        names.CopyTo(_names, 0);</span><br><span class="line">    &#125;</span><br><span class="line">    public string[] _names;</span><br><span class="line">    public IEnumerator GetEnumerator()</span><br><span class="line">    &#123;</span><br><span class="line">        foreach (string s in _names)</span><br><span class="line">        &#123;</span><br><span class="line">            yield return s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="匿名方法"><a href="#匿名方法" class="headerlink" title="匿名方法"></a>匿名方法</h3><p>匿名方法比较适用于定义必须通过委托调用的方法，用多线程来举个例子，在C#1中代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private void btnTest_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Thread thread = new Thread(new ThreadStart(DoWork));</span><br><span class="line">    thread.Start();</span><br><span class="line">&#125;</span><br><span class="line">private void DoWork()</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 0; i &lt; 100; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Thread.Sleep(100);</span><br><span class="line">        this.Invoke(new Action&lt;string&gt;(this.ChangeLabel),i.ToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">private void ChangeLabel(string i)</span><br><span class="line">&#123;</span><br><span class="line">    label1.Text = i + &quot;/100&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用C#2中的匿名方法，上面的例子中可以省去DoWork和ChangeLabel两个方法，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void btnTest_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Thread thread = new Thread(new ThreadStart(delegate() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 100; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Thread.Sleep(100);</span><br><span class="line">            this.Invoke(new Action(delegate() &#123; label1.Text = i + &quot;/100&quot;; &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;));</span><br><span class="line">    thread.Start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相关特性"><a href="#其他相关特性" class="headerlink" title="其他相关特性"></a>其他相关特性</h3><ul>
+<li>固定大小缓冲区（Fixed-size buffers）</li>
+<li>编译指令（Pragma directives）</li>
+<li>委托的逆变协变</li>
+</ul>
+<h2 id="C-3-0"><a href="#C-3-0" class="headerlink" title="C#3.0"></a>C#3.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3.0</td>
+<td>VS2008</td>
+<td>2.0</td>
+<td>3.0 3.5</td>
+</tr>
+</tbody></table>
+<p>如果说C#2中的核心是泛型的话，那么C#3中的核心就应是Linq了，C#3中的特性几乎都是为Linq服务的，但每一项特性都可以脱离Linq来使用。下面就来看下C#3中有哪些特性。</p>
+<h3 id="自动实现的属性"><a href="#自动实现的属性" class="headerlink" title="自动实现的属性"></a>自动实现的属性</h3><p>这个特性非常简单，就是使定义属性变得更简单了。代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public string Name &#123; get; set; &#125;</span><br><span class="line">public int Age &#123; private set; get; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐式类型的局部变量和扩展方法"><a href="#隐式类型的局部变量和扩展方法" class="headerlink" title="隐式类型的局部变量和扩展方法"></a>隐式类型的局部变量和扩展方法</h3><p>隐式类型的局部变量是让我们在定义变量时可以比较动态化，使用var关键字作为类型的占位符，然后由编译器来推导变量的类型。</p>
+<p>扩展方法可以在现有的类型上添加一些自定义的方法，比如可以在string类型上添加一个扩展方法ToInt32，就可以像“20”.ToInt32()这样调用了。</p>
+<p>具体参见《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2008/02/learning-csharp-3-0-1-implied-type-of-local-variables-and-extension-methods/">C#3.0学习(1)—隐含类型局部变量和扩展方法(http://blog.fwhyy.com/2008/02/learning-csharp-3-0-1-implied-type-of-local-variables-and-extension-methods/)</a>》。</p>
+<p>隐式类型虽然让编码方便了，但有些不少限制：</p>
+<ul>
+<li>被声明的变量只能是局部变量，而不能是静态变量和实例字段；</li>
+<li>变量在声明的同时必须初始化，初始化值不能为null；</li>
+<li>语句中只能声明一个变量；</li>
+</ul>
+<h3 id="对象集合初始化器"><a href="#对象集合初始化器" class="headerlink" title="对象集合初始化器"></a>对象集合初始化器</h3><p>简化了对象和集合的创建，具体参见《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2008/02/learning-c-3-0-2-object-collection-initializer/">C#3.0学习(2)—对象集合初始化器(http://blog.fwhyy.com/2008/02/learning-c-3-0-2-object-collection-initializer/)</a>》。</p>
+<h3 id="隐式类型的数组"><a href="#隐式类型的数组" class="headerlink" title="隐式类型的数组"></a>隐式类型的数组</h3><p>和隐式类型的局部变量类似，可以不用显示指定类型来进行数组的定义，通常我们定义数组是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string[] names = &#123; &quot;oec2003&quot;, &quot;oec2004&quot;, &quot;oec2005&quot; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用匿名类型数组可以想下面这样定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">protected void Page_Load(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    GetName(new[] &#123; &quot;oec2003&quot;, &quot;oec2004&quot;, &quot;oec2005&quot; &#125;);</span><br><span class="line">&#125;</span><br><span class="line">public string GetName(string[] names)</span><br><span class="line">&#123;</span><br><span class="line">    return names[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="匿名类型"><a href="#匿名类型" class="headerlink" title="匿名类型"></a>匿名类型</h3><p>匿名类型是在初始化的时候根据初始化列表自动产生类型的一种机制，利用对象初始化器来创建匿名对象的对象，具体参见《<a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2008/03/learning-csharp-3-0-3-anonymous-types/">C#3.0学习(3)—匿名类型（http://blog.fwhyy.com/2008/03/learning-csharp-3-0-3-anonymous-types/）</a>》。</p>
+<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h3><p>实际上是一个匿名方法，Lambda表达的表现形式是：(参数列表)=&gt;{语句}，看一个例子，创建一个委托实例，获取一个string类型的字符串，并返回字符串的长度。代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;string, int&gt; func = delegate(string s) &#123; return s.Length; &#125;;</span><br><span class="line">Console.WriteLine(func(&quot;oec2003&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>使用Lambda的写法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;string, int&gt; func = (string s)=&gt; &#123; return s.Length; &#125;;</span><br><span class="line">Func&lt;string, int&gt; func1 = (s) =&gt; &#123; return s.Length; &#125;;</span><br><span class="line">Func&lt;string, int&gt; func2 = s =&gt; s.Length;</span><br></pre></td></tr></table></figure>
+
+<p>上面三种写法是逐步简化的过程。</p>
+<h3 id="Lambda表达式树"><a href="#Lambda表达式树" class="headerlink" title="Lambda表达式树"></a>Lambda表达式树</h3><p>是.NET3.5中提出的一种表达方式，提供一种抽象的方式将一些代码表示成一个对象树。要使用Lambda表达式树需要引用命名空间System.Linq.Expressions，下面代码构建一个1+2的表达式树，最终表达式树编译成委托来得到执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Expression a = Expression.Constant(1);</span><br><span class="line">Expression b = Expression.Constant(2);</span><br><span class="line">Expression add = Expression.Add(a, b);</span><br><span class="line">Console.WriteLine(add); //(1+2) Func&lt;int&gt; fAdd = Expression.Lambda&lt;Func&lt;int&gt;&gt;(add).Compile();</span><br><span class="line">Console.WriteLine(fAdd()); //3 </span><br></pre></td></tr></table></figure>
+
+<p>Lambda和Lambda表达式树为我们使用Linq提供了很多支持，如果我们在做的一个管理系统使用了Linq To Sql，在列表页会有按多个条件来进行数据的筛选的功能，这时就可以使用Lambda表达式树来进行封装查询条件，下面的类封装了And和Or两种条件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public static class DynamicLinqExpressions </span><br><span class="line">&#123;</span><br><span class="line">    public static Expression&lt;Func&lt;T, bool&gt;&gt; True&lt;T&gt;() &#123; return f =&gt; true; &#125;</span><br><span class="line">    public static Expression&lt;Func&lt;T, bool&gt;&gt; False&lt;T&gt;() &#123; return f =&gt; false; &#125;</span><br><span class="line"></span><br><span class="line">    public static Expression&lt;Func&lt;T, bool&gt;&gt; Or&lt;T&gt;(this Expression&lt;Func&lt;T, bool&gt;&gt; expr1,</span><br><span class="line">                                                        Expression&lt;Func&lt;T, bool&gt;&gt; expr2)</span><br><span class="line">    &#123;</span><br><span class="line">        var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast&lt;Expression&gt;());</span><br><span class="line">        return Expression.Lambda&lt;Func&lt;T, bool&gt;&gt;</span><br><span class="line">              (Expression.Or(expr1.Body, invokedExpr), expr1.Parameters);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Expression&lt;Func&lt;T, bool&gt;&gt; And&lt;T&gt;(this Expression&lt;Func&lt;T, bool&gt;&gt; expr1,</span><br><span class="line">                                                         Expression&lt;Func&lt;T, bool&gt;&gt; expr2)</span><br><span class="line">    &#123;</span><br><span class="line">        var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast&lt;Expression&gt;());</span><br><span class="line">        return Expression.Lambda&lt;Func&lt;T, bool&gt;&gt;</span><br><span class="line">              (Expression.And(expr1.Body, invokedExpr), expr1.Parameters);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是获取条件的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public Expression&lt;Func&lt;Courses, bool&gt;&gt; GetCondition()</span><br><span class="line">&#123;</span><br><span class="line">    var exp = DynamicLinqExpressions.True&lt;Courses&gt;();</span><br><span class="line">    if (txtCourseName.Text.Trim().Length &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        exp = exp.And(g =&gt; g.CourseName.Contains(txtCourseName.Text.Trim()));</span><br><span class="line">    &#125;</span><br><span class="line">    if (ddlGrade.SelectedValue != &quot;-1&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        exp=exp.And(g =&gt; g.GradeID.Equals(ddlGrade.SelectedValue));</span><br><span class="line">    &#125;</span><br><span class="line">    return exp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linq"><a href="#Linq" class="headerlink" title="Linq"></a>Linq</h3><p>Linq是一个很大的话题，也是NET3.5中比较核心的内容，有很多书籍专门来介绍Linq，下面只是做一些简单的介绍，需要注意的是Linq并非是Linq To Sql，Linq是一个大的集合，里面包含：</p>
+<ul>
+<li>Linq To Object：提供对集合和对象的处理；</li>
+<li>Linq To XML：应用于XML；</li>
+<li>Linq To Sql：应用于SqlServer数据库；</li>
+<li>Linq To DataSet： DataSet；</li>
+<li>Linq To Entities：应用于SqlServer之外的关系数据库，我们还可以通过Linq的扩展框架来实现更多支持Linq的数据源。</li>
+</ul>
+<p>下面以Linq To Object为例子来看看Linq是怎么使用的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class UserInfo </span><br><span class="line">&#123;</span><br><span class="line">    public string Name &#123; get; set; &#125;</span><br><span class="line">    public int Age &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test </span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;UserInfo&gt; users = new List&lt;UserInfo&gt;()</span><br><span class="line">        &#123;</span><br><span class="line">            new UserInfo&#123;Name=&quot;oec2003&quot;,Age=20&#125;,</span><br><span class="line">            new UserInfo&#123;Name=&quot;oec2004&quot;,Age=21&#125;,</span><br><span class="line">            new UserInfo&#123;Name=&quot;oec2005&quot;,Age=22&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        IEnumerable&lt;UserInfo&gt; selectedUser = from user in users</span><br><span class="line">                                             where user.Age &gt; 20</span><br><span class="line">                                             orderby user.Age descending select user;</span><br><span class="line">        foreach (UserInfo user in selectedUser)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;姓名:&quot;+user.Name+&quot;,年龄:&quot;+user.Age);</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，Linq可以让我们使用类似Sql的关键字来对集合、对象、XML等进行查询。</p>
+<h2 id="C-4-0"><a href="#C-4-0" class="headerlink" title="C#4.0"></a>C#4.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.0</td>
+<td>VS2010</td>
+<td>4.0</td>
+<td>4.0</td>
+</tr>
+</tbody></table>
+<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>VB在很早就已经支持了可选参数，而C#知道4了才支持，顾名思义，可选参数就是一些参数可以是可选的，在方法调用的时候可以不用输入。看下面代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Test </span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(GetUserInfo()); //姓名：ooec2003,年龄：30 </span><br><span class="line">        Console.WriteLine(GetUserInfo(&quot;oec2004&quot;, 20));//姓名：ooec2004,年龄：20 </span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">    public static string GetUserInfo(string name = &quot;oec2003&quot;, int age = 30)</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;姓名：&quot; + name + &quot;,年龄：&quot; + age.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="命名实参"><a href="#命名实参" class="headerlink" title="命名实参"></a>命名实参</h3><p>命名实参是在制定实参的值时，可以同时指定相应参数的名称。编译器可以判断参数的名称是否正确，命名实参可以让我们在调用时改变参数的顺序。命名实参也经常和可选参数一起使用，看下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(Cal());//9 </span><br><span class="line">    Console.WriteLine(Cal(z: 5, y: 4));//25 </span><br><span class="line">    Console.ReadLine();</span><br><span class="line">&#125;</span><br><span class="line">public static int Cal(int x=1, int y=2, int z=3)</span><br><span class="line">&#123;</span><br><span class="line">    return (x + y) * z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过可选参数和命名参数的结合使用，我们可以减少代码中方法的重载。</p>
+<h3 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h3><p>C#使用dynamic来实现动态类型，在没用使用dynamic的地方，C#依然是静态的。静态类型中当我们要使用程序集中的类，要调用类中的方法，编译器必须知道程序集中有这个类，类里有这个方法，如果不能事先知道，编译时会报错，在C#4以前可以通过反射来解决这个问题。看一个使用dynamic的小例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dynamic a = &quot;oec2003&quot;;</span><br><span class="line">Console.WriteLine(a.Length);//7 </span><br><span class="line">Console.WriteLine(a.length);//string 类型不包含length属性，但编译不会报错，运行时会报错 </span><br><span class="line">Console.ReadLine();</span><br></pre></td></tr></table></figure>
+
+<p>您可能会发现使用dynamic声明变量和C#3中提供的var有点类似，其他他们是有本质区别的，var声明的变量在编译时会去推断出实际的类型，var只是相当于一个占位符，而dynamic声明的变量在编译时不会进行类型检查。</p>
+<p>dynamic用的比较多的应该是替代以前的反射，而且性能有很大提高。假设有一个名为DynamicLib的程序集中有一个DynamicClassDemo类，类中有一个Cal方法，下面看看利用反射怎么访问Cal方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">namespace DynamicLib</span><br><span class="line">&#123;</span><br><span class="line">    public class DynamicClassDemo </span><br><span class="line">    &#123;</span><br><span class="line">        public int Cal(int x = 1, int y = 2, int z = 3)</span><br><span class="line">        &#123;</span><br><span class="line">            return (x + y) * z;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    Assembly assembly = Assembly.Load(&quot;DynamicLib&quot;);</span><br><span class="line">    object obj = assembly.CreateInstance(&quot;DynamicLib.DynamicClassDemo&quot;);</span><br><span class="line">    Type type = obj.GetType();</span><br><span class="line">    MethodInfo method = type.GetMethod(&quot;Cal&quot;);</span><br><span class="line">    Console.WriteLine(method.Invoke(obj, new object[] &#123; 1, 2, 3 &#125;));//9 </span><br><span class="line">    Console.ReadLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用dynamic的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Assembly assembly = Assembly.Load(&quot;DynamicLib&quot;);</span><br><span class="line">dynamic obj = assembly.CreateInstance(&quot;DynamicLib.DynamicClassDemo&quot;);</span><br><span class="line">Console.WriteLine(obj.Cal());</span><br><span class="line">Console.ReadLine();</span><br></pre></td></tr></table></figure>
+
+<p>在前后端分离的模式下，WebAPI接口的参数也可以采用dynamic来定义，直接就可以解析前端传入的json参数，不用每一个接口方法都定义一个参数类型。不好的地方就是通过Swagger来生产API文档时，不能明确的知道输入参数的每个属性的含义。</p>
+<p>C#4中还有一些COM互操作性的改进和逆变性和协变性的改进，我几乎没有用到，所以在此就不讲述了。</p>
+<h2 id="C-5-0"><a href="#C-5-0" class="headerlink" title="C#5.0"></a>C#5.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.0</td>
+<td>VS2012\2013</td>
+<td>4.0</td>
+<td>4.5</td>
+</tr>
+</tbody></table>
+<h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p>异步处理是C#5中很重要的一个特性，会涉及到两个关键字：async和await，要讲明白这个需要单独写一篇来介绍。</p>
+<p>可以简单理解为，当Winform窗体程序中有一个耗时操作时，如果是同步操作，窗体在返回结果之前会卡死，当然在C#5之前的版本中有多种方法可以来解决这个问题，但C#5的异步处理解决的更优雅。</p>
+<h3 id="循环中捕获变量"><a href="#循环中捕获变量" class="headerlink" title="循环中捕获变量"></a>循环中捕获变量</h3><p>与其说是一个特性，不如说是对之前版本问题的修复，看下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void CapturingVariables()</span><br><span class="line">&#123;</span><br><span class="line">    string[] names = &#123; &quot;oec2003&quot;,&quot;oec2004&quot;,&quot;oec2005&quot;&#125;;</span><br><span class="line">    var actions = new List&lt;Action&gt;();</span><br><span class="line"></span><br><span class="line">    foreach(var name in names)</span><br><span class="line">    &#123;</span><br><span class="line">        actions.Add(() =&gt; Console.WriteLine(name));</span><br><span class="line">    &#125;</span><br><span class="line">    foreach(Action action in actions)</span><br><span class="line">    &#123;</span><br><span class="line">        action();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码在之前的C#版本中，会连续输出三个oec2005，在C#5中会按照我们的期望依次输出oec2003、oec2004、oec2005。</p>
+<p>如果您的代码在之前的版本中有利用到这个错误的结果，那么在升级到C#5或以上版本中就要注意了。</p>
+<h3 id="调用者信息特性"><a href="#调用者信息特性" class="headerlink" title="调用者信息特性"></a>调用者信息特性</h3><p>我们的程序通常是以release形式发布，发布后很难追踪到代码执行的具体信息，在C#5中提供了三种特性(Attribute), 允许获取调用者的当前编译器的执行文件名、所在行数与方法或属性名称。代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    ShowInfo();</span><br><span class="line"></span><br><span class="line">    Console.ReadLine();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public static void ShowInfo(</span><br><span class="line">   [CallerFilePath] string file = null,</span><br><span class="line">   [CallerLineNumber] int number = 0,</span><br><span class="line">   [CallerMemberName] string name = null)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;filepath:&#123;file&#125;&quot;);</span><br><span class="line">    Console.WriteLine($&quot;rownumber:&#123;number&#125;&quot;);</span><br><span class="line">    Console.WriteLine($&quot;methodname:&#123;name&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filepath:/Users/ican_macbookpro/Projects/CsharpFeature/CsharpFeature5/Program.cs</span><br><span class="line">rownumber:12</span><br><span class="line">methodname:Main</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-6-0"><a href="#C-6-0" class="headerlink" title="C#6.0"></a>C#6.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>CLR版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6.0</td>
+<td>VS2015</td>
+<td>4.0</td>
+<td>4.6</td>
+</tr>
+</tbody></table>
+<p>在C#6中提供了不少的新功能，我认为最有用的就是Null条件运算符和字符串嵌入。</p>
+<h3 id="Null条件运算符"><a href="#Null条件运算符" class="headerlink" title="Null条件运算符"></a>Null条件运算符</h3><p>在C#中，一个常见的异常就是“未将对象引用到对象的实例”，原因是对引用对象没有做非空判断导致。在团队中虽然再三强调，但依然会在这个问题上栽跟头。下面的代码就会导致这个错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">	static void Main(string[] args)</span><br><span class="line">	&#123;</span><br><span class="line">	    //Null条件运算符</span><br><span class="line">	    User user = null;</span><br><span class="line">	    Console.WriteLine(user.GetUserName());</span><br><span class="line">	    Console.ReadLine();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class User</span><br><span class="line">&#123;</span><br><span class="line">	public string GetUserName() =&gt; &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要想不出错，就需要对user对象做非空判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(user!=null)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(user.GetUserName()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在C#6中可以用很简单的方式来处理这个问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//Null条件运算符</span><br><span class="line">User user = null;</span><br><span class="line">Console.WriteLine(user?.GetUserName()); </span><br></pre></td></tr></table></figure>
+
+<p>注：虽然这个语法糖非常简单，也很好用，但在使用时也需要多想一步，当对象为空时，调用其方法返回的值也是空，这样的值对后续的操作会不会有影响，如果有，还是需要做判断，并做相关的处理。</p>
+<h3 id="字符串嵌入"><a href="#字符串嵌入" class="headerlink" title="字符串嵌入"></a>字符串嵌入</h3><p>字符串嵌入可以简化字符串的拼接，很直观的就可以知道需要表达的意思，在C#6及以上版本中都应该用这种方式来处理字符串拼接，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//字符串嵌入</span><br><span class="line">string name = &quot;oec2003&quot;;</span><br><span class="line">//之前版本的处理方式1</span><br><span class="line">Console.WriteLine(&quot;Hello &quot; + name);</span><br><span class="line">//之前版本的处理方式2</span><br><span class="line">Console.WriteLine(string.Format(&quot;Hello &#123;0&#125;&quot;,name));</span><br><span class="line">//C#6字符串嵌入的处理方式</span><br><span class="line">Console.WriteLine($&quot;Hello &#123;name&#125;&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相关特性-1"><a href="#其他相关特性-1" class="headerlink" title="其他相关特性"></a>其他相关特性</h3><ul>
+<li>只读自动属性</li>
+<li>自动属性初始化表达式</li>
+<li>using static</li>
+<li>nameof表达式</li>
+<li>异常筛选器</li>
+<li>使用索引器初始化关联集合</li>
+</ul>
+<h2 id="C-7-0"><a href="#C-7-0" class="headerlink" title="C#7.0"></a>C#7.0</h2><table>
+<thead>
+<tr>
+<th>C#</th>
+<th>VS版本</th>
+<th>.NET Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7.0</td>
+<td>VS2017 15.0</td>
+<td>.NET Core1.0</td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>VS2017 15.3</td>
+<td>.NET Core2.0</td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>VS2017 15.5</td>
+<td>.NET Core2.0</td>
+</tr>
+<tr>
+<td>7.3</td>
+<td>VS2017 15.7</td>
+<td>.NET Core2.1</td>
+</tr>
+</tbody></table>
+<h3 id="out-变量"><a href="#out-变量" class="headerlink" title="out 变量"></a>out 变量</h3><p>此特性简化了out变量的使用，之前的版本中使用代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int result = 0;</span><br><span class="line">int.TryParse(&quot;20&quot;, out result);</span><br><span class="line">Console.WriteLine(result);</span><br></pre></td></tr></table></figure>
+
+<p>优化后的代码，不需要事先定义一个变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int.TryParse(&quot;20&quot;, out var result);</span><br><span class="line">Console.WriteLine(result);</span><br></pre></td></tr></table></figure>
+
+<h3 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h3><p>这也是一个减少我们编码的语法糖，直接看代码吧</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class PatternMatching</span><br><span class="line">&#123;</span><br><span class="line">    public void Test()</span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;Person&gt; list = new List&lt;Person&gt;();</span><br><span class="line">        list.Add(new Man());</span><br><span class="line">        list.Add(new Woman());</span><br><span class="line">        foreach (var item in list)</span><br><span class="line">        &#123;</span><br><span class="line">        		 //在之前版本中此处需要做类型判断和类型转换</span><br><span class="line">            if (item is Man man)</span><br><span class="line">                Console.WriteLine(man.GetName());</span><br><span class="line">            else if (item is Woman woman)</span><br><span class="line">                Console.WriteLine(woman.GetName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public abstract class Person</span><br><span class="line">&#123;</span><br><span class="line">    public abstract string GetName();</span><br><span class="line">&#125;</span><br><span class="line">public class Man:Person</span><br><span class="line">&#123;</span><br><span class="line">    public override string GetName() =&gt; &quot;Man&quot;;</span><br><span class="line">&#125;</span><br><span class="line">public class Woman : Person</span><br><span class="line">&#123;</span><br><span class="line">    public override string GetName() =&gt; &quot;Woman&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>详细参考官方文档：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/pattern-matching">https://docs.microsoft.com/zh-cn/dotnet/csharp/pattern-matching</a></p>
+<h3 id="本地方法"><a href="#本地方法" class="headerlink" title="本地方法"></a>本地方法</h3><p>可以在方法中写内部方法，在方法中有时需要在多个代码逻辑执行相同的处理，之前的做法是在类中写私有方法，现在可以让这个私有方法写在方法的内部，提高代码可读性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static void LocalMethod()</span><br><span class="line">&#123;</span><br><span class="line">    string name = &quot;oec2003&quot;;</span><br><span class="line">    string name1 = &quot;oec2004&quot;;</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(AddPrefix(name));</span><br><span class="line">    Console.WriteLine(AddPrefix(name1));</span><br><span class="line">    </span><br><span class="line">    string AddPrefix(string n)</span><br><span class="line">    &#123;</span><br><span class="line">        return $&quot;Hello &#123;n&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步-main-方法"><a href="#异步-main-方法" class="headerlink" title="异步 main 方法"></a>异步 main 方法</h3><p>这个最大的好处是，在控制台程序中调试异步方法变得很方便。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static async Task Main()</span><br><span class="line">&#123;</span><br><span class="line">    await SomeAsyncMethod();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="private-protected-访问修饰符"><a href="#private-protected-访问修饰符" class="headerlink" title="private protected 访问修饰符"></a>private protected 访问修饰符</h3><p>可以限制在同一个程序集中的派生类的访问，是对protected internal的一种补强，protected internal是指同一程序集中的类或派生类进行访问。</p>
+<h3 id="其他相关特性-2"><a href="#其他相关特性-2" class="headerlink" title="其他相关特性"></a>其他相关特性</h3><ul>
+<li>元组优化(7.0)</li>
+<li>弃元(7.0)</li>
+<li>Ref 局部变量和返回结果(7.0)</li>
+<li>通用的异步返回类型(7.0)</li>
+<li>数字文本语法改进(7.0)</li>
+<li>throw 表达式(7.0)</li>
+<li>默认文本表达式(7.1)</li>
+<li>推断元组元素名称(7.1)</li>
+<li>非尾随命名参数(7.2)</li>
+<li>数值文字中的前导下划线(7.2)</li>
+<li>条件 ref 表达式（7.2）</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>每个特性都需要我们去编码实现下，了解了真正的含义和用途，我们才能在工作中灵活的运用。</p>
+<p>本文所涉及到的实例代码后面也会上传到Github上。</p>
+<p>希望本文对您有所帮助。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2019/06/learn-about-the-new-features-of-each-version-of-csharp/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2019/06/learn-about-the-new-features-of-each-version-of-csharp/&title=带你了解C#每个版本新特性 - 冯威的博客&summary=上学时学习C#和.NET，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=带你了解C#每个版本新特性 - 冯威的博客&amp;body=http://fwhyy.com/2019/06/learn-about-the-new-features-of-each-version-of-csharp/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2019/06/learn-about-the-new-features-of-each-version-of-csharp/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2019/06/evolutionary-branch-and-demand-management/">不断进化的分支和需求管理<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2019/06/more-effective-csharp/">书籍推荐：《More Effective C#》<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

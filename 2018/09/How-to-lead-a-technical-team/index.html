@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>怎样带领一个技术团队 - 冯威的博客</title>
+
+  
+    <meta name="description" content="从2012年的Team Leader到现在负责公司的产品团队，在技术管理的道路上也走了6年的时间，看过不少管理的书，也经历过从零开始组建一个团队，和团队成员的更替。下面谈谈我自己的一些感受和理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎样带领一个技术团队">
+<meta property="og:url" content="http://fwhyy.com/2018/09/How-to-lead-a-technical-team/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="从2012年的Team Leader到现在负责公司的产品团队，在技术管理的道路上也走了6年的时间，看过不少管理的书，也经历过从零开始组建一个团队，和团队成员的更替。下面谈谈我自己的一些感受和理解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-02T22:25:36.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:01:54.358Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="管理">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E4%BA%BA"><span class="toc-text">找人</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%9B%A2%E9%98%9F%EF%BC%9A"><span class="toc-text">项目团队：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E5%93%81%E5%9B%A2%E9%98%9F%EF%BC%9A"><span class="toc-text">产品团队：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%84%BF%E6%99%AF"><span class="toc-text">愿景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E4%BA%92%E4%BF%A1%E4%BB%BB"><span class="toc-text">相互信任</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%BC%9A%E5%8F%91%E7%8E%B0%E4%BC%98%E7%82%B9"><span class="toc-text">学会发现优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BA%A7%E5%93%81%E8%B4%9F%E8%B4%A3"><span class="toc-text">为产品负责</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E5%BA%A6"><span class="toc-text">制度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%9C%A8%E5%81%9A%E7%9A%84"><span class="toc-text">正在做的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%AA%E5%81%9A%E7%9A%84"><span class="toc-text">还未做的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E5%8C%96"><span class="toc-text">文化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E6%B0%9B%E5%9B%B4"><span class="toc-text">团队氛围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%81%9A%E4%BA%8B%E9%A3%8E%E6%A0%BC%E5%92%8C%E5%8E%9F%E5%88%99"><span class="toc-text">个人做事风格和原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E7%AE%A1%E7%90%86/">管理</a></div><div id="post-meta">发布于&nbsp;<time datetime="2018-09-02T22:25:36.000Z">2018-09-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>怎样带领一个技术团队</span></h1>
+<p>从2012年的<code>Team Leader</code>到现在负责公司的产品团队，在技术管理的道路上也走了6年的时间，看过不少管理的书，也经历过从零开始组建一个团队，和团队成员的更替。下面谈谈我自己的一些感受和理解。</p>
+<span id="more"></span>
+
+<p>本文的标题特意用了「带领」，而没有用「管理」，因为我觉得一个好的团队的每个成员都应该是自我驱动型的，如果处处都需要有人「管」，需要靠外在的驱动力，即便是最终完成了任务，也不会是用更好的、更合理的方式完成的任务。有一句话是这么说的：外驱力让我们可以做好本职工作，而自我驱动才能让我们成就卓越，我觉得很有道理。</p>
+<p>一个团队的组建，到能正常运转大概有这么几个步骤：</p>
+<p>1、<strong>找人</strong>：找到一群志同道合的人；<br>2、<strong>愿景</strong>：给团队成员一个愿景，让所有人能够齐心协力朝着一个目标而努力；<br>3、<strong>制度</strong>：制定一套制度，让团队成员做事有章可循；<br>4、<strong>文化</strong>：建立团队文化，打造一个快乐的学习型团队，让每个成员都能快乐工作，持续成长。</p>
+<h2 id="找人"><a href="#找人" class="headerlink" title="找人"></a>找人</h2><p>组建一个团队，首先是人，人是一个团队的根基，最重要的组成部分，大的来分，团队分为项目团队和产品团队。项目团队和产品团队在目标上有所不同，项目团队更注重的满足客户的业务需求，直到最终的项目验收和回款；产品团队则更注重持续的迭代，能随时满足市场的变化，对代码的要求和人员的要求相对更高。正因为有这样一些差别，所以在找人时也有着不同的方式：</p>
+<h3 id="项目团队："><a href="#项目团队：" class="headerlink" title="项目团队："></a>项目团队：</h3><p>1、从公司闲置资源临时组建；<br>2、招聘一些一两年经历的开发人员。</p>
+<h3 id="产品团队："><a href="#产品团队：" class="headerlink" title="产品团队："></a>产品团队：</h3><p>1、从公司现有开发人员中选拔一些符合要求的开发人员进入团队；<br>2、熟人内推；<br>3、招聘有多年经验的资深开发人员。</p>
+<p>拿我现在带领的产品团队来说，成员大多是公司的「老人」了，也有通过招聘入职的新人，其实最好的方式还是内推，内推的方式更知根知底，有助于团队的稳定性。</p>
+<h2 id="愿景"><a href="#愿景" class="headerlink" title="愿景"></a>愿景</h2><p>技术人员都是很有个性的，短短的面试时间并不能彻底的了解一个人，即便在一起共事多年的同事，也未必能够十分了解。要能做到让这么一群人能为了一个目标取共同努力，很重要的一点就是信任。团队成员之间的互相信任，<code>Leader</code>和团队成员之间的互相信任。</p>
+<h3 id="相互信任"><a href="#相互信任" class="headerlink" title="相互信任"></a>相互信任</h3><p>相对来说，技术人员通常不善沟通，但是否被真诚对待，是否受到尊重，心里跟明镜似的。如果缺乏信任，可能有一天，会有成员找一个你不能拒绝的理由提出辞职，那个理由未必是他内心真实的想法。而你这时想挽回却为时已晚。</p>
+<p>以目前的经验来看，经常组织一些团队活动，会让团队成员之间有更多的了解，而不仅限于工作内容的沟通。互相更了解了，才原因说出内心真实的想法。我们应该随时了解团队每个人的真实想法，在能力范围内解决他们的后顾之忧。</p>
+<h3 id="学会发现优点"><a href="#学会发现优点" class="headerlink" title="学会发现优点"></a>学会发现优点</h3><p>人无完人，每个人都有优点和缺点，要学会去发现别人的优点，学习这些优点，形成一个正向的良性循环。你的团队的成员可能是这样的：</p>
+<p>1、有的人做事非常快，但比较粗心，经常犯一些低级错误；<br>2、有的人做事严谨，但在一些细节的地方容易钻牛角尖，导致经常会延后任务；<br>3、有的人经验丰富，但不善沟通，不能更好的分享知识；<br>4、有的人基础一般，但态度很好，原因去学习。</p>
+<p>想过没有，如果团队的成员通过持续的成长，最终都能拥有上面所描述的优点，那将会是一个无比强大的团队。</p>
+<p>发现别人的优点很难，再说技术人员又是那么的自傲，所以团队<code>Leader</code>要做好引导，组织一些技术交流会、公开的<code>Codereview</code>，开诚布公的表扬做的好的地方同时也指出一些问题。让每个人都能够意识到：三人行，必有我师焉。</p>
+<h3 id="为产品负责"><a href="#为产品负责" class="headerlink" title="为产品负责"></a>为产品负责</h3><p>既然愿意进入到产品团队，就应该清楚产品的最终目标，都应该为了产品最终的成功而努力，而不应该仅仅只是当成一个工作。公司层面也应该给予团队相应的回报承诺（看的见的承诺），而不只是画画饼子。想让马儿跑得快，又想马儿不吃草是行不通的。</p>
+<p>转变技术人员的思想需要一个过程，在平日的工作中，技术人员常常会这样说：</p>
+<p>1、这个代码不是我改的，我没有动过这部分代码；<br>2、谁动过我的代码；<br>3、我本地是好的，没有问题。</p>
+<p>上面的情况说明开发人员更关注的还是自己所负责的功能，并且对自己写的代码有一种独特的占有欲，不允许其他人侵犯；出现问题容易推卸责任。理想的团队氛围应该是这样的：</p>
+<p>1、每个成员都应该了解产品整体的需求；<br>2、每个成员必须要了解自己所做功能的业务背景，而不仅仅只是实现一个功能，要时常站在普通用户的角度去思考问题；<br>3、不要怕暴露问题，而是要尽早暴露问题；<br>4、出现问题并不是要去追究谁的责任，而是要找出问题的根因，以免下次再犯。</p>
+<h2 id="制度"><a href="#制度" class="headerlink" title="制度"></a>制度</h2><p>无规矩不成方圆，在开发团队中，这个规矩制度就是指导开发的方式，之前传统的项目开发中比较习惯使用瀑布模式，而在互联网产品团队中习惯使用敏捷的方式。</p>
+<p>我们团队采用的算是敏捷的开发方式，离真正的敏捷还是有相当距离，这个需要时间去适应和调整。</p>
+<h3 id="正在做的"><a href="#正在做的" class="headerlink" title="正在做的"></a>正在做的</h3><p>1、每周例会，每日晨会（没有完全做到，但保证团队随时能流畅沟通）；<br>2、采用<code>GitLab</code>做源代码管理工具；<br>3、采用<code>GitLab</code>的<code>Merge Request</code>工作流程；<br>4、采用<code>Jenkins</code>做持续发布；<br>5、采用<code>Docker</code>部署应用；<br>6、任务的分解，粒度尽量到每日，每日可以验证，持续的集成发布。</p>
+<h3 id="还未做的"><a href="#还未做的" class="headerlink" title="还未做的"></a>还未做的</h3><p>1、结对编程（敏捷开发中经常会提起，短期内没打算使用）；<br>2、<code>Codereview</code>，非常重要的一个环节，目前做的还不够好，希望最终能达到团队成员之间能互相<code>Review</code>；<br>3、定期分享会，讨论如何改进流程，提高效率（在周例会上会有提及，没有专门的会议）；<br>4、随时交付可工作的软件（很难，功能上可以保证，质量上还需要努力）；<br>5、自动化测试相关（质量的第一道关卡）。</p>
+<p>好的制度是不断优化出来的，会随着团队的成长持续的改进，一旦制定就要严格执行，不能每个人有什么意见就各行一套。</p>
+<h2 id="文化"><a href="#文化" class="headerlink" title="文化"></a>文化</h2><p>文化是一个团队的精神粮食，我的理解是所有人都认同的一种价值观。好的团队文化可以让人在工作中感到快乐。最高的境界就是，早上起床想上班，晚上下班想回家，就像刚工作时的一位导师说的那样：快乐工作，健康生活。</p>
+<p>形成一个好的团队文化我觉可以从团队氛围和个人做事风格和原则来谈。</p>
+<h3 id="团队氛围"><a href="#团队氛围" class="headerlink" title="团队氛围"></a>团队氛围</h3><p>好的氛围会让人在工作的时候心情愉快，有好的团队氛围至少要满足下面几点：</p>
+<p>1、认同现在所做的事情，如果每天都做自己不想做的事，能开心的了吗；<br>2、任何事情，公开、公平、公正，做到奖惩分明；<br>3、开放式的沟通，所有人都是平等的，为了一个共同的目标，有任何的意见或建议可以随时提出。</p>
+<h3 id="个人做事风格和原则"><a href="#个人做事风格和原则" class="headerlink" title="个人做事风格和原则"></a>个人做事风格和原则</h3><p>尽管每个人性格各异，做事风格也不尽相同，但还是有一些共性的地方是需要要求每个人都能达到：</p>
+<p>1、敢于承诺，在一个互相信任的团队中，你承诺了，我就相信你能够做到；<br>2、每个人应该是自驱动的，这个在文章开头也说过，「我要做事」和「要我做事」的区别是很大的；<br>3、分享精神，不要怕知识被别人学走了，互相学习才能共同提高；<br>4、实现闭环，做事有始有终，每个人的任务都能形成闭环，才能持续发布质量可靠的产品。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是最近的一些思考，带领团队这事，思想可以借鉴，但不能生搬硬套，因为每个团队的事不一样，人也不一样。就像敏捷开发，在不同的团队中有不一样的实践方式。希望本文对您有些启发。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2018/09/How-to-lead-a-technical-team/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2018/09/How-to-lead-a-technical-team/&title=怎样带领一个技术团队 - 冯威的博客&summary=从2012年的Team Leader到现在负责公司的产品团队，在技术管理的道路上也走了6年的时间，看过不少管理的书，也经历过从零开始组建一个团队，和团队成员的更替。下面谈谈我自己的一些感受和理解。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=怎样带领一个技术团队 - 冯威的博客&amp;body=http://fwhyy.com/2018/09/How-to-lead-a-technical-team/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2018/09/How-to-lead-a-technical-team/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2018/08/dotnet-core-configure/">dotNET Core：配置<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2018/09/how-to-improve-development-efficiency-2018/">怎样提高开发效率（2018）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>对产品质量的一点思考 - 冯威的博客</title>
+
+  
+    <meta name="description" content="不管是做产品还是做项目，也不管是采用瀑布模型还是敏捷开发，我们都有一个终极目标，就是能按时交付质量可靠的功能，其中质量尤为重要。 本文是我对产品质量的一点思考，如果您所在的团队代码质量很高，很少出BUG，那么可以私信我，我们可以交流下关于代码质量的一些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对产品质量的一点思考">
+<meta property="og:url" content="http://fwhyy.com/2019/07/some-thoughts-on-product-quality/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="不管是做产品还是做项目，也不管是采用瀑布模型还是敏捷开发，我们都有一个终极目标，就是能按时交付质量可靠的功能，其中质量尤为重要。 本文是我对产品质量的一点思考，如果您所在的团队代码质量很高，很少出BUG，那么可以私信我，我们可以交流下关于代码质量的一些问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-30T22:44:41.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:13:10.084Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="质量">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%85%AC%E5%8F%B8%E9%9D%A2%E4%B8%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">小公司面临的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%8E%B0%E7%8A%B6"><span class="toc-text">我们的现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3%E8%B4%A8%E9%87%8F%E9%97%AE%E9%A2%98"><span class="toc-text">怎样解决质量问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E8%88%8D%E5%92%8C%E5%B9%B3%E8%A1%A1"><span class="toc-text">取舍和平衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">自动化测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-06-30T22:44:41.000Z">2019-07-01</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>对产品质量的一点思考</span></h1>
+<p>不管是做产品还是做项目，也不管是采用瀑布模型还是敏捷开发，我们都有一个终极目标，就是能按时交付质量可靠的功能，其中质量尤为重要。</p>
+<p>本文是我对产品质量的一点思考，如果您所在的团队代码质量很高，很少出BUG，那么可以私信我，我们可以交流下关于代码质量的一些问题。</p>
+<span id="more"></span>
+
+<h2 id="小公司面临的问题"><a href="#小公司面临的问题" class="headerlink" title="小公司面临的问题"></a>小公司面临的问题</h2><p>大公司里每个人指责分明，团队的人员配置也比较齐全，有完整的开发流程，流程也会不断的迭代优化，每个环节只要按照流程严格去执行，基本不会出什么大的问题。但不是每个人都能够进入到大公司，或者说会一直待在大公司，如果您是在中小公司，可能会有下面一些情况：</p>
+<ul>
+<li>没有专职的需求分析人员，没有专职的测试人员，很多时候是一岗多职</li>
+<li>没有不急的项目，客户永远说的都是越快越好</li>
+<li>虽然说唯一不变的就是变化，我们需要拥抱变化，但常常会即便拥有一双长臂，也无力拥抱</li>
+<li>需求来了，直接写代码，后期补文档</li>
+<li>代码中基本不写单元测试</li>
+<li>没有自主研发的需求管理平台</li>
+</ul>
+<p>为什么会有上面的问题，我觉得很重要的一个原因是成本问题，专职需求分析需要人力成本，写单元测试、文档等需要时间成本，等等。短期看来是节省了成本，但从长远来看，会导致质量下降，最终会得不偿失，如果您是做项目，打一枪换个地方，我不做评价，如果是在不断地迭代成品，那么就要停下来好好思考下了。</p>
+<h2 id="我们的现状"><a href="#我们的现状" class="headerlink" title="我们的现状"></a>我们的现状</h2><p>10人左右的团队，需要做的事情如下：</p>
+<ul>
+<li>需求分析</li>
+<li>Vue前端开发</li>
+<li>dotNetCore后端开发</li>
+<li>H5、小程序、iOS、安卓</li>
+<li>测试</li>
+<li>运维</li>
+</ul>
+<p>上面说到，在小公司会是一岗多职，我们也不例外，大概任务分配如下：</p>
+<ul>
+<li>全员做需求分析，即便是新手，也要求做简单需求的分析</li>
+<li>后端工程师除了iOS和安卓不做，其他的都做</li>
+<li>iOS和安卓工程师除了后端不做，其他都做</li>
+<li>只有一两个只做纯前端的工程师</li>
+</ul>
+<p>目前来看，整个团队是偏全栈的，全栈的团队理论上效率会很高，的确，效率从来都不是我担心的问题，但质量问题却一直都没能很好的解决：</p>
+<ul>
+<li>开发人员还是更喜欢写代码，文档能力偏弱，虽然目前强制规定每个所做的需求在语雀上要写对应的需求文档，但很多时候写不到点子上，关联影响点也没有分析，给测试提供不了很好的支撑</li>
+<li>文档写不好，加上开发者的思维，很多低级问题在自测阶段不能被发现</li>
+<li>经常改了A模块的一个问题，引发其他模块的几个问题</li>
+<li>同样的问题会反反复复出现</li>
+</ul>
+<h2 id="怎样解决质量问题"><a href="#怎样解决质量问题" class="headerlink" title="怎样解决质量问题"></a>怎样解决质量问题</h2><h3 id="取舍和平衡"><a href="#取舍和平衡" class="headerlink" title="取舍和平衡"></a>取舍和平衡</h3><p>我认为软件开发其实是在时间、范围、稳定性和代码质量上做博弈：</p>
+<ul>
+<li>时间：交付一个功能的期限，比如老板说3个月要上线某功能</li>
+<li>范围：需要实现功能的边界</li>
+<li>稳定性：随着版本的不断更新，用户使用产品的一个最直观的感受</li>
+<li>代码质量：代码是否是可复用，易于维护的，用户不能直观感受，但也同样重要</li>
+</ul>
+<p>领导总是会说，这个时间节点非常重要，或者重要客户，不能延后，等等，总之时间节点后延的可能性不大。</p>
+<p>稳定性也不能出问题，轻则客户满意度降低，重则会造成事故，给客户带来严重损失，客户可能因此就丢了。</p>
+<p>所以只能在范围和代码质量上做取舍：</p>
+<ul>
+<li>本来应该三个月做的任务，非要压缩到一个月，那只能去和领导沟通，将一些不重要，或者不紧急的任务放到下一阶段完成</li>
+<li>如果范围也不能压缩，那就只能舍弃代码质量了，怎么快怎么来，但也因此欠下了一个技术债，债是需要偿还的，也是有利息的，还的越迟，利息越多。</li>
+</ul>
+<h3 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h3><p>自动化测试分为两个部分，构建之前的单元测试和构建之后的端到端测试</p>
+<ul>
+<li>单元测试又分为前端Vue的单元测试和dotNetCore的单元测试，在一个已成型的产品中去加单元测试是很困难的，所以只能先找一些关键点，经常出问题的点去尝试</li>
+<li>端到端的测试我们采用TestCafe，反复出问题的地方，就提炼出来一种业务场景，有针对性地去写测试代码</li>
+</ul>
+<p>配合Jenkins，做到测试的自动化，那是不是有了自动化测试就能高枕无忧了呢？并不是，我觉得更重要的是，每个人员对产品要有深入的理解，对所做的需求要能完全掌握，对关联影响点的分析要没有任务遗漏。</p>
+<p>测试只是手段而不是目的，我们的目的是写出好的代码，交付出无缺陷的功能。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>没有任何的方法论是可以生搬硬套的，只有不断的去学习、吸收、结合现有资源进行实践、不断的重复这个过程，直到找到一种适合自己团队的落地方案。</p>
+<p>改善质量的道路任重而道远，不断地去尝试，去实践总会有些效果的。</p>
+<p>您所在的团队又是怎么样来保证质量的呢？欢迎讨论。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2019/07/some-thoughts-on-product-quality/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2019/07/some-thoughts-on-product-quality/&title=对产品质量的一点思考 - 冯威的博客&summary=不管是做产品还是做项目，也不管是采用瀑布模型还是敏捷开发，我们都有一个终极目标，就是能按时交付质量可靠的功能，其中质量尤为重要。
+本文是我对产品质量的一点思考，如果您所在的团队代码质量很高，很少出BUG，那么可以私信我，我们可以交流下..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=对产品质量的一点思考 - 冯威的博客&amp;body=http://fwhyy.com/2019/07/some-thoughts-on-product-quality/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2019/07/some-thoughts-on-product-quality/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2019/06/more-effective-csharp/">书籍推荐：《More Effective C#》<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2019/07/jenkins-and-testcafe/">端到端测试实践：Jenkins集成TestCafe<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

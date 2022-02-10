@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>《代码整洁之道》读书笔记(上) - 冯威的博客</title>
+
+  
+    <meta name="description" content="全书一共400多页，一共17章，第十三章讲并发，并且在附录A中有对并发的补充，第十四到十六章是一些Java代码的案例，第十七章相当于一个总结。本次写读书笔记主要涵盖前十二章的内容，由于篇幅分为上下两篇。 第一章 整洁代码代码的质量非常重要，糟糕的代码有可能会毁了一个公司。对于一个很注重代码质量的人来说呆在一个只关注交付而不关注代码质量的公司是很痛苦的。 什么是整洁的代码，不同的人又不同的定义。我认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《代码整洁之道》读书笔记(上)">
+<meta property="og:url" content="http://fwhyy.com/2012/05/clear-code-reading-notes-one/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="全书一共400多页，一共17章，第十三章讲并发，并且在附录A中有对并发的补充，第十四到十六章是一些Java代码的案例，第十七章相当于一个总结。本次写读书笔记主要涵盖前十二章的内容，由于篇幅分为上下两篇。 第一章 整洁代码代码的质量非常重要，糟糕的代码有可能会毁了一个公司。对于一个很注重代码质量的人来说呆在一个只关注交付而不关注代码质量的公司是很痛苦的。 什么是整洁的代码，不同的人又不同的定义。我认">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2012-05-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-29T00:08:48.243Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="整洁代码">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81"><span class="toc-text">第一章 整洁代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">第二章 有意义的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0"><span class="toc-text">第三章 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%B3%A8%E9%87%8A"><span class="toc-text">第四章 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%A0%BC%E5%BC%8F"><span class="toc-text">第五章 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">第六章 对象和数据结构</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></div><div id="post-meta">发布于&nbsp;<time datetime="2012-05-12T16:00:00.000Z">2012-05-13</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>《代码整洁之道》读书笔记(上)</span></h1>
+<p>全书一共400多页，一共17章，第十三章讲并发，并且在附录A中有对并发的补充，第十四到十六章是一些Java代码的案例，第十七章相当于一个总结。本次写读书笔记主要涵盖前十二章的内容，由于篇幅分为上下两篇。</p>
+<h2 id="第一章-整洁代码"><a href="#第一章-整洁代码" class="headerlink" title="第一章 整洁代码"></a>第一章 整洁代码</h2><p>代码的质量非常重要，糟糕的代码有可能会毁了一个公司。对于一个很注重代码质量的人来说呆在一个只关注交付而不关注代码质量的公司是很痛苦的。</p>
+<p>什么是整洁的代码，不同的人又不同的定义。我认为整洁的代码应该是符合所使用语言代码规范的；可复用的；便于维护的；简洁的。</p>
+<p>糟糕的代码想做太多的事情，意图混乱；整洁的代码的每个函数、类和模块都全神贯注一件事，不受周围的干扰。</p>
+<p>“破窗理论”：指的是窗户破损了的建筑让人觉得似乎无人照管，于是别人也不关心，任由窗户继续破损，最终自己也参与破坏活动，在墙上涂鸦，任垃圾堆积，一扇破损的窗户让该建筑走向了倾颓的道路。在程序中也是一样，一处出现了有坏味道的代码，有可能导致整个项目的代码都满目疮痍。所以到嗅到代码有坏味道的时候就要重构，我认为整洁的代码是重构出来的。</p>
+<p>美国“童子军军规”中有条说道“让一地比你来时更干净”，映射到我们编码中就是我们每日在提交代码的时候要确保代码时整洁的，否则就进行重构。好的代码是靠大家一点点积累出来的。问题发现的越早，修改的成本就越少。</p>
+<h2 id="第二章-有意义的命名"><a href="#第二章-有意义的命名" class="headerlink" title="第二章 有意义的命名"></a>第二章 有意义的命名</h2><p>本章主要介绍在程序中命名的规范，命名随处可见，变量、函数、类、模块、命名空间等都需要有好的命名。一个名称如果能让阅读者一看就知道要表达的意思，就可以认为是一个好的名称。</p>
+<p>不要使用单个字母来做变量名，时间一长，自己都不清楚自己当初的命名是什么意思。小方法体，如循环中的计数器除外。</p>
+<p>不要使用有误导性的字母作为变量名，比如小写字母l和大写字母O，因为他们和数字的一和零很像，有的字体还比较好区分，但大多数字体很难分辨。</p>
+<p>“匈牙利命名法（HN）”：该命名法是一位叫 Charles Simonyi 的匈牙利程序员发明的，后来他在微软呆了几年，于是这种命名法就通过微软的各种产品和文档资料向世界传播开了。在当时那个时代编译器并不做类型检查，程序员需要使用HN来帮助自己记住类型。现在的一些高级静态编程语言具有更丰富的类型系统，编译器可以很好的做类型检查，所以使用NH纯属多余。使用NH的几个弊端：</p>
+<ul>
+<li>增加了名称的长度；</li>
+<li>使名称变得不可读，而在本章的2.5小节有强调要使用可以读得出来的名称；</li>
+<li>增加了修改名称的难度，修改了变量的类型，变量名就要随着修改，否则会造成误导。</li>
+</ul>
+<p>本章中讲到对接口的命名不要使用“I”作为前缀，这点我持保留意见，可能因为我一直是从事的Net上的开发，DotNet的类库中的接口基本都是使用“I”作为前缀的，而且在《NET 设计规范》一书中也强调接口要使用“I”作为前缀。</p>
+<p>类名使用名词或是名词短语，而不应当使用动词。</p>
+<p>对于方法名做到每个概念一个词，应该保持一致，比如对于绑定数据的方法，不要有的地方用BindData，而另一些地方使用DataBind 。</p>
+<p>最后想说的是命名除了一些通用的法则外，对于一些规范性的问题还是要遵循所使用语言或平台规定或是约定俗成的惯例。比如方法名C#中推荐使用Passcal风格，而在Java中则是使用Camel风格。</p>
+<h2 id="第三章-函数"><a href="#第三章-函数" class="headerlink" title="第三章 函数"></a>第三章 函数</h2><p>函数一直都被要求要短小，有不少书中都以行数来作为标准，比如一个行数在20行以内被称为小函数，或是要在5行以内才是小函数。以行数来要求似乎有些苛刻，有一些极端的情况，比如初始化一个Model，里面有几十个字段，这时这个初始化函数中就有几十行代码，而且是无法拆分的，所以我认为，函数只要是在做一件事情就可以了。通常来说如果函数只做一件事，自然就不会很长。我对函数长度的极限是横竖都不要超过一屏。</p>
+<p>函数应该只做一件事，判断函数时候只做一件事，看函数中是否很能够拆分，如果可以，就果断进行重构。</p>
+<p>当函数中有Swicth语句的时候，就不可避免的要做多件事情了，而且函数会随着Switch条件的增加会越来越长。因为函数中做了多件事情，违反了SRP原则，因为随着增加条件我们要去修改这个函数，违反了OCP原则。这个问题可以通过工厂模式来解决。</p>
+<p>函数的名称要使用描述性的名称，让人一看名称就知道该函数是做什么的。当函数只做一件事情的时候，取名就容易多了。还有比较重要的一点，风格要保持一致。</p>
+<p>函数的参数要尽可能的少，书中要求是最好不要超过3个参数，当超过的时候就要将参数提取为一个对象，但实际中很难做到，通常都是为了省事，但有N多参数的函数会给阅读者带来障碍，特别是当参数名还词不达意的时候。</p>
+<p>在一个函数中不要去调用职责之外的另外的函数，尤其是底层的函数，否则给高层调用带来风险。举个简单的例子：比如在用户登录的时候我们可能会有一个CheckPassword的方法来验证登录的用户名和密码，如果在CheckPassword函数中在验证成功后调用Session.Init()来对Session进行初始化，就会存在隐患。根据名称来看只是检查密码用，如果有人在非登录的情况下调用了该方法，会更改当前会话。</p>
+<p>使用异常代替错误返回码，如果使用错误返回码会要求立即处理错误，当在高层调用很多底层方法时，每个方法都要去根据错误返回码进行处理，会造成函数逻辑混乱，如果使用异常处理则只需要在catch中处理即可。</p>
+<p>远离重复，拒绝重复，方法有很多，抽象到基类或放到底层公共类库中。</p>
+<p>没有人能一次性就将函数写的很完美，好的函数是通过重构得到的。</p>
+<h2 id="第四章-注释"><a href="#第四章-注释" class="headerlink" title="第四章 注释"></a>第四章 注释</h2><p>注释是一把双刃剑，好的注释能够给我们好的指导，不好的注释只会将我们误导。注释是弥补代码子表述不足的一种手段，就像设计模式是用来弥补语言不足一样。</p>
+<p>代码是我们获取信息的准确来源，注释随着项目人员的更替 反复的修改最终可能词不达意了，因为很多开发人员在整合代码，修改方法的时候并不是总是同步修改注释。</p>
+<p>有时候看到一个函数的代码写的很糟糕，逻辑很混乱，有开发人员可能想，给这个函数加上几行注释，这样有可能起到适得其反的作用，这时要做的是将函数整理干净。</p>
+<p>代码即注释，很多书和大师都这么讲，意思是我们要用代码本身来解释我们的意图，那就要求我们要控制好函数只做一件事，函数名和变量名要规范和可读。</p>
+<p>当然也不是所有的注释都没有用，像下面几种类型的注释是有必要的：</p>
+<ul>
+<li>具有警示性的注释；</li>
+<li>描述一些负责业务场景；</li>
+<li>有些函数现在还是一个空壳，但在将来可能有用，有必要写。</li>
+</ul>
+<p>当我们不得不写一些注释的时候，要确保言简意赅，能够很好的表达意思，不要造成误解，也不要写多余的废话。</p>
+<p>还有一种日志被称为日志式注释，一般出现在一个类的开始部分，记录每次修改时的时间、人员名称和修改内容。随着时间的推移这类注释会变得非常冗长。这类注释在一些项目中很普遍，而且有时会被严格要求写，但书中强调现在的源代码都会有源代码工具来进行管理，修改记录在源代码工具中有保存，这种日志式的注释应该全部删除。</p>
+<p>有的开发人员喜欢在注释中签上自己的名字，这种做法也没没有必要，因为我们有源码管理工具。</p>
+<p>项目代码中经常会出现被注释掉的代码，这对后面的维护人员会造成困扰，也会使代码变得混乱，这种代码同样可以删掉，因为我们有源码管理工具。</p>
+<h2 id="第五章-格式"><a href="#第五章-格式" class="headerlink" title="第五章 格式"></a>第五章 格式</h2><p>代码并非可以工作就了事了，还要有良好的代码格式规范，开发人员在维护代码的时候经常会埋怨别人的代码写的很烂，如果不严格要求自己，以后就会成为别人眼中的“别人”了。</p>
+<p>代码格式规范，我认为首先要保证和当前使用的语言、平台保持一致，再就是整个团队中要保持一致。当公司项目的代码规范和使用语言、平台的规范有冲突时尽量说服团队和语言、平台保持一致，实在不行只能和项目组保持一致，像我现在所做的项目由于一些原因还在使用匈牙利命名法，虽然这让我很郁闷，但我还是和他们保持一致。如果是一个新项目则可以团队成员在一起来讨论制定代码规范。</p>
+<p>合理使用空白行，同一类的有关联的放在一起。</p>
+<p>变量申明尽可能靠近使用的地方。</p>
+<p>实体变量放在类的顶部，因为设计良好的类，实体变量会被大多数的方法使用。</p>
+<p>相关函数（一个函数调用了另一个函数）放在一起，也包括的重载的函数。</p>
+<p>一行代码的宽度：120字符之内，最好不要拖动横向滚动条。</p>
+<p>横向空格，比如一个表达式中的符号左边和右边与符号之间加空格，这个在VS中的代码格式化会自动帮我们做了。</p>
+<p>缩进，只有一行的也按缩进规则来。</p>
+<h2 id="第六章-对象和数据结构"><a href="#第六章-对象和数据结构" class="headerlink" title="第六章 对象和数据结构"></a>第六章 对象和数据结构</h2><p>暂略</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2012/05/clear-code-reading-notes-one/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2012/05/clear-code-reading-notes-one/&title=《代码整洁之道》读书笔记(上) - 冯威的博客&summary=全书一共400多页，一共17章，第十三章讲并发，并且在附录A中有对并发的补充，第十四到十六章是一些Java代码的案例，第十七章相当于一个总结。本次写读书笔记主要涵盖前十二章的内容，由于篇幅分为上下两篇。
+第一章 整洁代码代码的质量非常..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=《代码整洁之道》读书笔记(上) - 冯威的博客&amp;body=http://fwhyy.com/2012/05/clear-code-reading-notes-one/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2012/05/clear-code-reading-notes-one/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2012/05/to-save-live-writer-the-default-directory-is-mapped-to-the-baidu-net-disk/">将Live Writer默认保存目录映射到百度网盘<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2012/05/clear-code-reading-notes-two/">《代码整洁之道》读书笔记(下)<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

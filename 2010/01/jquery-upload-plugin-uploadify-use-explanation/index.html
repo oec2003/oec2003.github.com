@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>jQuery上传插件Uploadify使用详解 - 冯威的博客</title>
+
+  
+    <meta name="description" content="本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。  官方下载 官">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery上传插件Uploadify使用详解">
+<meta property="og:url" content="http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。  官方下载 官">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722377.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722966.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722940.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300723549.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300723978.png">
+<meta property="article:published_time" content="2010-01-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-29T23:23:20.937Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="JQuery">
+<meta property="article:tag" content="Uploadify">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722377.png">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87Uploadify%E7%89%88%E6%9C%AC%E4%B8%BA2-1-0%EF%BC%8C%E5%B7%B2%E7%BB%8F%E8%BF%87%E6%97%B6%EF%BC%8C%E6%88%AA%E6%AD%A2%EF%BC%882016-09-25%EF%BC%89%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC3-2-1%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E8%AF%B7%E7%A7%BB%E6%AD%A5%E3%80%8AjQuery%E4%B8%8A%E4%BC%A0%E6%8F%92%E4%BB%B6Uploadify%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3-3-2-1-%E3%80%8B"><span class="toc-text">本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>jQuery上传插件Uploadify使用详解</span></h1>
+<h2 id="本文Uploadify版本为2-1-0，已经过时，截止（2016-09-25）最新版本3-2-1的详细介绍请移步《jQuery上传插件Uploadify使用详解-3-2-1-》"><a href="#本文Uploadify版本为2-1-0，已经过时，截止（2016-09-25）最新版本3-2-1的详细介绍请移步《jQuery上传插件Uploadify使用详解-3-2-1-》" class="headerlink" title="本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》"></a>本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《<a href="http://fwhyy.com/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/">jQuery上传插件Uploadify使用详解(3.2.1)</a>》</h2><p>Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.uploadify.com/download">官方下载</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.uploadify.com/documentation">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.uploadify.com/demo">官方演示</a></li>
+</ul>
+<p>首先按下面的步骤来实现一个简单的上传功能。</p>
+<p>1 创建Web项目，命名为JQueryUploadDemo，从官网上下载最新的版本解压后添加到项目中。</p>
+<p>2 在项目中添加UploadHandler.ashx文件用来处理文件的上传。</p>
+<p>3 在项目图:</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722377.png" alt="2010-12-29_120720"></p>
+<p>4 Default.aspx的html页的代码修改如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</span><br><span class="line">&lt;head runat=&quot;server&quot;&gt;</span><br><span class="line">    &lt;title&gt;Uploadify&lt;/title&gt;</span><br><span class="line">    &lt;link href=&quot;JS/jquery.uploadify-v2.1.0/example/css/default.css&quot;</span><br><span class="line">     rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span><br><span class="line">    &lt;link href=&quot;JS/jquery.uploadify-v2.1.0/uploadify.css&quot;</span><br><span class="line">     rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;</span><br><span class="line">     src=&quot;JS/jquery.uploadify-v2.1.0/jquery-1.3.2.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;</span><br><span class="line">     src=&quot;JS/jquery.uploadify-v2.1.0/swfobject.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;</span><br><span class="line">   src=&quot;JS/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        $(document).ready(function()</span><br><span class="line">        &#123;</span><br><span class="line">            $(&quot;#uploadify&quot;).uploadify(&#123;</span><br><span class="line">                &#x27;uploader&#x27;: &#x27;JS/jquery.uploadify-v2.1.0/uploadify.swf&#x27;,</span><br><span class="line">                &#x27;script&#x27;: &#x27;UploadHandler.ashx&#x27;,</span><br><span class="line">                &#x27;cancelImg&#x27;: &#x27;JS/jquery.uploadify-v2.1.0/cancel.png&#x27;,</span><br><span class="line">                &#x27;folder&#x27;: &#x27;UploadFile&#x27;,</span><br><span class="line">                &#x27;queueID&#x27;: &#x27;fileQueue&#x27;,</span><br><span class="line">                &#x27;auto&#x27;: false,</span><br><span class="line">                &#x27;multi&#x27;: true</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;fileQueue&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;uploadify&quot; id=&quot;uploadify&quot; /&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;a href=&quot;javascript:$(&#x27;#uploadify&#x27;).uploadifyUpload()&quot;&gt;上传&lt;/a&gt;|</span><br><span class="line">      &lt;a href=&quot;javascript:$(&#x27;#uploadify&#x27;).uploadifyClearQueue()&quot;&gt;取消上传&lt;/a&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>5  UploadHandler类的ProcessRequest方法代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void ProcessRequest(HttpContext context)</span><br><span class="line">&#123;</span><br><span class="line">    context.Response.ContentType = &quot;text/plain&quot;;</span><br><span class="line">    context.Response.Charset = &quot;utf-8&quot;;   </span><br><span class="line"></span><br><span class="line">    HttpPostedFile file = context.Request.Files[&quot;Filedata&quot;];</span><br><span class="line">    string  uploadPath =</span><br><span class="line">        HttpContext.Current.Server.MapPath(@context.Request[&quot;folder&quot;])+&quot;\\&quot;;  </span><br><span class="line"></span><br><span class="line">    if (file != null)</span><br><span class="line">    &#123;</span><br><span class="line">       if (!Directory.Exists(uploadPath))</span><br><span class="line">       &#123;</span><br><span class="line">           Directory.CreateDirectory(uploadPath);</span><br><span class="line">       &#125;</span><br><span class="line">       file.SaveAs(uploadPath + file.FileName);</span><br><span class="line">        //下面这句代码缺少的话，上传成功后上传队列的显示不会自动消失</span><br><span class="line">       context.Response.Write(&quot;1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        context.Response.Write(&quot;0&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6 运行后效果如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722966.png" alt="2010-12-29_120813"></p>
+<p>7 选择了两个文件后，点击上传，就可以看到UploadFile文件夹中会增加这两个文件。</p>
+<p>上面简单地实现了一个上传的功能，依靠函数uploadify实现，uploadify函数的参数为json格式，可以对json对象的key值的修改来进行自定义的设置，如multi设置为true或false来控制是否可以进行多文件上传，下面就来介绍下这些key值的意思：</p>
+<p>uploader ： uploadify.swf 文件的相对路径，该swf文件是一个带有文字BROWSE的按钮，点击后淡出打开文件对话框，默认值：uploadify.swf。</p>
+<p>script ：   后台处理程序的相对路径 。默认值：uploadify.php</p>
+<p>checkScript ：用来判断上传选择的文件在服务器是否存在的后台处理程序的相对路径</p>
+<p>fileDataName ：设置一个名字，在服务器处理程序中根据该名字来取上传文件的数据。默认为Filedata</p>
+<p>method ： 提交方式Post 或Get 默认为Post</p>
+<p>scriptAccess ：flash脚本文件的访问模式，如果在本地测试设置为always，默认值：sameDomain<br>folder ： 上传文件存放的目录 。</p>
+<p>queueID ： 文件队列的ID，该ID与存放文件队列的div的ID一致。</p>
+<p>queueSizeLimit ： 当允许多文件生成时，设置选择文件的个数，默认值：999 。</p>
+<p>multi ： 设置为true时可以上传多个文件。</p>
+<p>auto ： 设置为true当选择文件后就直接上传了，为false需要点击上传按钮才上传 。</p>
+<p>fileDesc ： 这个属性值必须设置fileExt属性后才有效，用来设置选择文件对话框中的提示文本，如设置fileDesc为“请选择rar doc pdf文件”，打开文件选择框效果如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300722940.png" alt="2010-12-29_120847"></p>
+<p>fileExt ： 设置可以选择的文件的类型，格式如：’*.doc;<em>.pdf;</em>.rar’ 。</p>
+<p>sizeLimit ： 上传文件的大小限制 。</p>
+<p>simUploadLimit ： 允许同时上传的个数 默认值：1 。</p>
+<p>buttonText ： 浏览按钮的文本，默认值：BROWSE 。</p>
+<p>buttonImg ： 浏览按钮的图片的路径 。</p>
+<p>hideButton ： 设置为true则隐藏浏览按钮的图片 。</p>
+<p>rollover ： 值为true和false，设置为true时当鼠标移到浏览按钮上时有反转效果。</p>
+<p>width ： 设置浏览按钮的宽度 ，默认值：110。</p>
+<p>height ： 设置浏览按钮的高度 ，默认值：30。</p>
+<p>wmode ： 设置该项为transparent 可以使浏览按钮的flash背景文件透明，并且flash文件会被置为页面的最高层。 默认值：opaque 。</p>
+<p>cancelImg ：选择文件到文件队列中后的每一个文件上的关闭按钮图标，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300723549.png" alt="2010-12-29_120923"></p>
+<p>上面介绍的key值的value都为字符串或是布尔类型，比较简单，接下来要介绍的key值的value为一个函数，可以在选择文件、出错或其他一些操作的时候返回一些信息给用户。</p>
+<p>onInit : 做一些初始化的工作。</p>
+<p>onSelect ：选择文件时触发，该函数有三个参数</p>
+<ul>
+<li>event:事件对象。</li>
+<li>queueID：文件的唯一标识，由6为随机字符组成。</li>
+<li>fileObj：选择的文件对象，有name、size、creationDate、modificationDate、type 5个属性。</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    $(&quot;#uploadify&quot;).uploadify(&#123;</span><br><span class="line">        &#x27;uploader&#x27;: &#x27;JS/jquery.uploadify-v2.1.0/uploadify.swf&#x27;,</span><br><span class="line">        &#x27;script&#x27;: &#x27;UploadHandler.ashx&#x27;,</span><br><span class="line">        &#x27;cancelImg&#x27;: &#x27;JS/jquery.uploadify-v2.1.0/cancel.png&#x27;,</span><br><span class="line">        &#x27;folder&#x27;: &#x27;UploadFile&#x27;,</span><br><span class="line">        &#x27;queueID&#x27;: &#x27;fileQueue&#x27;,</span><br><span class="line">        &#x27;auto&#x27;: false,</span><br><span class="line">        &#x27;multi&#x27;: true,</span><br><span class="line">        &#x27;onInit&#x27;:function()&#123;alert(&quot;1&quot;);&#125;,</span><br><span class="line">        &#x27;onSelect&#x27;: function(e, queueId, fileObj)</span><br><span class="line">        &#123;</span><br><span class="line">            alert(&quot;唯一标识:&quot; + queueId + &quot;\r\n&quot; +</span><br><span class="line">                  &quot;文件名：&quot; + fileObj.name + &quot;\r\n&quot; +</span><br><span class="line">                  &quot;文件大小：&quot; + fileObj.size + &quot;\r\n&quot; +</span><br><span class="line">                  &quot;创建时间：&quot; + fileObj.creationDate + &quot;\r\n&quot; +</span><br><span class="line">                  &quot;最后修改时间：&quot; + fileObj.modificationDate + &quot;\r\n&quot; +</span><br><span class="line">                  &quot;文件类型：&quot; + fileObj.type</span><br><span class="line">            );</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);  </span><br></pre></td></tr></table></figure>
+
+<p>当选择一个文件后弹出的消息如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201300723978.png" alt="2010-12-29_121000"></p>
+<p>onSelectOnce ：在单文件或多文件上传时，选择文件时触发。该函数有两个参数event，data，data对象有以下几个属性：</p>
+<ul>
+<li>fileCount：选择文件的总数。</li>
+<li>filesSelected：同时选择文件的个数，如果一次选择了3个文件该属性值为3。</li>
+<li>filesReplaced：如果文件队列中已经存在A和B两个文件，再次选择文件时又选择了A和B，该属性值为2。</li>
+<li>allBytesTotal：所有选择的文件的总大小。</li>
+</ul>
+<p>onCancel : 当点击文件队列中文件的关闭按钮或点击取消上传时触发。该函数有event、queueId、fileObj、data四个参数，前三个参数同onSelect 中的三个参数，data对象有两个属性fileCount和allBytesTotal。</p>
+<ul>
+<li>fileCount：取消一个文件后，文件队列中剩余文件的个数。</li>
+<li>allBytesTotal：取消一个文件后，文件队列中剩余文件的大小。</li>
+</ul>
+<p>onClearQueue ：当调用函数fileUploadClearQueue时触发。有event和data两个参数，同onCancel 中的两个对应参数。</p>
+<p>onQueueFull ：当设置了queueSizeLimit并且选择的文件个数超出了queueSizeLimit的值时触发。该函数有两个参数event和queueSizeLimit。</p>
+<p>onError ：当上传过程中发生错误时触发。该函数有event、queueId、fileObj、errorObj四个参数，其中前三个参数同上，errorObj对象有type和info两个属性。</p>
+<ul>
+<li>type：错误的类型，有三种‘HTTP’, ‘IO’, or ‘Security’</li>
+<li>info：错误的描述</li>
+</ul>
+<p>onOpen ：点击上传时触发，如果auto设置为true则是选择文件时触发，如果有多个文件上传则遍历整个文件队列。该函数有event、queueId、fileObj三个参数，参数的解释同上。</p>
+<p>onProgress ：点击上传时触发，如果auto设置为true则是选择文件时触发，如果有多个文件上传则遍历整个文件队列，在onOpen之后触发。该函数有event、queueId、fileObj、data四个参数，前三个参数的解释同上。data对象有四个属性percentage、bytesLoaded、allBytesLoaded、speed：</p>
+<ul>
+<li>percentage：当前完成的百分比</li>
+<li>bytesLoaded：当前上传的大小</li>
+<li>allBytesLoaded：文件队列中已经上传完的大小</li>
+<li>speed：上传速率 kb/s</li>
+</ul>
+<p>onComplete：文件上传完成后触发。该函数有四个参数event、queueId、fileObj、response、data五个参数，前三个参数同上。response为后台处理程序返回的值，在上面的例子中为1或0，data有两个属性fileCount和speed</p>
+<ul>
+<li>fileCount：剩余没有上传完成的文件的个数。</li>
+<li>speed：文件上传的平均速率 kb/s</li>
+</ul>
+<p>注：fileObj对象和上面讲到的有些不太一样，onComplete 的fileObj对象有个filePath属性可以取出上传文件的路径。</p>
+<p>onAllComplete：文件队列中所有的文件上传完成后触发。该函数有event和data两个参数，data有四个属性，分别为：</p>
+<ul>
+<li>filesUploaded :上传的所有文件个数。</li>
+<li>errors ：出现错误的个数。</li>
+<li>allBytesLoaded ：所有上传文件的总大小。</li>
+<li>speed ：平均上传速率 kb/s</li>
+</ul>
+<p>相关函数介绍</p>
+<p>在上面的例子中已经用了uploadifyUpload和uploadifyClearQueue两个函数，除此之外还有几个函数：</p>
+<p>uploadifySettings：可以动态修改上面介绍的那些key值，如下面代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#uploadify&#x27;).uploadifySettings(&#x27;folder&#x27;,&#x27;JS&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>如果上传按钮的事件写成下面这样，文件将会上传到uploadifySettings定义的目录中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:$(&#x27;#uploadify&#x27;).uploadifySettings(&#x27;folder&#x27;,&#x27;JS&#x27;);</span><br><span class="line">$(&#x27;#uploadify&#x27;).uploadifyUpload()&quot;&gt;上传&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>uploadifyCancel：该函数接受一个queueID作为参数，可以取消文件队列中指定queueID的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#uploadify&#x27;).uploadifyCancel(id);</span><br></pre></td></tr></table></figure>
+
+<p>花了一个晚上，终于写完了，对JQuery这个上传插件也基本了解了，希望对大家有所帮助，不对之处还望大家指正。</p>
+<p><a target="_blank" rel="noopener" href="http://files.cnblogs.com/oec2003/JQueryUploadDemo.rar">源码下载</a></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/&title=jQuery上传插件Uploadify使用详解 - 冯威的博客&summary=本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=jQuery上传插件Uploadify使用详解 - 冯威的博客&amp;body=http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2010/01/the-first-snow-of-2010/">2010年的第一场雪<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2010/01/wuhan-goodbye/">武汉 再见<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

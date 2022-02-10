@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>在Asp.Net中使用jQueryEasyUI - 冯威的博客</title>
+
+  
+    <meta name="description" content="前言最近做一个小工具，列表显示页面准备使用jQuery的UI框架，因为之前知道有jQWidgets这个框架,所以直接就下载下来使用了,jQWidgets的功能很强大,Demo和文档也非常详细,但使用后发现有几个问题就果断放弃了使用jQWidgets:  页面加载速度比较慢 当列表字段过多出现横向滚动条时,拖动滚动条非常卡(在IE下都很卡,Chrome好点) 分页取数稍显麻烦,也可能是我没研究透。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Asp.Net中使用jQueryEasyUI">
+<meta property="og:url" content="http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="前言最近做一个小工具，列表显示页面准备使用jQuery的UI框架，因为之前知道有jQWidgets这个框架,所以直接就下载下来使用了,jQWidgets的功能很强大,Demo和文档也非常详细,但使用后发现有几个问题就果断放弃了使用jQWidgets:  页面加载速度比较慢 当列表字段过多出现横向滚动条时,拖动滚动条非常卡(在IE下都很卡,Chrome好点) 分页取数稍显麻烦,也可能是我没研究透。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290653234.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290653327.jpg">
+<meta property="article:published_time" content="2012-11-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-28T22:53:50.254Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="AspNet">
+<meta property="article:tag" content="JQuery">
+<meta property="article:tag" content="JQueryEasyUI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290653234.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%BC%95%E7%94%A8"><span class="toc-text">下载引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQueryEasyUI-Grid%E7%9A%84%E5%88%86%E9%A1%B5"><span class="toc-text">jQueryEasyUI Grid的分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQueryEasyUI%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%8F%96%E5%80%BC"><span class="toc-text">jQueryEasyUI控件的取值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid-ToolBar%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">Grid ToolBar的两种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Form%E8%A1%A8%E5%8D%95%E7%9A%84%E6%8F%90%E4%BA%A4"><span class="toc-text">Form表单的提交</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2012-11-24T16:00:00.000Z">2012-11-25</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>在Asp.Net中使用jQueryEasyUI</span></h1>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近做一个小工具，列表显示页面准备使用jQuery的UI框架，因为之前知道有jQWidgets这个框架,所以直接就下载下来使用了,<a target="_blank" rel="noopener" href="http://www.jqwidgets.com/">jQWidgets</a>的功能很强大,Demo和文档也非常详细,但使用后发现有几个问题就果断放弃了使用jQWidgets:</p>
+<ul>
+<li>页面加载速度比较慢</li>
+<li>当列表字段过多出现横向滚动条时,拖动滚动条非常卡(在IE下都很卡,Chrome好点)</li>
+<li>分页取数稍显麻烦,也可能是我没研究透。</li>
+</ul>
+<p>经过一番比较选择了<a target="_blank" rel="noopener" href="http://www.jeasyui.com/">jQueryEasUI</a>，目前最新版本为1.3.1：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.jeasyui.com/download/index.php">官方下载</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.jeasyui.com/demo/main/index.php">官方演示</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.jeasyui.com/documentation/index.php">官方文档</a></li>
+</ul>
+<p>其实是用类似的框架，看看官网的文档也就OK了，本文是我最近是用jQueryEasyUI的一个总结，也可以让初使用jQueryEasyUI的朋友少走弯路。</p>
+<h2 id="下载引用"><a href="#下载引用" class="headerlink" title="下载引用"></a>下载引用</h2><p>下载后解压的文件目录如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290653234.jpg" alt="2012-11-22_212942"></p>
+<ul>
+<li><p>demo：JQueryEasyUI的一些示例页面，在项目使用可以将该目录删除</p>
+</li>
+<li><p>locale：该目录中是一些本地化文件，用来支持不同的语言，如中文可以引用其中的easyui-lang-zh_CN.js</p>
+</li>
+<li><p>plugins和src：这两个目录中是支持JQueryEasyUI各种功能的js文件</p>
+</li>
+<li><p>themes：主题目录，目录中有三种主题，default、gray和metro，另外还有一个icons目录和icon.css，在页面使用引用icon.css即可。</p>
+</li>
+</ul>
+<p>使用jQueryEasyUI需要引用四个文件，两个css和两个js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../Scripts/jqueryeasyui/themes/gray/easyui.css&quot; /&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../Scripts/jqueryeasyui/themes/icon.css&quot; /&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../Scripts/jqueryeasyui/jquery-1.8.0.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../Scripts/jqueryeasyui/jquery.easyui.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果需要使用本地化 还需要引用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../Scripts/jqueryeasyui/locale/easyui-lang-zh_CN.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="jQueryEasyUI-Grid的分页"><a href="#jQueryEasyUI-Grid的分页" class="headerlink" title="jQueryEasyUI Grid的分页"></a>jQueryEasyUI Grid的分页</h2><p>根据官网的文档可以很容易的构建Grid，期初我没有引用本地化文件easyui-lang-zh_CN.js，列表的分页栏显示出来是英文的，在网上查阅后得知可以用代码的方式重新构建分页栏：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//设置分页控件  var p = $(&#x27;#dg&#x27;).datagrid(&#x27;getPager&#x27;);</span><br><span class="line">$(p).pagination(&#123;</span><br><span class="line">    pageSize: 10, //每页显示的记录条数，默认为10  </span><br><span class="line">    pageList: [10, 20, 30, 40, 50], //可以设置每页记录条数的列表         beforePageText: &#x27;第&#x27;, //页数文本框前显示的汉字 </span><br><span class="line">    afterPageText: &#x27;页    共 &#123;pages&#125; 页&#x27;,</span><br><span class="line">    displayMsg: &#x27;当前显示 &#123;from&#125; - &#123;to&#125; 条记录 共 &#123;total&#125; 条记录&#x27;</span><br><span class="line">    /*onBeforeRefresh:function()&#123;                       $(this).pagination(&#x27;loading&#x27;);              </span><br><span class="line">    alert(&#x27;before refresh&#x27;);              $(this).pagination(&#x27;loaded&#x27;);          &#125;*/</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>后来发现只需要引用本地化文件easyui-lang-zh_CN.js后分页栏就自动显示为中文了。引用本地化文件还可以解决日历控件格式的问题，所以如果是做中文系统建议还是在页面中引用本地化文件。</p>
+<h2 id="jQueryEasyUI控件的取值"><a href="#jQueryEasyUI控件的取值" class="headerlink" title="jQueryEasyUI控件的取值"></a>jQueryEasyUI控件的取值</h2><p>使用JQuery取控件的值很简单，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#CstName&quot;).val();</span><br><span class="line">$(&quot;#TaskNo&quot;).val(),</span><br></pre></td></tr></table></figure>
+
+<p>如果要使用jQueryEasyUI的日历控件、下拉控件或其他的一些控件，给普通的input、select控件添加一个class即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;FeedBackDate&quot; name=&quot;FeedBackDate&quot; class=&quot;easyui-datebox&quot; maxlength=&quot;10&quot;</span><br><span class="line"> style=&quot;width: 150px;&quot; /&gt;</span><br><span class="line">&lt;select id=&quot;IsKfCl&quot; class=&quot;easyui-combobox&quot; name=&quot;IsKfCl&quot; style=&quot;width:150px;&quot;&gt; </span><br><span class="line">    &lt;option value=&quot;&quot;&gt;&lt;/option&gt;   </span><br><span class="line">    &lt;option value=&quot;是&quot;&gt;是&lt;/option&gt;  </span><br><span class="line">    &lt;option value=&quot;否&quot;&gt;否&lt;/option&gt;  </span><br><span class="line">&lt;/select&gt; </span><br></pre></td></tr></table></figure>
+
+<p>现在取这些控件的值需要使用下面的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#FeedBackDate&quot;).datebox(&quot;getValue&quot;);</span><br><span class="line">$(&quot;#IsKfCl&quot;).combobox(&quot;getValue&quot;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Grid-ToolBar的两种方式"><a href="#Grid-ToolBar的两种方式" class="headerlink" title="Grid ToolBar的两种方式"></a>Grid ToolBar的两种方式</h2><p>通常在Grid列表控件的上方会添加一些按钮如：新增、编辑、删除等，如下面效果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201290653327.jpg" alt="2012-11-25_144045_thumb"></p>
+<p>在jQueryEasyUI中可以使用ToolBar来实现，ToolBar可以在DataGrid初始化时定义，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#dg&#x27;).datagrid(&#123;</span><br><span class="line">    collapsible: false,</span><br><span class="line">    fitColumns: true,</span><br><span class="line">    singleSelect: true,</span><br><span class="line">    remoteSort: false,</span><br><span class="line">    sortName: &#x27;RoleName&#x27;,</span><br><span class="line">    sortOrder: &#x27;desc&#x27;,</span><br><span class="line">    nowrap: true,</span><br><span class="line">    method: &#x27;get&#x27;,</span><br><span class="line">    loadMsg: &#x27;正在加载数据...&#x27;,</span><br><span class="line">    url: &#x27;...&#x27;,</span><br><span class="line">    frozenColumns: [[</span><br><span class="line">        &#123; field: &#x27;ck&#x27;, checkbox: true &#125;</span><br><span class="line">    ]],</span><br><span class="line">    columns: [[</span><br><span class="line">        &#123; field: &#x27;ID&#x27;, title: &#x27;ID&#x27;, width: 80, sortable: true &#125;,</span><br><span class="line">        &#123; field: &#x27;Name&#x27;, title: &#x27;名称&#x27;, width: 100,sortable:true &#125;</span><br><span class="line">    ]],</span><br><span class="line">    pagination: true,</span><br><span class="line">    pageNumber: 1,</span><br><span class="line">    rownumbers: true,</span><br><span class="line">    toolbar:</span><br><span class="line">    [</span><br><span class="line">        &#123;</span><br><span class="line">            id: &#x27;btnAdd&#x27;,</span><br><span class="line">            text: &#x27;添加&#x27;,</span><br><span class="line">            iconCls: &#x27;icon-add&#x27;,</span><br><span class="line">            handler: function() &#123;</span><br><span class="line">                $(&quot;#name&quot;).val(&quot;&quot;);</span><br><span class="line">                add();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x27;-&#x27;,</span><br><span class="line">        &#123;</span><br><span class="line">            id: &#x27;btnEdit&#x27;,</span><br><span class="line">            text: &#x27;编辑&#x27;,</span><br><span class="line">            iconCls: &#x27;icon-edit&#x27;,</span><br><span class="line">            handler: function() &#123;</span><br><span class="line">                var selected = $(&#x27;#dg&#x27;).datagrid(&#x27;getSelected&#x27;);</span><br><span class="line">                if (selected) &#123;</span><br><span class="line">                    var name = selected.Name;</span><br><span class="line">                    $(&quot;#Name&quot;).val(name);</span><br><span class="line">                    edit();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x27;-&#x27;,</span><br><span class="line">        &#123;</span><br><span class="line">            id: &#x27;btnDelete&#x27;,</span><br><span class="line">            text: &#x27;删除&#x27;,</span><br><span class="line">            disabled: true,</span><br><span class="line">            iconCls: &#x27;icon-remove&#x27;,</span><br><span class="line">            handler: function() &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>还有一种方法就是将ToolBar单独定义在div中，然后在DataGrid的初始化时关联div的ID，首先定义ToolBar的div，ID为tb：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--工具栏--&gt;</span><br><span class="line">&lt;div id=&quot;tb&quot; style=&quot;padding: 5px; height: auto;display:none;&quot;&gt;</span><br><span class="line">    &lt;div style=&quot;margin-bottom: 5px&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-add&quot; onclick=&quot;add()&quot;&gt;新增&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-edit&quot; onclick=&quot;edit()&quot;&gt;编辑-&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-edit&quot; onclick=&quot;copyAdd()&quot;&gt;拷贝′&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-cut&quot; onclick=&quot;copyVss()&quot;&gt;复制地址·&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-save&quot; onclick=&quot;downReg()&quot;&gt;下载REG&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-remove&quot; onclick=&quot;del()&quot;&gt;删除y&lt;/a&gt;</span><br><span class="line">        &lt;!--查询区域--&gt;</span><br><span class="line">        区域:&lt;input id=&quot;seaArea&quot; style=&quot;width: 100px&quot; /&gt;</span><br><span class="line">        客户名称:&lt;input id=&quot;seaCstName&quot; style=&quot;width: 100px&quot; /&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconcls=&quot;icon-search&quot; onclick=&quot;searchSrcCode()&quot;&gt;查询&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在DataGrid的初始化时设置toobar属性值为tb：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pagination: true,</span><br><span class="line">pageNumber: 1,</span><br><span class="line">rownumbers: true,</span><br><span class="line">toolbar: &#x27;#tb&#x27;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>单独定义ToolBar个人认为要灵活些，也会让JS代码简洁些。</p>
+<h2 id="Form表单的提交"><a href="#Form表单的提交" class="headerlink" title="Form表单的提交"></a>Form表单的提交</h2><p>上面说过了列表的显示，下面就来讲下数据的提交，有两种方式可以实现：</p>
+<ul>
+<li>自己组织数据然后用Ajax（GET POST）提交</li>
+<li>使用Form表单提交的方式。</li>
+</ul>
+<p>我在刚使用的时候是使用的第一种方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//保存</span><br><span class="line">function saveFeedBackLog(mode,id) &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: &quot;POST&quot;,</span><br><span class="line">        dataType: &quot;json&quot;,</span><br><span class="line">        //cache:true,</span><br><span class="line">        url: &quot;../Ajax/FeedBackLogAjax.ashx?Method=SaveFeedBackLog&quot;,</span><br><span class="line">        data: &#123; FeedBackDate: $(&quot;#FeedBackDate&quot;).datebox(&quot;getValue&quot;),</span><br><span class="line">            CstName: $(&quot;#CstName&quot;).val(),</span><br><span class="line">            TaskNo: $(&quot;#TaskNo&quot;).val(),</span><br><span class="line">            FeedBackContent: $(&quot;#FeedBackContent&quot;).val(),</span><br><span class="line">            CsZrr: $(&quot;#CsZrr&quot;).combobox(&quot;getValue&quot;),</span><br><span class="line">            CsYzResult: $(&quot;#CsYzResult&quot;).val(),</span><br><span class="line">            IsKfCl: ,</span><br><span class="line">            KfZrr: $(&quot;#KfZrr&quot;).combobox(&quot;getValue&quot;),</span><br><span class="line">            EndDate: $(&quot;#EndDate&quot;).datebox(&quot;getValue&quot;),</span><br><span class="line">            KfClDate: $(&quot;#KfClDate&quot;).val(),</span><br><span class="line">            Wtyy: $(&quot;#Wtyy&quot;).val(),</span><br><span class="line">            Mode:mode,</span><br><span class="line">            ID:id</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        success: function (data) &#123;</span><br><span class="line">        //..........</span><br></pre></td></tr></table></figure>
+
+<p>当页面字段比较多的时候会比较麻烦，保存时需要将每个字段的值逐一取出传送到后台，编辑时也需要将行中各字段的值逐一取出赋给表单中的控件，后来发现jQueryEasyUI提供Form的Ajax提交的方式，会使代码精简很多,而且使用Form表单提交的方式还能用到jQueryEasyUI提供的一些验证控件。</p>
+<p>编辑时赋值给表单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function edit() &#123;</span><br><span class="line">    var rowData = $(&#x27;#dg&#x27;).datagrid(&#x27;getSelections&#x27;);</span><br><span class="line">    if (rowData.length == 0) &#123;</span><br><span class="line">        $.messager.alert(&#x27;提示&#x27;, &#x27;请选择要编辑的项！&#x27;,&#x27;info&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if (rowData.length &gt; 1) &#123;</span><br><span class="line">        $.messager.alert(&#x27;提示&#x27;, &#x27;只能选择一项进行编辑！&#x27;,&#x27;info&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        _mode = &quot;2&quot;;</span><br><span class="line">        var row = $(&#x27;#dg&#x27;).datagrid(&#x27;getSelected&#x27;);</span><br><span class="line">        openDialog();</span><br><span class="line">        $(&#x27;#fm&#x27;).form(&#x27;load&#x27;, row);</span><br><span class="line">        _srcCodeManageID = row.SrcCodeManageID;</span><br><span class="line">        url = &quot;../Ajax/SrcCodeManageAjax.ashx?Method=SaveSrcCodeManage&amp;ID=&quot; + row.SrcCodeManageID+&quot;&amp;Mode=&quot;+_mode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//保存</span><br><span class="line">function saveSrc() &#123;</span><br><span class="line">    $(&#x27;#fm&#x27;).form(&#x27;submit&#x27;, &#123;</span><br><span class="line">        url: url,</span><br><span class="line">        onSubmit: function () &#123;</span><br><span class="line">            return $(this).form(&#x27;validate&#x27;);</span><br><span class="line">        &#125;,</span><br><span class="line">        success: function (data) &#123;</span><br><span class="line">            if (data ==&quot;Success&quot;) &#123;</span><br><span class="line">                $(&#x27;#dlg&#x27;).dialog(&#x27;close&#x27;);      // close the dialog  </span><br><span class="line">                $(&#x27;#dg&#x27;).datagrid(&#x27;reload&#x27;);    // reload the user data  </span><br><span class="line">                $.messager.alert(&#x27;提示&#x27;, &#x27;保存成功!&#x27;, &#x27;info&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">            else if (data==&quot;Error&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                $.messager.alert(&#x27;错误&#x27;, &#x27;系统出错!&#x27;, &#x27;error&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出第二种方法相比第一种代码精简了很多，而且保存时还能用到表单的一些校验，比如设置必填项、电话、邮件格式等。</p>
+<p>当然jQueryEasyUI还有很多其他的控件和功能，有待以后慢慢研究，希望本文对你有所帮助。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/&title=在Asp.Net中使用jQueryEasyUI - 冯威的博客&summary=前言最近做一个小工具，列表显示页面准备使用jQuery的UI框架，因为之前知道有jQWidgets这个框架,所以直接就下载下来使用了,jQWidgets的功能很强大,Demo和文档也非常详细,但使用后发现有几个问题就果断放弃了使用jQ..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=在Asp.Net中使用jQueryEasyUI - 冯威的博客&amp;body=http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2012/11/using-git-in-vs2010/">在VS2010中使用Git【图文】<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2013/01/unenabled-wordpress-plug-in-for-update-database/">通过修改数据库的方式禁用WordPress插件<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>开发总结—数据库篇 - 冯威的博客</title>
+
+  
+    <meta name="description" content="本文是我在平时工作中所遇到的数据库方面的一些知识总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发总结—数据库篇">
+<meta property="og:url" content="http://fwhyy.com/2008/08/summary-the-database-development/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="本文是我在平时工作中所遇到的数据库方面的一些知识总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2008-08-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T12:02:12.496Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="小技巧">
+<meta property="article:tag" content="Sql">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2008-08-05T16:00:00.000Z">2008-08-06</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>开发总结—数据库篇</span></h1>
+<p>本文是我在平时工作中所遇到的数据库方面的一些知识总结</p>
+<span id="more"></span>
+
+<p>1.多条件查询</p>
+<p>多条件查询在实际应用中用的很多，在一些页面上会要求根据时间，类别，或是其他的一些关键字来查询数据，而且这些条件并不是一定要输入的。以前有过在C#代码中根据条件选中的情况来拼where条件字串，也有过在存储过程中用if来判断传进的参数，但是后来知道早存储过程中使用OR是最简单的，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">create Table Users</span><br><span class="line">(</span><br><span class="line">    id int,</span><br><span class="line">    name nvarchar(20),</span><br><span class="line">    age int</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">create proc sp_SGetUserInfo</span><br><span class="line">(</span><br><span class="line">  @Name nvarchar(20),</span><br><span class="line">  @Age int</span><br><span class="line">)</span><br><span class="line">as</span><br><span class="line">select</span><br><span class="line">    *</span><br><span class="line">from</span><br><span class="line">    Users</span><br><span class="line">where</span><br><span class="line">    (@Name=&#x27;&#x27; or name=@Name)</span><br><span class="line">and</span><br><span class="line">    (@Age=&#x27;&#x27; or age=@Age)</span><br></pre></td></tr></table></figure>
+
+<p>2.使用isnull</p>
+<p>对于传进的参数有可能为空或是null的情况，isnull就很有用了。 通常可以这样来判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISNULL(@Name,&#x27;&#x27;)  --如果参数@Name为null，则返回&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>3.在数据库中几个常用的日期格式转换</p>
+<p>日期格式转换也是经常用到的，通常2008-04-12和20080412 这两种格式用的比较多，下面列出一些常用的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CONVERT(VARCHAR(10),GETDATE(),120)</span><br><span class="line">--返回-04-12</span><br><span class="line">CONVERT(VARCHAR(10),GETDATE(),20)</span><br><span class="line">--返回-04-12</span><br><span class="line">CONVERT(VARCHAR(10),GETDATE(),112)</span><br><span class="line">--返回</span><br><span class="line">CONVERT(VARCHAR(10),GETDATE(),111)</span><br><span class="line">--返回/04/12</span><br></pre></td></tr></table></figure>
+
+<p>4.取指定字符串中两个字符 中间的字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">declare @str1 nvarchar(20)</span><br><span class="line">declare @str2 nvarchar(20)</span><br><span class="line">declare @str3 nvarchar(20)</span><br><span class="line">set @str1 = &#x27;ABCDEFGH&#x27;</span><br><span class="line">set @str2 = &#x27;ab&#x27;</span><br><span class="line">set @str3 = &#x27;f&#x27;</span><br><span class="line"></span><br><span class="line">declare @a int  ,@b int</span><br><span class="line">set @a=CHARINDEX(right(@str2,1),@str1) --第二个字符串的最后一个字符的索引</span><br><span class="line">set @b=CHARINDEX(left(@str3,1),@str1)  --第三个字符串的第一个字符的索引</span><br><span class="line"></span><br><span class="line">--结果取得是第二个字符串和?第三个字符串中间的字符</span><br><span class="line">select substring(@str1,@a+1,@b-@a-1)  </span><br></pre></td></tr></table></figure>
+
+<p>5.一个实现拆分由特殊符分隔的字符串的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Create   FUNCTION split</span><br><span class="line">(</span><br><span class="line">  @StrAll varchar(8000),</span><br><span class="line">  @StrSeprate varchar(10)</span><br><span class="line">)</span><br><span class="line">RETURNS @temp TABLE(F1 VARCHAR(100))</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    DECLARE @i INT</span><br><span class="line">    SET @StrAll =rtrim(ltrim(@StrAll ))</span><br><span class="line">    SET @i=charindex(@StrSeprate,@StrAll )</span><br><span class="line">    WHILE @i&gt;=1</span><br><span class="line">    BEGIN</span><br><span class="line">        INSERT @temp VALUES(left(@StrAll ,@i-1))</span><br><span class="line">        SET @StrAll =substring(@StrAll ,@i+1,len(@StrAll )-@i)</span><br><span class="line">        SET @i=charindex(@StrSeprate,@StrAll )</span><br><span class="line">    END</span><br><span class="line">    IF @StrAll &lt;&gt;&#x27;&#x27;</span><br><span class="line">    INSERT @temp VALUES(@StrAll )</span><br><span class="line">    RETURN</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>6.取出数据库中所有的表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name as  tablename from sysobjects where type=&#x27;U&#x27; and name&lt;&gt;&#x27;dtproperties&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>7.sqlserver中取随机数的两种方法</p>
+<p>a.创建一个表Rand，字段是：RandomNum ，存储0到9的数据。</p>
+<p>使用下面SQL语句可产生随机数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select top 1 RandomNum from Rand order by NewID()</span><br></pre></td></tr></table></figure>
+
+<p>b.使用sqlserver提供的Rand()函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select cast( floor(rand()*N) as int)</span><br><span class="line">--产生到N-1之间的随机数</span><br><span class="line">select cast(ceiling(rand() * N) as int)</span><br><span class="line">--产生到N之间的随机数</span><br></pre></td></tr></table></figure>
+
+<p>8.数据库中的集合运算（交， 并 ，差）</p>
+<p>先创建示例表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">create table T1</span><br><span class="line">(</span><br><span class="line">    id int</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">create table T2</span><br><span class="line">(</span><br><span class="line">    id int</span><br><span class="line">)</span><br><span class="line">insert T1</span><br><span class="line">select 1 union all</span><br><span class="line">select 2 union all</span><br><span class="line">select 3 union all</span><br><span class="line">select 4 </span><br><span class="line"></span><br><span class="line">insert T2</span><br><span class="line">select 3 union all</span><br><span class="line">select 4</span><br><span class="line">运算代码：</span><br><span class="line"></span><br><span class="line">--交集</span><br><span class="line">----------------------------------------------</span><br><span class="line">--方法</span><br><span class="line">select *  from T1</span><br><span class="line">intersect</span><br><span class="line">select * from T2</span><br><span class="line">--方法</span><br><span class="line">select distinct</span><br><span class="line">    *</span><br><span class="line">from</span><br><span class="line">    T1</span><br><span class="line">where</span><br><span class="line">    T1.id in (select id from T2)</span><br><span class="line">--方法</span><br><span class="line">select distinct</span><br><span class="line">    *</span><br><span class="line">from</span><br><span class="line">    T1</span><br><span class="line">where exists(select id from T2 where T2.id=T1.id)</span><br><span class="line"></span><br><span class="line">--in和exists 的不同是in只能判断唯一列，而exists可以判断多列</span><br><span class="line">---------------------------------------------------</span><br><span class="line"></span><br><span class="line">--并集</span><br><span class="line">select *  from T1</span><br><span class="line">union all</span><br><span class="line">select * from T2</span><br><span class="line">----------------------------------------------------</span><br><span class="line">--差集</span><br><span class="line">select *  from T1</span><br><span class="line">except</span><br><span class="line">select * from T2</span><br></pre></td></tr></table></figure>
+
+<p>返回结果就不写了，呵呵，大家运行一下就知道了。</p>
+<p>9 在sqlserver实现除法</p>
+<p>通常情况下在用sql语句写除法得到的都是整数部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 29/3</span><br><span class="line">--结果为</span><br></pre></td></tr></table></figure>
+
+<p>用下面的方法可以得到小数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--定义结果变量为Decimal类型</span><br><span class="line">declare @result decimal(18,2)</span><br><span class="line">--关键在于除数要乘以1.0</span><br><span class="line">set @result=cast((29*1.0)/3  as decimal(18,2))</span><br><span class="line">select @result</span><br><span class="line">--结果为9.67</span><br></pre></td></tr></table></figure>
+
+<p>10 SqlServer 中根据时间得到星期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select datename(weekday,&#x27;2009-06-19&#x27;)</span><br><span class="line">--结果星期五 </span><br><span class="line"></span><br><span class="line">select DATEPART(dw,&#x27;2009-06-19&#x27;)</span><br><span class="line">-- 结果6 </span><br><span class="line"></span><br><span class="line">--因为系统默认星期天为一个星期的第一天，所以星期五对应的值为</span><br></pre></td></tr></table></figure>
+
+<p>11 使用sql语句设置表主键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter table TableName alter column ColumnName int not null</span><br><span class="line"> go</span><br><span class="line">alter table TableName add constraint pk_ColumnName primary key(ID)</span><br></pre></td></tr></table></figure>
+
+<p>12 SCOPE_IDENTITY   @@IDENTITY    IDENT_CURRENT的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--SCOPE_IDENTITY和@@IDENTITY都返回上面操作的数据表最后row的IDENTITY 列的值</span><br><span class="line">--不过SCOPE_IDENTITY受到作用域的限制,@@IDENTITY不受作用域的限制</span><br><span class="line">/*</span><br><span class="line">    如有T1和T2两种?表?,在?表?T1中有一insert触发器,当在表T1中插入一条数据时,触发</span><br><span class="line">    器被激发,在T2表中插入一条数据,这时就存在两个作用域,T1 和T2 ,这时如果在</span><br><span class="line">    T1的insert语句后执行SCOPE_IDENTITY() 和@@IDENTITY将返回不同的值</span><br><span class="line">    SCOPE_IDENTITY 返回的是T1的IDENTITY</span><br><span class="line">    @@IDENTITY 返回的是T2的IDENTITY</span><br><span class="line">*/</span><br><span class="line">select SCOPE_IDENTITY()</span><br><span class="line">select @@IDENTITY </span><br><span class="line"></span><br><span class="line">--返回指?定表中的最后一个identity的值</span><br><span class="line">select IDENT_CURRENT(&#x27;TableName&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>13 truncate和delete的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--delete 和truncate的作用作用都是将指定表中的数据清除，但两种方法有很大的区别</span><br><span class="line"></span><br><span class="line">--delete语句是dml,这个操作会放到?rollback segement中</span><br><span class="line">--事务提交之后才生效，如果有相应的trigger,执行的时候将被触发</span><br><span class="line">--用delete删除的数据可以找回来</span><br><span class="line">delete from tablename </span><br><span class="line"></span><br><span class="line">--truncate是ddl, 操作立即生效,</span><br><span class="line">--原数据不放到rollback segment中,不能回滚. 操作不触发trigger</span><br><span class="line">--所以在使用truncate的时候要特别小心</span><br><span class="line">truncate table tablename</span><br></pre></td></tr></table></figure>
+
+<p>14 sqlservr中随机取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--MsSql随机取数据</span><br><span class="line">select top 10 * from tablename order by newid()</span><br><span class="line">--Access 随机取数据</span><br><span class="line">select  top 10 *  FROM tablename order by rnd(id)</span><br><span class="line">--mySql 随机取数据</span><br><span class="line">SELECT * FROM tablename order by rand() limit 10</span><br></pre></td></tr></table></figure>
+
+<p>15 根据当前时间取上个月1号的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select dateadd(month,-1,getdate())-</span><br><span class="line">             day(dateadd(month,-1,getdate()))+1</span><br></pre></td></tr></table></figure>
+
+<p>不断更新中……</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2008/08/summary-the-database-development/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2008/08/summary-the-database-development/&title=开发总结—数据库篇 - 冯威的博客&summary=本文是我在平时工作中所遇到的数据库方面的一些知识总结"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=开发总结—数据库篇 - 冯威的博客&amp;body=http://fwhyy.com/2008/08/summary-the-database-development/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2008/08/summary-the-database-development/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2008/07/remove-the-file-upload-control-values/">清除上传控件 File 的值<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2008/08/sql-to-calculate-a-string-in-the-number-of-occurrences-of-another-string/">SQL 计算一個字符串在另一个字符串中出現的次数<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

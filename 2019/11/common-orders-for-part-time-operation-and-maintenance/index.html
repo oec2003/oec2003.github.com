@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>“兼职”运维的常用命令 - 冯威的博客</title>
+
+  
+    <meta name="description" content="自从产品转到了 dotNET Core 之后，更深入的接触 Linux和 Docker ，而我每天的工作中，有一部分时间相当于在“兼职”做一些运维的事情。下面是一些在日常中常用的命令，算是个备忘吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“兼职”运维的常用命令">
+<meta property="og:url" content="http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="自从产品转到了 dotNET Core 之后，更深入的接触 Linux和 Docker ，而我每天的工作中，有一部分时间相当于在“兼职”做一些运维的事情。下面是一些在日常中常用的命令，算是个备忘吧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201280643303.jpg">
+<meta property="article:published_time" content="2019-11-18T15:49:54.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:43:59.065Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201280643303.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80%EF%BC%9A%E5%B0%86%E5%A4%96%E7%BD%91%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%88%B0%E5%86%85%E7%BD%91%E8%BF%9B%E8%A1%8C%E6%8E%92%E9%94%99"><span class="toc-text">场景一：将外网数据库备份到内网进行排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C%EF%BC%9ACentOS-%E9%98%B2%E7%81%AB%E5%A2%99%E7%9B%B8%E5%85%B3"><span class="toc-text">场景二：CentOS 防火墙相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%89%EF%BC%9ACentOS-%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8"><span class="toc-text">场景三：CentOS 系统常用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%9B%9B%EF%BC%9ACentOS-%E5%AE%89%E8%A3%85-vsftpd%EF%BC%88%E7%89%B9%E5%AE%9A%E7%94%A8%E6%88%B7%E8%AE%BF%E9%97%AE%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">场景四：CentOS 安装 vsftpd（特定用户访问特定目录）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%94%EF%BC%9ACentOS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">场景五：CentOS 服务器之间免密码登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%85%AD%EF%BC%9A%E4%BD%BF%E7%94%A8-Nginx-%E4%BB%A3%E7%90%86-MySQL"><span class="toc-text">场景六：使用 Nginx 代理 MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%83%EF%BC%9A%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86"><span class="toc-text">场景七：空间清理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker"><span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ContOS-%E6%96%87%E4%BB%B6"><span class="toc-text">ContOS 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-11-18T15:49:54.000Z">2019-11-18</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>“兼职”运维的常用命令</span></h1>
+<p>自从产品转到了 dotNET Core 之后，更深入的接触 Linux和 Docker ，而我每天的工作中，有一部分时间相当于在“兼职”做一些运维的事情。下面是一些在日常中常用的命令，算是个备忘吧。</p>
+<span id="more"></span>
+
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>操作系统：CentOS7</li>
+<li>Docker：18.05.0-ce</li>
+<li>MySQL: 8</li>
+</ul>
+<p>测试环境的服务器部署很简单，一台公网服务器，后面有若干台内网服务器，程序部署在内网服务器，通过公网服务器反向代理进行访问。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201280643303.jpg"></p>
+<h2 id="场景一：将外网数据库备份到内网进行排错"><a href="#场景一：将外网数据库备份到内网进行排错" class="headerlink" title="场景一：将外网数据库备份到内网进行排错"></a>场景一：将外网数据库备份到内网进行排错</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ssh root@221.221.221.1 #进入外网服务器</span><br><span class="line">ssh root@10.10.10.1 #进入内网服务器</span><br><span class="line">docker exec -it mysql容器id bash #进入mysql容器</span><br><span class="line">mysqldump -uroot -pPassword -R dbname &gt; db.sql #备份数据库</span><br><span class="line">exit #退出容器</span><br><span class="line">docker cp mysql容器id:/db.sql /root/  #将备份文件从容器拷贝到虚拟机的root目录</span><br><span class="line">exit #从内网服务器退出到外网服务器</span><br><span class="line">scp root@10.10.10.1:/root/db.sql /root/  #将备份文件从内网拷贝到外网服务器的root目录</span><br><span class="line"></span><br><span class="line">ssh root@192.168.16.110 # 进入内网服务器</span><br><span class="line">scp root@221.221.221.1:/root/db.sql /root/ #将外网服务器的备份文件拷贝到内网服务器</span><br><span class="line">docker cp db.sql mysql容器id:/ #将备份文件拷贝到mysql容器内</span><br><span class="line">docker exec -it mysql容器id bash #进入mysql容器内</span><br><span class="line">mysql -uroot -pPassword dbname &lt; db.sql #还原数据库</span><br><span class="line">exit #退出容器</span><br></pre></td></tr></table></figure>
+
+<h2 id="场景二：CentOS-防火墙相关"><a href="#场景二：CentOS-防火墙相关" class="headerlink" title="场景二：CentOS 防火墙相关"></a>场景二：CentOS 防火墙相关</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld.service #查看防火墙状态</span><br><span class="line">systemctl start firewalld.service #启用防火墙</span><br><span class="line">systemctl stop firewalld #停用防火墙</span><br><span class="line">systemctl disable firewalld #开机禁用</span><br><span class="line">systemctl enable firewalld #开机启用</span><br><span class="line"></span><br><span class="line">firewall-cmd --permanent --list-port #查看已开放端口列表</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent #开放80端口</span><br><span class="line">firewall-cmd --zone= public --remove-port=80/tcp --permanent #关闭80端口</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload #重新状态防火墙</span><br></pre></td></tr></table></figure>
+
+<h2 id="场景三：CentOS-系统常用"><a href="#场景三：CentOS-系统常用" class="headerlink" title="场景三：CentOS 系统常用"></a>场景三：CentOS 系统常用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ls #查看目录文件</span><br><span class="line">cp app.json /root/app # 赋值文件app.jsond到app目录</span><br><span class="line">cp -r  #赋值目录</span><br><span class="line">vi #编辑文件</span><br><span class="line">chmod 777 /root/app.json #设置文件权限</span><br><span class="line">top  #查看cup 内存</span><br><span class="line">df -h  #查看硬盘</span><br><span class="line">du -sh *  #查看当前目录文件大小的详细列表</span><br><span class="line">systemctl restart network #重启网络</span><br><span class="line">rm #删除文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="场景四：CentOS-安装-vsftpd（特定用户访问特定目录）"><a href="#场景四：CentOS-安装-vsftpd（特定用户访问特定目录）" class="headerlink" title="场景四：CentOS 安装 vsftpd（特定用户访问特定目录）"></a>场景四：CentOS 安装 vsftpd（特定用户访问特定目录）</h2><p>1、安装vsftpd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
+
+<p>2、启动ftp服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start vsftpd.service</span><br></pre></td></tr></table></figure>
+
+<p>3、禁用匿名用户访问,执行<code>vi /etc/vsftpd/vsftpd.conf</code>,修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br></pre></td></tr></table></figure>
+
+<p>4、添加用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /home/oec2003 oec2003 #增加用户oec2003，并指定oec2003用户的主目录为/home/oec2003</span><br><span class="line"> </span><br><span class="line">passwd oec2003 #为用户oec2003设置密码，运行后输入两次相同密码</span><br></pre></td></tr></table></figure>
+
+<p>5、修改配置文件 /etc/vsftpd/vsftpd.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chroot_local_user=YES</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/etc/vsftpd/chroot_list</code>这个配置文件中添加用户，每个用户写在一行，则在这个文件里的用户登录ftp后，可以访问上级目录，而不在这个配置文件中的用户只能访问添加用户时指定的home目录。</p>
+<h2 id="场景五：CentOS-服务器之间免密码登录"><a href="#场景五：CentOS-服务器之间免密码登录" class="headerlink" title="场景五：CentOS 服务器之间免密码登录"></a>场景五：CentOS 服务器之间免密码登录</h2><p>假设现在有两条服务器 10.10.10.1 和 10.10.10.2 ，现在想在 10.10.10.1 服务器上免密码登录 10.10.10.2 ，步骤如下：</p>
+<p>1、在 10.10.10.1 上创建秘钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;oec2003@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>创建完成后，在 .ssh 的隐藏目录中会有两个文件 id_rsa (私钥)、id_rsa.pub (公钥)文件</p>
+<p>2、用 ssh-copy-id 把公钥复制到 10.10.10.2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i /root/.ssh/id_rsa.pub root@10.10.10.2</span><br></pre></td></tr></table></figure>
+
+<p>3、修改 10.10.10.2 的配置文件 /etc/ssh/sshd_config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AuthorizedKeysFile	.ssh/authorized_keys</span><br><span class="line">PubkeyAuthentication yes #打开免密码设置</span><br></pre></td></tr></table></figure>
+
+<p>4、重启 sshd 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="场景六：使用-Nginx-代理-MySQL"><a href="#场景六：使用-Nginx-代理-MySQL" class="headerlink" title="场景六：使用 Nginx 代理 MySQL"></a>场景六：使用 Nginx 代理 MySQL</h2><p>MySQL 的容器部署在内网服务器，有时我们需要在本地能直接连接 MySQL ，这时就需要使用 Nginx 来做反向代理。</p>
+<p>现在在 10.10.10.1 服务器上部署有 MySQL 容器，端口为 3306 ，代理的配置方式如下：</p>
+<p>1、在外网服务器的 221.221.221.1 服务器的 root 目录创建配置文件 nginx.conf，内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 上面部分的内容就是nginx.conf文件的内容，在http节点同级添加stream节点，如下</span><br><span class="line">...</span><br><span class="line">stream &#123;</span><br><span class="line">    upstream mysql &#123;</span><br><span class="line">        hash $remote_addr consistent;</span><br><span class="line">        server 10.10.10.1:3306 max_fails=3 fail_timeout=30s;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 33306;</span><br><span class="line">        proxy_connect_timeout 30s;</span><br><span class="line">        proxy_timeout 600s;</span><br><span class="line">        proxy_pass mysql;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、创建代理容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 33306:33306 --name mysql  -v /root/nginx.conf:/etc/nginx/nginx.conf --restart=always  nginx:latest</span><br></pre></td></tr></table></figure>
+
+<p>现在就可以在客户端通过IP 221.221.221.1 和端口 33306 来进行数据库连接了。</p>
+<h2 id="场景七：空间清理"><a href="#场景七：空间清理" class="headerlink" title="场景七：空间清理"></a>场景七：空间清理</h2><p>服务器运行一段时间后，空间会越来越小，可以通过下面的一些命令来辅助清理空间</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker system df -v #可用于查询镜像（Images）、容器（Containers）和本地卷（Local Volumes）等空间使用大户的空间占用情况</span><br><span class="line">docker system prune #自动清理容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="ContOS-文件"><a href="#ContOS-文件" class="headerlink" title="ContOS 文件"></a>ContOS 文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">du -sh * | sort -nr #查看当前目录文件大小，有排序</span><br><span class="line">du -s * | sort -nr | head</span><br><span class="line">du -s * | sort -nr | tail</span><br></pre></td></tr></table></figure>
+
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show binary logs; #查看日志占用</span><br><span class="line">reset master; #清理日志</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/&title=“兼职”运维的常用命令 - 冯威的博客&summary=自从产品转到了 dotNET Core 之后，更深入的接触 Linux和 Docker ，而我每天的工作中，有一部分时间相当于在“兼职”做一些运维的事情。下面是一些在日常中常用的命令，算是个备忘吧。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=“兼职”运维的常用命令 - 冯威的博客&amp;body=http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2019/10/how-to-get-out-of-the-mire-for-technical-managers/">技术管理者怎样跳出“泥潭”<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2019/11/read-continuous-delivery-2-0/">读《持续交付2.0》<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

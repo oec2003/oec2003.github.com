@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>不断进化的分支和需求管理 - 冯威的博客</title>
+
+  
+    <meta name="description" content="昨天有朋友在公众号私信问我几个关于代码分支管理的问题，这几个问题是我去年写的《在团队中使用GitLab中的Merge Request工作模式》一文结尾时抛出的几个问题：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不断进化的分支和需求管理">
+<meta property="og:url" content="http://fwhyy.com/2019/06/evolutionary-branch-and-demand-management/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="昨天有朋友在公众号私信问我几个关于代码分支管理的问题，这几个问题是我去年写的《在团队中使用GitLab中的Merge Request工作模式》一文结尾时抛出的几个问题：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-07T01:22:10.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:09:24.405Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="分支">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%91%A8%E6%9C%9F%E8%B0%83%E6%95%B4"><span class="toc-text">迭代周期调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E7%9A%84%E8%B0%83%E6%95%B4"><span class="toc-text">需求文档的调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E8%B0%83%E6%95%B4"><span class="toc-text">分支的调整</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5release%E5%88%86%E6%94%AF"><span class="toc-text">引入release分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5Tag"><span class="toc-text">引入Tag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-06-07T01:22:10.000Z">2019-06-07</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>不断进化的分支和需求管理</span></h1>
+<p>昨天有朋友在公众号私信问我几个关于代码分支管理的问题，这几个问题是我去年写的《在团队中使用GitLab中的Merge Request工作模式》一文结尾时抛出的几个问题：</p>
+<span id="more"></span>
+
+<ul>
+<li>如果系统上线后有紧急<code>Bug</code>需要处理，这个流程应该怎样去调整？</li>
+<li>每个任务都在单独分支并行开发，这时如果A和B都依赖C开发的一个模块，应该怎么解决？</li>
+<li>理论上<code>Issue</code>管理员和开发人员都可以进行创建，什么样的<code>Issue</code>可以有开发人员来创建？</li>
+</ul>
+<p>这几个问题在《敏捷下的需求和代码分支管理》一文中其实已经给出了答案，时隔两个月，管理方式又有了些调整和改进。我觉得还是有必要单独写一写。</p>
+<p>总体的流程没有大的变化，还是使用<code>Tapd</code>来管理需求和缺陷，使用<code>Gitlab</code>来管理代码的分支，但有几个小的调整：</p>
+<ul>
+<li>迭代周期</li>
+<li>需求文档</li>
+<li>分支管理</li>
+</ul>
+<h2 id="迭代周期调整"><a href="#迭代周期调整" class="headerlink" title="迭代周期调整"></a>迭代周期调整</h2><p>之前是以一周做为一个迭代周期，实践中发现，以周为单位，粒度还是太大，有时候紧急上线一个功能或是修复<code>Bug</code>，连续几天都会有发布，甚至一天内还有多次发布。目前迭代遵循着以下几点：</p>
+<ul>
+<li>因为功能发布时间的不确定性，需求的安排还是以周为单位来计划</li>
+<li>一个完整功能提测通过后，立即发布上线</li>
+<li>紧急<code>Bug</code>修复完成后，立即发布上线</li>
+</ul>
+<p>像这样调整，产品的迭代会更加敏捷，同时也对整个团队提出了更高的要求，怎样在这样高速迭代的过程中，还保证产品的稳定性？</p>
+<h2 id="需求文档的调整"><a href="#需求文档的调整" class="headerlink" title="需求文档的调整"></a>需求文档的调整</h2><p>自从以任务为导向调整成需求为导向时，就已经意识到需求的重要性，同时也面临一个问题：需求文档谁来写？</p>
+<p>一些大公司的研发团队，配置齐全，有专职的需求分析师，而像我们这种小的创业型产品团队，我希望每个人都能是需求分析师。</p>
+<p>在调整为需求导向的开始阶段，是我一个人在写需求的详细描述，一旦精力分散，就会导致有疏漏，效果不是很好。现在我要求团队成员每个人都参与写需求，在接到任务时，必须先思考，把自己到理解写出来，然后才开始开发。</p>
+<p>我会对需求做<code>review</code>，也会让经验丰富的程序员来做<code>review</code>，找出遗漏的点和错误的点进行补充和改正。</p>
+<p>让每个人都参与需求的编写有两个好处：</p>
+<ul>
+<li>可以改掉程序员不喜欢思考，拿到任务就直接写代码的坏习惯</li>
+<li>程序员有了自己的思考，并且形成了文字的输出，对需求的理解会更加的深刻，产出的质量会有提高</li>
+</ul>
+<p>另外，需求文档的工具，也从原来直接在<code>Tapd</code>中编写，调整到了语雀。在这里强烈推荐下语雀，理由如下：</p>
+<ul>
+<li>编辑器，对开发人员非常友好，真正意义上的所见及所得</li>
+<li>文中可以直接嵌入<code>Office</code>文档和视频（支持本地视频上传），在线浏览和观看</li>
+<li>整个文档可以导出成<code>PDF</code>，不知不觉的就可以写一本电子书</li>
+</ul>
+<h2 id="分支的调整"><a href="#分支的调整" class="headerlink" title="分支的调整"></a>分支的调整</h2><p>之所以要做调整肯定是遇到了问题，所以，先说问题：</p>
+<ol>
+<li>需要更小迭代的发布，常常A功能已经在测试中，这时B功能并入主分支进行测试，A功能测试完，B功能还在测试中，这是如果发布，会导致没有完成测试的B也发布了，而我只想发布A</li>
+<li>客户A使用的是<code>v6.7.5</code>版本，而现在最新的版本已经迭代到了<code>v6.8.0</code>，在<code>v6.7.5</code>上发现的<code>Bug</code>应该怎么办？</li>
+</ol>
+<h3 id="引入release分支"><a href="#引入release分支" class="headerlink" title="引入release分支"></a>引入release分支</h3><ul>
+<li>创建<code>release</code>分支做为发布分支，该分支设置为只能管理员提交代码</li>
+<li>需求开发完成后，会<code>merge</code>到<code>master</code>分支进行测试</li>
+<li>测试通过的提交，并到<code>release</code>分支，进行再次验证，验证通过，发布上线</li>
+</ul>
+<p>引入<code>release</code>分支可以虽然在操作步骤上带来了一些复杂度，但是可以确保能够以最小粒度发布。</p>
+<h3 id="引入Tag"><a href="#引入Tag" class="headerlink" title="引入Tag"></a>引入Tag</h3><p>在<code>release</code>分支发布上线后，以发布的版本号为名称在<code>GitLab</code>中打一个<code>Tag</code>，这样就可以解决上面的问题2，分为两种情况：</p>
+<ol>
+<li>以<code>v6.7.5</code>的<code>Tag</code>创建分支来修复<code>Bug</code>，修复后直接在该分支进行测试，验证通过后发布，最新版本如果该<code>Bug</code>已经修复，则直接更新<code>Tag</code></li>
+<li>以<code>v6.7.5</code>的<code>Tag</code>创建分支来修复<code>Bug</code>，修复后直接在该分支进行测试，验证通过后发布，最新版本如果没有修复该<code>Bug</code>，将修复<code>Bug</code>的提交合并到主分支，然后更新<code>Tag</code></li>
+</ol>
+<p>同样，当程序发布到<code>docker</code>容器中后，在容器的私有仓库中也打上以版本号命名的<code>Tag</code>，可以便于升级后的回滚。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>工具和流程都只是辅助手段，目的是为了团队能够更好的沟通协助，能够持续地有高质量的产出，千万不能本末倒置。</p>
+<p>最后，祝大家端午节快乐！</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2019/06/evolutionary-branch-and-demand-management/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2019/06/evolutionary-branch-and-demand-management/&title=不断进化的分支和需求管理 - 冯威的博客&summary=昨天有朋友在公众号私信问我几个关于代码分支管理的问题，这几个问题是我去年写的《在团队中使用GitLab中的Merge Request工作模式》一文结尾时抛出的几个问题："><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=不断进化的分支和需求管理 - 冯威的博客&amp;body=http://fwhyy.com/2019/06/evolutionary-branch-and-demand-management/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2019/06/evolutionary-branch-and-demand-management/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2019/06/how-to-learn-and-read-technical-books/">怎样学习和阅读技术书籍？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2019/06/learn-about-the-new-features-of-each-version-of-csharp/">带你了解C#每个版本新特性<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

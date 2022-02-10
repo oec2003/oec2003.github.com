@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>设计模式：面向对象的基础知识 - 冯威的博客</title>
+
+  
+    <meta name="description" content="主流的编程范式有三种：面向过程、面向对象和函数式编程，我们现在使用的主流编程语言 C# 或 Java，都是面向对象语言，所以常常说的设计模式也是在面向对象语言这个前提之下。 面向对象的基础知识和一些设计原则，我认为是学习设计模式的基础，本文就聊下这些基础知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式：面向对象的基础知识">
+<meta property="og:url" content="http://fwhyy.com/2021/11/object-oriented-basic-knowledge/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="主流的编程范式有三种：面向过程、面向对象和函数式编程，我们现在使用的主流编程语言 C# 或 Java，都是面向对象语言，所以常常说的设计模式也是在面向对象语言这个前提之下。 面向对象的基础知识和一些设计原则，我认为是学习设计模式的基础，本文就聊下这些基础知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020844997.jpg">
+<meta property="article:published_time" content="2021-11-15T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:45:46.344Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020844997.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-11-15T00:05:00.000Z">2021-11-15</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>设计模式：面向对象的基础知识</span></h1>
+<p>主流的编程范式有三种：面向过程、面向对象和函数式编程，我们现在使用的主流编程语言 C# 或 Java，都是面向对象语言，所以常常说的设计模式也是在面向对象语言这个前提之下。</p>
+<p>面向对象的基础知识和一些设计原则，我认为是学习设计模式的基础，本文就聊下这些基础知识。</p>
+<span id="more"></span>
+
+<p>在面试时，一问到面向对象，几乎每个人都能脱口而出：封装、继承、多态。但大部分只能说出一个简单的概念，而多态还有很多连概念都说不清楚。我们学习面向对象，不止需要了解概念，更需要知道每个特性存在的意义和目的。</p>
+<p>对于面向对象的特性，面向对象的语言都会给出相应的支持，不同语言可能会有细微差别，下面的示例以 C# 语言为主。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>我们先来思考下，平时写代码时有哪些是属于封装，是不是会有下面的一些场景：</p>
+<p>1、将一些属性字段放到一个类中；</p>
+<p>2、将一些方法放到一个类中</p>
+<p>3、将某些类组织到某个特定的命名空间下。</p>
+<p>在 C# 9.0 版本中还提供了属性的 init 特性，可以更方便地提供封装性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class UserInfo</span><br><span class="line">&#123;</span><br><span class="line">    public string Name &#123; get; init; &#125;</span><br><span class="line">&#125;</span><br><span class="line">UserInfo user = new UserInfo &#123; Name = &quot;oec2003&quot; &#125;;</span><br><span class="line">//当 user 初始化完了之后就不能再改变 Name 的值</span><br><span class="line">user.Name = &quot;oec2004&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>除了属性、方法和类也有对应的访问修饰符，这些访问修饰符的灵活运用就达到了封装的目的，用来隐藏信息或进行数据的保护。</p>
+<p>试想一下，如果我们对类中属性或方法全部都使用 public ，调用方可以任意修改属性和调用方法，这样会使代码变得不可控，属性可能被很多地方以不同的方式进行修改，代码难以维护。而且不熟悉业务的开发人员如果随意改动了一些关键属性，可能引发严重的问题。</p>
+<p>从另一个方面来说，类的共有属性和方法暴露的越多，对于调用者来说就会越复杂，越容易出现问题，合理地进行封装，可以提高可读性、可维护性，减少出错。</p>
+<p>这时，你是不是可以想想，平时写代码时，属性、方法、类是不是都不假思索地写上了 public 了呢？</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>目前面向对象的语言基本都支持继承特性，只是语法上有些细微的差别，比如 C# 语言是使用冒号，Java 语言使用 extends 关键字。但都是表示 is-a 的关系。</p>
+<p>在 C# 中一个类可以继承多个接口，但只能继承一个父类，我们通常说的 C# 只支持单继承指的就是 C# 只能继承一个父类，但在 C++ 、Python 等语言中类是可以继承多个父类的。</p>
+<p>我们经常会跟开发人员讲，不要到处复制代码，代码要做到能够复用，发现同一个逻辑在两个不同的类中的时候，可以抽象出来一个父类，让这两个类都继承这个父类。这个思路没有问题，也确实能解决我们的实际问题，提升代码的复用性。</p>
+<p>但随着功能的增加，我们需要对类的属性和方法进行扩展，会发现需要新添加的属性或方法放在父类或子类都不合适，只能继续进行抽象，长此下去，继承关系会变得非常复杂，变得难以维护。有条设计原则是这么说的：组合优于继承，其实就是为了解决这个问题。</p>
+<p>组合和继承的选择是一种权衡，当涉及的类经常变化可能导致继承层级向着复杂化演化时，需要考虑采用组合的方式，如果相关类比较稳定，继承层级不深（一般不超过 3 层），就可以放心使用继承。</p>
+<p>在具体的模式中，组合模式、策略模式等就是使用组合的方式实现，模板模式使用的是继承方式实现。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态的字面意思就是同样的一个语法调用，能够表达多个不同的意思。如果说继承的最大好处是复用，那么多态的好处就是方便扩展。</p>
+<p>在 C# 语言中两个比较典型的多态场景就是方法的重写和方法的重载：</p>
+<ul>
+<li><p>重写：存在继承关系的类或接口，在子类中对父类的方法进行重新构建逻辑，但调用方法、参数、返回值保持一致，通常有下面几种情况：</p>
+</li>
+<li><ul>
+<li>普通的父类中有用 virtual 关键字标识的虚方法，在子类中使用 override 关键字进行重写；</li>
+<li>子类对抽象类的抽象方法进行重写；</li>
+<li>子类对接口中的方法进行实现。</li>
+</ul>
+</li>
+<li><p>重载：类中的多个方法，方法名相同，但参数个数或类型不相同，称之为重载方法。例如 C# 中的 File 类的 Open 方法就有三个重载，如下图：</p>
+</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020844997.jpg" alt="iShot2022-02-02 08.44.37"></p>
+<p>方法的重写，在实际应用中非常常见，比如零代码平台中的消息组件会有多种发送消息的方式，下面用一个示例代码演示下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public interface IMessage</span><br><span class="line">&#123;</span><br><span class="line">    void Send(string msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class EmailMessage : IMessage</span><br><span class="line">&#123;</span><br><span class="line">    public void Send(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine($&quot;send email message &#123;msg&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class WechatMessage : IMessage</span><br><span class="line">&#123;</span><br><span class="line">    public void Send(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine($&quot;send wechat message &#123;msg&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;IMessage&gt; messageList = new List&lt;IMessage&gt;();</span><br><span class="line">        messageList.Add(new EmailMessage());</span><br><span class="line">        messageList.Add(new WechatMessage());</span><br><span class="line">        </span><br><span class="line">        messageList.ForEach(s=&gt;s.Send(&quot;test message&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么说能提高扩展性呢？如果这时消息组件需要扩展发送短信的消息种类，只需要编写短信类型的消息类实现 IMessage 接口的 Send 方法即可。</p>
+<p>还有一种场景，比如登陆的时候，有基于用户名密码的认证、企业微信的认证、钉钉的认证、和对接第三方的认证，又应该怎么设计呢？</p>
+<p>我们虽然都在使用着面向对象的语言，但很多的时候思维还是面向过程的，具体体现在：</p>
+<ul>
+<li>实体类的属性直接定义为 public ，set 和 get 都安排上，外部可以任意获取和赋值，很多时候使用代码生成工具直接生成实体类，默认的 set 和 get 都是 public ，也没有依据具体的业务进行修改，严重破坏了封装特性；</li>
+<li>数据和行为的分离，也就是所谓的贫血模式，但真正的对象是数据和行为在一起的，我们可能每天都在写这样的代码，一种面向过程式的代码；</li>
+<li>为了代码复用，代码中会存在大量的 Helper 类或者 Utils、Common 类，这些类通常是静态类，里面有各种各样的静态方法，在往里面添加方法时需要思考下，真的必须放到这里吗？这种类随着时间的推移很容易变成巨型类，变得难以维护；</li>
+<li>按照功能驱动，比如页面上的一个按钮操作，对应了一个 API 接口，不管你的代码是如何设计和分层，都是一层层往下直到数据库访问。</li>
+</ul>
+<p>所以不要以为使用了面向对象的语言就是在使用面向对象编程，重要的是抽象的思维，这种抽象需要我们去思考，去全盘考虑，相比较面向过程显得更难，所以懒惰的程序员更容易写出面向过程的代码。</p>
+<p>面向对象的基础知识是学习设计模式的根基，掌握基础知识，然后愿意去思考，总结才能够学习好设计模式，并将其应用到实际的工作中。下一篇将介绍面向对象中的常用设计原则，设计模式也都是基于这些设计原则演化而来。</p>
+<p>希望本文对您有所帮助！</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/11/object-oriented-basic-knowledge/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/11/object-oriented-basic-knowledge/&title=设计模式：面向对象的基础知识 - 冯威的博客&summary=主流的编程范式有三种：面向过程、面向对象和函数式编程，我们现在使用的主流编程语言 C# 或 Java，都是面向对象语言，所以常常说的设计模式也是在面向对象语言这个前提之下。
+面向对象的基础知识和一些设计原则，我认为是学习设计模式的基础..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=设计模式：面向对象的基础知识 - 冯威的博客&amp;body=http://fwhyy.com/2021/11/object-oriented-basic-knowledge/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/11/object-oriented-basic-knowledge/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/11/service-arrangement-in-zero-code-platform/">零代码平台中的服务编排思路<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/11/nike-air-zoom-tempo-next/">Nike Air Zoom Tempo Next% 实战评测<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

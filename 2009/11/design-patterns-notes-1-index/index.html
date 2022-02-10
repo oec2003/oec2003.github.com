@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>设计模式笔记(1)—开篇（文章索引） - 冯威的博客</title>
+
+  
+    <meta name="description" content="概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。 面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。 设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。 面向对象设计模式是“好的面向对象设计”，所谓“好的面向对象设计”是那些可以满足“因对变化，提高复用的设计”。 面向对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式笔记(1)—开篇（文章索引）">
+<meta property="og:url" content="http://fwhyy.com/2009/11/design-patterns-notes-1-index/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。 面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。 设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。 面向对象设计模式是“好的面向对象设计”，所谓“好的面向对象设计”是那些可以满足“因对变化，提高复用的设计”。 面向对">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2009-11-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-28T22:19:46.267Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">设计模式与面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E5%88%B0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">从设计原则到设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">几个设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">设计模式的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B"><span class="toc-text">创建型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E6%80%A7"><span class="toc-text">结构性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B"><span class="toc-text">行为型</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2009-11-17T16:00:00.000Z">2009-11-18</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>设计模式笔记(1)—开篇（文章索引）</span></h1>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。</p>
+<p>面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。</p>
+<h2 id="设计模式与面向对象"><a href="#设计模式与面向对象" class="headerlink" title="设计模式与面向对象"></a>设计模式与面向对象</h2><p>面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。</p>
+<p>面向对象设计模式是“好的面向对象设计”，所谓“好的面向对象设计”是那些可以满足“因对变化，提高复用的设计”。</p>
+<p>面向对象设计模式描述的是软件设计，因此他是独立于编程语言的，但是面向对象设计模式的最终实现仍然要使用面向对象编程语言来表达。</p>
+<p>面向对象设计模式不像算法技巧，可以照搬照用，他是建立在对“面象对象”纯熟、深入的理解的基础上的经验性认识。</p>
+<h2 id="从设计原则到设计模式"><a href="#从设计原则到设计模式" class="headerlink" title="从设计原则到设计模式"></a>从设计原则到设计模式</h2><p>针对接口编程，而不是针对实现编程—客户无需知道所有使用对象的特定类型，只需要知道对象拥有客户所期望的接口。</p>
+<p>优先使用对象组合，而不是类继承—类继承通常为“白箱复用”，对象组合通常为“黑箱复用”。继承在某种程度上破坏了封装性，子类父类耦合度高；而面向组合只要求组合的对象具有良好定义的接口，耦合度低。</p>
+<p>封装变化点—使用封装来创建对象之间分界曾，让设计者可以在分界曾的一侧进行修改，而不会对另一侧产生不良的影响，从而实现层次间的松耦合。</p>
+<p>使用重构得到模式—设计模式的应用不宜先入为主，一上来就是用设计模式是对设计模式的最大无用。没有一步到位的设计模式。</p>
+<h2 id="几个设计原则"><a href="#几个设计原则" class="headerlink" title="几个设计原则"></a>几个设计原则</h2><p>在设计模式的使用中无时无刻都在贯穿着下面这几个原则，所以说理解了这几个设计原则对学习和理解设计模式有很大的帮助。</p>
+<ul>
+<li><ol>
+<li>单一职责原（SRP）：一个类应该仅有一个引起它变化的原因。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>开放封闭原则（OCP）：类模块应该是可以扩展的，但是不可以修改（多扩展开放，对修改封闭）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Liskov替换原则（LSP）：子类必须能够替换他们的基类</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>依赖倒置原则（DIP）：高层模块不应该依赖于底层模块，二者都应该依赖于抽象；抽象不应该依赖于实现细节，实现细节应该依赖于抽象。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>接口隔离原则（ISP）：不应该强迫客户程序依赖于他们不用的方法。</li>
+</ol>
+</li>
+</ul>
+<p>上面只是简单给出了定义，网上有很多关于这些原则的详细介绍。</p>
+<p>下面简单谈一下我自己对设计模式的认识，设计模式很早就接触了，不过实际在项目中使用过的也只是很少的几个，现在市面上有很多关于设计模式的书，其中不乏有些很生动的例子，非常容易理解，但设计模式并不是写些简单的Demo，个人感觉从很熟悉那些简单的Demo到能够灵活在项目中运用这中间有很长的路要走，需要我们多写、多思考，多总结。之所以要使用设计模式，是因为当变化来临时我们能更方便快捷地解决问题，并且有利于以后的维护。如果没有需求的变化，完全可以用自己认为最简单直接的方式去实现功能，不过需求往往是多变的。我们通常所讲的设计模式指的是面向对象设计模式，所以学习好面向对象的知识是学习面向对象设计模式的前提。最近又将几年前的关于设计模式的webcast讲座翻出来听了听，感觉收获颇多，也顺便做了些笔记以备后用。</p>
+<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>设计模式分类创建型、结构型、行为型三类。</p>
+<h3 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h3><p><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-2-singleton-pattern/">Singleton 单件</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-3-abstract-factory-pattern/">Abstract Factory 抽象工厂模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-4-generator-pattern/">Builder 生成器模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-5-factory-method-pattern/">Factory Method 工厂方法模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-6-prototype-pattern/">Prototype 原型模式</a></p>
+<h3 id="结构性"><a href="#结构性" class="headerlink" title="结构性"></a>结构性</h3><p><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/11/design-patterns-notes-7-adapter-pattern/">Adapter 适配器模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-8-bridge-pattern/">Bridge 桥接模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-9-portfolio-pattern/">Composite 组合模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-10-decorative-pattern/">Decorator 装饰模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-11-appearance-pattern/">Facade 外观模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-12-flyweight-pattern/">Flyweight 享元模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-13-proxy-pattern/">Proxy 代理模式</a></p>
+<h3 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h3><p><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-14-template-method-pattern/">TemplateMethod 模板方法模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2009/12/design-patterns-notes-15-command-pattern/">Command 命令模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-16-interpreter-pattern/">Interpreter 解释器模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-17-mediator-pattern/">Mediator 中介者模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-18-iterator-pattern/">Iterator 迭代器模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-19-observer-pattern/">Observer 观察者模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/">Chain Of Responsibility 职责链模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-21-memo-pattern/">Memento 备忘录模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-22-state-pattern/">State 状态模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/01/design-patterns-notes-23-strategy-pattern/">Strategy 策略模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/02/design-patterns-notes-24-visitor-pattern/">Visitor 访问者模式</a><br><a target="_blank" rel="noopener" href="http://blog.fwhyy.com/2010/02/design-patterns-notes-25-summary/">总结</a></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2009/11/design-patterns-notes-1-index/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2009/11/design-patterns-notes-1-index/&title=设计模式笔记(1)—开篇（文章索引） - 冯威的博客&summary=概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。
+面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。
+设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=设计模式笔记(1)—开篇（文章索引） - 冯威的博客&amp;body=http://fwhyy.com/2009/11/design-patterns-notes-1-index/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2009/11/design-patterns-notes-1-index/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2009/10/experience-vs2010-improvements/">体验vs2010 （功能改进篇）<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2009/11/design-patterns-notes-2-singleton-pattern/">设计模式笔记(2)—单件模式（创建型）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

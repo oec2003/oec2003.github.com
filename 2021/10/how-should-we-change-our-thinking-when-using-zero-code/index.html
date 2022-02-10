@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>使用零代码平台构建应用，应该怎样转变思路？ - 冯威的博客</title>
+
+  
+    <meta name="description" content="最近两年，越来越多的各类零代码产品在市场上出现，与此同时，企业的数字化转型的速度也越来越快，零代码产品已然成为了帮助企业数字化转型的利器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用零代码平台构建应用，应该怎样转变思路？">
+<meta property="og:url" content="http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="最近两年，越来越多的各类零代码产品在市场上出现，与此同时，企业的数字化转型的速度也越来越快，零代码产品已然成为了帮助企业数字化转型的利器。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-18T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:35:41.293Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="低代码">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%80"><span class="toc-text">案例一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-text">定制开发的思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-text">零代码平台实现思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%BA%8C"><span class="toc-text">案例二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%B7%AF-1"><span class="toc-text">定制开发的思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF-1"><span class="toc-text">零代码平台实现思路</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-10-18T00:05:00.000Z">2021-10-18</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>使用零代码平台构建应用，应该怎样转变思路？</span></h1>
+<p>最近两年，越来越多的各类零代码产品在市场上出现，与此同时，企业的数字化转型的速度也越来越快，零代码产品已然成为了帮助企业数字化转型的利器。</p>
+<span id="more"></span>
+
+<p>技术也在不断地演进，其核心目的就是让开发人员能够更专注于业务逻辑：</p>
+<p>1、上古时代我们通过传输字节码和电子信号在物理层来完成通信，需要自己处理各种丢包、重试等网络问题，最后就出现了 TCP 协议来解决这些问题；</p>
+<p>2、在分布式时代，解决了「三高」问题，同时也需要我们来处理熔断、负载均衡、服务发现、认证和授权、链路追踪等问题，这时很多微服务的中间件就出现了，比如：API 网关有 Ocelot、Zuul；链路跟踪有 Zipkin、Jaeger、SkyWalking；服务发现有 consul、Eureka ；甚至出现了像 Spring Cloud 这种全家桶式的框架，这些工具帮我们处理了通信细节，使开发人员使用较少的代码就能开发出健壮的分布式系统；</p>
+<p>3、上面提到的各种中间件帮我们解决了很多问题，但对各种中间件框架的学习、排错也是一件令人头疼的事情，为了解决这些问题， Service Mesh 就诞生了；</p>
+<p>4、再往后就出现了 Serverless 技术（ FaaS 和 BaaS ），其目的仍然是降本增效，关注业务，关于 Serverless 的详细介绍可以看看 《<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=Mzg2MDYwMjU5Mg==&mid=2247483776&idx=1&sn=894d84a016fd27358c70a627fa21fbe2&chksm=ce22a80ff95521199250c8948f9296f8e5c8b23ff065627efb468944fc09df4f9e2d258e813b&scene=21#wechat_redirect">带你了解 Serverless 无服务器架构</a>》。</p>
+<p>零代码平台在现在的技术背景下，恰逢其时，就是为专注业务而生。但在我们使用零代码平台时，还是需要有些思路的转变，特别是如果你有技术背景更是如此，为什么这么说呢？</p>
+<p>1、客户往往会根据自己的经验将业务背景转化为最终的实现，并告诉你该怎么做，如果是定制开发，很可能就会按照客户的思路去实现来，但使用零代码平台，发现实施时比较别扭的时候，就会去更深层次挖掘客户背后的真实想法，这样实现的功能更能符合预期；</p>
+<p>2、技术人员会根据自己之前个性化开发的经验来使用平台，会有思维上的局限性。</p>
+<p>下面来讲两个案例来看看怎样进行思路的转变。</p>
+<h2 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h2><p>某客户的一个报销流程功能有很多不同的分类，比如日常费用报销、差旅报销等，两种不同类型的表单上的字段显示差异较大，但数据源使用的是同一个。</p>
+<h3 id="定制开发的思路"><a href="#定制开发的思路" class="headerlink" title="定制开发的思路"></a>定制开发的思路</h3><p>1、将费用报销和差旅报销的所有字段都放到一张表中；</p>
+<p>2、表单上添加一个报销类型的下拉框，当切换不同类型的时，控制相应控件的显示和隐藏；</p>
+<p>3、保存数据时收集界面可见的控件的值即可。</p>
+<p>如果按照这个思路在零代码平台中去实现会遇到麻烦：</p>
+<p>1、当切换不同类型的时，控制相应控件的显示和隐藏，这时需要对每个控件去编写隐藏规则，当涉及的控件比较多时，很繁琐；</p>
+<p>2、如果有些复杂的控制逻辑隐藏规则不能支持，还需要编写表单脚本进行处理，增加实施成本和难度。</p>
+<h3 id="零代码平台实现思路"><a href="#零代码平台实现思路" class="headerlink" title="零代码平台实现思路"></a>零代码平台实现思路</h3><p>1、正如上面所说，去控制每个控件的隐藏规则的成本比较高，所以需要思考在平台中有什么成本比较低的实现方式；</p>
+<p>2、在平台中利用引用功能，可以快速创建一个相同功能，原功能和引用功能共用一个数据源；</p>
+<p>3、原功能表单配置成日常费用报销，引用功能表单配置成差旅报销</p>
+<p>4、在原功能上添加自定义按钮打开引用功能的表单，差异点就是之前需要打开表单后进行类型的切换，现在是在打开表单前通过不同的按钮进行选择。</p>
+<h2 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h2><p>某集团公司客户说我们需要一个论坛、可以发帖子供很多人讨论。</p>
+<h3 id="定制开发的思路-1"><a href="#定制开发的思路-1" class="headerlink" title="定制开发的思路"></a>定制开发的思路</h3><p>1、根据客户的要求定制开发一个论坛；</p>
+<p>2、部署一个开源的论坛系统，但还要考虑跟现有系统的各种集成，比如单点、数据统计、提醒等；</p>
+<p>在我们的零代码平台中暂时还没有论坛模块，那能跟客户说我们不支持吗？肯定是不行的。所以这时就需要挖掘客户到底想要什么？经沟通后发现，客户的目的就是想要有一个针对某个话题供讨论的地方，形式不一定是论坛，只是一想到根据主题讨论很容易就想到了论坛。</p>
+<h3 id="零代码平台实现思路-1"><a href="#零代码平台实现思路-1" class="headerlink" title="零代码平台实现思路"></a>零代码平台实现思路</h3><p>1、创建一个带流程的功能模块；</p>
+<p>2、流程控制永不结束，在两个节点直接来回流转，可以任意选择审批人（需要参与讨论的人）；</p>
+<p>3、接收人可以填写审批意见（主题的回复）后提交，而且流程天然有消息提醒，提交后，相关人员会收到邮件或企业微信消息提醒。</p>
+<p>当把示例做好跟客户演示后，客户对实现效果很认同，觉得满足了他们的需求。</p>
+<p>零代码平台可以理解为一种面向业务的语言，最终帮助客户来实现业务价值，也能够当成是一个聊天沟通的工具，和客户统一语言。在最终落地实现的时候，一定要了解到客户背后最真实的想法，然后结合零代码平台的功能，给出最佳实践。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/&title=使用零代码平台构建应用，应该怎样转变思路？ - 冯威的博客&summary=最近两年，越来越多的各类零代码产品在市场上出现，与此同时，企业的数字化转型的速度也越来越快，零代码产品已然成为了帮助企业数字化转型的利器。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=使用零代码平台构建应用，应该怎样转变思路？ - 冯威的博客&amp;body=http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/10/is-tomato-working-really-useful/">番茄工作法真的有用吗？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/11/do-you-still-need-to-learn-design-patterns-now/">现在还需要学习设计模式吗？<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

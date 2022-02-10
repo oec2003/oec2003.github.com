@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>零代码平台中的服务编排思路 - 冯威的博客</title>
+
+  
+    <meta name="description" content="随着企业数字化转型的进程加快，零代码平台的的应用越来越广泛，逐渐被企业级的客户认可和接受。 零代码顾名思义就是在不写代码的情况下可以搭建应用和功能来满足客户的需求，但事实是残酷的，真实的客户需求永远比我们想象的要复杂，传统的零代码产品需要提供各种扩展能力，比如可以让开发人员编写复杂的业务逻辑代码，并对接到平台中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零代码平台中的服务编排思路">
+<meta property="og:url" content="http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="随着企业数字化转型的进程加快，零代码平台的的应用越来越广泛，逐渐被企业级的客户认可和接受。 零代码顾名思义就是在不写代码的情况下可以搭建应用和功能来满足客户的需求，但事实是残酷的，真实的客户需求永远比我们想象的要复杂，传统的零代码产品需要提供各种扩展能力，比如可以让开发人员编写复杂的业务逻辑代码，并对接到平台中。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020840427.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020840091.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841291.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841837.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841004.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020842629.jpg">
+<meta property="article:published_time" content="2021-11-04T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:42:44.523Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="低代码">
+<meta property="article:tag" content="服务编排">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020840427.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-11-04T00:05:00.000Z">2021-11-04</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>零代码平台中的服务编排思路</span></h1>
+<p>随着企业数字化转型的进程加快，零代码平台的的应用越来越广泛，逐渐被企业级的客户认可和接受。</p>
+<p>零代码顾名思义就是在不写代码的情况下可以搭建应用和功能来满足客户的需求，但事实是残酷的，真实的客户需求永远比我们想象的要复杂，传统的零代码产品需要提供各种扩展能力，比如可以让开发人员编写复杂的业务逻辑代码，并对接到平台中。</p>
+<span id="more"></span>
+
+<p>这样虽然能够满足需求，但会有两个问题：</p>
+<p>1、客户的需求随时可能发生变化，需求一变就需要进行代码的修改；</p>
+<p>2、一线业务人员无法直接在平台中进行调整，一些小的改动都需要进行开发、测试、发布的流程。</p>
+<p>这时就需要服务编排了，服务编排是什么，下面举两个例子：</p>
+<p>1、仓储物流出库先进先出更新库存量</p>
+<p>在仓储物流系统中，商品的入库有时间的先后顺序，出库时需要遵循先入库的先进行出库，如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020840427.jpg" alt="iShot2022-02-02 08.39.59"></p>
+<p>在不具备服务编排的系统中，搭建好功能后，还需要编写处理出库逻辑的 API 接口方法和系统中的某个方法对接起来。这个工作只能由开发人员来完成。</p>
+<p>使用服务器编排工具，就能轻松地可视化拖拽就能实现了，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020840091.jpg" alt="iShot2022-02-02 08.40.23"></p>
+<p>2、人员离职后需要处理一系列的操作，比如：</p>
+<ul>
+<li>修改 HR 系统中对应用户的状态；</li>
+<li>删除企业微信中的账号；</li>
+<li>禁用邮箱；</li>
+<li>发送通知。</li>
+</ul>
+<p>使用服务编排可以很轻松就能实现，前提是要有丰富的业务组件：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841291.jpg" alt="iShot2022-02-02 08.40.49"></p>
+<p>服务编排其实就是一系列单个的业务组件通过流程的方式进行组合起来，最终达到业务的目的，流程中可以控制分支逻辑或循环逻辑。</p>
+<p>提到流程，我们印象里都是 OA、CRM 等系统中的各种请假审批流、合同审批流等。事实上，广义上的工作流是对工作流程及其各操作步骤之间业务规则的抽象、概括、描述。</p>
+<p>简单的说，为了实现某个业务目标，抽象拆解出来的一系列步骤及这些步骤之间的协作关系，就是工作流。也就是上面所说的业务服务的编排流程。</p>
+<p>服务编排引擎的总体架构图如下： </p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841837.jpg" alt="iShot2022-02-02 08.41.14"></p>
+<p>在近些年比较火的微服务中也存在着服务的编排，常见的有三种模式：</p>
+<ul>
+<li>Orchestration（编制）：通过一个可执行的流程来协同内部及外部的服务交互，通过流程来控制总体的目标、涉及的操作、服务调用顺序。这种模式必须有一个流程控制服务，用来接收请求，组织服务间的调用，并最终完成业务逻辑。这种方案中大多是同步调用，虽然在某个时刻能够很清晰的知道服务的执行情况，但当业务复杂，服务很多的情况下，在控制服务中会存在大量的耦合，难以维护；</li>
+<li>Choreography（编排）：通过消息的交互序列来控制各个部分资源的交互，参与交互的资源都是对等的，没有集中的控制。可以看作一种消息驱动模式，或者说是订阅发布模式，不同的服务之间通过消息机制串联起来，这种方式大多都是异步的。好处就是耦合度低，但也会带来一些问题，比如：业务流程是通过订阅的方式来体现的，很难直接监控每笔业务的处理，因此难于调试；由于没有预定义流程，所以很难在事前保证流程正确性，基本靠事后分析数据来判断等；</li>
+<li>API网关：API网关是一种简单的接口聚合/拆分的方式：业务组件的请求后先到达网关，网关调用各微服务，并最终聚合/拆分需反馈的结果。API网关其实就是一个适配网关，比如对于 Web端，可以一个页面同时发起几十个请求，而对于移动端，最好是一个页面就几个请求。而采用API 网关，后面的微服务可以是相同的。但只能应对一些逻辑简单的场景。</li>
+</ul>
+<p>结合上面方式各自的优点，服务编排引擎的实现思路如下：</p>
+<p>1、一个服务的编排由一个或多个业务服务组件组成；</p>
+<p>2、一个业务服务组件可以拆解为一个或多个原子服务；</p>
+<p>3、每个原子服务可以抽象成一个通用模型；</p>
+<p>4、每个原子服务提供 API 接口和事件监听机制；</p>
+<p>5、每个原子服务根据持久化适配器将数据更新到订阅的持久化组件中。</p>
+<p>整体过程如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020841004.jpg" alt="iShot2022-02-02 08.41.46"></p>
+<p>服务组件的调用是同步还异步，我们把这个决定权交给用户，可以通过设置的方式来进行，并提供重试机制，确保数据的最终一致性。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020842629.jpg" alt="iShot2022-02-02 08.42.14"></p>
+<p>每个服务组件都有自己的入参和出参，在一个服务编排的请求上下文中会随着执行的阶段不同，动态组织参数，参数适配器会根据名称、类型等进行自动适配，当然也能根据在设置界面中的手动绑定进行适配。</p>
+<p>原子服务只做一件事情，通过一个原子服务或多个原子服务，可以组装出来各种不同功能的业务组件，通过事件监听机制让服务之间、组件之间可以彻底解耦，以便能够灵活组装。</p>
+<p>随着服务和组件的增多，调用链会变得越来越复杂，当一个服务编排整个处理完后，调用链会形成一个复杂网络，这对排查问题造成很大的麻烦。我们采用全链路跟踪来解决这个问题，在一个完整的业务调用开始时，会生成一个唯一 ID，这个 ID 会一直存储在调用上下文中。</p>
+<p>上面说到原子服务会有两种方式被执行，API 和事件监听的方式，如果是 API ，ID 可以放在请求头中传递到下一层，如果是事件监听，ID 会做为消息体的一部分进行传递。</p>
+<p>假设现在用户已编排了一个复杂的业务，服务组件之间的调用有同步也有异步，当某个环节出现问题时候，我们需要保证数据的最终一致性。常用的一种方式就是提供补偿机制。</p>
+<p>补偿模式核心思想是：针对每个操作，都要注册一个与其对应的补偿（撤销）操作，一般来说操作本身和其补偿操作会在一个事务里完成，当其后续操作失败后，需要按相反顺序完成前面注册的所有撤销操作。</p>
+<p>我们的补偿机制分为两种：</p>
+<p>1、特定服务组件上的独立设置；</p>
+<p>2、全局控制调用补偿，所有被调用服务会记录到一个列表中，如果出现需要重试或者回滚的操作，再从列表中获取出来进行相应的操作。</p>
+<p>在补偿模式中，要求能够提供补偿的服务的操作必须支持幂等，否则当多次执行的时候就会出现数据错误。正常情况下，所有的补偿都是自动触发的，但有些特殊的场景还是需要人工干预，在调用失败的日志列表中管理员可以进行手动重试。</p>
+<p>如果您有什么意见或建议，欢迎私信我。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/&title=零代码平台中的服务编排思路 - 冯威的博客&summary=随着企业数字化转型的进程加快，零代码平台的的应用越来越广泛，逐渐被企业级的客户认可和接受。
+零代码顾名思义就是在不写代码的情况下可以搭建应用和功能来满足客户的需求，但事实是残酷的，真实的客户需求永远比我们想象的要复杂，传统的零代码产品..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=零代码平台中的服务编排思路 - 冯威的博客&amp;body=http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/11/do-you-still-need-to-learn-design-patterns-now/">现在还需要学习设计模式吗？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/11/object-oriented-basic-knowledge/">设计模式：面向对象的基础知识<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

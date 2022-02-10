@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>读《有效需求分析》 - 冯威的博客</title>
+
+  
+    <meta name="description" content="最近在一个技术群里看到张逸大佬强力推荐一本关于需求分析的书《有效需求分析》，于是在 Kindle 上下单了，读完后有一种相见恨晚的感觉。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《有效需求分析》">
+<meta property="og:url" content="http://fwhyy.com/2021/03/read-effective-demand-analysis/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="最近在一个技术群里看到张逸大佬强力推荐一本关于需求分析的书《有效需求分析》，于是在 Kindle 上下单了，读完后有一种相见恨晚的感觉。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-22T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-01T14:12:16.241Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E4%B9%A6%E7%89%B9%E7%82%B9"><span class="toc-text">本书特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">我们常见的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9C%80%E6%B1%82"><span class="toc-text">什么是需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%8D%E6%98%AF%E9%9C%80%E6%B1%82"><span class="toc-text">方案不是需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B2%E7%B3%BB%E4%BA%BA"><span class="toc-text">干系人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82"><span class="toc-text">非功能性需求</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-03-22T00:05:00.000Z">2021-03-22</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>读《有效需求分析》</span></h1>
+<p>最近在一个技术群里看到张逸大佬强力推荐一本关于需求分析的书《有效需求分析》，于是在 Kindle 上下单了，读完后有一种相见恨晚的感觉。</p>
+<span id="more"></span>
+
+<h2 id="本书特点"><a href="#本书特点" class="headerlink" title="本书特点"></a>本书特点</h2><p>从书中的一些案例可以看出，作者擅长 ToB 软件的需求分析，如果您是从事的 ToB 软件的相关工作，那阅读本书时会有更多的共鸣。</p>
+<p>书中有大量的案例，阅读起来不仅不枯燥，反倒觉得挺有意思，特别是一些日常生活中例子，能引发我们更多的思考。</p>
+<p>每一个章节都有能落地的产物输出，所有的产物整合在一起就是完整的需求文档，可以让你不仅知道一些理论，还知道怎么落地。</p>
+<h2 id="我们常见的问题"><a href="#我们常见的问题" class="headerlink" title="我们常见的问题"></a>我们常见的问题</h2><p>1、辛辛苦苦开发的系统，跟客户演示的时候达不到客户的预期；</p>
+<p>2、上线后，客户反复提出“变更”，从客户视角来看是功能没有按要求完成，从开发的视角感觉客户在百般刁难；</p>
+<p>3、边界难以控制，已经按照“要求”完成了，客户还不断提出新的东西。</p>
+<p>读完这本书可以立即解决这些问题吗？答案肯定是不能，但能给我们带来启发和思考，能让我们在解决这些问题的路上往前迈进一步。</p>
+<p>书中的内容不少，本文只是我结合自己的认知把觉得重要的点展开来说说。</p>
+<h2 id="什么是需求"><a href="#什么是需求" class="headerlink" title="什么是需求"></a>什么是需求</h2><p>什么是需求？书中给出了一个非常精炼的回答：现实和期望之间的差距。就是中间这个差距需要我们去思考、调研，这是一个迭代的过程，直到最后达到期望甚至超过期望，如果用了一些错误的方法，或者被客户牵着鼻子走，最后结果可能还不如现实。</p>
+<h2 id="方案不是需求"><a href="#方案不是需求" class="headerlink" title="方案不是需求"></a>方案不是需求</h2><p>开篇例举的一个生活中的小例子充分说明了什么是需求，什么是方案：</p>
+<blockquote>
+<p>晚上小孩吵着说要吃饼干，最后给了点面包，小孩吃完就乖乖睡着了，在这里吃饼干是方案，需求是小孩的肚子饿了，当没有饼干时，可以使用第二种方案，给他吃面包也可以解决这个需求问题。</p>
+</blockquote>
+<p>如果客户的接口人稍微懂点技术，在做需求调研时就很容易提出方案级的需求，这时就需要警惕了，需要用一些问题来深挖背后的真实需求，比如：</p>
+<ul>
+<li>为什么会有这样一个项目，是因为同行业都有？还是因为内部管理需要？</li>
+<li>这个系统是哪些角色的人用？能解决他们什么问题？</li>
+<li>没有这个系统的时候现在是怎么来解决这些问题的？</li>
+<li>用户使用这功能的频率是多少？这功能如果做砸了，对谁影响最大？</li>
+</ul>
+<p>如果能挖到真实的需求，就可以根据情况来制定最优方案了。如果我们“完美”地满足了客户提出的“方案级需求”，最终的结果未必能让客户满意，客户通常善于发现问题，提出问题，但给出的方案往往不能完美解决问题。</p>
+<p>在公司的内部其实也存在着这种问题，比如项目团队的同事在遇到产品满足不了的功能时，需要给产品提需求，经常看到的需求描述是：</p>
+<ul>
+<li>在某某功能模块添加一种按钮类型；</li>
+<li>在某某地方需要多一种搜索条件的配置。</li>
+</ul>
+<p>这些都是方案，而不是需求，项目的同事根据自己的理解和认知完成了从需求到方案的转换，而这个方案很多时候并不是最优。</p>
+<p>所以每每收到这种“需求”时，会马上跟项目的同事反复确认客户到底想要什么，了解到真实背景后，才能结合产品的功能给出合适的解决方案。</p>
+<h2 id="干系人"><a href="#干系人" class="headerlink" title="干系人"></a>干系人</h2><p>任何企业准备上一套系统有各种各样的原因，可能是为了提高生产效率、提高协同办公效率，也可能是为了做一些政绩。所以针对不同的场景，我们首先需要找出这个系统的相关干系人。</p>
+<p>识别干系人有几个重要的判断标准：</p>
+<ul>
+<li>是否是关键部门复杂人？</li>
+<li>是否对项目有一票否决权？</li>
+<li>系统上线是否对大量的使用者产生负面影响？比如：工作模式改变等</li>
+<li>识别出的人员是否与项目有直接关系？</li>
+</ul>
+<p>如果能够准确的识别关键关系人，还需要对关系人进行分析：</p>
+<ul>
+<li>同一类如果有多个干系人，需要选出最有代表性的一个；</li>
+<li>不同干系人之间是否有利益冲突；</li>
+<li>干系人的专业背景、兴趣爱好（方便日后沟通）；</li>
+<li>不同的干系人在各自角色上希望项目能解决什么问题？</li>
+<li>对项目的落地有什么担心？</li>
+</ul>
+<p>做项目不光是要做好事，关键还要能搞定人，能让重点干系人感受到系统的价值，项目就容易成功。</p>
+<p>我认为项目的前期最核心的就是上面两个步骤：挖出核心诉求和找出重点干系人。剩下的就是分解需求进行开发实现了。不同的团队对需求分解和开发实现肯定都有适合自己的方式和方法，具体可以去阅读本书，下面说说在项目需求调研过程中经常会忽略的非功能性需求。</p>
+<h2 id="非功能性需求"><a href="#非功能性需求" class="headerlink" title="非功能性需求"></a>非功能性需求</h2><p>非功能性需求通常指，安全性、性能、扩展性、稳定性等等，这些非常重要，但也是最容易被我们忽视掉的。</p>
+<p>非功能性需求针对不同的客户或系统会有不同的侧重点，比如：</p>
+<ul>
+<li>费控系统对计算的准确性要求高，接口需要做幂等处理等等；</li>
+<li>客户是集团性质的企业，而且系统是全员使用，并发量大，性能上有较高的要求；</li>
+<li>一些合资企业，系统需要进行多语言支持，可能还会进行跨地域部署；</li>
+<li>事业单位、政府机构对 UI 层面会有独到的见解；</li>
+<li>公检法司的项目中会对安全性要求比较高，包括可能有些数据列需要加密。</li>
+</ul>
+<p>这些非功能性的需求在调研阶段应该和功能性需求一起同步进行，根据客户的特征进行分析和识别，最终作为开发交付的一个检查项进行检查。</p>
+<p>上面列举的都是和系统本身相关的一些要求，除此之外，还有很多的外在因素也是在前期调研时就应该考虑的，比如：</p>
+<ul>
+<li>客户希望上线的时间节点？</li>
+<li>如果功能较多，能不能进行分期交付？</li>
+<li>客户有没有明确的技术上的要求，比如不能使用 Windows 部署，或者开发语言只能使用 Java？</li>
+<li>有没有历史系统需要做数据迁移？如果有需要达到什么样的目标，是整体切换还是需要双系统并存一段时间进行逐步替换？</li>
+<li>是否需要和第三方系统进行对接？如果需要，需要知道第三方系统的接口人信息以及接口规范。</li>
+</ul>
+<p>现在各种各样的书籍琳琅满目，感兴趣的书买了，就有机会去阅读，这是我一直以来的一个观点，做需求每个项目负责人都有自己的方法，但多读书学习一些方法和技巧，没准哪天就能用上了。再说了，多读书，往上可以提升我们的格局和眼界，往下也能夯实和固化我们的能力。</p>
+<p>希望本文对您有所帮助！</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/03/read-effective-demand-analysis/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/03/read-effective-demand-analysis/&title=读《有效需求分析》 - 冯威的博客&summary=最近在一个技术群里看到张逸大佬强力推荐一本关于需求分析的书《有效需求分析》，于是在 Kindle 上下单了，读完后有一种相见恨晚的感觉。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=读《有效需求分析》 - 冯威的博客&amp;body=http://fwhyy.com/2021/03/read-effective-demand-analysis/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/03/read-effective-demand-analysis/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/03/use-teleport/">Teleport 开源堡垒机的使用<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/04/with-regard-to-efficiency-and-two-point/">关于增效，需要做好这两点<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

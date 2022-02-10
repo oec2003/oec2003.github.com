@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>你真的了解低代码平台吗？ - 冯威的博客</title>
+
+  
+    <meta name="description" content="从 2020 年疫情之后，低代码这个概念就突然变得火热起来，各大自媒体纷纷推出介绍低代码的文章，InfoQ 也曾发表过一篇《为什么我说低代码是“行业毒瘤”？》引发了热议，明道的创始人任向晖随后在自己的公众号写文章《低代码不是行业毒瘤，你才是！》进行回应，好不热闹。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你真的了解低代码平台吗？">
+<meta property="og:url" content="http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="从 2020 年疫情之后，低代码这个概念就突然变得火热起来，各大自媒体纷纷推出介绍低代码的文章，InfoQ 也曾发表过一篇《为什么我说低代码是“行业毒瘤”？》引发了热议，明道的创始人任向晖随后在自己的公众号写文章《低代码不是行业毒瘤，你才是！》进行回应，好不热闹。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020807912.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020807033.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020808141.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020808886.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020809296.jpg">
+<meta property="article:published_time" content="2021-08-02T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:10:19.396Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="低代码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020807912.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%EF%BC%9F"><span class="toc-text">什么是低代码平台？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E6%A0%B7%E9%89%B4%E5%88%AB%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0"><span class="toc-text">怎样鉴别低代码平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E4%BB%A3%E7%A0%81%E9%80%82%E5%90%88%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">低代码适合做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E4%BB%A3%E7%A0%81%E8%83%BD%E7%BB%99%E6%88%91%E4%BB%AC%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">低代码能给我们带来什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E5%AF%B9%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9C%89%E5%BD%B1%E5%93%8D%E5%90%97%EF%BC%9F"><span class="toc-text">低代码平台对程序员有影响吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E4%BA%A7%E5%93%81"><span class="toc-text">我们的产品</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-08-02T00:05:00.000Z">2021-08-02</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>你真的了解低代码平台吗？</span></h1>
+<p>从 2020 年疫情之后，低代码这个概念就突然变得火热起来，各大自媒体纷纷推出介绍低代码的文章，InfoQ 也曾发表过一篇《为什么我说低代码是“行业毒瘤”？》引发了热议，明道的创始人任向晖随后在自己的公众号写文章《低代码不是行业毒瘤，你才是！》进行回应，好不热闹。</p>
+<span id="more"></span>
+
+<p>很荣幸，从 2016 年开始，我就一直在从事低代码产品研发的相关工作，而且在 2020 年的疫情期间，利用我们的低代码产品快速搭建了武汉市新冠肺炎疫情线索回访及跟踪应用系统，为疫情防控出了一份力。本文就谈谈我理解的低代码。</p>
+<h2 id="什么是低代码平台？"><a href="#什么是低代码平台？" class="headerlink" title="什么是低代码平台？"></a>什么是低代码平台？</h2><p>不同的人听到低代码这个词，理解会有不一样，原因是低代码有两种模式：基于代码生成器和基于模型。</p>
+<p>很多的软件开发公司，为了提高开发效率，都会慢慢沉淀自己的开发框架，将通用的功能封装起来，再使用工具按照一定的规则生成需要的代码，开发人员在这个基础之上进行业务功能的实现，这个一般称之为开发平台。我所经历过的一些公司都有一套这样的的框架或平台，目的相同，但形态各异。</p>
+<p>基于模型的意思就是在平台层面将核心的引擎模块进行抽象建模，比如流程、规则、列表、表单等，使用者通过可视化拖拉拽的方式就能够创建应用的创建，不仅仅可以给开发人员使用，也能给业务人员使用。</p>
+<p>最近几年我一直在做的就是第二种，基于模型的低代码平台，这种平台不仅仅只是一个开发平台。</p>
+<h2 id="怎样鉴别低代码平台"><a href="#怎样鉴别低代码平台" class="headerlink" title="怎样鉴别低代码平台"></a>怎样鉴别低代码平台</h2><p>世界著名的咨询公司 Gartner 在 2020 年 9 月发布的《企业级低代码开发平台的关键能力报告》中提出了衡量一个低代码平台的 11 个关键能力点，如下：</p>
+<blockquote>
+<p>1、易用性，不写代码时的开发能力，指的是是否能通过配置的方式来创建应用 </p>
+<p>2、所开发出来的应用的用户体验，这里的用户指的是最终的使用用户</p>
+<p>3、数据模型和管理 </p>
+<p>4、工作流与业务处理逻辑 </p>
+<p>5、开发平台的生态系统 </p>
+<p>6、编程接口与系统集成能力 </p>
+<p>7、系统架构，分层、高可用，集群部署等 </p>
+<p>8、服务的质量 </p>
+<p>9、用户模型与软件开发生命周期支持 </p>
+<p>10、治理及运维 </p>
+<p>11、安全与合规</p>
+</blockquote>
+<p>结合上面的 11 点，并对比我们现在在做的产品可以总结如下：</p>
+<p>1、必须要能够支持拖拉拽配置的方式，可以说这是一个最低门槛了；</p>
+<p>2、是基于模型驱动的，而不是一个简单的通用代码生成；</p>
+<p>3、平台自身除了能够拖拉拽之外，还需要支持灵活的扩展能力；</p>
+<p>4、能够方便地和第三方系统进行集成和对接；</p>
+<p>5、真实业务往往是复杂的，平台除了单表的增删改查之外，还需要有灵活的业务编排能力；</p>
+<p>6、对终端适配，一键发布。</p>
+<p>可以说，满足上面六点就可以称之为一个低代码平台了。</p>
+<h2 id="低代码适合做什么？"><a href="#低代码适合做什么？" class="headerlink" title="低代码适合做什么？"></a>低代码适合做什么？</h2><p>低代码平台虽然能带来便利和提高效率，但也不是万能的。比较擅长的是实现企业级应用，比如：CRM、生产管理系统、商务管理系统、设备管理系统、甚至也能实现复杂的 ERP。总之面向的客户是 B 端客户。</p>
+<p>如果说想要做一个电子商务网站、类似今日头条这种咨询类的网站、或者外卖点餐系统，低代码平台就不太合适了。</p>
+<p>而且目前市面上的一些低代码产品，不管是私有化部署的，还是 SaaS 应用，也几乎都是面向企业的，例如：</p>
+<ul>
+<li>国外的 Salesforce、OutSystem、Mendix</li>
+<li>奥哲的云枢、氚云、有格</li>
+<li>阿里的宜搭、云凤蝶</li>
+<li>腾讯的微搭</li>
+<li>华为的 AppCube</li>
+<li>其他的还有明道、搭搭云、伙伴云、轻流、织信等</li>
+</ul>
+<h2 id="低代码能给我们带来什么？"><a href="#低代码能给我们带来什么？" class="headerlink" title="低代码能给我们带来什么？"></a>低代码能给我们带来什么？</h2><p>低代码平台其实是软件公司和企业双赢的选择，而且随着企业数字化转型的加速，低代码平台也一定能够应用地更加广泛。</p>
+<p>对软件公司来说：</p>
+<p>1、提升软件交付的时间，降低成本，2020 年某集团公司的 200 多个功能模块，使用我们的产品 1 个半月实现了交付，如果完全定制开发是不可能完成的；</p>
+<p>2、常用的基础功能都封装在平台中，随着平台的成熟和稳定，交付软件的质量能够得到保障，可以大大减少低级错误；</p>
+<p>3、售前在跟客户的交流过程中，不再只通过 PPT ，可以快速根据客户的反馈搭建出原型进行沟通，甚至可以在现场搭建；</p>
+<p>4、我们常说在软件开发过程中要拥抱变化，低代码平台能够让我们更好地应对变化，做到快速响应，提升客户满意度。</p>
+<p>对企业来说：</p>
+<p>1、业务部门需要用的一些小功能，可以自己在平台中进行创建并使用；</p>
+<p>2、在需求阶段，软件公司可以直接搭建出运行沟通，减低沟通成本；</p>
+<p>3、需求变更中一些小的 界面调整，无需提交变更单到软件公司，自己就能搞定，在定制化软件中，哪怕是修改一个文字，也需要软件公司修改后进行发布上线；</p>
+<p>4、交付快速，效率提升，成本降低。</p>
+<p>总结下就是：沟通快、实施快、上线快、变更响应快、成本低、使用门槛低、风险低。</p>
+<h2 id="低代码平台对程序员有影响吗？"><a href="#低代码平台对程序员有影响吗？" class="headerlink" title="低代码平台对程序员有影响吗？"></a>低代码平台对程序员有影响吗？</h2><p>有了低代码平台，实现功能都能用拖拉拽的方式进行了，那还要程序员做什么呢？程序员是否就无用武之地了呢？</p>
+<p>低代码平台的诞生确实对程序员是有影响的，但只会对对不思进取的程序员有影响，对工作了 10 年，但拿着一年经验重复 10  年的程序员有影响。如果您对技术有追求，喜欢思考，那么低代码平台其实是解放程序员的生产力，从重复造轮子（增删改查）的低价值中得到解脱，进而去做更复杂，高级的编码工作。</p>
+<h2 id="我们的产品"><a href="#我们的产品" class="headerlink" title="我们的产品"></a>我们的产品</h2><p>最近几年，从零开始到现在，打造了一款功能强大的代码产品，经过了很多大型企业客户的验证，其中也走了很多弯路，这其中的心路历程在未来一定会写成一个系列跟大家分享。并且我们计划在 2022 年上半年会推出 SaaS 版本，让更多的中小型企业用户也能使用我们的产品。</p>
+<p>下面先放几个我们产品的相关截图。</p>
+<p>整体架构图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020807912.jpg" alt="iShot2022-02-02 08.07.19"></p>
+<p>表单设计：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020807033.jpg" alt="iShot2022-02-02 08.07.45"></p>
+<p>按钮设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020808141.jpg" alt="iShot2022-02-02 08.08.18"></p>
+<p>业务编排：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020808886.jpg" alt="iShot2022-02-02 08.08.45"></p>
+<p>最后，我们有一个群，也欢迎大家加入进行低代码平台的学习和讨论。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020809296.jpg" alt="iShot2022-02-02 08.09.26"></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/&title=你真的了解低代码平台吗？ - 冯威的博客&summary=从 2020 年疫情之后，低代码这个概念就突然变得火热起来，各大自媒体纷纷推出介绍低代码的文章，InfoQ 也曾发表过一篇《为什么我说低代码是“行业毒瘤”？》引发了热议，明道的创始人任向晖随后在自己的公众号写文章《低代码不是行业毒瘤，..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=你真的了解低代码平台吗？ - 冯威的博客&amp;body=http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/07/how-does-a-technology-leader-lead-a-team/">技术 Leader 怎样带跨一个团队？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/08/dotnet5-exec-node-js/">dotNet 5 中执行 Node.js<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

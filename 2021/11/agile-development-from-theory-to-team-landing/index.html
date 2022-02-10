@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>敏捷开发：从理论到团队落地 - 冯威的博客</title>
+
+  
+    <meta name="description" content="敏捷开发很早就已经流行过了，之前也零碎地了解了一些相关知识，并在团队中进行了部分实践，但效果都不怎么好。最近又重新梳理了一遍，并结合现状，准备在团队中重新实践敏捷。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="敏捷开发：从理论到团队落地">
+<meta property="og:url" content="http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="敏捷开发很早就已经流行过了，之前也零碎地了解了一些相关知识，并在团队中进行了部分实践，但效果都不怎么好。最近又重新梳理了一遍，并结合现状，准备在团队中重新实践敏捷。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020853579.jpg">
+<meta property="article:published_time" content="2021-11-24T00:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T00:54:30.490Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="敏捷开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020853579.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%EF%BC%9F"><span class="toc-text">什么是敏捷？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Scrum%EF%BC%9F"><span class="toc-text">什么是 Scrum？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E8%A7%92%E8%89%B2"><span class="toc-text">三种角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%A4%A7%E4%BC%9A%E8%AE%AE"><span class="toc-text">五大会议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E4%BA%A7%E7%89%A9"><span class="toc-text">两个关键产物</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E7%AE%A1%E7%90%86/">管理</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-11-24T00:05:00.000Z">2021-11-24</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>敏捷开发：从理论到团队落地</span></h1>
+<p>敏捷开发很早就已经流行过了，之前也零碎地了解了一些相关知识，并在团队中进行了部分实践，但效果都不怎么好。最近又重新梳理了一遍，并结合现状，准备在团队中重新实践敏捷。</p>
+<span id="more"></span>
+
+<h2 id="什么是敏捷？"><a href="#什么是敏捷？" class="headerlink" title="什么是敏捷？"></a>什么是敏捷？</h2><p>首先，敏捷是一种观点和价值观，不是具体的指导性方法，其核心思想是：</p>
+<ul>
+<li>响应变化、拥抱变化；</li>
+<li>注重沟通；</li>
+<li>能够持续交付，注意这里的持续非常重要，这也是我们团队之前存在的问题；</li>
+<li>交付的成果是以客户的角度，对客户来说是有价值的。</li>
+</ul>
+<p>2001 年，17 位软件开发者齐聚在美国的犹他州的雪鸟( snowbird )，讨论轻量级的软件开发方法，并写下了敏捷软件开发宣言，其中包括四条核心价值观和十二条原则，这里就不具体贴出了。想表达的还是上面总结的核心思想。</p>
+<p>既然敏捷是一种思想，终究还是要落地的，针对敏捷的落地有很多的实践方法，比如：精益软件开发、特性驱动开发、极限编程（XP）、Scrum，其中 Scrum 是比较流行也是资料最多的，我们团队也将采用 Scrum 进行实践。</p>
+<h2 id="什么是-Scrum？"><a href="#什么是-Scrum？" class="headerlink" title="什么是 Scrum？"></a>什么是 Scrum？</h2><p>Scrum 是一种实践敏捷的框架和方法论。其中包含：</p>
+<ul>
+<li>三种角色；</li>
+<li>五大会议；</li>
+<li>两个关键产物。</li>
+</ul>
+<h3 id="三种角色"><a href="#三种角色" class="headerlink" title="三种角色"></a>三种角色</h3><p>Product Owner：产品负责人，主要把控产品的方向，构建正确的产品，解决做什么的问题；</p>
+<p>Scrum Master：</p>
+<ul>
+<li>确保团队能够使用正确的流程；</li>
+<li>确保团队能够正常召开各种会议；</li>
+<li>帮助团队成员理解 Scrum 理论、实践、规则和价值；</li>
+<li>不设置固定的人员，可以是团队中的任何人以轮流的方式担任。</li>
+</ul>
+<p>Development Team：</p>
+<ul>
+<li>包含架构、开发、设计、测试、运维等；</li>
+<li>在产品方向确定的前提下，确保能以正确的方式来构建产品，解决怎么做的问题。</li>
+</ul>
+<h3 id="五大会议"><a href="#五大会议" class="headerlink" title="五大会议"></a>五大会议</h3><p>待办事项梳理会（梳理 Product Backlog）</p>
+<ul>
+<li>建议每周都和相关人员进行沟通，确保 Product Backlog 中不会断货，不然就持续不起来；</li>
+<li>在该会议中，进行待办事项的补充、优先级的调整和一些具体实现思路的讨论。</li>
+</ul>
+<p>迭代计划会 （确定 Sprint Backlog）</p>
+<ul>
+<li>在每个迭代开始时进行；</li>
+<li>从 Product Backlog 中挑选一个迭代能完成的事项放入到当前的迭代列表中；</li>
+<li>一个迭代周期一到四周不等，我们现在团队在实践初期，准备 3 周一个迭代，等到流程运转顺畅了，可以再调整为 2 周；</li>
+<li>在会上还需要将用户故事拆解成任务，指定责任人和工时。</li>
+</ul>
+<p>每日站会</p>
+<ul>
+<li><p>由 Scrum Master 主持，团队成员每人轮流发言，控制好时间，一般不超过 15 分钟；</p>
+</li>
+<li><p>发言内容为：做过什么？将要做什么？遇到什么问题？</p>
+</li>
+</ul>
+<p>迭代评审会</p>
+<ul>
+<li>迭代结束前进行；</li>
+<li>迭代负责人给相关人员（产品负责人、其他的利益方）做功能的验收演示；</li>
+<li>在会上提出的意见或建议记录到 Product Backlog ，可能会规划到下一个迭代中进行处理。</li>
+</ul>
+<p>迭代回顾会</p>
+<ul>
+<li>迭代结束后进行；</li>
+<li>因为一个迭代的周期不会很长，所以在迭代结束后进行回顾，能够比较真实，不会有遗忘的情况；</li>
+<li>在会上可以讨论当前迭代中做的好的和做的不好的地方，团队的每个成员都要积极发言，这也是考验  Scrum Master 的时候。</li>
+</ul>
+<h3 id="两个关键产物"><a href="#两个关键产物" class="headerlink" title="两个关键产物"></a>两个关键产物</h3><p>Product Backlog</p>
+<ul>
+<li>产品的待办事项列表，作为每个迭代的来源；</li>
+<li>需要相关人员持续地进行碰撞，确保待办列表中的事项的优先级是正确的。</li>
+</ul>
+<p>Sprint Backlog</p>
+<ul>
+<li>迭代列表，每个迭代周期的范围；</li>
+<li>迭代结束后的交付内容。</li>
+</ul>
+<p>通过上面的描述，应该大致清楚了敏捷和 Scrum 是怎么回事了。接下来介绍在我们团队怎么去使用。</p>
+<p>敏捷对组织是有一定要求的，希望是跨职能组织，在一个组织中包含架构、开发、测试、运维、UI 设计等角色。如果不是，组织结构需要进行调整。要求跨职能组织的一个重要原因就是希望不同角色的人在工作时能随时面对面交流。目前我们产品团队是符合跨职能组织的要求，这也为实践敏捷提供了先决条件。</p>
+<p>整个过程就是按照 Scrum 的五大会议进行，其中有一些小的调整，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202020853579.jpg" alt="iShot2022-02-02 08.53.43"></p>
+<p>1、最开始的待办事项梳理会，建议是每周都能进行，因为待办事项的优先级会受到很多因素的干扰，每周进行能够及时调整；</p>
+<p>2、站会的时间调整到上午的 11 点半，目的就是为了控制时间，毕竟谁也不想到了 12 点还吃不上午饭；</p>
+<p>3、在迭代周期中添加了「用户故事评审会」，在会上用户故事的责任人对该用户故事的成果进行演示，这样可以让用户故事的责任人更有责任感，想要在一个相对比较正式的场合进行演示，那么事前肯定要做些演练，除此之外也能锻炼到每个人的演讲和沟通能力；还有一个好处就是演示过程中，集思广益，容易找出之前考虑不足的一些地方。</p>
+<p>组织调整为了跨职能组织，每个成员也都对敏捷的思想达成了共识，并且制定了相关的工作流程，剩下的就是选择一个合适的工具来辅助了，这类的工具有很多，比如 PingCode、Tower 等。选择一个自己用着顺手的就行。</p>
+<p>网上很多的文章都说敏捷执行到最后会变形，最终只留下了一个站会，或者变成小瀑布的模式，我认为在还没执行前就各种担心是大可不必的，出来混最重要的是出来，我们先得执行起来，过程中发现问题即使改进、调整，其实不光开发模式可以采用敏捷的方式、团队和个人也可以是敏捷的。</p>
+<p>在写这篇文章的时候，史蒂夫·迈克康奈尔的新书《卓有成效的敏捷》到货了，如果你还不知道史蒂夫·迈克康奈尔是谁，那么他的著作《代码大全》，你一定听过。等这本书看完后，肯定会有更多的思考，到时再继续分享给大家。</p>
+<p>希望本文对您有所帮助！</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/&title=敏捷开发：从理论到团队落地 - 冯威的博客&summary=敏捷开发很早就已经流行过了，之前也零碎地了解了一些相关知识，并在团队中进行了部分实践，但效果都不怎么好。最近又重新梳理了一遍，并结合现状，准备在团队中重新实践敏捷。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=敏捷开发：从理论到团队落地 - 冯威的博客&amp;body=http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/11/nike-air-zoom-tempo-next/">Nike Air Zoom Tempo Next% 实战评测<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/12/object-oriented-design-principles-1/">设计模式：面向对象的设计原则上（SRP、OCP、LSP）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

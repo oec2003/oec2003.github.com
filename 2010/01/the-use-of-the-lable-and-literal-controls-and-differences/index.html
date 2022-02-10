@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Lable和Literal控件的使用和区别 - 冯威的博客</title>
+
+  
+    <meta name="description" content="Lable和Literal这两个控件是我们非常熟悉的两个控件，都是用作内容呈现用的，但他们之间也有不同之处，分别应用于不同的地方。Lable控件会将内容呈现在html标签span中，即Lable控件的Text属性的值会包含在标签中。而Literal控件生成的代码则比较干净，它的Text属性的值将直接显示在页面中，看下面两段代码： Lable： 1234&lt;asp:Label ID&#x3D;&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lable和Literal控件的使用和区别">
+<meta property="og:url" content="http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="Lable和Literal这两个控件是我们非常熟悉的两个控件，都是用作内容呈现用的，但他们之间也有不同之处，分别应用于不同的地方。Lable控件会将内容呈现在html标签span中，即Lable控件的Text属性的值会包含在标签中。而Literal控件生成的代码则比较干净，它的Text属性的值将直接显示在页面中，看下面两段代码： Lable： 1234&lt;asp:Label ID&#x3D;&quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302120262.png">
+<meta property="article:published_time" content="2010-01-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T13:21:05.884Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="AspNet">
+<meta property="article:tag" content="lable">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302120262.png">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2010-01-22T16:00:00.000Z">2010-01-23</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Lable和Literal控件的使用和区别</span></h1>
+<p>Lable和Literal这两个控件是我们非常熟悉的两个控件，都是用作内容呈现用的，但他们之间也有不同之处，分别应用于不同的地方。Lable控件会将内容呈现在html标签span中，即Lable控件的Text属性的值会包含在<span>标签中。而Literal控件生成的代码则比较干净，它的Text属性的值将直接显示在页面中，看下面两段代码：</p>
+<p>Lable：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;asp:Label ID=&quot;lblUserName&quot; runat=&quot;server&quot; Text=&quot;用户名&quot;&gt;&lt;/asp:Label&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtUserName&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br><span class="line">&lt;asp:Label ID=&quot;lblPwd&quot; runat=&quot;server&quot; Text=&quot;密码&quot;&gt;&lt;/asp:Label&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtPwd&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Literal：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;asp:Literal runat=&quot;server&quot; ID=&quot;litUserName&quot; Text=&quot;用户名&quot;&gt;&lt;/asp:Literal&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtUserName1&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br><span class="line">&lt;asp:Literal runat=&quot;server&quot; ID=&quot;litPwd&quot; Text=&quot;密码&quot;&gt;&lt;/asp:Literal&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtPwd1&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面两段程序运行的结果都如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201302120262.png" alt="2010-12-29_1138351"></p>
+<p>再来看看上面的代码生成的源码：</p>
+<p>Lable</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;span id=&quot;lblUserName&quot;&gt;用户名&lt;/span&gt;</span><br><span class="line">&lt;input name=&quot;txtUserName&quot; type=&quot;text&quot; id=&quot;txtUserName&quot; /&gt;&lt;br /&gt;</span><br><span class="line">&lt;span id=&quot;lblPwd&quot;&gt;密码&lt;/span&gt;</span><br><span class="line">&lt;input name=&quot;txtPwd&quot; type=&quot;text&quot; id=&quot;txtPwd&quot; /&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Literal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用户名</span><br><span class="line">&lt;input name=&quot;txtUserName1&quot; type=&quot;text&quot; id=&quot;txtUserName1&quot; /&gt;&lt;br /&gt;</span><br><span class="line">密码</span><br><span class="line">&lt;input name=&quot;txtPwd1&quot; type=&quot;text&quot; id=&quot;txtPwd1&quot; /&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>从源码中可以很清楚看出Lable最终在客户端会生成Span标签，而Literal则直接显示文本，记得曾经维护过的一个自定义控件，在不同留言器中有样式问题，调试很久最终发现就是Lable生成的Span惹的祸，最终换成Literal得以解决，所以后来但凡要显示文本的地方我基本都是用Literal。不过Lable也不是一无是处，Lable控件有一个AssociatedControlID，可以将该属性指向一个表单控件的ID，通常为TextBox，看下面代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;asp:Label ID=&quot;lblUserName&quot; runat=&quot;server&quot; AssociatedControlID=&quot;txtUserName&quot; Text=&quot;用户名&quot;&gt;&lt;/asp:Label&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtUserName&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br><span class="line">&lt;asp:Label ID=&quot;lblPwd&quot; runat=&quot;server&quot; AssociatedControlID=&quot;txtPwd&quot; Text=&quot;密码&quot;&gt;&lt;/asp:Label&gt;</span><br><span class="line">&lt;asp:TextBox ID=&quot;txtPwd&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>和上面的代码基本一样只是添加了AssociatedControlID属性，分别指向了两个TextBox控件的ID，添加了这个属性后生成的源码就变了，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;label for=&quot;txtUserName&quot; id=&quot;lblUserName&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;txtUserName&quot; type=&quot;text&quot; id=&quot;txtUserName&quot; /&gt;&lt;br /&gt;</span><br><span class="line">&lt;label for=&quot;txtPwd&quot; id=&quot;lblPwd&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;txtPwd&quot; type=&quot;text&quot; id=&quot;txtPwd&quot; /&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出有Span标签变成了lable标签 for属性指向了TextBox的id。AssociatedControlID属性的使用能够给残障人士带来方便，如果使用读屏器之类的辅助设备来和网站进行交互，AssociatedControlID属性能帮助辅助设备将标签和字段关联起来。除此之外还有一个好处就是当点击标签时，所关联的TextBox就会获得焦点。</p>
+<p>由于Lable控件的内容最终呈现在Span标签中，所以Lable控件也支持Span标签的一些属性，如BackColor，CssClass等。Literal控件不生成Span标签，当然也不支持那些属性，不过Literal控件有个Mode属性，该属性有三个值</p>
+<ul>
+<li>Encode ：在编码Html内容后再显示控件的内容</li>
+<li>PassThrough ：显示控件的内容不进行编码</li>
+<li>Transform ：清除一些不支持的标记后在呈现内容</li>
+</ul>
+<p>看下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;asp:Literal runat=&quot;server&quot; ID=&quot;litHr1&quot; Text=&quot;&lt;hr /&gt;&quot; Mode=&quot;Encode&quot;&gt;&lt;/asp:Literal&gt;</span><br><span class="line">&lt;asp:Literal runat=&quot;server&quot; ID=&quot;litHr2&quot; Text=&quot;&lt;hr /&gt;&quot; Mode=&quot;PassThrough&quot;&gt;&lt;/asp:Literal&gt;</span><br><span class="line">&lt;asp:Literal runat=&quot;server&quot; ID=&quot;litHr3&quot; Text=&quot;&lt;hr /&gt;&quot; Mode=&quot;Transform&quot;&gt;&lt;/asp:Literal&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面的三行代码运行后的结果为：<hr/>  一条横线 一条横线。第三种如果是运行在移动电话这样的不支持<hr/>的设备中，将不会显示横线。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/&title=Lable和Literal控件的使用和区别 - 冯威的博客&summary=Lable和Literal这两个控件是我们非常熟悉的两个控件，都是用作内容呈现用的，但他们之间也有不同之处，分别应用于不同的地方。Lable控件会将内容呈现在html标签span中，即Lable控件的Text属性的值会包含在标签中。而..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=Lable和Literal控件的使用和区别 - 冯威的博客&amp;body=http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2010/01/design-patterns-notes-17-mediator-pattern/">设计模式笔记(17)—中介者模式（行为型）<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2010/01/design-patterns-notes-18-iterator-pattern/">设计模式笔记(18)—迭代器模式（行为型）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

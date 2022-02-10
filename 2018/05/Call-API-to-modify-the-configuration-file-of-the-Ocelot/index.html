@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>调用API修改Ocelot的配置文件 - 冯威的博客</title>
+
+  
+    <meta name="description" content="Ocelot是一个基于.net core的开源webapi服务网关开源项目，功能比较强大，Github项目地址为：https:&#x2F;&#x2F;github.com&#x2F;ThreeMammals&#x2F;Ocelot，关于Ocelot的学习资料可以看看张善友的网站：http:&#x2F;&#x2F;www.csharpkit.com&#x2F;apigateway.html。 Ocelot的路由设置是基于配置文件的，同样在Ocelot中使用Consul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="调用API修改Ocelot的配置文件">
+<meta property="og:url" content="http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="Ocelot是一个基于.net core的开源webapi服务网关开源项目，功能比较强大，Github项目地址为：https:&#x2F;&#x2F;github.com&#x2F;ThreeMammals&#x2F;Ocelot，关于Ocelot的学习资料可以看看张善友的网站：http:&#x2F;&#x2F;www.csharpkit.com&#x2F;apigateway.html。 Ocelot的路由设置是基于配置文件的，同样在Ocelot中使用Consul">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260643728.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260643995.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644485.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644850.jpg">
+<meta property="og:image" content="http://fwhyy.com/img/post/15259951208891.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644131.jpg">
+<meta property="article:published_time" content="2018-05-15T16:19:38.000Z">
+<meta property="article:modified_time" content="2022-01-28T10:44:40.423Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="dotNET Core">
+<meta property="article:tag" content="ocelot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260643728.jpg">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IdentityService"><span class="toc-text">IdentityService</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebAPIGetWay"><span class="toc-text">WebAPIGetWay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Postman%E6%B5%8B%E8%AF%95%E4%B8%8BWebAPIGetway%E5%92%8CIdentityService"><span class="toc-text">使用Postman测试下WebAPIGetway和IdentityService</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%E6%9D%A5%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">使用代码方式来修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">示例代码</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2018-05-15T16:19:38.000Z">2018-05-16</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>调用API修改Ocelot的配置文件</span></h1>
+<p>Ocelot是一个基于.net core的开源webapi服务网关开源项目，功能比较强大，Github项目地址为：<a target="_blank" rel="noopener" href="https://github.com/ThreeMammals/Ocelot">https://github.com/ThreeMammals/Ocelot</a>，关于Ocelot的学习资料可以看看张善友的网站：<a target="_blank" rel="noopener" href="http://www.csharpkit.com/apigateway.html">http://www.csharpkit.com/apigateway.html</a>。</p>
+<p>Ocelot的路由设置是基于配置文件的，同样在Ocelot中使用Consul做服务发现时，也是基于配置文件，当我们修改路由或者需要往Consul中添加ServiceName的时候，需要修改配置文件，网关服务也需要重启，这当然不是我们想要的。</p>
+<span id="more"></span>
+
+<p>在张善友的帮助下，得知可以通过调用api的方式来修改Ocelot的配置文件，官方文档：<a target="_blank" rel="noopener" href="https://ocelot.readthedocs.io/en/latest/features/administration.html">https://ocelot.readthedocs.io/en/latest/features/administration.html</a>，本文以示例的方式来介绍怎样通过调用api的方式修改Ocelot的配置文件。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>.net core：2.1.4</li>
+<li>Ocelot：6.0</li>
+<li>IdentityServer4：2.2.0</li>
+</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>使用VS2017创建解决方案UpdateOcelotConfig，并添加三个项目：</p>
+<ul>
+<li><p>Client</p>
+<ol>
+<li>控制台项目</li>
+<li>添加Ocelot包引用</li>
+</ol>
+</li>
+<li><p>IdentityService</p>
+<ol>
+<li>WebAPI项目</li>
+<li>添加IdentityServer4包引用</li>
+</ol>
+</li>
+<li><p>WebAPIGetway</p>
+<ol>
+<li>WebAPI项目</li>
+<li>添加IdentityServer4包引用</li>
+<li>添加Ocelot包引用</li>
+</ol>
+</li>
+</ul>
+<p>项目创建完成后如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260643728.jpg"></p>
+<h2 id="IdentityService"><a href="#IdentityService" class="headerlink" title="IdentityService"></a>IdentityService</h2><p>该项目使用IdentityService4实现一个认证服务，因为在调用Ocelot的api接口时需要用到认证。<br>1、首先添加对IdentityService4的NuGet包引用；<br>2、添加Config.cs类，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Config</span><br><span class="line">&#123;</span><br><span class="line">    public static IEnumerable&lt;ApiResource&gt; GetApiResources()</span><br><span class="line">    &#123;</span><br><span class="line">        return new List&lt;ApiResource&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            new ApiResource(&quot;s2api&quot;, &quot;My API&quot;)</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    public static IEnumerable&lt;Client&gt; GetClients()</span><br><span class="line">    &#123;</span><br><span class="line">        return new List&lt;Client&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            new Client</span><br><span class="line">            &#123;</span><br><span class="line">                ClientId = &quot;client&quot;,</span><br><span class="line">                AllowedGrantTypes =GrantTypes.ClientCredentials,</span><br><span class="line">                ClientSecrets =</span><br><span class="line">                &#123;</span><br><span class="line">                    new Secret(&quot;secret&quot;.Sha256())</span><br><span class="line">                &#125;,</span><br><span class="line">                AllowedScopes = &#123; &quot;s2api&quot; &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、Startup类修改，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public void ConfigureServices(IServiceCollection services)</span><br><span class="line">&#123;</span><br><span class="line">    services.AddIdentityServer()</span><br><span class="line">        .AddDeveloperSigningCredential()</span><br><span class="line">        .AddInMemoryApiResources(Config.GetApiResources())</span><br><span class="line">        .AddInMemoryClients(Config.GetClients());</span><br><span class="line">&#125;</span><br><span class="line">public void Configure(IApplicationBuilder app, IHostingEnvironment env)</span><br><span class="line">&#123;</span><br><span class="line">    if (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    app.UseIdentityServer();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、修改项目的启动端口为9500。</p>
+<h2 id="WebAPIGetWay"><a href="#WebAPIGetWay" class="headerlink" title="WebAPIGetWay"></a>WebAPIGetWay</h2><p>该项目是使用Ocelot的网关服务，具体实现步骤如下：<br>1、添加Ocelot和IdentityService4的NuGet包引用；<br>2、添加Ocelot.json配置文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;ReRoutes&quot;: [</span><br><span class="line">  &#123;</span><br><span class="line">      &quot;DownstreamPathTemplate&quot;: &quot;/api/values&quot;,</span><br><span class="line">      &quot;DownstreamScheme&quot;: &quot;http&quot;,</span><br><span class="line">      &quot;DownstreamHostAndPorts&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">          &quot;Host&quot;: &quot;localhost&quot;,</span><br><span class="line">          &quot;Port&quot;: 10001</span><br><span class="line">      &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;UpstreamPathTemplate&quot;: &quot;/a/api/values&quot;,</span><br><span class="line">      &quot;UpstreamHttpMethod&quot;: [ &quot;Get&quot; ]</span><br><span class="line">   &#125;</span><br><span class="line">   ],</span><br><span class="line">   &quot;GlobalConfiguration&quot;: &#123;</span><br><span class="line">   &quot;BaseUrl&quot;: &quot;http://localhost:10000/&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、修改Program.cs类，添加对Ocelot.json文件的引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static IWebHost BuildWebHost(string[] args) =&gt;</span><br><span class="line">    WebHost.CreateDefaultBuilder(args)</span><br><span class="line">        //add ocelot json config file</span><br><span class="line">        .ConfigureAppConfiguration((hostingContext, builder) =&gt; &#123;</span><br><span class="line">         builder</span><br><span class="line">            .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)</span><br><span class="line">            .AddJsonFile(&quot;Ocelot.json&quot;)</span><br><span class="line">            .AddEnvironmentVariables();</span><br><span class="line">        &#125;)</span><br><span class="line">        .UseStartup&lt;Startup&gt;()</span><br><span class="line">        .UseUrls(&quot;http://*:10000&quot;)</span><br><span class="line">        .Build();</span><br></pre></td></tr></table></figure>
+
+<p>4、Startup类修改，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void ConfigureServices(IServiceCollection services)</span><br><span class="line">&#123;</span><br><span class="line">    Action&lt;IdentityServerAuthenticationOptions&gt; options = o =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        //IdentityService认证服务的地址</span><br><span class="line">        o.Authority = &quot;http://localhost:9500&quot;;</span><br><span class="line">        //IdentityService项目中Config类中定义的ApiName</span><br><span class="line">        o.ApiName = &quot;s2api&quot;; </span><br><span class="line">        o.RequireHttpsMetadata = false;</span><br><span class="line">        o.SupportedTokens = SupportedTokens.Both;</span><br><span class="line">        //IdentityService项目中Config类中定义的Secret</span><br><span class="line">        o.ApiSecret = &quot;secret&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">    services.AddOcelot()</span><br><span class="line">        .AddAdministration(&quot;/admin&quot;, options);</span><br><span class="line">&#125;</span><br><span class="line">public void Configure(IApplicationBuilder app, IHostingEnvironment env)</span><br><span class="line">&#123;</span><br><span class="line">    if (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    app.UseOcelot().Wait();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、修改项目的启动端口为10000.</p>
+<h2 id="使用Postman测试下WebAPIGetway和IdentityService"><a href="#使用Postman测试下WebAPIGetway和IdentityService" class="headerlink" title="使用Postman测试下WebAPIGetway和IdentityService"></a>使用Postman测试下WebAPIGetway和IdentityService</h2><p>1、设置解决方案的属性，同时启动两个项目</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260643995.jpg"></p>
+<p>启动后如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644485.jpg"></p>
+<p>2、在Postman中调用 <a target="_blank" rel="noopener" href="http://localhost:9500/connect/token%EF%BC%8C%E8%8E%B7%E5%8F%96token%EF%BC%8C%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E4%B8%BAPost%EF%BC%8Cform-data%E4%BC%A0%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9A">http://localhost:9500/connect/token，获取token，调用方式为Post，form-data传三个参数：</a></p>
+<ul>
+<li>client_id:client</li>
+<li>client_secret:secret</li>
+<li>grant_type:client_credentials</li>
+</ul>
+<p>调用成功后如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644850.jpg"></p>
+<p>3、在Postman中调用接口 <a target="_blank" rel="noopener" href="http://localhost:10000/admin/configuration">http://localhost:10000/admin/configuration</a> 获取Ocelot的配置，接口路径中的admin是在WebAPIGetway项目中的Startup类中定义的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">services.AddOcelot()</span><br><span class="line">    .AddAdministration(&quot;/admin&quot;, options);</span><br></pre></td></tr></table></figure>
+
+<p>该接口请求为Get请求，需要在Headers中设置上面获取的token，格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization:Bearer token</span><br></pre></td></tr></table></figure>
+
+<p>请求成功如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="http://fwhyy.com/img/post/15259951208891.jpg"></p>
+<p>4、在Postman中通过接口 <a target="_blank" rel="noopener" href="http://localhost:10000/admin/configuration">http://localhost:10000/admin/configuration</a> 修改配置，修改和获取配置的接口地址一致，修改时请求为Post，同样在Headers中需要添加token，另外还需要设置Content-Type，格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Authorization:Bearer token</span><br><span class="line">Content-Type:application/json</span><br></pre></td></tr></table></figure>
+
+<p>请求的body就是调整后的json数据，调用成功回返回200，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202201260644131.jpg"></p>
+<p>5、在WebAPIGetway项目的运行目录中打开Ocelot的配置文件，验证是否修改成功。</p>
+<h2 id="使用代码方式来修改配置文件"><a href="#使用代码方式来修改配置文件" class="headerlink" title="使用代码方式来修改配置文件"></a>使用代码方式来修改配置文件</h2><p>通过Postman来进行测试如果能够验证通过，说明WebAPIGetway和IdentityService都运行正常，下面在Client项目中用代码的方式来进行配置文件的修改。Client代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">namespace Client</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args) =&gt; MainAsync().GetAwaiter().GetResult();</span><br><span class="line">        private static async Task MainAsync()</span><br><span class="line">        &#123;</span><br><span class="line">            //需要修改的配置</span><br><span class="line">            var configuration = new FileConfiguration</span><br><span class="line">            &#123;</span><br><span class="line">                ReRoutes = new List&lt;FileReRoute&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    new FileReRoute</span><br><span class="line">                    &#123;</span><br><span class="line">                        DownstreamPathTemplate = &quot;/api/values&quot;,</span><br><span class="line">                        DownstreamHostAndPorts = new List&lt;FileHostAndPort&gt;</span><br><span class="line">                        &#123;</span><br><span class="line">                            new FileHostAndPort</span><br><span class="line">                            &#123;</span><br><span class="line">                                Host =&quot;localhost&quot;,</span><br><span class="line">                                Port = 10001,</span><br><span class="line">                            &#125;,</span><br><span class="line">                            new FileHostAndPort</span><br><span class="line">                            &#123;</span><br><span class="line">                                Host =&quot;localhost&quot;,</span><br><span class="line">                                Port = 10002,</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        DownstreamScheme = &quot;http&quot;,</span><br><span class="line">                        UpstreamPathTemplate = &quot;/c/api/values&quot;,</span><br><span class="line">                        UpstreamHttpMethod = new List&lt;string&gt; &#123; &quot;Get&quot;,&quot;Post&quot; &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                GlobalConfiguration = new FileGlobalConfiguration</span><br><span class="line">                &#123;</span><br><span class="line">                    BaseUrl = &quot;http://localhost:10000/&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            // 从元数据中发现客户端</span><br><span class="line">            var disco = await DiscoveryClient.GetAsync(&quot;http://localhost:9500&quot;);</span><br><span class="line">            // 请求令牌</span><br><span class="line">            var tokenClient = new TokenClient(disco.TokenEndpoint, &quot;client&quot;, &quot;secret&quot;);</span><br><span class="line">            var tokenResponse = await tokenClient.RequestClientCredentialsAsync(&quot;s2api&quot;);</span><br><span class="line">            if (tokenResponse.IsError)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(tokenResponse.Error);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            var client = new HttpClient();</span><br><span class="line">            client.SetBearerToken(tokenResponse.AccessToken);</span><br><span class="line">            HttpContent content = new StringContent(JsonConvert.SerializeObject(configuration));</span><br><span class="line">            content.Headers.ContentType = new MediaTypeHeaderValue(&quot;application/json&quot;);</span><br><span class="line">            var response = await client.PostAsync(&quot;http://localhost:10000/admin/configuration&quot;, content);</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>1、Ocelot文档中介绍可以使用外部的IdentityService服务，也可以用内置的，各有什么优缺点？<br>2、上面例子中是直接将json数据去做更新，有没有什么弊端？是否应该先获取配置，做修改后再更新？</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>本文的示例代码已经放到Github上：<a target="_blank" rel="noopener" href="https://github.com/oec2003/StudySamples/tree/master/UpdateOcelotConfig">https://github.com/oec2003/StudySamples/tree/master/UpdateOcelotConfig</a></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/&title=调用API修改Ocelot的配置文件 - 冯威的博客&summary=Ocelot是一个基于.net core的开源webapi服务网关开源项目，功能比较强大，Github项目地址为：https://github.com/ThreeMammals/Ocelot，关于Ocelot的学习资料可以看看张善友的..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=调用API修改Ocelot的配置文件 - 冯威的博客&amp;body=http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2018/05/open-wechat-official-accounts/">开通微信公众号-不止dotNET<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2018/05/Install-MySql-with-Docker-in-CentOS7/">在CentOS7中使用Docker安装MySql<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

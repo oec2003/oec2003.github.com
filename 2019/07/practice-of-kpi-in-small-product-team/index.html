@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>KPI在小型产品团队中的实践 - 冯威的博客</title>
+
+  
+    <meta name="description" content="最近公司决定对所有技术人员实行KPI考核，曾经一度非常反感KPI的我也被要求制定产品团队的KPI指标。为什么要实行KPI考核，因为在项目团队和产品团队的管理中出现了问题：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KPI在小型产品团队中的实践">
+<meta property="og:url" content="http://fwhyy.com/2019/07/practice-of-kpi-in-small-product-team/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="最近公司决定对所有技术人员实行KPI考核，曾经一度非常反感KPI的我也被要求制定产品团队的KPI指标。为什么要实行KPI考核，因为在项目团队和产品团队的管理中出现了问题：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-28T23:05:59.000Z">
+<meta property="article:modified_time" content="2022-01-27T22:19:51.298Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="KPI">
+<meta property="article:tag" content="团队管理">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%8A%9B"><span class="toc-text">驱动力</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%8A%9B1-0-%E7%94%9F%E7%89%A9%E6%80%A7%E9%A9%B1%E5%8A%A8"><span class="toc-text">驱动力1.0-生物性驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%8A%9B2-0-%E5%A4%96%E5%9C%A8%E9%A9%B1%E5%8A%A8"><span class="toc-text">驱动力2.0-外在驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%8A%9B3-0-%E5%86%85%E5%9C%A8%E9%A9%B1%E5%8A%A8"><span class="toc-text">驱动力3.0-内在驱动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KPI%E5%92%8COKR"><span class="toc-text">KPI和OKR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KPI%E8%90%BD%E5%9C%B0"><span class="toc-text">KPI落地</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#KPI%E6%8C%87%E6%A0%87"><span class="toc-text">KPI指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E5%AE%9A%E6%88%90%E5%91%98%E7%9B%AE%E6%A0%87"><span class="toc-text">制定成员目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">可能存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E7%AE%A1%E7%90%86/">管理</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-07-28T23:05:59.000Z">2019-07-29</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>KPI在小型产品团队中的实践</span></h1>
+<p>最近公司决定对所有技术人员实行KPI考核，曾经一度非常反感KPI的我也被要求制定产品团队的KPI指标。为什么要实行KPI考核，因为在项目团队和产品团队的管理中出现了问题：</p>
+<span id="more"></span>
+
+<ul>
+<li>不同项目团队的开发人员的工作量饱和度问题，阶段性会出现有的项目组加班加点忙死，有的项目团队成员工作量严重不够；</li>
+<li>分配的任务总是在截至时间的最后时刻完成；</li>
+<li>开发提交给测试的质量不高，需要反复的修改和再次测试，常常是因为态度问题，而不是能力问题。</li>
+</ul>
+<p>不推行KPI，针对这些问题难道就是视而不见，没有去管吗？并不是，没有制度，就只能靠团队Leader去言传身教了，团队中的成员能理解吸收多少，最终有多少能转化成行动，取决于每个人的自我驱动力。</p>
+<h2 id="驱动力"><a href="#驱动力" class="headerlink" title="驱动力"></a>驱动力</h2><h3 id="驱动力1-0-生物性驱动"><a href="#驱动力1-0-生物性驱动" class="headerlink" title="驱动力1.0-生物性驱动"></a>驱动力1.0-生物性驱动</h3><p>生物性驱动是本能，是最原始的驱动力，具体表现在：</p>
+<ul>
+<li>肚子饿了会去找食物吃</li>
+<li>困了会去睡觉</li>
+</ul>
+<p>说白了就是日常生活中的吃喝拉撒睡。</p>
+<h3 id="驱动力2-0-外在驱动"><a href="#驱动力2-0-外在驱动" class="headerlink" title="驱动力2.0-外在驱动"></a>驱动力2.0-外在驱动</h3><p>外在驱动最典型的就是胡萝卜大棒理论，建立合理的奖惩机制，人们为了得到奖励而做某事，为了不收到惩罚而做某事。</p>
+<h3 id="驱动力3-0-内在驱动"><a href="#驱动力3-0-内在驱动" class="headerlink" title="驱动力3.0-内在驱动"></a>驱动力3.0-内在驱动</h3><p>内在驱动是从内心渴望去做某事，小时候，父母经常对我说，在学习上要将「要我学」变成「我要学」，这个「我要学」其实就是内在驱动力。</p>
+<p>我一直都想打造一支每个人都是内在驱动型的团队，但可遇不可求，或者说需要团队领导者有很强的能力，能够将每个成员变成内在驱动型，在这方面，我还需要不断地学习和进步。</p>
+<h2 id="KPI和OKR"><a href="#KPI和OKR" class="headerlink" title="KPI和OKR"></a>KPI和OKR</h2><p>近几年OKR很火，那么和传统的KPI有什么区别呢？是不是任何团队都适合OKR呢？先来看看KPI和OKR的区别：</p>
+<ul>
+<li>KPI是Key Performance Indicator（关键绩效指标）；OKR是Objectives and Key Results（目标与关键成果）</li>
+<li>KPI关键在于指标分解，是自顶向下的；OKR在于目标对齐，是自底向上的</li>
+<li>KPI是被动执行；OKR是主动挑战</li>
+<li>KPI是以指标为核心，所看到的都是冷冰冰的数字，其背后的思想很难准确传递给员工；OKR是站在价值观、使命感与自驱力的高度，更重视目标的一致性，自发与赋能的意味更重</li>
+</ul>
+<p>从上面的对比来看，OKR的好处远远大于KPI，但有一个前提，团度成员是有自驱力的，就是上面所说到的驱动力3.0，或者说有一位很强的团队Leader，能让将团队成员培养出自驱力。如果满足不了这个条件，OKR将无法落地。</p>
+<p>现阶段，虽然我团队的成员都表现的不错，有很高的积极性，但离OKR的要求还有一定的距离，加上很多人对OKR都不太熟悉，所以，只能先推行KPI。</p>
+<h2 id="KPI落地"><a href="#KPI落地" class="headerlink" title="KPI落地"></a>KPI落地</h2><p>KPI在团队的落地分为两个步骤：制定KPI指标和制定成员目标。</p>
+<h3 id="KPI指标"><a href="#KPI指标" class="headerlink" title="KPI指标"></a>KPI指标</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>权重</th>
+<th>计算公式</th>
+<th>评分标准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作量</td>
+<td>50%</td>
+<td>个人工作量完成值/目标值</td>
+<td>A：挑战值 ≥150% B：合格值 ≥100% C：保障值 ≥80%</td>
+</tr>
+<tr>
+<td>BUG量</td>
+<td>50%</td>
+<td>BUG数/已完成工作量</td>
+<td>A：挑战值 ≤0.4 B：合格值 ≤0.6 C：保障值 ≤0.8</td>
+</tr>
+</tbody></table>
+<ul>
+<li>目标值：需要跟团队中的每个成员进行沟通</li>
+<li>A、B、C三个等级的达成值也是会根据情况进行优化和调整的，上面表中的仅供参考</li>
+</ul>
+<p>将工作量和BUG指标的三个等级进行交叉结合就可以形成绩效的系数，如下表</p>
+<table>
+<thead>
+<tr>
+<th>工作量 BUG量</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>1.5</td>
+<td>1.3</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1.3</td>
+<td>1</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.9</td>
+<td>0.7</td>
+<td>0.4</td>
+</tr>
+</tbody></table>
+<h3 id="制定成员目标"><a href="#制定成员目标" class="headerlink" title="制定成员目标"></a>制定成员目标</h3><p>成员目标的制定需要和团队中的每个成员进行单独沟通，每个人对给自己设定的目标值能够认可。</p>
+<p>目标值设置的太容易达到，会降低前进的动力，设置的太难，又会带来挫败感，所以建议以跳一跳就能够到为标准来设置。</p>
+<p>目标值也不是制定一次以后就永远不变，我们以一个季度为一个周期，在下一个季度到来之前，会进行每个成员下一个季度的目标值的沟通。</p>
+<h2 id="可能存在的问题"><a href="#可能存在的问题" class="headerlink" title="可能存在的问题"></a>可能存在的问题</h2><p>在KPI的考核制度中，很容易将考核指标当成了目标。例如：我们的目标是能持续的交付高质量的软件，设置的考核指标为：工作量和BUG量，开发人员如果只是看到了指标，会出现下面问题：</p>
+<ul>
+<li>为了追求工作量多，之前成员之间的相互帮助会变少</li>
+<li>为了追求BUG少，不会进行重构，写出的代码会是「只能运行的代码」，目标中提到的高质量不仅仅是没有BUG，另一方面是可维护，可扩展</li>
+</ul>
+<p>所以，一定要强调，考核指标是手段而不是目的，不能只盯着指标去做事，我们也可以采取一些措施来进行制衡：</p>
+<ul>
+<li>鼓励沟通，如果发现一个任务中实现需要对现有代码进行重构，可以提出，增加相应的工作量</li>
+<li>重构代码引发的BUG可以看情况降低权重</li>
+<li>除了工作量、BUG量，可以在另外的维度，比如积极性、协作性、创兴性等方面来打分，最后综合来评定</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不管是KPI还是OKR，没有银弹，只是看适不适合当前的团队，而且也没有什么制度是定下来就不变的，随着团队的成长和进步会不断的优化和调整。也许到最后，又会回归到一种「松散」的管理模式。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2019/07/practice-of-kpi-in-small-product-team/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2019/07/practice-of-kpi-in-small-product-team/&title=KPI在小型产品团队中的实践 - 冯威的博客&summary=最近公司决定对所有技术人员实行KPI考核，曾经一度非常反感KPI的我也被要求制定产品团队的KPI指标。为什么要实行KPI考核，因为在项目团队和产品团队的管理中出现了问题："><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=KPI在小型产品团队中的实践 - 冯威的博客&amp;body=http://fwhyy.com/2019/07/practice-of-kpi-in-small-product-team/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2019/07/practice-of-kpi-in-small-product-team/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2019/07/how-programmers-learn-english/">程序员如何学习英语<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2019/08/book-recommendation-csharp-7-essence/">书籍推荐：《C#7.0本质论》<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
