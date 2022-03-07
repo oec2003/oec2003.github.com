@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a><div class="line"></div><a class="more-item" href="/2022/02/20th-anniversary-of-net/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">.NET 诞生 20 周年，我和 .NET 相伴的 17 年</span></a><div class="line"></div><a class="more-item" href="/2022/02/centos-install-k8s-deploy-net6/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">CentOS单机安装k8s并部署.NET 6程序</span></a><div class="line"></div><a class="more-item" href="/2022/02/hexo-stellar/"><div class="cap"><time>2022-02-10</time><span>成长</span></div><span class="title">程序员不可错过的一款Hexo博客主题</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a><div class="line"></div><a class="more-item" href="/2022/02/20th-anniversary-of-net/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">.NET 诞生 20 周年，我和 .NET 相伴的 17 年</span></a><div class="line"></div><a class="more-item" href="/2022/02/centos-install-k8s-deploy-net6/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">CentOS单机安装k8s并部署.NET 6程序</span></a></div></div>
 </div>
 
 
@@ -106,7 +106,10 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2010/01/design-patterns-notes-18-iterator-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(18)—迭代器模式（行为型）</h2><div class="excerpt"><p>Gof定义提供一种方法顺序访问一个聚合对象中的各个元素， 而又不暴露该对象的内部表示。
+动机在软件构建过程中，集合对象内部结构常常变化各异。但对于这些集合对象，我们希望在不暴露其内部结构的同时，可以让外部客户代码透明地访问其中包含的元素；同时这种“透明遍历”也为“同一种算法在多种集合对象上进行操作”提供了可能。使用面向对象技术将这种遍历机制抽象为“迭代器对象”为“应对变化中的集合对象”提供了一种优雅的方式。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-23T16:00:00.000Z">2010-01-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/"><article class="md">
 <h2 class="post-title">Lable和Literal控件的使用和区别</h2><div class="excerpt"><p>Lable和Literal这两个控件是我们非常熟悉的两个控件，都是用作内容呈现用的，但他们之间也有不同之处，分别应用于不同的地方。Lable控件会将内容呈现在html标签span中，即Lable控件的Text属性的值会包含在标签中。而Literal控件生成的代码则比较干净，它的Text属性的值将直接显示在页面中，看下面两段代码：
 Lable：
 1234&lt;asp:Label ID=&qu...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-22T16:00:00.000Z">2010-01-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -140,10 +143,6 @@ Lable：
 </article></a><a class="post-card post " href="/2009/12/design-patterns-notes-14-template-method-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(14)—模板方法模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个 算法的结构即可重定义该算法的某些特定步骤。
 动机在软件构建过程中，对于某一项任务，它常常有稳定的整体操作结构，但各个子步骤却有很多改变的需求，或者由于固有的原因（比如框架与应用之间的关系）而无法和任务的整体结构同时实现。如何在确定稳定操作结构的前提下，来灵活应对各个子步骤的变...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-13T16:00:00.000Z">2009-12-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/12/in-js-method-return-multiple-values-of-the-three-methods/"><article class="md">
-<h2 class="post-title">在JS方法中返回多个值的三种方法</h2><div class="excerpt"><p>在使用JS编程中，有时需要在一个方法返回两个个或两个以上的数据，用下面的几种方法都可以实现：
-1 使用数组的方式，如下：
-12345678910111213141516171819202122&lt;html&gt;&lt;head&gt;    &lt;title&gt;JS函数返回多个值--oec2003&lt;/title&gt;&lt;/head&gt;&lt;body&gt;   ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-10T16:00:00.000Z">2009-12-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

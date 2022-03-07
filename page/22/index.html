@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a><div class="line"></div><a class="more-item" href="/2022/02/20th-anniversary-of-net/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">.NET 诞生 20 周年，我和 .NET 相伴的 17 年</span></a><div class="line"></div><a class="more-item" href="/2022/02/centos-install-k8s-deploy-net6/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">CentOS单机安装k8s并部署.NET 6程序</span></a><div class="line"></div><a class="more-item" href="/2022/02/hexo-stellar/"><div class="cap"><time>2022-02-10</time><span>成长</span></div><span class="title">程序员不可错过的一款Hexo博客主题</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a><div class="line"></div><a class="more-item" href="/2022/02/20th-anniversary-of-net/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">.NET 诞生 20 周年，我和 .NET 相伴的 17 年</span></a><div class="line"></div><a class="more-item" href="/2022/02/centos-install-k8s-deploy-net6/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">CentOS单机安装k8s并部署.NET 6程序</span></a></div></div>
 </div>
 
 
@@ -106,7 +106,12 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/10/married-reporter/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/11/mongo-service-startup/"><article class="md">
+<h2 class="post-title">MongoDB(4)–MongoDB服务的启动</h2><div class="excerpt"><p>原始方式只有启动了MongoDB的服务，才能使用MongoDB的功能，通常情况下会开一个命令窗口，输入下面的命令来启动服务：
+
+配置文件方式如果不想每次启动的时候都在命令行中输入很多繁琐的参数，可以把参数信息保存在配置文件中。创建一个名为mongodb.cnf的配置文件，和那些小工具放在同一个目录中，文件的内容如下：
+1dbpath=&quot;d:\database\mongodb\dat...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-11-02T16:00:00.000Z">2011-11-03</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/10/married-reporter/"><article class="md">
 <h2 class="post-title">结婚小记</h2><div class="excerpt"><p>今天是2011年10月15日，星期六，过完这个周末就是婚假的第一天了，三亚之行很是期待。
 婚礼是在2011年10月3日举行，尽管这个婚礼对我和老婆来说只是走个形式而已（因为婚礼前后我们的生活没有明显变化），但我还是显得很兴奋。婚礼的酒席定在我们镇上的一个小酒楼里，和大酒店相比显得比较简陋，但由于请了婚庆场面也非常热闹，在我们那种小地方也算是不错了。
 接亲10月3号的早上四点就起床，洗漱完吃点...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-10-14T16:00:00.000Z">2011-10-15</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
@@ -150,13 +155,6 @@ MongoDB相比传统的关系型数据库有一些优势，比如在海量数据�
 </article></a><a class="post-card post " href="/2011/07/use-sp-xml-preparedocument-processing-xml-documents/"><article class="md">
 <h2 class="post-title">使用sp_xml_preparedocument处理XML文档</h2><div class="excerpt"><p>有时会在存储过程中处理一些XML格式的数据，所以会用到sp_xml_preparedocument，他可以将XML数据进行读取，然后使用 MSXML 分析器 (Msxmlsql.dll) 对其进行分析。我们就可以很容易的在存储过程中得到XML中我们想要的数据。下面的代码就是使用sp_xml_preparedocument读取XML：
 12345678910111213141516DECLAR...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-22T16:00:00.000Z">2011-07-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/"><article class="md">
-<h2 class="post-title">使用MicroSoft CLR Debug来调试较大项目</h2><div class="excerpt"><p>在以前的开发中，调试时很自然的会直接按F5进行调试，有时项目部署在IIS中也只是将项目的服务器指向IIS，仍然是将整个项目运行设置断点进行调试。最近遇到了一个问题，项目很大，直接F5运行会导致VS卡死，这种时候使用MicroSoft CLR Debug来进行调试是最合适不过了。
-首先打开MicroSoft CLR Debug
-
-打开后界面如下
-
-从项目中选择一个需要调试的文件，并在需要调试的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-19T16:00:00.000Z">2011-07-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
