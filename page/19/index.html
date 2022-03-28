@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a><div class="line"></div><a class="more-item" href="/2022/02/20th-anniversary-of-net/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">.NET 诞生 20 周年，我和 .NET 相伴的 17 年</span></a><div class="line"></div><a class="more-item" href="/2022/02/centos-install-k8s-deploy-net6/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">CentOS单机安装k8s并部署.NET 6程序</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a><div class="line"></div><a class="more-item" href="/2022/03/recommend-a-card-note-taking-tool/"><div class="cap"><time>2022-03-28</time><span>成长</span></div><span class="title">推荐一款卡片笔记工具</span></a><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a></div></div>
 </div>
 
 
@@ -106,7 +106,16 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2013/02/read-facebook/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2013/03/iis7-upload-issue/"><article class="md">
+<h2 class="post-title">IIS7上传出现乱码问题解决</h2><div class="excerpt"><p>最近查一个bug，客户那边将上传超过30兆的文件时，上传页面出现乱码，如下图所示：
+
+系统默认是只能上传10兆以内的文件，客户自己修改了webconfig文件后发现此问题。
+通过Fiddler2跟踪页面得出乱码内容为“您要找的资源已被删除、已更名或暂时不可用”，然后通过Google得出结论如下：
+在IIS7中出了修改webconfig的配置外还需要修改C:\Windows\System32\...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-21T16:00:00.000Z">2013-03-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/03/sql-query-for-xml-path/"><article class="md">
+<h2 class="post-title">SQL查询-将列转换成字符串（for xml path）</h2><div class="excerpt"><p>背景最近做一报表，因为查询的SQL很长很复杂，导致直接查询出现异常，后来想到将大量重复的只是查询条件不同的子查询放到函数中去做，无奈需要的参数不能传进函数中，因为参数格式类似如：’ProjGUID1’,’ProjGUID2’ 这样，这是报表工具生成的，无法修改。现在就要想办法让参数能传进函数中或是换用其他的方式。
+思路1、首先想到的是用存储过程，但是在报表工具中调试不通，存储过程不能得到有效...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-18T16:00:00.000Z">2013-03-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/02/read-facebook/"><article class="md">
 <h2 class="post-title">读《打造FaceBook》</h2><div class="excerpt"><p>这本书是微博上的一位朋友推荐的，当天就下单购买了，花了几个晚上看完，全书主要讲作者在FaceBook的从业经历以及离职后对天使投资和创业的一些想法。下面是我看完本书后的一些感想。
 团队合作任何的团队都需要团队合作，其重要性毋庸置疑。我们在面试的时候经常被面试官考核的一个因素就是团队合作精神。我所经历的公司中虽然也很注重团队合作，但更多的是在一个团队中、一个开发小组中，而在脸书中将这个高度上升...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-02-26T16:00:00.000Z">2013-02-27</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
 </article></a><a class="post-card post " href="/2013/01/2012-year-summary/"><article class="md">
@@ -135,12 +144,6 @@
 </article></a><a class="post-card post " href="/2012/10/gen-reg-in-vs2010-and-vs2008/"><article class="md">
 <h2 class="post-title">VS2010和VS2008使用不同编译方式在64位机器生成注册表对比</h2><div class="excerpt"><p>最近写一个小工具用到了使用C#来进行注册表的操作，使用C#来进行注册表的操作需要引入命名空间Microsoft.Win32，关于操作注册表的帮助类可以参考RegHelper.cs。下面分别使用VS2010和VS2008使用Any CPU、X64、X86和Itanium进行编译，运行在32位机器和64位机器进行对比。看下面一段代码：
 1234string subkey = @&quot;sof...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-10-13T16:00:00.000Z">2012-10-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2012/09/c-net-1-0-4-0/"><article class="md">
-<h2 class="post-title">C# & .NET 1.0-4.0</h2><div class="excerpt"><p>学习和使用.NET平台已有六七个年头了，05年开始学习.NET的时候，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。
-从我从业的经历来看VS2003和VS2008是使用的比较多的，一些历史遗留的老项目由种种原因没有升级，依然在使用VS2003。我现在所在的公司也...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-09-01T16:00:00.000Z">2012-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2012/07/set-tp-link/"><article class="md">
-<h2 class="post-title">TP-Link无线路由的设置</h2><div class="excerpt"><p>上周末搬到了新家，并办理了电信的宽带169套餐，周一电信的工作人员将网和ITV都调通了，看电视和上网都没有问题。不过网是通过网线连接到电脑的。昨天晚上我尝试着通过无线路由来实现上网，看起来很容易的事情却经过了一番周折。
-之前连接无线路由都是猫接到路由器的WAN口，然后在从LAN口连接一根网线到电脑，在电脑上输入http://192.168.1.1进行相应的设置就可以了。因为现在不需要猫了，所...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-07-24T16:00:00.000Z">2012-07-25</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
