@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a><div class="line"></div><a class="more-item" href="/2022/03/recommend-a-card-note-taking-tool/"><div class="cap"><time>2022-03-28</time><span>成长</span></div><span class="title">推荐一款卡片笔记工具</span></a><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,14 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2010/10/csharp-net-code-concise-optimization-techniques-1/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2010/11/csharp-net-code-concise-optimization-techniques-c/"><article class="md">
+<h2 class="post-title">C#/Net代码精简优化技巧（3）</h2><div class="excerpt"><p>前面两篇中已经介绍了10个小技巧，本篇是本次系列的最后一篇，将再介绍5个。这些小技巧看着并不起眼，有些您可能知道，但在平时的开发中可能由于惯性并没有去使用。所以建议大家掌握并去使用这些小技巧，他们将使我们的代码变得更简洁和易于维护。
+隐式类型首先了解一下概念，隐式类型并不是动态类型，隐式类型是用关键字var来定义，var定义的类型仍然是强类型。
+很多人认为使用隐式类型是懒惰的表现，刚开始我也...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-11-09T16:00:00.000Z">2010-11-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/10/csharp-net-code-concise-optimization-techniques-2/"><article class="md">
+<h2 class="post-title">C#/Net代码精简优化技巧（2）</h2><div class="excerpt"><p>在C#/Net代码精简优化技巧（1）中已经介绍了5个小技巧，本篇将再介绍5个。
+string.IsNullOrEmpty() and string.IsNullOrWhiteSpace()在Net2.0中String类型有一个静态方法IsNullOrEmpty，到了Net4.0中String类又增加了一个新的静态方法IsNullOrWhiteSpace。这两个方法看名称也可以知道IsNull...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-10-25T16:00:00.000Z">2010-10-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/10/csharp-net-code-concise-optimization-techniques-1/"><article class="md">
 <h2 class="post-title">C#/Net代码精简优化技巧（1）</h2><div class="excerpt"><p>在我们写代码的时候可以使用一些小的技巧来使代码变得更加简洁，易于维护和高效。下面介绍几种在C#/Net中非常有用的一些编程技巧。
 空操作符（??）在程序中经常会遇到对字符串或是对象判断null的操作，如果为null则给空值或是一个指定的值。通常我们会这样来处理
 12345string name = value;if (name == null)&#123;    name = string....</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-10-20T16:00:00.000Z">2010-10-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -136,14 +143,6 @@ wsdl.exe &lt;选项&gt; &lt;URL 或路径&gt; &lt;URL 或路径&gt;
 </article></a><a class="post-card post " href="/2010/07/net-4-aspnet-controls-the-hyperlink-in-the-improvement/"><article class="md">
 <h2 class="post-title">Net4.0—AspNet中的控件HyperLink的改进（支持路由跳转）</h2><div class="excerpt"><p>作过Web开发的人对HyperLink控件一定非常熟悉，在客户端生成的代码就是一个a标签。AspNet4中的Hyperlink控件相比以前的版本做了些改进，可以更好地支持URl重写，下面结合在Net4.0—AspNet中URL重写的改进一文中的例子来讲解下Hyperlink这个新的功能。
 1 在项目中的Default.aspx页面中加入一个Hyperlink控件，在设计视图中右击该控件，选择...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-07-27T16:00:00.000Z">2010-07-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/07/net-4-purification-processing-of-html/"><article class="md">
-<h2 class="post-title">Net4.0—对HTML净化的处理</h2><div class="excerpt"><p>在使用Asp.Net进行Web开发时我一直都很注重最终生成的HTML是否干净，所以我会使用Repeater取代GridView等控件，可控性好而且生成的HTML代码也非常干净。干净的HTML有很多好处，如代码相应较少加载速度快，便于控制页面元素等。在AspNet4中对HTML的净化做了很大的改进，下面的文字中会做一个简单的介绍。
-设置controlRenderingCompatibility...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-07-27T16:00:00.000Z">2010-07-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/07/net-4-aspnet-url-rewriting-in-the-improvement/"><article class="md">
-<h2 class="post-title">Net4.0—AspNet中URL重写的改进</h2><div class="excerpt"><p>URL重写有很多的好处，如有利于SEO、便于记忆、隐藏真实路径使安全性提高、便于更新等等。在AspNet4.0之前的版本中要实现URL重写比较复杂，有时还会借助第三方类库，而在AspNet4.0中可以很方面实现，下面就一步一步来讲解怎样在AspNet4.0中实现URL重写。
-1 打开VS2010，创建一个AspNet项目命名为UrlRewriterDemo。
-
-可以看到AspNet4中的项目...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-07-26T16:00:00.000Z">2010-07-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

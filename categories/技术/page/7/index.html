@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a><div class="line"></div><a class="more-item" href="/2022/03/recommend-a-card-note-taking-tool/"><div class="cap"><time>2022-03-28</time><span>成长</span></div><span class="title">推荐一款卡片笔记工具</span></a><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,17 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2018/05/Install-MySql-with-Docker-in-CentOS7/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2018/05/CentOS7-install-GitLab/"><article class="md">
+<h2 class="post-title">CentOS7安装GitLab</h2><div class="excerpt"><p>一直以来源代码一直都放在码云上，但最近码云开始收费了，免费版本的私有项目的成员限制在5个，这远远不够用了。所以需要搭建自己的Git服务器，下面内容为安装经过，记录一下：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-27T14:18:21.000Z">2018-05-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/05/docker-installs-mysql-to-mount-external-data-and-configuration/"><article class="md">
+<h2 class="post-title">Docker安装MySql-挂载外部数据和配置</h2><div class="excerpt"><p>在上一篇中《在CentOS7中使用Docker安装MySql》中介绍了怎样在Docker中安装Mysql，但存在两个问题：
+1、用户密码和字符集等的设置，需要安装完MySql后，进入到MySql中去设置，非常麻烦；2、配置文件和数据文件都在MySql的容器内，不是很安全。
+本文将介绍怎样在创建容器时通过参数的配置来解决上面两个问题。
+环境
+CentOS：7.4
+Docker：1.13.1
+M...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-20T01:18:37.000Z">2018-05-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/05/Install-MySql-with-Docker-in-CentOS7/"><article class="md">
 <h2 class="post-title">在CentOS7中使用Docker安装MySql</h2><div class="excerpt"><p>环境
 CentOS：7.4
 Docker: 1.13.1
@@ -157,10 +167,6 @@ MongoDB的所有服务都恢复后，在一个很短的时间内是正常的，�
 </article></a><a class="post-card post " href="/2017/04/adding-watermark-to-owa/"><article class="md">
 <h2 class="post-title">OWA实现添加水印</h2><div class="excerpt"><p>OWA全称Office Web App，是用来做Office文档预览的一个很好的工具。现在客户有要求，需要在预览界面中添加水印。想起之前写的一篇文章《Office Web APP预览去掉顶部菜单》，就是通过修改样式来控制OWA的预览界面的。
 通过F12查看OWA预览Word的界面，发现Word的每一页会被渲染在一个Img中展示，如下图：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-04-07T16:01:55.000Z">2017-04-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/01/CSharp-add-edit-fields-to-PDF/"><article class="md">
-<h2 class="post-title">C#给PDF添加编辑域</h2><div class="excerpt"><p>PDF文档通常是不能编辑的，但有些时候需要在PDF文档中填写日期或签名之类，就需要在PDF有能编辑的文本域，本文介绍怎样用C#来实现这一功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-01-04T15:02:20.000Z">2017-01-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/"><article class="md">
-<h2 class="post-title">jQuery上传插件Uploadify使用详解(3.2.1)</h2><div class="excerpt"><p>六年前，因为工作中使用到 jQuery 的上传组件 Uploadify ，写了一篇《JQuery上传插件Uploadify使用详解》的博客来介绍 Uploadify ，其实只是将官方文档简单翻译了下。几年下来居然有50多万的访问量，而且每天通过各种搜索引擎有大几百的朋友会访问到这篇文章。六年时间 Uploadify 从当时的2.1.0到了现在的3.2.1，变化还是挺大，为了对访问到之前那篇博客的朋友还有点价值，特写此篇。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-25T10:57:49.000Z">2016-09-25</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

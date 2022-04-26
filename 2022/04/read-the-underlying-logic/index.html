@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>读《底层逻辑》 - 冯威的博客</title>
+
+  
+    <meta name="description" content="《底层逻辑》本书作者是刘润，他在得到上开设有课程《5 分钟商学院》，我也是在得到上知道的这本书，这本书在豆瓣上的评分不是很高，褒贬不一，不过我看着觉得挺好。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《底层逻辑》">
+<meta property="og:url" content="http://fwhyy.com/2022/04/read-the-underlying-logic/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="《底层逻辑》本书作者是刘润，他在得到上开设有课程《5 分钟商学院》，我也是在得到上知道的这本书，这本书在豆瓣上的评分不是很高，褒贬不一，不过我看着觉得挺好。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-06T00:18:13.000Z">
+<meta property="article:modified_time" content="2022-04-26T00:19:27.584Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="读书">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-04-06T00:18:13.000Z">2022-04-06</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>读《底层逻辑》</span></h1>
+<p>《底层逻辑》本书作者是刘润，他在得到上开设有课程《5 分钟商学院》，我也是在得到上知道的这本书，这本书在豆瓣上的评分不是很高，褒贬不一，不过我看着觉得挺好。</p>
+<span id="more"></span>
+
+<p>看了一些豆瓣的评论，觉得这本书不好有这么些原因：</p>
+<ul>
+<li>书中的内容很多在公众号和《5 分钟商学院》中有写过，有点像是一个内容的合集；</li>
+<li>书内容不是很系统；</li>
+<li>觉得内容很鸡汤；</li>
+</ul>
+<p>对我来说，首先这本书我很容易读进去，而且我之前也没看过公众号和《5 分钟商学院》，内容对我来说是全新的。</p>
+<p>另外本书从是非对错、如何思考、个人能力提升、与人协作等方面来进行讲述，一些知识点对我来说还挺长见识和开阔眼界的。比如：数学思维中提到的概率论、数字的方向性、博弈论等，都能跟思维、认知结合起来。</p>
+<p>今天再次看了下豆瓣的评分，已经降到 7 分以下了。不过豆瓣的评分只是一个参考，主要的还是看书是否能读的进去，是不是对现阶段的自己有用处。</p>
+<p>下面说说我比较有印象的一些点。</p>
+<p>1、事实和观点</p>
+<p>事实：独立于人判断的客观存在，比如：今天的气温是 18 度。</p>
+<p>观点：对事物的看法。会受到你的认知、当下掌握的信息和思维模式的影响，比如：我觉得今天很热。</p>
+<p>不止一本书中都提到了事实和观点，比如在《沟通的方法》中，作者讲到作为在沟通中的讲述者，需要时刻注意自己的语言中是在讲事实，还是带有情绪。</p>
+<p>这对日常的沟通和管理非常重要，无论是对上、平级或对下，一定要做到的是只陈述事实，陈述事实就不会有个人主观情绪因素掺杂在内，不带情绪是良好沟通的开始。</p>
+<p>教育小孩也是如此，我对女儿说：“这种题这么简单，怎么总是做错了？”，「简单」是我的一种主观判断，而「总」也是我的一种主观印象，这样说话，女儿的情绪就会立即爆发，后面就无法正常地沟通的。这种场景之前经常发生。如果换成：“这道题的解题步骤有 3 步，我们一起来分析下”，就会好很多。</p>
+<p>2、透过现象看本质</p>
+<p>现象千千万，往往本质都是相同，这个相同的部分就是底层逻辑。在软件开发中有两个重要的地方需要看清本质：</p>
+<ul>
+<li>跟客户需求调研时，要找到客户背后的需求，在《有效需求分析》等书中都有详细介绍；</li>
+<li>代码出现 Bug 后不能只打个补丁解决当前的问题，而要找到根本原因。</li>
+</ul>
+<p>只有找到这些本质的东西，才能算是在做正确的事情，否则看着很努力，却是在做无用功。比如产品中的 Bug，如果不找到根因，那就只能在外围打补丁，看似解决了问题，但代码会越来越混乱，总有崩溃的那一天。</p>
+<p>这些本质的东西往往埋比较深的黑盒子里，书中将这个黑盒子比作一个系统，系统是由一些元素和之间的关系构成（软件好像也是如此），分成了 5 个模块：变量、因果链、增强回路、调节回路和滞后效应，这几个概念看书时能够理解，但怎样用到实际中，还没有想好，也就是说没有形成自己的知识。</p>
+<p>3、几种思维模式</p>
+<p>在思考问题的底层逻辑一章中，讲到复利思维、概率思维、数学思维、系统思维几种思维模型。其中数学思维让我很受启发。</p>
+<p>我们大学都学习过微积分，但毕业就还给老师了，书中用简单的例子来解释了什么是微积分，还将其延伸到我们的日常生活，就是要用动态的眼光来看问题。</p>
+<p>对程序员来说，能够拥抱变化，快速响应需求，得益于长期以来的代码重构、优化等，这是一个累积的过程，这就是积分；而当系统出现问题，事后复盘时，不能只看出现问题那一刻的现象和特征，而是要顺藤摸瓜，找到最小的触发点，这就是微分。</p>
+<p>作者确实很善于总结，这种能力是值得学习的。</p>
+<p>4、知识、技能</p>
+<p>在《好好学习》一书中，成甲认为只有能改变你行动的才是知识，否则只是信息，刘润觉得知识是已经被发现和证明的规律，是确定的。</p>
+<p>我更认同成甲的定义，而且我认为行动不局限在动手去做，思维方式上的转变也算是行动。有句名言：学了很多知识，知道很多道理，但依然过不好这一生。原因就是，了解到的只是信息，而不是知识。</p>
+<p>技能是一个具体的，可操作的，通过重复训练能够学会的能力，比如：游泳、骑自行车、演讲等，这里的关键是重复训练，别人教的、书中讲的都是学习技能的步骤，而不是技能本身。</p>
+<p>结合起来就是，通过书籍、公众号、等各种渠道获取大量信息，经过筛选、过滤、思考将其转化为自己的知识，这个过程中，可能需要学习很多的技能来加以支撑。</p>
+<p>5、黄金三问</p>
+<p>黄金三问就是对任何一项任务，要搞清楚要做什么？怎么做？为什么要做？</p>
+<p>很多时候，我们提出的问题往往不是问题本身，而是解决问题的答案。比如：你让一个 Java 程序员看一个 .NET 项目的代码，分析一些业务逻辑，一会，他可能会问你，操作系统怎么重装？但真实的问题是怎么装系统吗？深入了解才知道是想安装 VS 来打开项目，但提示系统有些不兼容，想要升级系统。最初的任务是代码阅读，代码阅读可以用很多的工具，记事本、VS Code 都可以。</p>
+<p>在需求调研的时候，客户给我们提的需求很多时候也不是真正的需求，而是客户自己针对问题想出的解决方案，就算我们“完美”地满足了客户提出的“方案级需求”，最终的结果也未必能让客户满意。所以需要用黄金三问去进行深挖，找到最底层、最真实的想法，才更容易达成共识。</p>
+<p>产品经理在提需求的时候，多提提问题，可能问着问着，需求就不用做了。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2022/04/read-the-underlying-logic/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2022/04/read-the-underlying-logic/&title=读《底层逻辑》 - 冯威的博客&summary=《底层逻辑》本书作者是刘润，他在得到上开设有课程《5 分钟商学院》，我也是在得到上知道的这本书，这本书在豆瓣上的评分不是很高，褒贬不一，不过我看着觉得挺好。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=读《底层逻辑》 - 冯威的博客&amp;body=http://fwhyy.com/2022/04/read-the-underlying-logic/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2022/04/read-the-underlying-logic/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/book-recommendation-202203/">书籍推荐（202202）<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/04/how-can-the-code-be-written-like-this/">代码居然还能这样写<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

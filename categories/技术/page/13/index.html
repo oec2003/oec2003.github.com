@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a><div class="line"></div><a class="more-item" href="/2022/03/recommend-a-card-note-taking-tool/"><div class="cap"><time>2022-03-28</time><span>成长</span></div><span class="title">推荐一款卡片笔记工具</span></a><div class="line"></div><a class="more-item" href="/2022/02/book-recommendation-202202/"><div class="cap"><time>2022-03-07</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/do-we-need-to-switch-from-monomer-to-microservice/"><div class="cap"><time>2022-03-07</time><span>技术</span></div><span class="title">微服务：我们需要从单体转到微服务吗？</span></a><div class="line"></div><a class="more-item" href="/2022/02/why-do-i-like-it-typora/"><div class="cap"><time>2022-03-07</time><span>成长</span></div><span class="title">我为什么喜欢使用Typora</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,19 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
+<h2 class="post-title">在VS2010中将AspNet网站编译成一个DLL</h2><div class="excerpt"><p>在VS2010中创建一个网站，部署时网站的dll是动态生成的，每次编译产生的dll的名称都不一样，这样会导致在部署时必须将aspx页面和dll一起部署，尽管有时你可能只修改了后台代码。这样就变得很不方便，在VS2010中可以借助一个插件是网站生成一个固定名称的dll。
+1 从下面的链接地址中下载 Visual Studio® 2010 Web Deployment Projects
+http...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-04-05T16:00:00.000Z">2011-04-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/"><article class="md">
+<h2 class="post-title">Asp.Net站点整合Discuz论坛实现同步注册和单点登录</h2><div class="excerpt"><p>最近在一个小站中整合了Discuz论坛，查阅了些资料后实现了同步注册和单点登录。
+Discuz是以虚拟目录的方式加载网站中，整合Discuz到网站中进行安装要注意一下几个问题：
+
+
+Discuz所在的目录需要添加NETWORK SERVICE 和IIS_User这两个账户的权限。
+Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为虚拟目录的名称。
+由于我网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-31T16:00:00.000Z">2011-04-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
 <h2 class="post-title">在SqlServer 2008中将数据导成脚本</h2><div class="excerpt"><p>当我们想将数据库搬到另一个环境中运行时，如果数据库的版本一样我们可以直接选择附加的方式，而如果实验环境中的数据库版本比当前数据库低，就无法附加了。这时要向将数据全部导过去就需要使用脚本的方式，像Sqldbx就可以将数据库中的数据导出成脚本。本文将说下怎样直接在SqlServer 2008中将数据导出成脚本。
 具体步骤：
 1 打开SqlServer 2008 ，选择需要将数据导出到脚本的数据库...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-30T16:00:00.000Z">2011-03-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -155,33 +167,6 @@ AspNet中将DataGrid，GridView等...</p></div><div class="meta cap"><span class
 在上图中可以看出，服务器场配置未完成，所以先来配置服务器场。在“服务器场拓扑结构”下的“服务器”下点击服务器名称，上图中为“FENGWEI ”
 
 单击“Office SharePoint Se...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-12T16:00:00.000Z">2011-01-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-configuration/"><article class="md">
-<h2 class="post-title">SharePoint2007配置</h2><div class="excerpt"><p>在前面的文章中已经介绍了SharePoint2007的安装，本篇将详细介绍下SharePoint2007的配置。首先从程序中打开SharePoint2007的配置向导。
-
-向导启动后的界面如下
-
-点击“下一步”
-
-上图中提示需要启动或重启几个相关服务，点击“是”
-
-因为我们是在安装第一台SharePoint服务器，所以选择第二项“否，我希望创建新的服务器场”，点击“下一步”
-
-“数据库服务器...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-11T16:00:00.000Z">2011-01-12</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/install-sqlserver2005/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解三：安装SqlServer2005</h2><div class="excerpt"><p>SharePoint2007 中的很多功能会用到数据库，如分析服务，报表服务等。本文介绍SqlServer2005的安装，数据库的安装很简单，基本上安装默认选项点击下一步即可，需要注意的地方在下面会提到。
-现在就开始安装SqlServer2005 ，运行Setup.exe
-
-选中“我接受许可条款和条件”，点击“下一步”
-
-点击“安装”
-
-点击“下一步”
-
-点击“下一步”
-
-点击“下一步”
-
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-10T16:00:00.000Z">2011-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 
