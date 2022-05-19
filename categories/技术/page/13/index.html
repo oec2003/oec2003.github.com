@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,16 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/05/windows-service-in-windows-7-cant-install-solution/"><article class="md">
+<h2 class="post-title">Windows服务在Win7中不能安装的解决方法</h2><div class="excerpt"><p>用C#写的Windows服务在Win7中安装时出现如下错误：
+
+解决方法：
+1 安装服务的脚本写在bat文件中，一定要注意路径，如下
+123456D:\Project\JXW\Code\WorkFlow\FlowServer\installutil.exe  D:\Project\JXW\Code\WorkFlow\FlowServer\FlowServer.exepausenet star...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-23T16:00:00.000Z">2011-05-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/additional-database-failure-5120-error/"><article class="md">
+<h2 class="post-title">附加数据库失败 操作系统错误5</h2><div class="excerpt"><p>环境数据库版本：SqlServer2008 R2 32位
+附加文件的版本：SqlServer2008 R2 64位</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-21T16:00:00.000Z">2011-05-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
 <h2 class="post-title">在VS2010中将AspNet网站编译成一个DLL</h2><div class="excerpt"><p>在VS2010中创建一个网站，部署时网站的dll是动态生成的，每次编译产生的dll的名称都不一样，这样会导致在部署时必须将aspx页面和dll一起部署，尽管有时你可能只修改了后台代码。这样就变得很不方便，在VS2010中可以借助一个插件是网站生成一个固定名称的dll。
 1 从下面的链接地址中下载 Visual Studio® 2010 Web Deployment Projects
 http...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-04-05T16:00:00.000Z">2011-04-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -154,19 +163,6 @@ Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为�
 </article></a><a class="post-card post " href="/2011/01/solve-gridview-long-export-excel-such-as-digital-display/"><article class="md">
 <h2 class="post-title">解决AspNet中DataGrid GridView等列表控件导出Excel长数字显示成科学计数法的问题</h2><div class="excerpt"><p>大家都知道，在Excel中，当一个单元格中的值为一长串数字，而且该单元格又不是文本格式的时候，这一长串数字会以科学计数法的方式显示，这给我们的阅读带来了障碍。如果是直接在Excel中编辑数据，手动将格式改为“文本”即可，但要是用程序导出的Excel，手动去改就显得很麻烦了。简单的方法就是在程序中导出Excel的时候就设置列为“文本”格式。
 AspNet中将DataGrid，GridView等...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-22T16:00:00.000Z">2011-01-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/the-latest-microsoft-web-development-tools-webmatrix-simple-introduction-and-installation/"><article class="md">
-<h2 class="post-title">微软最新的 Web 开发工具WebMatrix的简单介绍及安装</h2><div class="excerpt"><p>今天很给力，微软Asp.Net团队同时发布了WebMatrix,Razor,MVC3以及Orchard四个产品，其中WebMatrix 是微软最新的 Web 开发工具，它包含了构建网站所需要的一切元素。您可以从开源 Web 项目或者内置的 Web 模板开始，也可以直接从无到有编写代码。简单并且完全是免费的。开发网站从来没有如此简单。
-什么介绍也没有官方的详细，我就将官网的介绍文字引用过来吧，...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-13T16:00:00.000Z">2011-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-related-service-startup/"><article class="md">
-<h2 class="post-title">在SharePoint2007中创建站点一：相关服务的启动</h2><div class="excerpt"><p>在程序中打开“SharePoint3.0管理中心”
-
-点击“SharePoint3.0管理中心”会弹出要求输入用户名和密码的对话框
-
-输入用户名和密码（注意用户名需要是域名加上用户名），点击“确定”
-
-在上图中可以看出，服务器场配置未完成，所以先来配置服务器场。在“服务器场拓扑结构”下的“服务器”下点击服务器名称，上图中为“FENGWEI ”
-
-单击“Office SharePoint Se...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-12T16:00:00.000Z">2011-01-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

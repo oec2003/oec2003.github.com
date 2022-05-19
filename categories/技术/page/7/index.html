@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,11 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2018/05/CentOS7-install-GitLab/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2018/06/docker-common-commands/"><article class="md">
+<h2 class="post-title">Docker 常用命令</h2><div class="excerpt"><p>学习Docker有段时间了，所有的操作都是在命令行下，如果不是每天都在使用，很容易忘记命令。本文将以学习Docker的角度，从前到后，将一些常用的Docker命令记录下来，算是个备忘。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-06-08T23:49:07.000Z">2018-06-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/06/Use-the-Merge-Request-working-mode-in-GitLab-in-the-team/"><article class="md">
+<h2 class="post-title">在团队中使用GitLab中的Merge Request工作模式</h2><div class="excerpt"><p>在工作中使用Git已有5年多的时间了，Git分布式的工作机制以及强大的分支功能使得在团队中推广使用没有受到什么阻碍。一直以来都是采用的分支管理模式，我把项目的开发分为三个阶段：开发、测试和上线。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-31T23:49:45.000Z">2018-06-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/05/CentOS7-install-GitLab/"><article class="md">
 <h2 class="post-title">CentOS7安装GitLab</h2><div class="excerpt"><p>一直以来源代码一直都放在码云上，但最近码云开始收费了，免费版本的私有项目的成员限制在5个，这远远不够用了。所以需要搭建自己的Git服务器，下面内容为安装经过，记录一下：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-27T14:18:21.000Z">2018-05-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2018/05/docker-installs-mysql-to-mount-external-data-and-configuration/"><article class="md">
 <h2 class="post-title">Docker安装MySql-挂载外部数据和配置</h2><div class="excerpt"><p>在上一篇中《在CentOS7中使用Docker安装MySql》中介绍了怎样在Docker中安装Mysql，但存在两个问题：
@@ -155,18 +159,6 @@ MongoDB的所有服务都恢复后，在一个很短的时间内是正常的，�
 遗憾的是小米推送官方并不支持C#，所以需要很对Java版本的实现用IKVM来做一些转化。转换后在Net程序中一共需要引用7个Dll文件，如下图：
 
 相关Dll文件和示例代码已...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-02T01:35:44.000Z">2017-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/08/docker-learning-installing-images/"><article class="md">
-<h2 class="post-title">Docker学习-安装镜像</h2><div class="excerpt"><p>Docker现在已不是什么新鲜事物了，Windows Server2016已经内置了Docker，对于我来说，我只想让Docker来帮我解决运行环境的问题。
-我们的产品部署起来会依赖很多的第三方产品：SqlServer、MongoDB、Redis、RabbitMQ等，各种软件等安装，数据库的还原，每次部署都会耗费大量的时间。为了能使部署更加的方便，我们的设想是这样的：
-
-在Docker中安装这些工具软件
-打包Docker，拷贝到客户环境中导入
-在Web界面中进行简单的向导配置
-
-本文主要介绍在Docker中安装这些工具软件。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-08-31T02:47:45.000Z">2017-08-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/04/adding-watermark-to-owa/"><article class="md">
-<h2 class="post-title">OWA实现添加水印</h2><div class="excerpt"><p>OWA全称Office Web App，是用来做Office文档预览的一个很好的工具。现在客户有要求，需要在预览界面中添加水印。想起之前写的一篇文章《Office Web APP预览去掉顶部菜单》，就是通过修改样式来控制OWA的预览界面的。
-通过F12查看OWA预览Word的界面，发现Word的每一页会被渲染在一个Img中展示，如下图：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-04-07T16:01:55.000Z">2017-04-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

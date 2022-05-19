@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,14 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2010/01/design-patterns-notes-22-state-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2010/02/some-tips-of-sqlserver/"><article class="md">
+<h2 class="post-title">SqlServer数据库的语句及一些操作整理</h2><div class="excerpt"><p>临近年终，在工作之余对工作和学习中遇到的问题以及常用的一些知识点做了些整理，以备后用。本文涉及的内容为数据库,算是对开发总结(1)—数据库一文的补充。
+1 对于主键设置了Identity的表，在删除表中数据后再往表中插入数据，Identity列不是从1起始了，如果想删除数据后Indentity列仍从1起始，可以用下面代码来删除数据。
+12truncate table tablenameDBC...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-01T16:00:00.000Z">2010-02-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-23-strategy-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(23)—策略者模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一系列算法，把它们一个个封装起来，并且使它们可互相替换。该模式使得算法可独立于使用它的客 户而变化。
+动机在软件构建过程中，某些对象使用的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使对象变得异常复杂；而且有时候支持不使用的算法也是一个性能负担。如何在运行时根据需要透明地更改对象的算法？将算法与对象本身解耦，从而避免上述问题？看下面的策略者模式的结构图和基本代...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-30T16:00:00.000Z">2010-01-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-22-state-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(22)—状态模式（行为型）</h2><div class="excerpt"><p>Gof定义允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。
 动机在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。如何在运行时根据对象的状态来透明地更改对象的行为？而不会为对象操作和状态转化之间引入紧耦合？看下面状态模式的结构图和代码。
 状态模式结构图：
@@ -139,13 +146,6 @@ Lable：
 下面看下解释器模式的结构图：
 
 基本...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-18T16:00:00.000Z">2010-01-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/jquery-upload-plugin-uploadify-use-explanation/"><article class="md">
-<h2 class="post-title">jQuery上传插件Uploadify使用详解</h2><div class="excerpt"><p>本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。
-
-官方下...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-15-command-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(15)—命令模式（行为型）</h2><div class="excerpt"><p>Gof定义将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
-动机在软件构建过程中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合——比如需要对行为进行“记录、撤销/重做（undo/redo）、事务”等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将“行为请求者”与“行为实现者”解耦？将一组行为...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-29T16:00:00.000Z">2009-12-30</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

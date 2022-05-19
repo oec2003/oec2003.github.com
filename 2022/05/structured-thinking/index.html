@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>结构化思维 - 冯威的博客</title>
+
+  
+    <meta name="description" content="在说结构化思维之前，先看下面两个小案例：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结构化思维">
+<meta property="og:url" content="http://fwhyy.com/2022/05/structured-thinking/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在说结构化思维之前，先看下面两个小案例：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-10T00:08:42.000Z">
+<meta property="article:modified_time" content="2022-05-19T00:10:15.885Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="思考">
+<meta property="article:tag" content="结构化思维">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-05-10T00:08:42.000Z">2022-05-10</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>结构化思维</span></h1>
+<p>在说结构化思维之前，先看下面两个小案例：</p>
+<span id="more"></span>
+
+<p>案例一：</p>
+<p>产品进行一次比较大的重构和功能迭代，因为改动较大，对产生 Bug 的数量和修复 Bug 的速度预估不足，导致延迟了两周才进行交付。</p>
+<p>1、技术负责人认为整个团队都很做的很辛苦，每天都在加班加点地赶进度，感觉不算是延期，处理了很多本次功能之外的问题；</p>
+<p>2、对公司来说版本没有准时发布，多耗费了两周的成本。</p>
+<p>案例二：</p>
+<p>在项目实施过程中如果发现产品有 Bug ，实施人员会提问题单，产品团队接收到问题单后会安排开发人员进行排查和修复，经常发现一些问题单没能及时关闭，最后问起原因，有下面几种：</p>
+<p>1、问题无法重现，需要提供日志或特定数据，但一直没提供；</p>
+<p>2、和实施人员沟通，采用其他变通方式解决；</p>
+<p>3、实施人员说这个问题不用处理了。</p>
+<p>案例一的技术负责人很认真负责，但在开发前只考虑了新增功能，没有考虑改造带来的关联影响，没有控制好风险，导致延期。交付后进行复盘，会认为不能定义为延期，因为在初始的时间节点内当前版本的功能都完成了，而且还处理了很多「额外」的问题。</p>
+<p>案例二的开发人员也认为自己能做的都做了，但从客户或管理者的角度来看，这些问题单是没有完结的。</p>
+<p>之所以会出现这些情况，我认为是缺乏结构化思维。</p>
+<p>什么是结构化思维？</p>
+<p>最近看了《极简项目管理》这本书，对结构化思维的定义是：</p>
+<p>所谓结构化思维，是指一个人在面对工作任务或者难题时能从多个角度进行思考，深刻分析导致问题出现的原因，系统地制订行动方案，并采取恰当的手段使工作得以高效地开展，取得高绩效。</p>
+<p>书中还给出了一个例子来介绍怎样使用结构化思维。</p>
+<p>200 毫升的水怎样倒进 100 毫升的杯子？</p>
+<p>分析：</p>
+<p>1、为什么倒不进去？ 因为水会流出来；</p>
+<p>2、为什么会流出来？因为杯子小；</p>
+<p>3、杯子小就一定流吗？因为地球有引力；</p>
+<p>4、杯子小，地球有引力就一定流下来吗？因为水是液体。</p>
+<p>三个方面来思考问题：</p>
+<p>1、问题本身：</p>
+<ul>
+<li>杯子：杯子是否是能有弹性的？</li>
+<li>水：水是不是可以进行冷冻，将其变成固体？</li>
+</ul>
+<p>2、环境：</p>
+<ul>
+<li>地球有引力，那么是不是能到太空中去完成？</li>
+</ul>
+<p>3、解决问题的主体：</p>
+<ul>
+<li>我们的能力和认知觉得无法解决的问题，是不是能协调资源，找专家、高手就能解决？</li>
+</ul>
+<p>上面的例子，是站在一个全局的视角下，从多维度去提出问题，最终找到合适的手段，制定行动方案，这种方式可以用在平时工作和生活的很多地方。</p>
+<p>再回到上面的两个案例。</p>
+<p>案例一可以分为重构前、重构中、和事后复盘。</p>
+<p>在重构前：</p>
+<p>1、分析重构部分的关联影响；</p>
+<p>2、重构部分和新增迭代功能是否存在冲突，存在应该怎么应对？</p>
+<p>3、测试需要协助提供一些主线用例供开发自测使用；</p>
+<p>4、综合各种考虑到的场景来制定计划和时间节点。</p>
+<p>重构中：</p>
+<p>1、不管前期规划地多详细，总会出现在落地时才能发现的一些问题，比如：实现一个很细节的点可能导致一些需求设计或代码设计上的变更；</p>
+<p>2、发现问题需要及时提出，并且对工期进行重新评估，是否会影响发布节点？</p>
+<p>3、如果有影响，需要向上沟通，确认某些调整能否放到下一个迭代？</p>
+<p>4、如果时间节点和功能都需要保证，需要进行资源协调，引入更多的资源来保证功能和时间，不过在迭代后期，加人不一定是明智的选择；</p>
+<p>5、如果资源协调也不行，那就只能付出更多的时间来弥补之前的分析和评估的不足。</p>
+<p>事后复盘：</p>
+<p>1、延期如果已成事实，需要正视问题，不要找客观的原因，否则就无法改进；</p>
+<p>2、找到关键点和根因，并制定改进措施，虽然鼓励试错，但要避免犯同样的错误；</p>
+<p>3、改进措施可能是规范、也可能是流程，沉淀到文档，监督执行。</p>
+<p>案例二其实就一个关键点：让事情有始有终，形成闭环。</p>
+<p>1、一个问题单指定了责任人，那么责任人就需要跟进到底；</p>
+<p>2、跟进到底的意思不仅仅只对代码进行了修改，目的是要最终解决客户的问题，而且是快速地解决客户的问题，所以问题单的优先级一般都很高；</p>
+<p>3、有些问题开发环境不能重现，就需要多维度来思考：</p>
+<ul>
+<li>能不能协调资源，找到高手来一起分析？</li>
+<li>对紧急线上问题，有没有应急的方式先进行处理，然后再分析原因？</li>
+<li>加日志是否对排查问题有帮助？</li>
+<li>是否需要实施提供特定数据？如果不能提供，应该怎么模拟？</li>
+<li>此类问题是否在其他的项目中也存在，是否需要发放补丁包？</li>
+</ul>
+<p>4、确定一种方案后，就需要快速执行，直到问题解决。</p>
+<p>两个案例中存在的问题都是在思考问题的时候，考虑的是点，不是面，就像玩积木，每一个块都是一个独立的个体，但将其组合，搭建出一个房子的时候，需要考虑各种问题，形状是否合适，颜色是不是搭配起来好看，因为一个房子模型的结构是系统的。</p>
+<p>现在有很多的思维方式、做事的方法，比如：</p>
+<p>1、把事情分为重要紧急、重要不紧急、不重要紧急、不重要不紧急四象限；</p>
+<p>2、5W2H 分析法；</p>
+<p>3、黄金思维圈；</p>
+<p>4、DPCA 环；</p>
+<p>5、金字塔原理。</p>
+<p>这些我认为都属于结构化思维，结构化思维就是把零散的、无序的信息加工成系统有序的信息，有了结构化思维后，我们对事物的认知会提高，有助于高效实现目标。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2022/05/structured-thinking/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2022/05/structured-thinking/&title=结构化思维 - 冯威的博客&summary=在说结构化思维之前，先看下面两个小案例："><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=结构化思维 - 冯威的博客&amp;body=http://fwhyy.com/2022/05/structured-thinking/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2022/05/structured-thinking/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/05/how-to-improve-writing-ability/">如何提升写作能力？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/05/microservices-how-do-services-communicate/">微服务：服务间如何通信？<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

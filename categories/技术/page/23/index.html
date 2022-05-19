@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,19 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/06/aspnet-instead-of-eval-in-two-ways/"><article class="md">
+<h2 class="post-title">Asp.Net中替代Eval的两种方式</h2><div class="excerpt"><p>在asp.net中的数据绑定中，我们经常会用到Eval，不过大家都知道Eval绑定是通过反射来实现的， 而反射势必会对性能造成一定的影响。不过有两种替代的方式来实现绑定数据，对性能略有提高。
+1 当数据源为DataTable时，用下面的方式:
+后台代码
+12345678910111213141516protected void Page_Load(object sender, EventAr...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-25T16:00:00.000Z">2009-06-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-3-constants-and-fields/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（3） 常量和字段（const readonly）</h2><div class="excerpt"><p>
+《CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+常量和字段都是类型的数据成员，但是区别却是很大的。
+
+常量的值永远不会改...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-21T16:00:00.000Z">2009-06-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/"><article class="md">
 <h2 class="post-title">CLR Via C# 学习笔记（2） 装箱和拆箱</h2><div class="excerpt"><p>
 CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
 
@@ -141,10 +153,6 @@ CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理�
 <h2 class="post-title">Asp.net中递归实现CSS菜单</h2><div class="excerpt"><p>现在网络上有各种各样的非常漂亮的css菜单，不过大多都是静态的，菜单项都是在页面中写死的，这样就不是很灵活，每次要修改菜单都要去修改页面，下面就介绍一个从数据库中读取菜单项的动态css菜单的例子。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-04-17T16:00:00.000Z">2009-04-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2009/01/an-introduction-to-the-sample-to-nhibernate/"><article class="md">
 <h2 class="post-title">NHibernate入门级示例（增 删 改）</h2><div class="excerpt"><p>NHibernate相信大家都已非常熟悉，园子里有很多高手写了相关的系列文章，不过我还是NHibernate的一名初学者，在此将一个晚上学习成果分享一下，一个很简单的利用NHibernate实现增删改的例子。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-19T16:00:00.000Z">2009-01-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/aspnet-2-0-the-eval-method-of-explanation/"><article class="md">
-<h2 class="post-title">Asp.net 2.0的Eval方法详解</h2><div class="excerpt"><p>实际上Eval方法是TemplateControl的，而System.Web.UI.Page和System.Web.UI.UserControl都继承于TemplateControl，所以我们可以在Page和UserControl上直接调用个方法。Page.Eval方法可以帮助我们更好的撰写数据绑定表达式，在ASP.NET   1.x时代，数据绑定表达式的一般形式是：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-13T16:00:00.000Z">2009-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/aspnet-access-database-connection/"><article class="md">
-<h2 class="post-title">Asp.Net 连接Access数据库</h2><div class="excerpt"><p>自学程序以来，一直使用的都是sqlserver数据库，最近帮一朋友做一个access的demo，发现在数据库的连接方面就存在很大差异，在web.config中配置好连接字符串，然后在后台取，在此我的做法是存两个值，将Provider和assess数据库文件的路径分开存，如下：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-09T16:00:00.000Z">2009-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

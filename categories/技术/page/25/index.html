@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/04/how-can-the-code-be-written-like-this/"><div class="cap"><time>2022-04-26</time><span>技术</span></div><span class="title">代码居然还能这样写</span></a><div class="line"></div><a class="more-item" href="/2022/04/read-the-underlying-logic/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">读《底层逻辑》</span></a><div class="line"></div><a class="more-item" href="/2022/03/book-recommendation-202203/"><div class="cap"><time>2022-04-26</time><span>读书</span></div><span class="title">书籍推荐（202202）</span></a><div class="line"></div><a class="more-item" href="/2022/03/how-to-split-services/"><div class="cap"><time>2022-03-28</time><span>技术</span></div><span class="title">微服务：如何拆分服务？</span></a><div class="line"></div><a class="more-item" href="/2022/03/reread-continuous-delivery-2-0/"><div class="cap"><time>2022-03-28</time><span>读书</span></div><span class="title">低风险发布，再读《持续交付2.0（增订版）》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,13 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2008/05/generate-html-server-controls-in-the-background/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2008/07/remove-the-file-upload-control-values/"><article class="md">
+<h2 class="post-title">清除上传控件 File 的值</h2><div class="excerpt"><p>因为File控件的value值是只读的，所以用document.getElementById(“File1″).value=”” 并不能清楚file控件的值。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-07-03T16:00:00.000Z">2008-07-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2008/07/to-solve-the-unable-to-solve-the-equal-to-operation-collation-conflict-problem/"><article class="md">
+<h2 class="post-title">解決“无法解决 equal to 操作的排序规则冲突 ”问题</h2><div class="excerpt"><p>问题：在创建存储过程时 出现 “无法解决 equal to 操作的排序规则冲突 ”
+解决方法：1 WHERE 列名 collate Chinese_PRC_CI_AS(强制指定排序规则)，如：
+1234567select    *from    testwhere    name collate chinese_prc_ci_as in     (select name1 chinese_p...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-07-02T16:00:00.000Z">2008-07-03</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2008/05/generate-html-server-controls-in-the-background/"><article class="md">
 <h2 class="post-title">将服务器控件在后台生成html</h2><div class="excerpt"><p>这个方法很有用，在做一些Ajax应用的时候，可以在后台将gridview 生成hmtl后回传到客户端，可以实现分页的功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-05-27T16:00:00.000Z">2008-05-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2008/05/development-summary-javascript/"><article class="md">
 <h2 class="post-title">开发总结—Javascript篇</h2><div class="excerpt"><p>本文是我在平时工作中所遇到的javascript方面的一些知识总结，主要针对在asp.net中使用脚本。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-05-24T16:00:00.000Z">2008-05-25</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -127,13 +133,6 @@ http://www.namipan.com/d/SYBASE%20PowerDesigner%2012%20%e6%...</p></div><div cla
 <h2 class="post-title">window.print()实现局部打印</h2><div class="excerpt"><p>window.print()  实际上，是浏览器打印功能菜单的一种程序调用。与点击打印功能菜单一样，不能精确分页，不能设置纸型，套打的问题更加无从谈起，只不过，可以让用户不用去点菜单，直接点击网页中的一个按钮，或一个链接里面调用罢了。事实上，很多用户都是采用这种方式打印，但是这种方式最致命的缺点是不能设置打印参数，比如纸型，页边距，选择打印机等等。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-03-05T16:00:00.000Z">2008-03-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2008/02/learning-c-3-0-2-object-collection-initializer/"><article class="md">
 <h2 class="post-title">C#3.0学习(2)—对象集合初始化器</h2><div class="excerpt"><p>创建一个对象时可以包含一个对象初始化器或集合初始化器，用于初始化所创建对象的成员或新创建的集合的元素。使用初始化器可以让我们的代码变得更简洁。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-02-24T16:00:00.000Z">2008-02-25</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2008/02/learning-csharp-3-0-1-implied-type-of-local-variables-and-extension-methods/"><article class="md">
-<h2 class="post-title">C#3.0学习(1)—隐含类型局部变量和扩展方法</h2><div class="excerpt"><p>隐含类型局部变量隐含类型的局部变量是用var关键字来声明的，如下：
-12345var i = 123;var h=123.123;var s = “oec2003&quot;;var intArr = new[] &#123;1,2,3,4&#125; ;var a = new[] &#123; 1, 10, 100, 1000 &#125;;
-
-乍一看有点像javascript中的声明方式...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-02-21T16:00:00.000Z">2008-02-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2008/02/dynamically-add-tow-to-gridview/"><article class="md">
-<h2 class="post-title">动态添加GridView行</h2><div class="excerpt"><p>C#代码:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768using System;using System.Data;using System.Configuration;using S...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2008-02-14T16:00:00.000Z">2008-02-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 
