@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/06/how-do-techies-build-their-personal-brands/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/08/huawei-approach-to-digital-transformation/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《华为数字化转型之道》</span></a><div class="line"></div><a class="more-item" href="/2022/08/nawal-treasure-book/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《纳瓦尔宝典》</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-first-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-one-week-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 一周使用心得（配置、主题和插件）</span></a></div></div>
 </div>
 
 
@@ -108,7 +108,29 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2022/05/microservices-how-do-services-communicate/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2022/09/go-learning-from-environment-building-to-writing-a-web-service/"><article class="md">
+<h2 class="post-title">Go 学习：从环境搭建到写一个 Web 服务</h2><div class="excerpt"><p>最近学习了 Go 语言，做下记录。
+Go 的来历和 C、C++ 相比， Go 是一门很年轻的语言。2007 年，在 Google 的内部，有三位大佬因为 C++ 的复杂性、构建编译速度很慢和对并发支持不好等原因，便决定开发一门新的语言，于是他们基于 C 语言，做了功能的删减和新增，便有了 Go 的诞生。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-09-19T00:20:20.000Z">2022-09-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2022/08/libreoffice-implements-office-preview/"><article class="md">
+<h2 class="post-title">.NET Core 使用 LibreOffice 实现 Office 预览（Docker 部署）</h2><div class="excerpt"><p>前些年做云盘产品的时候，一个很核心的功能就是 Office 文件预览，当时还没有使用 .NET Core ,程序部署在 Windows Server 服务器上，文件预览的方案采用了微软的 OWA 。
+目前在做的零代码产品中的表单附件控件，同样面临着 Office 文件预览的问题，现在技术栈采用了 .NET Core ，并使用容器化部署，自然就抛弃了 OWA 的方案。
+本文简单介绍下 OWA 的替代方案。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-08-29T00:20:20.000Z">2022-08-29</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2022/08/microservices-transaction-management/"><article class="md">
+<h2 class="post-title">微服务：事务管理</h2><div class="excerpt"><p>几乎所有的信息管理系统都会涉及到事务，事务的目的是为了保证数据的一致性，这里说的一致性是数据库状态的一致性。
+说到数据库状态的一致性，相信大家都会想到 ACID ：
+
+原子性（Atomic）：在一个事件的多个数据库操作中，要么同时成功，要么同时失败，例如：转账业务；
+
+隔离性（Isolation）：不同的业务之间处理数据相互独立，互不影响
+
+持久性（Durability）：正常提交的数据能够被持久化，不丢失数据，比如 mysql 天然就能持久化，redis 、 rabbitmq 也能通过设置进行持久化；
+
+一致性（Consistency）：最终的数据正确，所以说是通过 AID 这些手段来保证了 C 。
+
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-08-01T00:20:20.000Z">2022-08-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2022/06/the-high-cpu-of-rabbitmq-consumers-in-net-core/"><article class="md">
+<h2 class="post-title">NET Core中的RabbitMQ消费者CPU高，竟然是这个原因</h2><div class="excerpt"><p>在 RabbitMQ 中有一个 vhsot 机制，可以用来做租户隔离，当产品从单租户演化为多租户时，正好可以用到这个特性，不同 vhost 中的交换机、队列互不影响。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-06-06T00:08:42.000Z">2022-06-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2022/05/microservices-how-do-services-communicate/"><article class="md">
 <h2 class="post-title">微服务：服务间如何通信？</h2><div class="excerpt"><p>在微服务架构中，会将一个完整的应用程序拆分成一组服务。这些服务之间需要经过协作，通过接口调用，才能组成一个完整的应用。
 不同的服务部署在不同的机器上，或者同一个机器的多个容器中，进程间的通信就不可避免了，也变得非常重要。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-05-16T00:10:55.000Z">2022-05-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2022/04/thoughts-on-the-architecture-from-the-release/"><article class="md">
@@ -123,21 +145,6 @@
 <h2 class="post-title">微服务：我们需要从单体转到微服务吗？</h2><div class="excerpt"><p>微服务或许你没有真正实践过，但一定听说过，虽然已经到了 2022 年，这个词依然很热，可以通过搜索 google 指数看得到。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-03-07T00:26:00.000Z">2022-03-07</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2022/02/centos-install-k8s-deploy-net6/"><article class="md">
 <h2 class="post-title">CentOS单机安装k8s并部署.NET 6程序</h2><div class="excerpt"><p>学习云原生，k8s 是一个基础，为了做一些实验，单机部署是最方便的，下面将介绍在 CentOS 中单机安装 k8s ，并将一个 .NET 6 的程序发布到 k8s 中。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-02-20T02:26:00.000Z">2022-02-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2022/01/huawei-cloud-server-deployment-3/"><article class="md">
-<h2 class="post-title">华为云鲲鹏服务器部署Java踩坑记</h2><div class="excerpt"><p>之前跟华为云的技术人员沟通，他们说在鲲鹏服务器上构建部署对微软的 dotNET 支持不是很好，建议使用 Java ，我们程序现在是混合模式 dotNET 和 Java 都有。让我没想到的是 dotNET 的构建部署很顺利，反倒是 Java 的部署遇到了些问题。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-01-20T00:05:00.000Z">2022-01-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2022/01/huawei-cloud-server-deployment-2/"><article class="md">
-<h2 class="post-title">华为云服务器初探二（完结）</h2><div class="excerpt"><p>在上一篇《华为云服务器初探》 中介绍了在使用华为云服务器部署时的一些关键点，本篇继续，内容涉及如下:</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-01-14T00:05:00.000Z">2022-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2022/01/huawei-cloud-server-deployment/"><article class="md">
-<h2 class="post-title">华为云服务器部署初探</h2><div class="excerpt"><p>最近玩了下华为云，遇到了一些坑，做下记录。
-华为云有很多的服务，文中会涉及到：
-
-CCE
-ECS
-弹性公网IP
-DevCloud
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-01-10T00:05:00.000Z">2022-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2021/12/object-oriented-design-principles-2/"><article class="md">
-<h2 class="post-title">设计模式：面向对象的设计原则下（ISP、DIP、KISS、YAGNI、DRY、LOD）</h2><div class="excerpt"><p>本文继续来介绍接口隔离原则（ISP）和依赖倒置原则（DIP），这两个原则都和接口和继承有关。文章最后会简单介绍几个除了 SOLID 原则之外的原则。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-12-13T00:05:00.000Z">2021-12-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/05/microservices-how-do-services-communicate/"><div class="cap"><time>2022-05-19</time><span>技术</span></div><span class="title">微服务：服务间如何通信？</span></a><div class="line"></div><a class="more-item" href="/2022/05/structured-thinking/"><div class="cap"><time>2022-05-19</time><span>思考</span></div><span class="title">结构化思维</span></a><div class="line"></div><a class="more-item" href="/2022/05/how-to-improve-writing-ability/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">如何提升写作能力？</span></a><div class="line"></div><a class="more-item" href="/2022/04/book-recommendation-202204/"><div class="cap"><time>2022-05-19</time><span>读书</span></div><span class="title">书籍推荐（202204）</span></a><div class="line"></div><a class="more-item" href="/2022/04/translation-artifact-in-mac/"><div class="cap"><time>2022-05-19</time><span>成长</span></div><span class="title">Mac中的翻译神器</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/06/how-do-techies-build-their-personal-brands/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/08/huawei-approach-to-digital-transformation/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《华为数字化转型之道》</span></a><div class="line"></div><a class="more-item" href="/2022/08/nawal-treasure-book/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《纳瓦尔宝典》</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-first-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-one-week-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 一周使用心得（配置、主题和插件）</span></a></div></div>
 </div>
 
 
@@ -106,27 +106,29 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2021/01/talk-about-the-response-mode-of-rabbimq/"><article class="md">
-<h2 class="post-title">说说 RabbiMQ 的应答模式</h2><div class="excerpt"><p>RabbiMQ 我们都很熟悉了，是很常用的一个开源消息队列。搞懂 RabbiMQ 的应答模式对我们排查错误很有帮助，也能避免一些坑。本文说说 RabbiMQ 的应答模式。
-生产者发出一条消息给 RabbiMQ ，服务端将消息推送给消费者，消费者处理完消息后告诉 RabbiMQ，我已经接收到消息并处理了，RabbiMQ 收到通知后会将消息从队列中删除。 消费者通知 MQ 的这个过程就是消息的应答。在 RabbiMQ 中有两种应答模式：自动应答和手动应答。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-01-11T00:08:40.000Z">2021-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/12/deploying-dotnet-core-programs-with-supervisor-in-centos7/"><article class="md">
-<h2 class="post-title">CentOS7 中使用 Supervisor 部署 dotNET Core 程序</h2><div class="excerpt"><p>在 CentOS 中部署 dotNET Core 程序，我们通常会使用 Docker ，方便快捷，版本更新也非常方便，但有时客户要求直接在服务器上进行 dotNET Core 程序的部署，这时就需要使用守护进程，本文就介绍使用守护进程 Supervisor 进行 dotNET Core 程序的部署。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-12-28T01:43:34.000Z">2020-12-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/12/one-port-handles-all-applications/"><article class="md">
-<h2 class="post-title">一个端口搞定所有应用</h2><div class="excerpt"><p>在产品或项目的发布部署中，往往需要很多的端口来对应不同的应用，特别是前后端分离的架构，更是如此，比如：有 PC 端的前端、移动端的前端和 WebAPI ，这就需要三个端口了：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-12-14T01:40:05.000Z">2020-12-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/12/csharp-points-for-attention-in-asynchronous-programming/"><article class="md">
-<h2 class="post-title">C# ：异步编程的注意点</h2><div class="excerpt"><p>在上一篇《C#：异步编程中的 async 和 await》 中简单介绍了在 C# 中的异步编程以及 async 和 await 编程模型，本文介绍下异步编程的注意事项，主要有以下几个方面。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-12-01T01:29:36.000Z">2020-12-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/11/csharp-async-and-await-in-asynchronous-programming/"><article class="md">
-<h2 class="post-title">C#：异步编程中的 async 和 await</h2><div class="excerpt"><p>async 和 await 在 C# 5.0 就已经引入了，用来处理异步编程，但之前用的相对较少，现在在 dotNet Core 时代，已经使用的非常普遍，很多的开源组件中提供了大量的后缀为 Async （异步）的方法。本文就简单讲讲 async 和 await。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-11-16T01:59:19.000Z">2020-11-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/11/great-companies-can-also-learn-from-and-learn-from/"><article class="md">
-<h2 class="post-title">重读《打造Facebook》</h2><div class="excerpt"><p>第一次看《打造Facebook》是在2013年，微博上的一位朋友推荐的，前几天又大概翻了一遍，全书主要讲作者王淮在 Facebook 的从业经历以及离职后对天使投资和创业的一些想法，作者的分享在很多地方是值得我们学习和借鉴的。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-11-02T01:52:08.000Z">2020-11-02</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
-</article></a><a class="post-card post " href="/2020/10/dotnet-core-3-1-uses-aspose-deploy-docker/"><article class="md">
-<h2 class="post-title">dotNet Core 3.1 使用 Aspose （部署 Docker）</h2><div class="excerpt"><p>在之前的文章《Dotnet Core 中使用Aspose（部署Docker）》中介绍了在 dotNet Core2.1 中使用 Aspose ，并部署到 Docker 中，现在 dotNET Core 升级到了 3.1 ，Docker 镜像发生了变化，一些依赖的安装也有些变化。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-10-18T23:48:55.000Z">2020-10-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/09/why-are-you-so-busy-and-still-cant-do-well/"><article class="md">
-<h2 class="post-title">为什么这么忙，还依然做不好事情</h2><div class="excerpt"><p>一直都很喜欢《重来》系列，最近出了《重来3：跳出疯狂的忙碌》，第一时间在微信读书中阅读了，让我们印象比较深刻的就是「冷静」和「效率」，本文主要说说效率的问题。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-09-30T01:46:53.000Z">2020-09-30</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
-</article></a><a class="post-card post " href="/2020/09/dotnet-core-coding-specification/"><article class="md">
-<h2 class="post-title">dotNET Core：编码规范</h2><div class="excerpt"><p>在项目开发过程中，由于时间紧、任务重，很容易导致面向功能编程。实现相同的功能，代码可以写的很优雅，也可以写的很晦涩和复杂。现在的工作，都需要进行团队协作，代码就需要有一定的规范进行指引，因为我们需要写出让人可以轻易读懂的代码，而不仅仅是机器。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-09-14T01:44:15.000Z">2020-09-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2020/08/programmer-is-a-lifelong-learning-profession-how-should-i-learn/"><article class="md">
-<h2 class="post-title">程序员是终身学习的职业，应该怎么学习？</h2><div class="excerpt"><p>在上一篇《一款用了就不想走的工具》中介绍了一款工具 Notion ，可以做学习的规划、时间的管理、学习的记录等，但学习本身还是需要一些方法的，本文谈谈我对学习的一些感悟。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2020-08-24T01:41:17.000Z">2020-08-24</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+  <div class="post-list post"><a class="post-card post " href="/2021/06/vs-2019-16-10-and-vs-2022-new-features/"><article class="md">
+<h2 class="post-title">VS 2019 16.10 和 VS 2022 新功能</h2><div class="excerpt"><p>作为宇宙第一 IDE 的 Visual Studio ，我从 VS2003 开始就一直都在使用，并关注着其发展动态，最近 Visual Studio 2022 的预览版已经可以下载，在 2022 版本之前，我使用的是 VS 2019，当你升级到 VS 2019 的 16.10 版本后，会发现新增了下面的一些新功能：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-06-28T00:05:00.000Z">2021-06-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2021/06/did-you-do-code-review/"><article class="md">
+<h2 class="post-title">你有做 Code Review 吗？</h2><div class="excerpt"><p>在代码的编写中有一个很重要的环节，经常会被忽视，那就是 Code Review ,据说在 Facebook、Google 这种互联网大公司，要求每一个提交都必须通过审查，对于每个工程师来说 Code Review 是一项十分重要的工作，甚至比写代码本身更重要。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-06-15T00:05:00.000Z">2021-06-15</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2021/06/talk-about-running/"><article class="md">
+<h2 class="post-title">谈谈跑步</h2><div class="excerpt"><p>跑步是非常简单的一项运动，没有场地限制，也没有装备限制，只需要迈开双腿就可以，而且还可以减肥、解压，本文就和大家聊聊跑步。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-06-01T00:05:00.000Z">2021-06-01</time></span><span class="cap breadcrumb" style="color:#A2CD5A">跑步</span><div>
+</article></a><a class="post-card post " href="/2021/05/read-zhongtai-architecture-and-implementation/"><article class="md">
+<h2 class="post-title">读《中台架构与实现》</h2><div class="excerpt"><p>最早是在极客时间知道欧创新老师的，我也是他的课程《DDD实战课》的订阅者，后来欧老师基于这门课程做更多的实践与思考，完成了《中台架构与实现：基于 DDD 和微服务》这本书的写作，最近刚好读完了这本书。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-05-24T00:05:00.000Z">2021-05-24</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
+</article></a><a class="post-card post " href="/2021/05/thoughts-on-realizing-multi-tenant-system/"><article class="md">
+<h2 class="post-title">实现多租户系统的一点思考</h2><div class="excerpt"><p>2020年突发的新冠疫情，让在线协同办公在疫情期间成为了刚需。我们也从 2020 年的 2月3 日开始在家远程办公，直到四月份。协同办公软件一下子火爆了起来，钉钉、企业微信、特别是腾讯会议等都在疫情期间表现突出，呈现出井喷式的发展。
+目前大部分的企业信息化都是私有化部署，局限于企业的内部网络，无法实现远程协同办公，所以越来越多的 To B 企业逐步转向 SaaS（Software-as-a-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-05-17T00:05:00.000Z">2021-05-17</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2021/05/reading-lean-business-thinking/"><article class="md">
+<h2 class="post-title">读《精益商业思维》</h2><div class="excerpt"><p>五一假期读了程浩的《精益商业思维》，程浩是迅雷的联合创始人之一，现在是职业投资人， 全篇从创业者的角度，也从投资人的角度解析了创业的方法论。
+书中有大量的互联网公司的案例，都是我们耳熟能详的一些互联网企业，读起来非常顺畅，我读书很慢，但这本书在很短的时间内读完了，可见读书的速度不完全取决于读者，作者也是很关键的因素。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-05-06T00:05:00.000Z">2021-05-06</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
+</article></a><a class="post-card post " href="/2021/04/c-8-9-common-new-features/"><article class="md">
+<h2 class="post-title">C#：8.0 & 9.0 常用新特性</h2><div class="excerpt"><p>在《带你了解C#每个版本新特性》 一文中介绍了，C# 1.0 到 7.0 的不同特性，本文接着介绍在 8.0 和 9.0 中的一些常用新特性。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-04-19T00:05:00.000Z">2021-04-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2021/04/centos7-install-greenplum6/"><article class="md">
+<h2 class="post-title">CentOS 7 安装 Greenplum6 （附 dotNET Core 示例）</h2><div class="excerpt"><p>Mysql 在面对大数据量的时候，还是表现有些吃力，所以产品中需要扩展能支持海量数据的数据库，这里选择的数据库为 Greenplum6 ，Greenplum 底层使用的是开源数据库 PostgreSQL 。本文会介绍怎样在 CentOS 7 中安装 Greenplum6，并使用 dotNET Core 程序进行连接访问。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-04-12T00:05:00.000Z">2021-04-12</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2021/04/with-regard-to-efficiency-and-two-point/"><article class="md">
+<h2 class="post-title">关于增效，需要做好这两点</h2><div class="excerpt"><p>最近两会上都谈论到 996 的问题了，那我们实行 996 ，每个人每天都非常忙碌，是不是就效率很高呢？是不是很多时候都在做一些无价值的事情呢？是不是都在加着班写着 Bug 呢？我认为真相远没有我们想象的那么乐观。
+春节后的几次公司会议上都在提「增效」，随着公司的发展，人数变多，各种成本也随之增高，所以通过各种方式来增效，才能有正向的发展。以目前我的观察来看，我觉得可以从两个方面入手：沟通和抓...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-04-06T00:05:00.000Z">2021-04-06</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2021/03/read-effective-demand-analysis/"><article class="md">
+<h2 class="post-title">读《有效需求分析》</h2><div class="excerpt"><p>最近在一个技术群里看到张逸大佬强力推荐一本关于需求分析的书《有效需求分析》，于是在 Kindle 上下单了，读完后有一种相见恨晚的感觉。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-03-22T00:05:00.000Z">2021-03-22</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -134,7 +136,7 @@
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      7<span class='sep'></span>45
+      7<span class='sep'></span>47
     </div>
     <a class='paginator next' href='/page/8/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>
