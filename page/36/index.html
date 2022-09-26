@@ -64,7 +64,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/06/how-do-techies-build-their-personal-brands/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/08/huawei-approach-to-digital-transformation/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《华为数字化转型之道》</span></a><div class="line"></div><a class="more-item" href="/2022/08/nawal-treasure-book/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《纳瓦尔宝典》</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-first-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-one-week-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 一周使用心得（配置、主题和插件）</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/09/go-learning-those-different-knowledge-points/"><div class="cap"><time>2022-09-26</time><span>技术</span></div><span class="title">Go 学习：那些不一样的知识点（上）</span></a><div class="line"></div><a class="more-item" href="/2022/06/how-do-techies-build-their-personal-brands/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/08/huawei-approach-to-digital-transformation/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《华为数字化转型之道》</span></a><div class="line"></div><a class="more-item" href="/2022/08/nawal-treasure-book/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《纳瓦尔宝典》</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-first-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a></div></div>
 </div>
 
 
@@ -106,7 +106,12 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/12/design-patterns-notes-12-flyweight-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/12/design-patterns-notes-13-proxy-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(13)—代理模式（结构型）</h2><div class="excerpt"><p>Gof定义为其他对象提供一种代理以控制对这个对象的访问。
+动机在面向对象系统中，有些对象由于某种原因（比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外的访问等），直接访问会给使用者、或者系统结构带来很多麻烦。如何在不失去透明操作对象的同时来管理/控制这些对象特有的复杂性？增加一层间接层是软件开发中常见的解决方式。看下结构图：
+
+Subject：该类中定义了一些RealSubj...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-09T16:00:00.000Z">2009-12-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-12-flyweight-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(12)—享元模式（结构型）</h2><div class="excerpt"><p>Gof定义运用共享技术有效地支持大量细粒度的对象。
 动机采用纯粹对象方案的问题在于大量细粒度的对象会很快充斥在系统中，从而带来很高的运行时代价——主要指内存需求方面的代价。如何在避免大量细粒度对象问题的同时，让外部客户程序仍然能够透明地使用面向对象的方式来进行操作？这需要用到享元模式，不过应用享元模式是需要进行评估的，也就是说在当前情况下是否会对系统造成性能上的影响，如果会那么就是用，下面先...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-08T16:00:00.000Z">2009-12-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2009/12/design-patterns-notes-11-appearance-pattern/"><article class="md">
@@ -139,11 +144,6 @@
 动机在软件系统中，经常面临着“某些结构复杂的对象”的创建工作，但由于需求的变化，这些对象将成面临着剧烈的变化，但他们拥有比较稳定一致的接口。
 假设在一些打斗游戏场景中，有这样一些角色，普通(NormalActor),可以飞的(FlyActor)，可以潜水的(WaterActor)
 123public abstra...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-23T16:00:00.000Z">2009-11-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-5-factory-method-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(5)—工厂方法模式（创建型）</h2><div class="excerpt"><p>Gof定义定义一种用于创建对象的借口，让子类决定实例化哪一个类，Factory Method使得一个类的实例化延迟到子类。
-动机在软件系统中，经常面临着“某个对象”的创建工作；由于需求的变化，这个对象经常面临着剧烈的变化，但是它却拥有比较稳定的借口。
-假设有这样的一个场景，有一个汽车类和一个汽车测试框架类，汽车测试框架负责对汽车来进行测试，通常情况下我们会想下面这样写。
-1234567891...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-21T16:00:00.000Z">2009-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

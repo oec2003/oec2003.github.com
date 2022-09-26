@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Go 学习：那些不一样的知识点（上） - 冯威的博客</title>
+
+  
+    <meta name="description" content="在学习 Go 语言的过程中，会涉及到语法、数据结构、和一些 Go 特有的东西，其中有不少现在还印象深刻，本文就说说 Go 语言中那些不一样的地方。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go 学习：那些不一样的知识点（上）">
+<meta property="og:url" content="http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在学习 Go 语言的过程中，会涉及到语法、数据结构、和一些 Go 特有的东西，其中有不少现在还印象深刻，本文就说说 Go 语言中那些不一样的地方。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-26T00:20:20.000Z">
+<meta property="article:modified_time" content="2022-09-26T00:50:50.365Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="golang">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202202091150148.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-text">1、变量和函数的声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%B8%8D%E6%94%AF%E6%8C%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text">2、不支持类型的隐式转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3、运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81map-%E7%9A%84%E5%80%BC%E5%8F%AF%E4%BB%A5%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="toc-text">4、map 的值可以是一个函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">5、条件判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%BE%AA%E7%8E%AF"><span class="toc-text">6、循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E7%89%B9%E5%88%AB%E7%9A%84-main-%E5%87%BD%E6%95%B0"><span class="toc-text">7、特别的 main 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0"><span class="toc-text">8、初始化函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E5%87%BD%E6%95%B0%E6%94%AF%E6%8C%81%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">9、函数支持多返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E5%87%BD%E6%95%B0%E5%BB%B6%E8%BF%9F%E6%89%A7%E8%A1%8C"><span class="toc-text">10、函数延迟执行</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-09-26T00:20:20.000Z">2022-09-26</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Go 学习：那些不一样的知识点（上）</span></h1>
+<p>在学习 Go 语言的过程中，会涉及到语法、数据结构、和一些 Go 特有的东西，其中有不少现在还印象深刻，本文就说说 Go 语言中那些不一样的地方。</p>
+<span id="more"></span>
+
+<h2 id="1、变量和函数的声明"><a href="#1、变量和函数的声明" class="headerlink" title="1、变量和函数的声明"></a>1、变量和函数的声明</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> name <span class="keyword">string</span> <span class="comment">//使用 var 关键字定义一个名为 name 的字符串类型变量</span></span><br><span class="line">	name = <span class="string">&quot;oec2003&quot;</span> <span class="comment">//给变量赋值</span></span><br><span class="line"></span><br><span class="line">	age:=<span class="number">18</span> <span class="comment">//使用 := 来定义变量，会自动进行类型推导，这种方式也是常用的方式</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(name,age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面示例是变量的声明方式，可以看到跟 C# 不同的是，类型是写在变量名之后的，而在 Go 中的函数也遵循这个原则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getName</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;hello,&quot;</span> + name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数的定义使用 func 关键字；</li>
+<li>参数也是类型写在了参数名的后面；</li>
+<li>函数的返回值写在了方法名的后面</li>
+</ul>
+<h2 id="2、不支持类型的隐式转换"><a href="#2、不支持类型的隐式转换" class="headerlink" title="2、不支持类型的隐式转换"></a>2、不支持类型的隐式转换</h2><p>为了提高代码的可读性和避免一些隐藏的错误，在 Go 中不支持类型的隐式转换。</p>
+<p>在 C# 中下面的代码可以正常编译和运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    int a = 18;</span><br><span class="line">    long b = a;</span><br><span class="line">    Console.WriteLine(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而在 Go 中下面的代码是会有编译错误的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int16</span>=<span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">int32</span>=a</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>int16 和 int32 之间不能隐式转换，只能进行显示转换，如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int16</span> = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">int32</span> = <span class="keyword">int32</span>(a)</span><br><span class="line">	fmt.Println(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、运算符"><a href="#3、运算符" class="headerlink" title="3、运算符"></a>3、运算符</h2><p>为了提高生产力，避免在语言中犯错，Go 有很强的约束性，不支持前置 ++ 和 – ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	a:=10</span><br><span class="line">	a++ //可以支持后置 ++ 和 --</span><br><span class="line">	++a //不支持前置 ++ 和 --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对数组的比较和 C# 也有区别，比如在 C# 中比较两个长度相同、值相同的数组，返回的是 False ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    int[] a = new[] &#123;1, 2, 3&#125;;</span><br><span class="line">    int[] b = new[] &#123;1, 2, 3&#125;;</span><br><span class="line">    Console.WriteLine(a==b); // 返回 False</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但在 Go 中会有不一样的结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">	b := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">	fmt.Println(a == b) <span class="comment">// 长度相同、内容相同、值顺序相同 返回 ture</span></span><br><span class="line"></span><br><span class="line">	b = [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;</span><br><span class="line">	fmt.Println(a == b) <span class="comment">// 长度不同 返回 false</span></span><br><span class="line"></span><br><span class="line">	b = [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>&#125;</span><br><span class="line">	fmt.Println(a == b) <span class="comment">// 长度相同、内容相同、值顺序不相同 返回 false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、map-的值可以是一个函数"><a href="#4、map-的值可以是一个函数" class="headerlink" title="4、map 的值可以是一个函数"></a>4、map 的值可以是一个函数</h2><p>Go 中的 map 和 C# 中的 Dictionary 有点像，map 的值可以是普通的数据类型外，也可以是一个函数:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">aa</span><span class="params">(num <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> num * num</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="function"><span class="keyword">func</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span>&#123;&#125;</span><br><span class="line">	m[<span class="number">1</span>] = <span class="function"><span class="keyword">func</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123; <span class="keyword">return</span> a + b &#125;</span><br><span class="line">	m[<span class="number">2</span>] = <span class="function"><span class="keyword">func</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123; <span class="keyword">return</span> a - b &#125;</span><br><span class="line">	m[<span class="number">3</span>] = <span class="function"><span class="keyword">func</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123; <span class="keyword">return</span> a * b &#125;</span><br><span class="line">	m[<span class="number">4</span>] = <span class="function"><span class="keyword">func</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123; <span class="keyword">return</span> a * b &#125;</span><br><span class="line"></span><br><span class="line">	m[<span class="number">1</span>](<span class="number">12</span>, <span class="number">3</span>)</span><br><span class="line">	<span class="keyword">for</span> _, f := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Println(f(<span class="number">12</span>, <span class="number">3</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果如下：</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">36</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5、条件判断"><a href="#5、条件判断" class="headerlink" title="5、条件判断"></a>5、条件判断</h2><p>在 Go 中的条件判断也有 if 和 switch 两种。</p>
+<p>if 可以支持在条件的表达式中进行变量赋值：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>&#123;<span class="number">1</span>: <span class="string">&quot;oec2003&quot;</span>, <span class="number">2</span>: <span class="string">&quot;fengwei&quot;</span>&#125;</span><br><span class="line">	<span class="keyword">if</span> v, isExist := m[<span class="number">2</span>]; isExist &#123;</span><br><span class="line">		fmt.Println(v)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;不存在&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> if 后的表达式分成了两段，第一段对变量进行赋值；第二段进行条件的判断，两段之间用分号分隔；</li>
+<li>第二段的条件判断必须返回布尔值。</li>
+</ul>
+<p>switch 的使用也有些不一样的地方：</p>
+<ul>
+<li>单个 case 中可以支持多个值，用逗号分隔；</li>
+<li>不需要显示添加 break 来退出 case；</li>
+<li>switch 后可以不加任何表达式，就跟 if 类似了。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">switch</span> os := runtime.GOOS; os &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;darwin&quot;</span>:</span><br><span class="line">		fmt.Println(<span class="string">&quot;system is mac&quot;</span>)</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;linux&quot;</span>:</span><br><span class="line">		fmt.Println(<span class="string">&quot;system is linux&quot;</span>)</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		fmt.Println(<span class="string">&quot;其他&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类似 if else</span></span><br><span class="line">name:=<span class="string">&quot;oec2003&quot;</span></span><br><span class="line"><span class="keyword">switch</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> name==<span class="string">&quot;oec2003&quot;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;name is oec2003&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;name is undefine&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//case 后面支持多个值</span></span><br><span class="line">name := <span class="string">&quot;fengwei&quot;</span></span><br><span class="line"><span class="keyword">switch</span> name &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;oec2003&quot;</span>, <span class="string">&quot;fengwei&quot;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;都是我的名字&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;不认识&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、循环"><a href="#6、循环" class="headerlink" title="6、循环"></a>6、循环</h2><p>在 Go 语言中，关键字非常少，因此，循环处理只有一个关键字 for  </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相当于 C# 中的 while</span></span><br><span class="line">n := <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> n &lt; <span class="number">5</span> &#123;</span><br><span class="line">    fmt.Println(n)</span><br><span class="line">    n++</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//相当于 C#中的 while(true)</span></span><br><span class="line"><span class="keyword">for</span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;这是一个死循环&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 相当于 C# 中的正常的 for</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    fmt.Println(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 相当于 C# 中的 foreach</span></span><br><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="keyword">for</span> v := <span class="keyword">range</span> a &#123;</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面使用一个关键字包含了 C# 中所有遍历的方式；</li>
+<li>for 后面的表达式不需要写括号。</li>
+</ul>
+<h2 id="7、特别的-main-函数"><a href="#7、特别的-main-函数" class="headerlink" title="7、特别的 main 函数"></a>7、特别的 main 函数</h2><p>一个简单完整的 Go 程序如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;hello oec2003!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出 Go 的 main 函数没有返回值和参数，如果需要在 main 函数中使用参数，需要引入 os 包：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(os.Args) &gt; <span class="number">1</span> &#123;</span><br><span class="line">        <span class="comment">//这里需要注意，第一个参数下标为 1</span></span><br><span class="line">        fmt.Println(<span class="string">&quot;hello&quot;</span>, os.Args[<span class="number">1</span>])</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//遍历所有的参数</span></span><br><span class="line">	<span class="keyword">for</span> _, arg := <span class="keyword">range</span> os.Args &#123;</span><br><span class="line">		fmt.Println(arg)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>os.Args 是一个字符串的数组；</li>
+<li>使用 range 可以用来遍历数组；</li>
+<li>在 for中使用 _ 可以忽略第一个参数。</li>
+</ul>
+<h2 id="8、初始化函数"><a href="#8、初始化函数" class="headerlink" title="8、初始化函数"></a>8、初始化函数</h2><p>我们知道在 Go 语言中，main 函数是程序的入口函数，但 main 函数并不是第一个执行的函数，在 main 之前还有 init 函数会先被执行，在 init 函数中可以做一些初始化的工作：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;在这里做初始化工作&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;程序开始执行&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、函数支持多返回值"><a href="#9、函数支持多返回值" class="headerlink" title="9、函数支持多返回值"></a>9、函数支持多返回值</h2><p>在 C# 中函数支持多返回值的方式有很多种，比如：返回一个对象、参数使用 out ，还有就是在 C# 7.0 添加的新功能元组，下面为 C# 中用元组的方式返回多值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123; </span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        var userInfo = GetUserInfo();</span><br><span class="line">        var name = userInfo.name;</span><br><span class="line">        var age = userInfo.age;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(name+age);</span><br><span class="line">    &#125;</span><br><span class="line">    static (string name, int age) GetUserInfo()</span><br><span class="line">    &#123;</span><br><span class="line">    	return (&quot;oec2003&quot;, 18);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Go 语言的函数多返回值和 C# 的元组的方式比较像：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUserInfo</span><span class="params">()</span> <span class="params">(<span class="keyword">string</span>, <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;oec2003&quot;</span>, <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	name, age := getUserInfo()</span><br><span class="line">	fmt.Println(name, age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在接收值时，如果某些值不需要，可以使用 _ 进行忽略：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUserInfo</span><span class="params">()</span> <span class="params">(<span class="keyword">string</span>, <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;oec2003&quot;</span>, <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	name,_ := getUserInfo()</span><br><span class="line">	fmt.Println(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10、函数延迟执行"><a href="#10、函数延迟执行" class="headerlink" title="10、函数延迟执行"></a>10、函数延迟执行</h2><p>在 Go 中使用 defer 关键字可以让函数延迟执行，可以用来做释放资源，释放锁等，先看下面的代码，</p>
+<p>clear 函数前面添加了 defer 关键字，虽然在第 main 函数第一行，但会最后调用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">clear</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;清理资源&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> clear()</span><br><span class="line">	fmt.Println(<span class="string">&quot;程序开始&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//程序执行结果为</span></span><br><span class="line">程序开始</span><br><span class="line">清理资源</span><br></pre></td></tr></table></figure>
+
+<p>使用 panic 使程序崩溃，会发现被 defer 定义的函数依然会在最后执行：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">clear</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;清理资源&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> clear()</span><br><span class="line">	fmt.Println(<span class="string">&quot;程序开始&quot;</span>)</span><br><span class="line">	<span class="built_in">panic</span>(<span class="string">&quot;程序崩溃啦&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">程序开始</span><br><span class="line">清理资源</span><br><span class="line"><span class="built_in">panic</span>: 程序崩溃啦</span><br></pre></td></tr></table></figure>
+
+<p>这有点像是在 C# 中使用 try catch ，异常捕获之后，finally 块中的代码还是会被执行，我认为 Go 语言的这种处理更加灵活，以组合的方式来达到目的，这也符合 Go 语言的设计哲学。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/&title=Go 学习：那些不一样的知识点（上） - 冯威的博客&summary=在学习 Go 语言的过程中，会涉及到语法、数据结构、和一些 Go 特有的东西，其中有不少现在还印象深刻，本文就说说 Go 语言中那些不一样的地方。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=Go 学习：那些不一样的知识点（上） - 冯威的博客&amp;body=http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/09/go-learning-from-environment-building-to-writing-a-web-service/">Go 学习：从环境搭建到写一个 Web 服务<span class="note">较早</span></a><div class="line"></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
