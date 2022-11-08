@@ -35,6 +35,8 @@
 
   <!-- feed -->
   
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
 
   
     
@@ -65,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>因为一个主题，又重新维护了这个博客，也欢迎关注我的公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/09/go-learning-those-different-knowledge-points/"><div class="cap"><time>2022-09-26</time><span>技术</span></div><span class="title">Go 学习：那些不一样的知识点（上）</span></a><div class="line"></div><a class="more-item" href="/2022/06/how-do-techies-build-their-personal-brands/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a><div class="line"></div><a class="more-item" href="/2022/08/huawei-approach-to-digital-transformation/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《华为数字化转型之道》</span></a><div class="line"></div><a class="more-item" href="/2022/08/nawal-treasure-book/"><div class="cap"><time>2022-09-25</time><span>读书</span></div><span class="title">读《纳瓦尔宝典》</span></a><div class="line"></div><a class="more-item" href="/2022/06/obsidian-first-experience/"><div class="cap"><time>2022-09-25</time><span>成长</span></div><span class="title">Obsidian 初体验</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2022/10/go-learning-those-different-knowledge-points-2/"><div class="cap"><time>2022-11-08</time><span>技术</span></div><span class="title">Go 学习：那些不一样的知识点（下）</span></a><div class="line"></div><a class="more-item" href="/2022/10/go-book-recommendation/"><div class="cap"><time>2022-11-08</time><span>技术</span></div><span class="title">系统学习还是得看书，Go 书籍推荐</span></a><div class="line"></div><a class="more-item" href="/2022/10/how-to-run-healthily/"><div class="cap"><time>2022-11-08</time><span>跑步</span></div><span class="title">如何健康地跑步？</span></a><div class="line"></div><a class="more-item" href="/2022/10/read-reading-methods/"><div class="cap"><time>2022-11-08</time><span>读书</span></div><span class="title">读《阅读的方法》</span></a><div class="line"></div><a class="more-item" href="/2022/10/to-use-arc-browser-macos-ventura-has-been-upgraded/"><div class="cap"><time>2022-11-08</time><span>成长</span></div><span class="title">为使用 Arc 浏览器，升级了 macOS Ventura</span></a></div></div>
 </div>
 
 
@@ -109,7 +111,21 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-6-prototype-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(6)—原型模式（创建型）</h2><div class="excerpt"><p>Gof定义使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。
+动机在软件系统中，经常面临着“某些结构复杂的对象”的创建工作，但由于需求的变化，这些对象将成面临着剧烈的变化，但他们拥有比较稳定一致的接口。
+假设在一些打斗游戏场景中，有这样一些角色，普通(NormalActor),可以飞的(FlyActor)，可以潜水的(WaterActor)
+123public abstra...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-23T16:00:00.000Z">2009-11-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-5-factory-method-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(5)—工厂方法模式（创建型）</h2><div class="excerpt"><p>Gof定义定义一种用于创建对象的借口，让子类决定实例化哪一个类，Factory Method使得一个类的实例化延迟到子类。
+动机在软件系统中，经常面临着“某个对象”的创建工作；由于需求的变化，这个对象经常面临着剧烈的变化，但是它却拥有比较稳定的借口。
+假设有这样的一个场景，有一个汽车类和一个汽车测试框架类，汽车测试框架负责对汽车来进行测试，通常情况下我们会想下面这样写。
+1234567891...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-21T16:00:00.000Z">2009-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-4-generator-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(4)—生成器模式（创建型）</h2><div class="excerpt"><p>Gof定义将一个复杂对象的构建与其表示相分离，使其同样的构建过程可以创建不同的表示。
+动机在软件系统中，有时侯面临着一个复杂对象的创建工作，这个发展对象通常是由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂的对象的各个部分经常面临着巨大的变化，但是将他们组合起来的算法相对稳定。
+还是拿游戏中的房屋作为例子来讲，房屋由门、窗户、墙、地板、天花板组成。这些组成部分可能是经常要发生变化...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-20T16:00:00.000Z">2009-11-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(3)—抽象工厂模式（创建型）</h2><div class="excerpt"><p>Gof定义提供一个借口，让该接口负责创建一系列_相关或者相互依赖的对象_，无需指定他们具体的类。
 动机在软件系统中经常面临着_一系列相互依赖的对象_的创建的工作，同时由于需求的变化，往往存在着更对系列对象的创建。
 常规的对象创建的方法，直接使用new关键字
@@ -141,15 +157,6 @@
 <h2 class="post-title">Visual Studio 2010 Beta 2 公开下载地址</h2><div class="excerpt"><p>前天就在博客园见了lyj的那篇介绍Visual Studio 2010 Beta 2的文章了，今天终于开发下载了。下载地址：http://msdn.microsoft.com/en-us/vstudio/dd582936.aspx
 看了下别人的安装截图感觉漂亮了不少，不过我还是想等到正式版出来后再下载安装，希望到时能换一个配置好点的本本，现在的这个已经陪伴我三四年的老本跑起来确实很吃力啊。
 ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-21T16:00:00.000Z">2009-10-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/powerful-vs-plug-in-resharper/"><article class="md">
-<h2 class="post-title">强大的VS插件—Resharper</h2><div class="excerpt"><p>ReSharper是一款Visual.net的插件，主要提升VS.net代码编辑能力，包括对C#、VB.net、XML、XAML和ASP.net，并包括这些语言的交叉关联引用。ReSharper让Visual Studio开发人员更加便捷，包括代码分析、单元测试方案、Goto Symbol支持、To-do探测器等各种特性，ReSharper可以说是辅助Visual Studio开发的一把瑞士...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-16T16:00:00.000Z">2009-10-17</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/words-in-the-table-in-the-database-multi-line-merged-into-a-column/"><article class="md">
-<h2 class="post-title">在数据库中将字表中的多行合并到一列中</h2><div class="excerpt"><p>几年前就做过这样的查询，在最近的项目中又遇到这样的需求，在此记录一下。
-假设有一个文章表Post和一个评论表Comments，可以对文章进行多次评论，现在希望在对Post表查询时能将Post的所有评论内容组合到一个字段中显示。
-首先创建表Post和Comments
-123456789101112131415create table Post(    [PostID] int identity...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-14T16:00:00.000Z">2009-10-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/09/windows-live-writer-syntax-highlighting-in-the-plug-in/"><article class="md">
-<h2 class="post-title">Windows Live Writer中的语法高亮插件</h2><div class="excerpt"><p>VSPaste该插件的作用是可以将 VS、 DELPHI 、VS STUDIO 6 、 SharpDevelop、Zend Studio 等IDE中的代码原样复制到Live Writer中。可以点击此处下载，下载后解压，将dll文件复制到Live Writer安装目录中的Plugins目录中，如果是安装在C盘，路径如下：C:\Program Files\Windows Live\Writer...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-09-21T16:00:00.000Z">2009-09-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

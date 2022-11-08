@@ -1,3 +1,10 @@
+http://fwhyy.com/2022/11/thoughts-on-information-collection-and-processing/
+http://fwhyy.com/2022/10/to-use-arc-browser-macos-ventura-has-been-upgraded/
+http://fwhyy.com/2022/10/read-reading-methods/
+http://fwhyy.com/2022/10/go-learning-concurrency/
+http://fwhyy.com/2022/10/how-to-run-healthily/
+http://fwhyy.com/2022/10/go-book-recommendation/
+http://fwhyy.com/2022/10/go-learning-those-different-knowledge-points-2/
 http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/
 http://fwhyy.com/2022/09/go-learning-from-environment-building-to-writing-a-web-service/
 http://fwhyy.com/2022/09/after-six-years-the-second-edition-of-soft-skills-is-here/
@@ -91,10 +98,3 @@ http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/
 http://fwhyy.com/2020/07/nginx-some-skills-of-rewriting/
 http://fwhyy.com/2020/06/how-to-stimulate-team-potential/
 http://fwhyy.com/2020/06/dotnet-core-3-uses-Autofac-to-enhance-dependency-injection/
-http://fwhyy.com/2020/06/dotnet-core-3-dependency-injection/
-http://fwhyy.com/2020/05/shoe-reading-dog/
-http://fwhyy.com/2020/04/jenkins-implements-version-management-by-building-tags/
-http://fwhyy.com/2020/04/using-jwt-to-implement-interface-authentication-in-dotnet-core-3/
-http://fwhyy.com/2020/04/dotnet-core-3-request-processing-pipeline-and-middleware/
-http://fwhyy.com/2020/04/totnet-core-3-using-web-api/
-http://fwhyy.com/2020/03/is-there-a-35-year-old-bar-for-programmers/
