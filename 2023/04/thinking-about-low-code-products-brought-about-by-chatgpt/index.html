@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>由 ChatGPT 带来的对低代码产品的思考 - 冯威的博客</title>
+
+  
+    <meta name="description" content="在之前的文章中多次提到我们在开发一款低代码平台，主要面向 ToB 企业，帮助企业完善信息化建设，给企业的数字化转型贡献一份力量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="由 ChatGPT 带来的对低代码产品的思考">
+<meta property="og:url" content="http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在之前的文章中多次提到我们在开发一款低代码平台，主要面向 ToB 企业，帮助企业完善信息化建设，给企业的数字化转型贡献一份力量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191143766.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191143053.webp">
+<meta property="article:published_time" content="2023-04-13T03:42:00.000Z">
+<meta property="article:modified_time" content="2023-06-19T03:44:23.021Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="低代码">
+<meta property="article:tag" content="思考">
+<meta property="article:tag" content="ChatGPT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191143766.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-04-13T03:42:00.000Z">2023-04-13</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>由 ChatGPT 带来的对低代码产品的思考</span></h1>
+<p>在之前的文章中多次提到我们在开发一款低代码平台，主要面向 ToB 企业，帮助企业完善信息化建设，给企业的数字化转型贡献一份力量。</p>
+<span id="more"></span>
+<p>数字化转型的目标是降本增效，同样，效率对我们来说至关重要，售前能快速提供原型和客户沟通、实施过程中能高效快速交付、售后遇到的各种问题能立马找到答案。</p>
+<p>最近，ChatGPT 持续火热，每天在推上都能发现新的应用，那么 ChatGPT 和我们的低代码产品能结合吗？或者说这种大语言模型的思路能给低代码带来怎样的效率提升？</p>
+<p>其实一些巨头已经这样做了。</p>
+<p>Salesforce 宣布推出新产品 EinsteinGPT，这是一种基于 LLM 技术的产品，它与 Salesforce 的主要网络应用程序集成，利用 OpenAI ChatGPT 模型来帮助跟踪销售人员联系潜在客户的频率，并自动编写营销电子邮件，无需手动编写电子邮件。</p>
+<p>另一方面，微软也宣布将 ChatGPT 技术扩展到 Power Platform 平台上。Power Platform 是微软的一款低代码产品，在《最近看了两本低代码的书》中有介绍。这意味着 Power Platform 上的 Power 虚拟代理和 AI Builder，都已经更新了 ChatGPT 编码功能，使用户可以在很少甚至不用编写代码的情况下，开发自己的应用程序。</p>
+<p>Salesforce 将其应用在业务能力上，微软则在平台能力上进行了增强。对我们来说，售前和实施中需要的是能快速搭建应用，售后需要快速解决问题，所以有两个方向可以去做：</p>
+<p>1、应用搭建效率的提升；</p>
+<p>2、构建智能问答系统。</p>
+<p>目前项目实施的步骤如下：</p>
+<ul>
+<li>需求分析师和客户沟通完后，整理出需求文档；</li>
+<li>需求分析师对搭建工程师和开发进行需求宣讲；</li>
+<li>可以通过配置实现的部分由搭建工程师进行搭建配置，其他部分由开发人员进行定制开发然后和平台进行集成。</li>
+</ul>
+<p>让低代码产品集成了 ChatGPT 的能力后，系统就会变成这样：</p>
+<ul>
+<li>系统具备理解自然语言的能力；</li>
+<li>需求分析和客户聊完形成的文档本身就是自然语言描述的；</li>
+<li>在系统中有聊天对话框和进行交互；</li>
+<li>在对话框输入需求描述，能够识别关键信息，关键信息包括接口识别、参数提取；</li>
+<li>调用平台接口进行应用的创建，或者局部功能调整；</li>
+<li>就这样聊着天把系统给做完了。</li>
+</ul>
+<p>例如：在对话框中输入，将当前列表的项目名称这一列宽度调整到 500 ，这时就需要能识别参数：项目名称和 500，而且知道需要调用调整列宽的接口。</p>
+<p>现有的低代码平台在后台做完各种配置后，点击保存后，前端收集所有数据传递给接口，接口的颗粒度比较粗，一次性会存储很多内容，但上面例子中调整一个列的列宽设置就需要一个接口，这就需要接口的颗粒度非常细，我觉得改造接口颗粒度是实现智能化的第一步。</p>
+<p>上面说结合 ChatGPT 的能力，并不是直接对接 ChatGPT 的接口，所以说要实现还是相当有难度的。不过一个新的技术兴起到完全在 ToB 市场中普及，是有一个时间周期的，只要方向没错，完全有这个准备的时间。</p>
+<p>目前在项目实施过程中存在几个问题，这也是为什么一个智能问题系统很重要的原因：</p>
+<ul>
+<li>因为平台功能多、非常灵活，以至于同样的需求不同的人去实现，方法和途径是不一样的，工作量可能有好几倍的差距；</li>
+<li>实施过程中遇到的各种产品问题，需要找熟悉的同事询问，或者咨询产品团队。</li>
+</ul>
+<p>现在的方式就是通过文档搜索，业务场景案例、操作手册、实施常见问题手册等，这些年也沉淀了非常多的文档，不过是基于关键字搜索的，用关键字搜索有几个问题：</p>
+<ul>
+<li>很多时候不知道怎么提取关键字；</li>
+<li>搜索的结果非常多，不能精准匹配，随着文档的增多，需要在大量的结果中去筛选；</li>
+<li>对于业务场景来说，匹配度非常差。</li>
+</ul>
+<p>如果按照 ChatGPT 的思路，智能问题系统的逻辑就是这样的：</p>
+<ul>
+<li>所有沉淀的文档（语料库）生成向量数据存储到向量数据库；</li>
+<li>输入的自然语言生成向量，计算相似度，找到相关结果；</li>
+<li>整理输出。</li>
+</ul>
+<p>针对这个问题，我在知识星球问过张善友大佬，下面的图就是张善友提供的：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191143766.webp"></p>
+<p>宝玉在推上也回答过类似的问题：</p>
+<p><a target="_blank" rel="noopener" href="https://twitter-thread.com/t/1641656561650249730">https://twitter-thread.com/t/1641656561650249730</a></p>
+<p>不过张善友和宝玉提供的参数都是依赖 OpenAI 的接口，如果不依赖 OpenAI，有办法实现吗？这需要进一步去学习和研究。</p>
+<p>最近看到 Supabase 产品的文档就提供了 AI 问答（<a target="_blank" rel="noopener" href="https://supabase.com/docs%EF%BC%89%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%95%88%E6%9E%9C%E5%B0%B1%E6%98%AF%E6%88%91%E6%83%B3%E8%A6%81%E8%BE%BE%E5%88%B0%E7%9A%84%EF%BC%8C%E6%80%BB%E7%BB%93%E4%B8%8B%E5%B0%B1%E6%98%AF%E6%A0%B9%E6%8D%AE%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%9A%84%E8%BE%93%E5%85%A5%EF%BC%8C%E7%BB%99%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%87%86%E7%9A%84%E7%AD%94%E6%A1%88%E3%80%82">https://supabase.com/docs），这个效果就是我想要达到的，总结下就是根据自然语言的输入，给一个精准的答案。</a></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191143053.webp"></p>
+<p>未来已经到来，不管是产品还是个人，都需要持续不断地学习和进化，才能不被淘汰。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/&title=由 ChatGPT 带来的对低代码产品的思考 - 冯威的博客&summary=在之前的文章中多次提到我们在开发一款低代码平台，主要面向 ToB 企业，帮助企业完善信息化建设，给企业的数字化转型贡献一份力量。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=由 ChatGPT 带来的对低代码产品的思考 - 冯威的博客&amp;body=http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/04/read-ai/">读《认识AI》<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/04/share-some-website-and-tools-202304/">分享几个网站和工具（202304）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

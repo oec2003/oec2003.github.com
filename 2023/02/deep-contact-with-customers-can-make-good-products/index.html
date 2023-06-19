@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>深入接触客户才能做出好的产品 - 冯威的博客</title>
+
+  
+    <meta name="description" content="近些年一直在负责开发低代码平台产品，面向的是企业用户，这款产品一方面给公司内部使用，提升项目交付效率，另一方面，一些合作伙伴或有开发能力的甲方，可以借助我们的产品进行系统的开发，给业务部门使用。 产品的定位非常明确，能够提升交付效率，协助企业进行数字化转型。 正因为是面向企业用户，所以产品的功能增加不能闭门造车，需要深入地接触客户，了解他们的痛点和诉求，再反向体现到产品功能上。 前些天，和公司销售">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入接触客户才能做出好的产品">
+<meta property="og:url" content="http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="近些年一直在负责开发低代码平台产品，面向的是企业用户，这款产品一方面给公司内部使用，提升项目交付效率，另一方面，一些合作伙伴或有开发能力的甲方，可以借助我们的产品进行系统的开发，给业务部门使用。 产品的定位非常明确，能够提升交付效率，协助企业进行数字化转型。 正因为是面向企业用户，所以产品的功能增加不能闭门造车，需要深入地接触客户，了解他们的痛点和诉求，再反向体现到产品功能上。 前些天，和公司销售">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-17T00:07:22.000Z">
+<meta property="article:modified_time" content="2023-06-19T02:24:23.127Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="产品">
+<meta property="article:tag" content="低代码">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%B3%A8%E9%87%8D%E6%95%88%E7%8E%87"><span class="toc-text">开始注重效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E4%B8%9A%E5%8A%A1"><span class="toc-text">数据驱动业务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AD%A4%E5%B2%9B%E9%97%AE%E9%A2%98%E4%BE%9D%E7%84%B6%E5%AD%98%E5%9C%A8"><span class="toc-text">信息孤岛问题依然存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E6%9B%B4%E5%B8%8C%E6%9C%9B%E5%9C%A8%E6%95%B4%E4%BD%93%E8%A7%84%E5%88%92%E4%B8%8A%E8%83%BD%E6%8F%90%E4%BE%9B%E6%8C%87%E5%AF%BC"><span class="toc-text">客户更希望在整体规划上能提供指导</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-02-17T00:07:22.000Z">2023-02-17</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>深入接触客户才能做出好的产品</span></h1>
+<p>近些年一直在负责开发低代码平台产品，面向的是企业用户，这款产品一方面给公司内部使用，提升项目交付效率，另一方面，一些合作伙伴或有开发能力的甲方，可以借助我们的产品进行系统的开发，给业务部门使用。</p>
+<p>产品的定位非常明确，能够提升交付效率，协助企业进行数字化转型。</p>
+<p>正因为是面向企业用户，所以产品的功能增加不能闭门造车，需要深入地接触客户，了解他们的痛点和诉求，再反向体现到产品功能上。</p>
+<p>前些天，和公司销售一起拜访了几家公司的重点客户，有些感触。</p>
+<h2 id="开始注重效率"><a href="#开始注重效率" class="headerlink" title="开始注重效率"></a>开始注重效率</h2><p>记得早些年做企业的信息化建设，更多的是注重将线下办公搬到线上，现在大多数企业已经是在线上办公，就更注重提升整体的流程效率。</p>
+<p>企业的增效体现在很多方面，这里主要说的是流程方面的效率，客户其实是很有想法的：</p>
+<ul>
+<li><p>纵向上，按照业务线，将跨不同系统的流程进行拉通，会涉及到各种对接、集成；</p>
+</li>
+<li><p>横向上，以某个业务点进行扩散，找出关联业务数据进行展示。</p>
+</li>
+</ul>
+<p>信息化、工作流尽管做了很多年，我感觉还是能挖掘出很多对客户有价值的功能。</p>
+<p>针对流程本身来说，也可以通过数据的支撑反向找出效率的瓶颈点，比如：</p>
+<ul>
+<li>设置超时阈值，从流程到节点到组织和人，找出耗时长的任何事，通过监督来提升效率；</li>
+<li>通过流程的通过率，可以找出表单设计或流程设计上的不合理，然后进行优化；</li>
+<li>如果有些节点通过率 100%，而且几乎不耗时，这种节点可能没有存在的必要；</li>
+</ul>
+<p>除此之外，现在还有专门的公司做 RPA 流程机器人和对流程数据的 AI 智能分析，如何将这些工具和现有的流程平台进行融合，也是值得思考的。</p>
+<h2 id="数据驱动业务"><a href="#数据驱动业务" class="headerlink" title="数据驱动业务"></a>数据驱动业务</h2><p>随着客户信息化越来越成熟，各类系统中都产生了大量的数据。怎样让这些数据能活起来，为企业所用，这是客户很关注的问题。</p>
+<p>一些有开发能力的客户已经在在自己做数据层的东西，底层构建数据仓库，上层提供图形化展示。</p>
+<p>现在很多的低代码平台中都提供有 BI 模块，大多数都是展示层，我们的产品中也有对应的模块，相比较专业 BI 产品，功能还是偏弱。为什么都喜欢做数据展示？首先是技术难度不是很高，但更重要的是领导喜欢看大屏展示，最终决策、掏钱的是领导。</p>
+<p>在低代码产品中，我认为重要的是能扩展和集成，产品本身不适合在这方面去发力。一个产品如果什么都想做，最终什么都做不好。做自己擅长的事情，然后集各家所长，必能成事，做产品如此，做人也是。</p>
+<h2 id="信息孤岛问题依然存在"><a href="#信息孤岛问题依然存在" class="headerlink" title="信息孤岛问题依然存在"></a>信息孤岛问题依然存在</h2><p>大型国企现在还存在信息孤岛问题，这个是我没有想到的。</p>
+<p>传统企业的信息做了好多年了，10 年前跟客户宣讲，都在说要解决信息孤岛问题。这么多年过去，还是有很多企业忙于解决各种问题，上了几十上百套系统，但系统之间还没有很好地进行联通，甚至连基本的待办消息集成都没有做。</p>
+<p>在低代码产品中，添加 SSO、组织机构同步、消息接入等已经算是标配了。但要做好集成不是件容易的事情，涉及到很多利益方，搞定了人，才能搞定事。</p>
+<h2 id="客户更希望在整体规划上能提供指导"><a href="#客户更希望在整体规划上能提供指导" class="headerlink" title="客户更希望在整体规划上能提供指导"></a>客户更希望在整体规划上能提供指导</h2><p>最近在一个视频号听一个大佬讲：技术人员的一个终极梦想就是做架构师 ，相比技术架构，现在售前架构师、企业解决方案架构师越来越吃香。</p>
+<p>原因就是，客户也不知道要做啥？怎么做？提出的都是一些很宏观的目标，或者直接让提供相关的规划方案。</p>
+<p>这其实对售前的要求非常高，要懂客户的行业，了解他们的痛点，能提供解决方案，这样就能牵着客户走，也能得到客户的信任，这种信任会为后续的项目实施带来极大的便利。</p>
+<p>反之，在客户不清楚自己想要什么的情况下，售前还只是听客户讲，拿笔记录，最终交付的东西，客户总是认为不是自己想要的，而我们就会埋怨客户总是在进行需求变更。这种情况下，极少数是客户故意刁难，大多数都是没有真正理解客户的意图导致。</p>
+<p>因为样本足够小，以上可能都是错的。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/&title=深入接触客户才能做出好的产品 - 冯威的博客&summary=近些年一直在负责开发低代码平台产品，面向的是企业用户，这款产品一方面给公司内部使用，提升项目交付效率，另一方面，一些合作伙伴或有开发能力的甲方，可以借助我们的产品进行系统的开发，给业务部门使用。
+产品的定位非常明确，能够提升交付效率，..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=深入接触客户才能做出好的产品 - 冯威的博客&amp;body=http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/02/code-commits-that-little-thing/">代码提交那点事<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/02/what-is-chatgpt-its-getting-clearer/">ChatGPT 是什么？越来越清晰了<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

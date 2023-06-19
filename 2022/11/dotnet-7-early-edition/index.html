@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>dotNET 7 尝鲜（VS 和 C# 11) - 冯威的博客</title>
+
+  
+    <meta name="description" content="2022 年 11 月 8 日，.NET 7 正式发布了，从 11 月 8 号 到 10 号，线上的 .NET Conf 2022 会议正在举行，可以通过 https:&#x2F;&#x2F;www.dotnetconf.net&#x2F; 了解相关情况。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dotNET 7 尝鲜（VS 和 C# 11)">
+<meta property="og:url" content="http://fwhyy.com/2022/11/dotnet-7-early-edition/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="2022 年 11 月 8 日，.NET 7 正式发布了，从 11 月 8 号 到 10 号，线上的 .NET Conf 2022 会议正在举行，可以通过 https:&#x2F;&#x2F;www.dotnetconf.net&#x2F; 了解相关情况。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841864.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841474.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841559.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841588.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841263.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841407.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841680.webp">
+<meta property="og:image" content="http://fwhyy.com/2022/attachmenent/202211100546836.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161842248.webp">
+<meta property="article:published_time" content="2022-11-10T10:39:37.000Z">
+<meta property="article:modified_time" content="2023-06-16T10:42:34.185Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="DotNet">
+<meta property="article:tag" content="dotNet7">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841864.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-Visual-Studio"><span class="toc-text">更新 Visual Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visual-Studio-%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-text">Visual Studio 的改进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%96%87%E6%9C%AC%E5%8C%B9%E9%85%8D%E9%A1%B9%E9%AB%98%E4%BA%AE%E6%98%BE%E7%A4%BA"><span class="toc-text">选择文本匹配项高亮显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E6%8F%90%E7%A4%BA"><span class="toc-text">音频提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataTable-%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-text">DataTable 可视化工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-11"><span class="toc-text">C# 11</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">原始字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%BB%98%E8%AE%A4%E7%BB%93%E6%9E%84"><span class="toc-text">自动默认结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E6%88%90%E5%91%98"><span class="toc-text">必要成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">列表模式</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-11-10T10:39:37.000Z">2022-11-10</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>dotNET 7 尝鲜（VS 和 C# 11)</span></h1>
+<p>2022 年 11 月 8 日，.NET 7 正式发布了，从 11 月 8 号 到 10 号，线上的 .NET Conf 2022 会议正在举行，可以通过 <a target="_blank" rel="noopener" href="https://www.dotnetconf.net/">https://www.dotnetconf.net/</a> 了解相关情况。</p>
+<span id="more"></span>
+<p>微软现在节奏越来越快，相信很多人还没在生产上使用 .NET 6 , 7 就发布了，先来看看都有什么新特性吧。</p>
+<p>.NET 7 为 C# 11/F# 7 带来了更好的性能和新特性，体现在 .NET MAUI，ASP.NET Core/Blazor ，Web API，WinForms，WPF 等等。</p>
+<p>.NET 7 在 Visual Studio 17.4.0 版本中支持，17.4.0 版本是 Visual Studio 2022的第三个长期服务渠道 (LTSC) ，17.4 LTSC 版本将支持到 2024 年 7 月 11 日。如果已经安装了 Visual Studio 2022 ，可以直接更新，也可以通过下面地址下载安装：</p>
+<p><a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/zh-cn/download">https://dotnet.microsoft.com/zh-cn/download</a></p>
+<p>我个人比较关注的是工具和语言。</p>
+<h2 id="更新-Visual-Studio"><a href="#更新-Visual-Studio" class="headerlink" title="更新 Visual Studio"></a>更新 Visual Studio</h2><p>在帮助中点击检查更新就可以启动更新，需要等待更新的下载：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841864.webp"></p>
+<p>更新完成后重启电脑，再打开 Visual Studio ，就可以看到框架选择中有 .NET 7.0 了。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841474.webp"></p>
+<h2 id="Visual-Studio-的改进"><a href="#Visual-Studio-的改进" class="headerlink" title="Visual Studio 的改进"></a>Visual Studio 的改进</h2><h3 id="选择文本匹配项高亮显示"><a href="#选择文本匹配项高亮显示" class="headerlink" title="选择文本匹配项高亮显示"></a>选择文本匹配项高亮显示</h3><p>在「工具-&gt;选项-&gt;文本编辑器-&gt;常规」界面可以开启「显示 selection 匹配项」。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841559.webp"></p>
+<p>勾选此项后，在编辑器中选择某个文本，编辑器其他有选择文本的地方会进行高亮显示，滚动条中也显示了标记来指示哪些位置有和选择文本相同的文本。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841588.webp"></p>
+<p>目前，它只适用于长度小于 200 个字符的字符串，并且所有字符都在一行上。</p>
+<h3 id="音频提示"><a href="#音频提示" class="headerlink" title="音频提示"></a>音频提示</h3><p>在「工具-&gt;选项-&gt;文本编辑器-&gt;常规」界面可以开启启用音频提示，需要重新启动 VisualStudio 生效。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841263.webp"></p>
+<p>启用后，编辑器中某一个行设置了断点，或者这一行的代码有警告或者错误，光标移动到这一行时，Visual Studio 会播放一个声音。</p>
+<p>断点因为有高亮背景色，有没有提示音都行，警告和错误，有时不太容易看出来，这个声音就能起到作用了。</p>
+<h3 id="DataTable-可视化工具"><a href="#DataTable-可视化工具" class="headerlink" title="DataTable 可视化工具"></a>DataTable 可视化工具</h3><p>在调试时，DataTable 可以直接打开成一个列表，在这个列表界面中可以进行搜索和导出成 Excel 。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841407.webp"></p>
+<p>当然，Visual Studio 17.4 还有更多的新增特性，可以参考下面地址：</p>
+<p><a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/visualstudio/visual-studio-2022-17-4/">https://devblogs.microsoft.com/visualstudio/visual-studio-2022-17-4/</a></p>
+<h2 id="C-11"><a href="#C-11" class="headerlink" title="C# 11"></a>C# 11</h2><h3 id="原始字符串"><a href="#原始字符串" class="headerlink" title="原始字符串"></a>原始字符串</h3><p>在 C# 中字符串是用双引号包含起来的内容，这个内容中可能还会有各种符号，比如：斜杠、双引号、单引号等等，像 json 、xml 内容中就经常出现双引号，之前需要使用转义符来进行处理，而在 C# 11 中可以使用三个引号包含字符串内容，来实现原始字符串，这个功能真是太喜欢了。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">HttpGet</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Get</span>(<span class="params"></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">string</span> sql = <span class="string">&quot;&quot;</span><span class="string">&quot;这是一个原始字符串，名字为&quot;</span>oec2003<span class="string">&quot;,加上斜杠/a/b \c\d 单引号 &#x27;&#x27;&quot;</span><span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sql;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161841680.webp"></p>
+<h3 id="自动默认结构"><a href="#自动默认结构" class="headerlink" title="自动默认结构"></a>自动默认结构</h3><p>在 C# 10 或更早版本中，创建结构时，必须初始化所有字段值。如果有字段没有初始化，会有编译错误。 C# 11 引入了 「自动默认结构」，它会初始化字段为默认值。</p>
+<p>比如在 C# 10 中，会出现这样的错误：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="../../attachmenent/202211100546836.webp"></p>
+<p>C# 11 中这段代码是可以正常执行，Age 会被初始化为 0 。</p>
+<h2 id="必要成员"><a href="#必要成员" class="headerlink" title="必要成员"></a>必要成员</h2><p>当一个类的属性需要强制在类初始化时进行赋值的时候，就可以用 required 关键字进行修饰：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> required <span class="built_in">string</span> UserName &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;</span><br><span class="line">	<span class="keyword">public</span> required <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在创建 User 对象时，如果没有初始化 UserName 和 Age 就会出现错误，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161842248.webp"></p>
+<h3 id="列表模式"><a href="#列表模式" class="headerlink" title="列表模式"></a>列表模式</h3><p>从 C# 11 开始，数组或列表可以与元素序列相匹配，元素序列就是一组由中括号括起来的元素，匹配使用 is 关键字。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] testArray = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 false, 最后一个数字没有匹配</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 false, 元素的位置不一样</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [<span class="number">8</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 false, 长度没有匹配</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 true, 元素、长度、位置都匹配</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>];</span><br></pre></td></tr></table></figure>
+
+<p>列表模式有三种不同的方式：Discard pattern、Range pattern、Var pattern</p>
+<p>Discard pattern：</p>
+<p>比如还是上面例子中的数组 testArray ,想要知道是否匹配第一个元素为 1 ，可以这样来实现：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] testArray = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 true，序列的长度和数组匹配，第一个元素也是 1</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [<span class="number">1</span>, _, _, _, _];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>序列的长度要和数字相同；</li>
+<li>序列中不用匹配的元素可以使用 _ 进行忽略。</li>
+</ul>
+<p>Range pattern：</p>
+<p>在匹配时，如果序列中元素个数是未知的，那么 Range pattern 就可以起作用。使用两个点可以用来指定任意数量的元素，两个点只能在序列中使用一次。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] testArray = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// result 值为 true，.. 表示 5之前的，_ 表示最后一个元素，这个匹配的是倒数第二个是 5</span></span><br><span class="line">result = testArray <span class="keyword">is</span> [..,<span class="number">5</span>,_];</span><br></pre></td></tr></table></figure>
+
+<p>Var pattern：</p>
+<p>在这个模式中，可以在 var 关键字后面加变量，匹配上的元素的值会赋值给变量。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] testArray = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(testArray <span class="keyword">is</span> [..,<span class="keyword">var</span> lastNum])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// lastNum 的之为 8</span></span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;最后一个元素是：<span class="subst">&#123;lastNum&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他的特性，如：对静态成员进行抽象等，我觉得可以单独写文章来介绍。</p>
+<p>最近因为项目原因，写了一些 Java 代码，相比之下，C# 优雅太多了，希望 .NET 能越来越好，在国内得到更多的认可。</p>
+<p>相关阅读：</p>
+<p>C#：8.0 &amp; 9.0 常用新特性</p>
+<p>带你了解C#每个版本新特性</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2022/11/dotnet-7-early-edition/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2022/11/dotnet-7-early-edition/&title=dotNET 7 尝鲜（VS 和 C# 11) - 冯威的博客&summary=2022 年 11 月 8 日，.NET 7 正式发布了，从 11 月 8 号 到 10 号，线上的 .NET Conf 2022 会议正在举行，可以通过 https://www.dotnetconf.net/ 了解相关情况。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=dotNET 7 尝鲜（VS 和 C# 11) - 冯威的博客&amp;body=http://fwhyy.com/2022/11/dotnet-7-early-edition/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2022/11/dotnet-7-early-edition/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/11/thoughts-on-information-collection-and-processing/">关于信息收集和加工的思考<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/11/csharp-11-static-abstract-members-in-interfaces/">C# 11：接口中的静态抽象成员<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

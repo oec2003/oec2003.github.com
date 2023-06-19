@@ -1,11 +1,1099 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://fwhyy.com/2022/10/go-learning-those-different-knowledge-points-2/</loc>
-    <lastmod>2022-11-08</lastmod>
+    <loc>http://fwhyy.com/2023/04/read-continuous-architecture-practices/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/05/four-books-read-in-may/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/04/share-some-website-and-tools-202304/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/chatgpt-app-collection/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/06/talk-about-drive/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/06/galaxy-kirin-system-installation-middleware/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/05/tthinking-about-making-products/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/05/high-availability-nginx-combined-with-keepalived/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/05/high-availability-mongodb-container-deployment/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/04/thinking-about-low-code-products-brought-about-by-chatgpt/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/04/read-ai/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/docker-log-size-limits-and-switching-storage-directories/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/dotnet-upgrade-assistant/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/gpt-4/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/read-boiling-for-fifteen-years/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/02/deep-contact-with-customers-can-make-good-products/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/03/try-microsoft-new-bing/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/02/what-is-chatgpt-its-getting-clearer/</loc>
+    <lastmod>2023-06-18</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/02/code-commits-that-little-thing/</loc>
+    <lastmod>2023-06-18</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/02/my-blog-use-notion-next/</loc>
+    <lastmod>2023-06-17</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/2023-keyword-do-subtraction/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/books-read-in-2022-and-reading-plans-for-2023/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/i-switched-the-graph-bed-to-alibaba-cloud-oss/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/read-the-lee-talk-show-workbook/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/its-so-rolly-that-obsidian-and-logseq-have-introduced-whiteboard-functionality/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/01/2022-year-end-summary/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/12/after-chatgpt-play-stable-diffusion/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/12/yang-is-not-yang/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/12/try-chatgpt/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/11/share-several-websites/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/11/dotmet-7-minimal-api-usage/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/11/csharp-11-static-abstract-members-in-interfaces/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/11/dotnet-7-early-edition/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/08/in-vs-view-who-file-is-checked-out/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/06/net-4-the-web-deployment-tool/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/06/obsidian-one-week-experience/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/installation-of-ad-and-dns/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/05/building-kubernetes-in-mac/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/2021-year-end-summary/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2016/01/angularjs-cross-domain-call-webapi-asp-net/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/08/asp-net-ajax-autocomplete/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/12/deploying-dotnet-core-programs-with-supervisor-in-centos7/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/09/mongvue-introduction/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/03/gitlab-server-migration-and-points-for-attention/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/09/mastering-good-learning-methods/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/04/c-8-9-common-new-features/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/08/huawei-approach-to-digital-transformation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/05/Install-MySql-with-Docker-in-CentOS7/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/09/additional-program-installed-virtual-pc/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/01/an-introduction-to-the-sample-to-nhibernate/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/08/asp-net-ajax-filteredtextbox/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/08/aspnet-mvc-v2-preview-1/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2014/01/connect-to-rtx-server-application-the-sdk-to-connect-sdk-server-error-problem-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-16-interpreter-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-18-iterator-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-22-state-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/03/iis7-upload-issue/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/04/jenkins-implements-version-management-by-building-tags/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/net-4-data-bound-controls-the-clientidrowsuffix-properties/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/net-4-purification-processing-of-html/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/04/use-expression-encoder-3-to-webdav-publishing-media-file/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/03/virtualpc2007-file-is-copied-to-the-other-computer-cant-open-the-problem-solving/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/04/win2008-computer-cannot-be-added-to-the-domain-of-the-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/08/i-recently-read-two-low-code-books/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/08/libreoffice-implements-office-preview/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/06/obsidian-first-experience/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/01/2019-summary/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/09/asp-net-ajax-validatorcallout/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/02/aspnet-controls-development-1-the-introduction/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/iis-install/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/09/implementation-of-unique-pipeline-number-in-distributed-environment-by-dotnet-core/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/05/in-setting-the-jquery-vs2008-intellisense/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-8/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/05/to-save-live-writer-the-default-directory-is-mapped-to-the-baidu-net-disk/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/02/use-git-manage-github-project-on-windows/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/11/using-git-in-vs2010/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/10/words-in-the-table-in-the-database-multi-line-merged-into-a-column/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/06/the-high-cpu-of-rabbitmq-consumers-in-net-core/</loc>
+    <lastmod>2023-06-16</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2022/10/go-book-recommendation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/01/aspnet-access-database-connection/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/03/chm-file-locking/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/07/clr-via-csharp-learning-notes-6-the-method-parameters-related/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/02/design-patterns-notes-24-visitor-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/01/dotnetcore-operation-redis/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/sharepoint2007-related-service-startup/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/01/talk-about-the-response-mode-of-rabbimq/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/08/the-simple-introduction-of-the-wcf-binding/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/11/use-jquery-boxy-plug-in-confirmation-box-in-the-aspnet/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/20th-anniversary-of-net/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/03/book-recommendation-202203/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/10/to-use-arc-browser-macos-ventura-has-been-upgraded/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/05/CentOS7-install-GitLab/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/03/data-into-the-sql-script-in-sqlserver-2008/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/01/dotnet-core-3-uses-elasticsearch/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/install-sqlserver2005/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2015/08/jquery-cros-access-asp-net-web-api/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2015/08/stream-aspnet/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-3/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/the-latest-microsoft-web-development-tools-webmatrix-simple-introduction-and-installation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/11/using-aspose-in-dotnet-core/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/10/using-rabbitmq-to-implement-interface-compensation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2016/01/word-owa-online-editor-from-gridfs/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/04/centos7-install-greenplum6/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/08/dotnet5-exec-node-js/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment-2/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/11/object-oriented-basic-knowledge/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/09/backup-windows-live-writers-draft/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/06/dotnet-core-3-dependency-injection/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/06/dotnet-core-3-uses-Autofac-to-enhance-dependency-injection/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/07/give-the-pdf-bookmarks-production/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/installation-of-the-net-framework-3-0-and-sharepoint-2007/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/05/net-4-vs2010-new-features/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/07/nginx-some-skills-of-rewriting/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/11/read-continuous-delivery-2-0/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/the-first-snow-of-2010/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-7/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/09/c-net-1-0-4-0/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/06/vs-2019-16-10-and-vs-2022-new-features/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/12/what-is-the-experience-of-running-100-days-in-a-row/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/04/translation-artifact-in-mac/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/08/unlock-another-note-taking-tool-logseq/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/11/design-patterns-notes-3-abstract-factory-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/10/the-adventures-of-mongodb/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/windows-server-2008-enabled-wireless-lan-support/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/09/12-questions-to-understand-redis/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment-3/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/04/how-can-the-code-be-written-like-this/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-23-strategy-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-9-portfolio-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/10/gen-reg-in-vs2010-and-vs2008/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/05/octopress-blog-setting/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/05/thoughts-on-realizing-multi-tenant-system/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/05/open-wechat-official-accounts/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/wcf-client-generation-agent-in-two-ways/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/01/a-small-performance-test-of-asp-net/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-3-constants-and-fields/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-13-proxy-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/05/net-4-framwork-of-new-features/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/03/sql2008-modify-and-save-the-table-structure-error/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/08/the-2010-08-24-love-record/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/centos-install-k8s-deploy-net6/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/09/angular-four-cross-domain-problem-solving/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/12/csharp-points-for-attention-in-asynchronous-programming/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2015/09/deploy-webapi-in-windows-server2008/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/10/experience-vs2010-installation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/02/sql-server-does-not-support-the-user-instance-login-flag/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-5/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/wcf-problem-http-error-404-17-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/03/how-to-split-services/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/09/go-learning-from-environment-building-to-writing-a-web-service/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/05/add-the-default-distribution-point-wms/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/04/adding-watermark-to-owa/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/07/clr-via-csharp-learning-notes-5-the-performance-of-the-static-constructor/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-14-template-method-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/11/design-patterns-notes-7-adapter-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/09/desktop-pnotes-note-software/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/10/dotnet-core-3-1-uses-aspose-deploy-docker/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/08/dotnet-core-configure/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/07/gitLab-combined-with-jenkins-to-build-automated-deployment/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/05/publish-dotnetcore-program-to-kubernetes/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/06/sqlserver2008-modifying-a-table-save-changes-is-not-permitted-the-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/06/update-weibo-by-google-talk-robot/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/04/using-jwt-to-implement-interface-authentication-in-dotnet-core-3/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/09/windows-live-writer-syntax-highlighting-in-the-plug-in/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/03/use-teleport/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/01/book-recommendation-202201/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/06/The-public-number-Ihave-been-paying-attention-to-over-the-years-1/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-17-mediator-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-19-observer-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/08/dotnet-3-0-framework-introduce/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/12/jquery-boxy-plug-in-pop-up-the-four-edges-of-images-in-ie-dont-show/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/09/mongo-introduction-and-installation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/08/net-programmer-how-to-learn-vue/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/12/read-replicable-leadership/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/register-existing-wcf-service-in-iis/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/05/sqlserver2005-additional-database-for-read-only-solutions/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/04/the-replace-method-in-js/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/09/using-htmlagilitypack/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/05/windows-service-in-windows-7-cant-install-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/03/wordpress-security-issues/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/12/object-oriented-design-principles-1/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/05/read-zhongtai-architecture-and-implementation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/why-do-i-like-it-typora/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/10/go-learning-concurrency/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/08/a-tool-you-dont-want-to-go-when-you-use-it/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/11/add-a-bookmark-to-a-pdf-document/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2015/01/contractname-microsoft-visualstudio-text-itextdocumentfactoryservice/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/04/dotnet-core-3-request-processing-pipeline-and-middleware/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/04/http-error-500-19-internal-server-error-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/09/nicedit-and-kindeditor/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/06/sql-implementation-group-statistical-query/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/10/the-most-expensive-thing-is-free/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/04/book-recommendation-202204/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/05/additional-database-failure-5120-error/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/02/centos7-install-jenkins/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/05/docker-installs-mysql-to-mount-external-data-and-configuration/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/07/modify-the-background-color-of-vs-code/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-4/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/08/unified-processing-of-dotnet-core-web-api-return-value-parameter-validation-exception/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/hexo-stellar/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/02/2020-end-of-year-summary/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/12/build-an-independent-blog-this-comment-plug-in-cant-be-missed/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2016/03/csharp-with-signature-dll-crack/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-10-decorative-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/11/disk-search-software-everything/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/01/eliminate-the-prompt-window/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/03/excel-import-database-external-table-is-not-desired-format-mistakes-of-the-solution/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/08/google-and-baidu-in-differences-in-details/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/net-4-aspnet-url-rewriting-in-the-improvement/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/09/run-netcore-two-in-mac-docker/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/10/solution-for-ie-to-open-the-web-pop-up-windows-server2008-r2-block-box/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/01/design-patterns-notes-21-memo-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/06/a-billing-software-to-my-wife/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/07/ajaxpro-autocomplete-function-implementation/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-15-command-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/net-4-aspnet-controls-the-hyperlink-in-the-improvement/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/06/use-zedgraph-in-the-web/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/03/nexus-manage/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2018/06/Use-the-Merge-Request-working-mode-in-GitLab-in-the-team/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/07/a-simple-wcf-example/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2007/08/asp-net-ajax-textboxwateramrk/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/04/aspnet-recursive-implementation-of-css-menu/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/11/aspnet-stoped-thread-method/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-11-appearance-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-12-flyweight-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/12/design-patterns-notes-8-bridge-pattern/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/08/dotnet-how-to-handle-exceptions-in-programs-practical/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/10/experience-vs2010-improvements/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/05/how-to-crate-octopress-blog-in-windows/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2019/07/jenkins-and-testcafe/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/mongo-service-startup/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2015/06/office-web-app-preview-remove-top-menu/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/01/sharepoint2007-configuration/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/09/some-of-the-pits-in-hexo/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/09/sqlserver2008r2-windows-login-18456-error/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/05/the-may-day-laundry-list-decoration/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2016/09/use-exceptionLess/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/05/using-loadrunner-test-wms/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2013/01/wordpress-install-theme-error/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2021/11/nike-air-zoom-tempo-next/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/01/read-study-hard/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/02/book-recommendation-202202/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/07/three-people-and-one-car-driving-in-tibet/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/11/thoughts-on-information-collection-and-processing/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-1-primitive-types/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2010/11/csharp-a-friend-assembly/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2017/09/mi-push-to-csharp/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2008/03/separate-strings-in-sql/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-2/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2011/11/the-honeymoon-6/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2020/04/totnet-core-3-using-web-api/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/04/thoughts-on-the-architecture-from-the-release/</loc>
+    <lastmod>2023-06-16</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/06/how-do-techies-build-their-personal-brands/</loc>
+    <lastmod>2023-03-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/10/read-reading-methods/</loc>
+    <lastmod>2023-03-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2022/10/go-learning-those-different-knowledge-points-2/</loc>
     <lastmod>2022-11-08</lastmod>
   </url>
   <url>
@@ -13,51 +1101,15 @@
     <lastmod>2022-11-08</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2022/10/read-reading-methods/</loc>
-    <lastmod>2022-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/10/to-use-arc-browser-macos-ventura-has-been-upgraded/</loc>
-    <lastmod>2022-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/11/thoughts-on-information-collection-and-processing/</loc>
-    <lastmod>2022-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/10/go-learning-concurrency/</loc>
-    <lastmod>2022-11-08</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2022/09/go-learning-those-different-knowledge-points/</loc>
     <lastmod>2022-09-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/06/how-do-techies-build-their-personal-brands/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/08/huawei-approach-to-digital-transformation/</loc>
-    <lastmod>2022-09-25</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2022/08/nawal-treasure-book/</loc>
     <lastmod>2022-09-25</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2022/06/obsidian-first-experience/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/06/obsidian-one-week-experience/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2022/07/read-cognitive-awakening/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/08/libreoffice-implements-office-preview/</loc>
     <lastmod>2022-09-25</lastmod>
   </url>
   <url>
@@ -77,23 +1129,7 @@
     <lastmod>2022-09-25</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2022/06/the-high-cpu-of-rabbitmq-consumers-in-net-core/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/07/three-people-and-one-car-driving-in-tibet/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/08/unlock-another-note-taking-tool-logseq/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2022/06/what-to-talk-about-when-talking-about-effectiveness/</loc>
-    <lastmod>2022-09-25</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/09/go-learning-from-environment-building-to-writing-a-web-service/</loc>
     <lastmod>2022-09-25</lastmod>
   </url>
   <url>
@@ -103,10 +1139,6 @@
   <url>
     <loc>http://fwhyy.com/2010/10/2010-national-day-reporter/</loc>
     <lastmod>2022-06-20</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/06/a-billing-software-to-my-wife/</loc>
-    <lastmod>2022-06-18</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2010/07/a-trip-to-beidaihe-2010-07-24/</loc>
@@ -125,32 +1157,8 @@
     <lastmod>2022-05-19</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2022/04/book-recommendation-202204/</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/04/translation-artifact-in-mac/</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/04/thoughts-on-the-architecture-from-the-release/</loc>
-    <lastmod>2022-05-18</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/04/how-can-the-code-be-written-like-this/</loc>
-    <lastmod>2022-04-26</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2022/04/read-the-underlying-logic/</loc>
     <lastmod>2022-04-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/03/book-recommendation-202203/</loc>
-    <lastmod>2022-04-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/03/how-to-split-services/</loc>
-    <lastmod>2022-03-28</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2022/03/reread-continuous-delivery-2-0/</loc>
@@ -161,87 +1169,19 @@
     <lastmod>2022-03-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2022/02/book-recommendation-202202/</loc>
-    <lastmod>2022-03-06</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2022/03/do-we-need-to-switch-from-monomer-to-microservice/</loc>
     <lastmod>2022-03-06</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/02/why-do-i-like-it-typora/</loc>
-    <lastmod>2022-03-06</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/02/20th-anniversary-of-net/</loc>
-    <lastmod>2022-03-06</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/02/centos-install-k8s-deploy-net6/</loc>
-    <lastmod>2022-03-06</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/02/hexo-stellar/</loc>
-    <lastmod>2022-02-10</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2016/09/Build-Ubuntu12-04-in-Linode-on-Hexo/</loc>
     <lastmod>2022-02-06</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2021/04/c-8-9-common-new-features/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/01/book-recommendation-202201/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment-2/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/01/read-study-hard/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/01/huawei-cloud-server-deployment-3/</loc>
-    <lastmod>2022-02-04</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2021/12/get-up-at-four-crazy-or-self-disciplined/</loc>
     <lastmod>2022-02-02</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2021/12/what-is-the-experience-of-running-100-days-in-a-row/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2021/12/object-oriented-design-principles-2/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/12/object-oriented-design-principles-1/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/11/nike-air-zoom-tempo-next/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/11/object-oriented-basic-knowledge/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/</loc>
     <lastmod>2022-02-02</lastmod>
   </url>
   <url>
@@ -261,27 +1201,7 @@
     <lastmod>2022-02-02</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2021/09/12-questions-to-understand-redis/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/09/mastering-good-learning-methods/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2021/08/improve-mental-strength/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/08/i-recently-read-two-low-code-books/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/08/dotnet5-exec-node-js/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/</loc>
     <lastmod>2022-02-02</lastmod>
   </url>
   <url>
@@ -293,10 +1213,6 @@
     <lastmod>2022-02-02</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2021/06/vs-2019-16-10-and-vs-2022-new-features/</loc>
-    <lastmod>2022-02-02</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2021/06/did-you-do-code-review/</loc>
     <lastmod>2022-02-01</lastmod>
   </url>
@@ -305,23 +1221,7 @@
     <lastmod>2022-02-01</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2021/05/read-zhongtai-architecture-and-implementation/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/05/thoughts-on-realizing-multi-tenant-system/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2021/05/reading-lean-business-thinking/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/04/centos7-install-greenplum6/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/02/2020-end-of-year-summary/</loc>
     <lastmod>2022-02-01</lastmod>
   </url>
   <url>
@@ -330,22 +1230,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2021/03/read-effective-demand-analysis/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/03/gitlab-server-migration-and-points-for-attention/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/03/use-teleport/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/03/nexus-manage/</loc>
-    <lastmod>2022-02-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2022/02/2021-year-end-summary/</loc>
     <lastmod>2022-02-01</lastmod>
   </url>
   <url>
@@ -361,23 +1245,7 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2017/09/run-netcore-two-in-mac-docker/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2016/09/use-exceptionLess/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/04/use-expression-encoder-3-to-webdav-publishing-media-file/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/01/updatepanel-issues/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/06/update-weibo-by-google-talk-robot/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -397,14 +1265,6 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/04/totnet-core-3-using-web-api/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/05/to-save-live-writer-the-default-directory-is-mapped-to-the-baidu-net-disk/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/07/to-solve-the-unable-to-solve-the-equal-to-operation-collation-conflict-problem/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
@@ -417,23 +1277,11 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/01/the-use-of-the-lable-and-literal-controls-and-differences/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/10/the-ultimate-solution-checkbox-selection/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2010/07/the-simple-introduction-of-wcf-contract/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/08/the-simple-introduction-of-the-wcf-binding/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -445,10 +1293,6 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2012/04/the-replace-method-in-js/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/01/the-realization-of-the-html-form-thin-lines/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
@@ -457,43 +1301,7 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-8/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/the-latest-microsoft-web-development-tools-webmatrix-simple-introduction-and-installation/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-7/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/05/the-may-day-laundry-list-decoration/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-6/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-3/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-4/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-5/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2011/11/the-honeymoon-1/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/the-honeymoon-2/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -505,10 +1313,6 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/01/the-first-snow-of-2010/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/09/the-chinese-mens-basketball-team-for-the-world-championships-is-out/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
@@ -517,23 +1321,11 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/08/the-2010-08-24-love-record/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/08/the-2010-basketball-world-championships/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2017/10/the-adventures-of-mongodb/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2020/03/telecommuting-can-also-be-efficient/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/01/talk-about-the-response-mode-of-rabbimq/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -557,18 +1349,6 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/06/sqlserver2008-modifying-a-table-save-changes-is-not-permitted-the-solution/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2015/08/stream-aspnet/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/09/sqlserver2008r2-windows-login-18456-error/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2012/01/summary-in-2011/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
@@ -577,27 +1357,11 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/03/sql2008-modify-and-save-the-table-structure-error/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/02/sql-server-does-not-support-the-user-instance-login-flag/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/05/sqlserver2005-additional-database-for-read-only-solutions/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2013/03/sql-query-for-xml-path/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2007/09/soon-to-be-a-programmer/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/06/sql-implementation-group-statistical-query/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -610,10 +1374,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2011/09/some-concepts-about-nosql-and-mongodb/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2017/09/some-of-the-pits-in-hexo/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -637,23 +1397,11 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/10/solution-for-ie-to-open-the-web-pop-up-windows-server2008-r2-block-box/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2012/07/set-tp-link/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/01/sharepoint2007-configuration/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2020/05/shoe-reading-dog/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/sharepoint2007-related-service-startup/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -666,10 +1414,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2011/06/retreat-to-the-javascript-code-reserved/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2008/03/separate-strings-in-sql/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -686,10 +1430,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2009/05/recommend-a-small-screenshots-tools/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/register-existing-wcf-service-in-iis/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -725,10 +1465,6 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2019/05/publish-dotnetcore-program-to-kubernetes/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2014/02/placeholder-in-ie8/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
@@ -741,27 +1477,7 @@
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2018/05/open-wechat-official-accounts/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/09/nicedit-and-kindeditor/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2015/06/office-web-app-preview-remove-top-menu/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2015/06/office-web-app-2013-preview-in-external/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/05/octopress-blog-setting/</loc>
-    <lastmod>2022-01-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/</loc>
     <lastmod>2022-01-30</lastmod>
   </url>
   <url>
@@ -777,55 +1493,7 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/07/nginx-some-skills-of-rewriting/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/05/net-4-vs2010-new-features/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/06/net-4-the-web-deployment-tool/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/net-4-data-bound-controls-the-clientidrowsuffix-properties/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/net-4-purification-processing-of-html/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/05/net-4-framwork-of-new-features/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/net-4-aspnet-controls-the-hyperlink-in-the-improvement/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/09/mongvue-introduction/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2015/08/mongodb-access-to-the-csharp-of-the-cluster/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/net-4-aspnet-url-rewriting-in-the-improvement/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/09/mongo-introduction-and-installation/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/11/mongo-service-startup/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2017/09/mi-push-to-csharp/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -861,23 +1529,7 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/01/jquery-upload-plugin-uploadify-use-explanation/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2013/04/jquery-knowledge-summary/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/12/jquery-boxy-plug-in-pop-up-the-four-edges-of-images-in-ie-dont-show/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2015/08/jquery-cros-access-asp-net-web-api/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -885,23 +1537,7 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/04/jenkins-implements-version-management-by-building-tags/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/installation-of-the-net-framework-3-0-and-sharepoint-2007/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2020/03/is-there-a-35-year-old-bar-for-programmers/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/installation-of-ad-and-dns/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/install-sqlserver2005/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -913,27 +1549,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/08/in-vs-view-who-file-is-checked-out/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/05/in-setting-the-jquery-vs2008-intellisense/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2009/12/in-js-method-return-multiple-values-of-the-three-methods/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2010/04/in-beijing-these-days/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/01/iis-install/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/03/iis7-upload-issue/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -953,15 +1573,7 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/04/http-error-500-19-internal-server-error-solution/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2012/10/how-to-improve-the-efficiency-of-development/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/05/how-to-crate-octopress-blog-in-windows/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -977,27 +1589,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/07/give-the-pdf-bookmarks-production/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/06/go-to-shijiazhuang-2010-6-5/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/08/google-and-baidu-in-differences-in-details/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2015/02/git-workflow/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/10/gen-reg-in-vs2010-and-vs2008/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/10/experience-vs2010-installation/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1009,59 +1605,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/03/excel-import-database-external-table-is-not-desired-format-mistakes-of-the-solution/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/10/experience-vs2010-improvements/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2021/01/dotnet-core-3-uses-elasticsearch/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/07/dotnet-how-to-handle-exceptions-in-programs/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/01/eliminate-the-prompt-window/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2006/12/english-cet-4/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/06/dotnet-core-3-dependency-injection/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/10/dotnet-core-3-1-uses-aspose-deploy-docker/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2015/12/use-fancybox/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2007/08/dotnet-3-0-framework-introduce/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/01/dotnetcore-operation-redis/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/06/dotnet-core-3-uses-Autofac-to-enhance-dependency-injection/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/08/dotnet-how-to-handle-exceptions-in-programs-practical/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/04/aspnet-recursive-implementation-of-css-menu/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1074,10 +1622,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2010/02/aspnet-mvc-2-rc-2-release/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/04/dotnet-core-3-request-processing-pipeline-and-middleware/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1113,38 +1657,6 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/05/additional-database-failure-5120-error/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/07/ajaxpro-autocomplete-function-implementation/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/08/a-tool-you-dont-want-to-go-when-you-use-it/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2007/01/a-small-performance-test-of-asp-net/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/a-simple-wcf-example/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/05/add-the-default-distribution-point-wms/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/11/add-a-bookmark-to-a-pdf-document/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2007/09/a-little-understanding-of-design-patterns/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
@@ -1157,15 +1669,7 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/09/additional-program-installed-virtual-pc/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2016/10/Reading-soft-skills-learning-to-improve-productivity/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2017/04/adding-watermark-to-owa/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1185,10 +1689,6 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/01/2019-summary/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2016/09/Talk-about-overtime/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
@@ -1197,19 +1697,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2009/01/aspnet-access-database-connection/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2007/05/07-guangdong-job-experience-2/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2009/01/aspnet-2-0-the-eval-method-of-explanation/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2007/08/asp-net-ajax-textboxwateramrk/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1225,43 +1717,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2009/01/an-introduction-to-the-sample-to-nhibernate/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2007/08/asp-net-ajax-passwordstrength/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2007/09/asp-net-ajax-validatorcallout/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/02/aspnet-controls-development-1-the-introduction/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2011/05/anniversary/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2016/01/angularjs-cross-domain-call-webapi-asp-net/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/08/aspnet-mvc-v2-preview-1/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2017/09/angular-four-cross-domain-problem-solving/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2007/08/asp-net-ajax-autocomplete/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2007/08/asp-net-ajax-filteredtextbox/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1270,22 +1730,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2007/05/commonly-used-some-regular-expressions/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-3-constants-and-fields/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/02/centos7-install-jenkins/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/03/chm-file-locking/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1301,27 +1745,11 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2013/11/aspnet-stoped-thread-method/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2012/05/clear-code-reading-notes-one/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/11/csharp-a-friend-assembly/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2011/01/back-in-the-2010-plan-2011/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/07/clr-via-csharp-learning-notes-6-the-method-parameters-related/</loc>
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
@@ -1345,28 +1773,8 @@
     <lastmod>2022-01-29</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2009/07/clr-via-csharp-learning-notes-5-the-performance-of-the-static-constructor/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2015/01/contractname-microsoft-visualstudio-text-itextdocumentfactoryservice/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/10/csharp-net-code-concise-optimization-techniques-1/</loc>
     <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2014/01/connect-to-rtx-server-application-the-sdk-to-connect-sdk-server-error-problem-solution/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/11/csharp-async-and-await-in-asynchronous-programming/</loc>
-    <lastmod>2022-01-29</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/06/clr-via-csharp-learning-notes-1-primitive-types/</loc>
-    <lastmod>2022-01-28</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2010/11/csharp-net-code-concise-optimization-techniques-c/</loc>
@@ -1377,31 +1785,11 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2012/09/c-net-1-0-4-0/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/09/backup-windows-live-writers-draft/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2014/01/buy-car/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2020/12/csharp-points-for-attention-in-asynchronous-programming/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2007/06/to-graduate/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/02/use-git-manage-github-project-on-windows/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/11/use-jquery-boxy-plug-in-confirmation-box-in-the-aspnet/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1421,47 +1809,11 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/06/use-zedgraph-in-the-web/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/11/using-git-in-vs2010/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/11/using-httpmodule-prevent-sql-injection/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
     <loc>http://fwhyy.com/2015/05/using-csharp-check-file-in-gridfs/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/09/using-htmlagilitypack/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/05/using-loadrunner-test-wms/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/04/using-jwt-to-implement-interface-authentication-in-dotnet-core-3/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/07/windows-server-2008-enabled-wireless-lan-support/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/11/using-jqueryeasyui-in-aspnet/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/10/words-in-the-table-in-the-database-multi-line-merged-into-a-column/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1473,35 +1825,11 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/05/windows-service-in-windows-7-cant-install-solution/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2016/01/word-owa-online-editor-from-gridfs/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2013/01/wordpress-install-theme-error/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2012/03/wordpress-security-issues/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2012/04/wordpress-upgrade-is-very-simple/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/04/win2008-computer-cannot-be-added-to-the-domain-of-the-solution/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/04/win2008-remote-desktop-installation-ad-after-log-in-problem-solving/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/09/windows-live-writer-syntax-highlighting-in-the-plug-in/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1521,10 +1849,6 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/07/wcf-problem-http-error-404-17-solution/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/07/wcf-servicehost-initialization-in-two-ways/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
@@ -1537,10 +1861,6 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/07/wcf-client-generation-agent-in-two-ways/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2009/11/vs-font-recommended/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
@@ -1549,27 +1869,7 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2011/03/virtualpc2007-file-is-copied-to-the-other-computer-cant-open-the-problem-solving/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2015/09/deploy-webapi-in-windows-server2008/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2007/12/delete-recently-opened-in-visual-studio-project-and-file-records/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2011/03/data-into-the-sql-script-in-sqlserver-2008/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2016/03/csharp-with-signature-dll-crack/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2020/12/deploying-dotnet-core-programs-with-supervisor-in-centos7/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1577,63 +1877,7 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-10-decorative-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-13-proxy-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-12-flyweight-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-11-appearance-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-15-command-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-17-mediator-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-16-interpreter-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-14-template-method-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-18-iterator-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-19-observer-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-21-memo-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2009/11/design-patterns-notes-2-singleton-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-22-state-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/02/design-patterns-notes-24-visitor-pattern/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1641,19 +1885,7 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2010/01/design-patterns-notes-23-strategy-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/11/design-patterns-notes-3-abstract-factory-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2010/02/design-patterns-notes-25-summary/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/11/design-patterns-notes-7-adapter-pattern/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1665,27 +1897,7 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-9-portfolio-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2009/12/design-patterns-notes-8-bridge-pattern/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2008/05/development-summary-javascript/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/09/desktop-pnotes-note-software/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2010/11/disk-search-software-everything/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/05/Call-API-to-modify-the-configuration-file-of-the-Ocelot/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
@@ -1693,35 +1905,11 @@
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2018/10/the-most-expensive-thing-is-free/</loc>
-    <lastmod>2022-01-28</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2019/03/requirements-and-code-branch-management-in-agile/</loc>
     <lastmod>2022-01-28</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2019/12/build-an-independent-blog-this-comment-plug-in-cant-be-missed/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/12/read-replicable-leadership/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/11/read-continuous-delivery-2-0/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/11/common-orders-for-part-time-operation-and-maintenance/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2019/10/how-to-get-out-of-the-mire-for-technical-managers/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/10/using-rabbitmq-to-implement-interface-compensation/</loc>
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
@@ -1733,19 +1921,7 @@
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2019/09/implementation-of-unique-pipeline-number-in-distributed-environment-by-dotnet-core/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2019/09/have-you-paid-your-technical-debt-yet/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/08/net-programmer-how-to-learn-vue/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/08/unified-processing-of-dotnet-core-web-api-return-value-parameter-validation-exception/</loc>
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
@@ -1765,10 +1941,6 @@
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2019/07/jenkins-and-testcafe/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2019/07/some-thoughts-on-product-quality/</loc>
     <lastmod>2022-01-27</lastmod>
   </url>
@@ -1782,10 +1954,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2019/06/how-to-learn-and-read-technical-books/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2019/05/building-kubernetes-in-mac/</loc>
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
@@ -1817,15 +1985,7 @@
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2018/11/using-aspose-in-dotnet-core/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2018/10/is-your-overtime-worth/</loc>
-    <lastmod>2022-01-27</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/08/dotnet-core-configure/</loc>
     <lastmod>2022-01-27</lastmod>
   </url>
   <url>
@@ -1837,23 +1997,7 @@
     <lastmod>2022-01-26</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2018/07/modify-the-background-color-of-vs-code/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/06/Use-the-Merge-Request-working-mode-in-GitLab-in-the-team/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/07/gitLab-combined-with-jenkins-to-build-automated-deployment/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2018/07/how-can-we-stick-to-it/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/06/The-public-number-Ihave-been-paying-attention-to-over-the-years-1/</loc>
     <lastmod>2022-01-26</lastmod>
   </url>
   <url>
@@ -1861,19 +2005,7 @@
     <lastmod>2022-01-26</lastmod>
   </url>
   <url>
-    <loc>http://fwhyy.com/2018/05/CentOS7-install-GitLab/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
     <loc>http://fwhyy.com/2018/05/recent-writing-plan/</loc>
     <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/05/docker-installs-mysql-to-mount-external-data-and-configuration/</loc>
-    <lastmod>2022-01-26</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2018/05/Install-MySql-with-Docker-in-CentOS7/</loc>
-    <lastmod>2022-01-25</lastmod>
   </url>
 </urlset> 
