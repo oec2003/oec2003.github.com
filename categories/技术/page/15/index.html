@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a><div class="line"></div><a class="more-item" href="/2023/04/share-some-website-and-tools-202304/"><div class="cap"><time>2023-06-19</time><span>成长</span></div><span class="title">分享几个网站和工具（202304）</span></a><div class="line"></div><a class="more-item" href="/2023/03/chatgpt-app-collection/"><div class="cap"><time>2023-06-19</time><span>技术</span></div><span class="title">ChatGPT 应用合集</span></a><div class="line"></div><a class="more-item" href="/2023/06/talk-about-drive/"><div class="cap"><time>2023-06-19</time><span>思考</span></div><span class="title">内驱力</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a><div class="line"></div><a class="more-item" href="/2023/04/share-some-website-and-tools-202304/"><div class="cap"><time>2023-06-19</time><span>成长</span></div><span class="title">分享几个网站和工具（202304）</span></a><div class="line"></div><a class="more-item" href="/2023/03/chatgpt-app-collection/"><div class="cap"><time>2023-06-19</time><span>技术</span></div><span class="title">ChatGPT 应用合集</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,11 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/06/retreat-to-the-javascript-code-reserved/"><article class="md">
+<h2 class="post-title">给Javascript代码“预留退路”</h2><div class="excerpt"><p>所谓给Javascript代码“预留退路”意思就是当用户将浏览器的Javascript功能禁用的时候，页面中使用了Javascript的地方要能够以变通的方式得以运行，而不能让用户看到出错或是点击某按钮而毫无反应，这也是用户体验很重要的一部分。
+举个简单的例子来说，点击页面中的一个链接可以弹出一个新的页面，我们通常会使用window.open，代码如下：
+123456&lt;a href=&...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-15T16:00:00.000Z">2011-06-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/"><article class="md">
 <h2 class="post-title">未在本地计算机上注册“Microsoft.Jet.OleDb.4.0”提供程序 错误解决</h2><div class="excerpt"><p>最近在做一个导入Excel数据到数据库的程序出现了如下错误：
 
 运行环境
@@ -169,11 +173,6 @@ Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为�
 <h2 class="post-title">VirtualPC2007的文件复制到其他电脑不能打开的问题解决</h2><div class="excerpt"><p>在使用VirtualPC的时候，我一般都习惯保存当前状态的方式关机，这样在下次使用的时候可以保证继续我上次的工作状态。最近我将保存状态的VirtualPC2007的文件拷贝到另一台电脑中，然后用VirtualPC2007去添加，我选择的是已经存在的虚机，这时会报一个错误，如下图：
 
 经过查询得知，解决此问题的方法为启动VirtualPC后，按照添加新的虚机的方法去做，直到提示要选择硬盘的时候...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-03T16:00:00.000Z">2011-03-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/02/sql-server-does-not-support-the-user-instance-login-flag/"><article class="md">
-<h2 class="post-title">解决“此版本的 SQL Server 不支持用户实例登录标志。该连接将关闭”问题</h2><div class="excerpt"><p>错误提示
-
-出现此错误的原因为在webconfig连接字符串中的;User Instance设置为True了，将;User Instance值修改为false即可解决此问题。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-02-21T16:00:00.000Z">2011-02-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 
