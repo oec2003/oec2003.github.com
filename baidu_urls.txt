@@ -1,3 +1,4 @@
+http://fwhyy.com/2023/06/the-feeling-of-using-logseq-for-a-year/
 http://fwhyy.com/2023/06/talk-about-drive/
 http://fwhyy.com/2023/06/galaxy-kirin-system-installation-middleware/
 http://fwhyy.com/2023/05/four-books-read-in-may/
@@ -97,4 +98,3 @@ http://fwhyy.com/2021/08/improve-mental-strength/
 http://fwhyy.com/2021/08/i-recently-read-two-low-code-books/
 http://fwhyy.com/2021/08/dotnet5-exec-node-js/
 http://fwhyy.com/2021/08/do-you-really-know-about-low-code-platforms/
-http://fwhyy.com/2021/07/how-does-a-technology-leader-lead-a-team/
