@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a><div class="line"></div><a class="more-item" href="/2023/04/share-some-website-and-tools-202304/"><div class="cap"><time>2023-06-19</time><span>成长</span></div><span class="title">分享几个网站和工具（202304）</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,15 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2013/11/aspnet-stoped-thread-method/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2014/01/connect-to-rtx-server-application-the-sdk-to-connect-sdk-server-error-problem-solution/"><article class="md">
+<h2 class="post-title">连接RTX服务器出现“应用SDK:连接SDK服务器错误”问题解决</h2><div class="excerpt"><p>腾讯通的官方有个示例可以使用程序来进行腾讯通客户端的登录，大致原理是这样：
+
+从服务端验证用户名是否存在；
+根据用户名从服务端生成key；
+根据key值调用脚本启动腾讯通客户端。
+
+在本机安装好腾讯通的客户端和服务器，运行实例程序，可以正常跑起来，将服务器安装在虚机中，就会报“(0xFFFFBA9E): 应用SDK:连接SDK服务器错误”的错误，原因是服务器端对IP地址有限制，修改配置文件，...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2014-01-08T16:00:00.000Z">2014-01-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/11/aspnet-stoped-thread-method/"><article class="md">
 <h2 class="post-title">Asp.Net正在中止线程引发的问题</h2><div class="excerpt"><p>Asp.Net做的一个同步程序，同步的方法是通过JQuery的Ajax调用，同步过程大概要执行20多分钟，程序部署到服务器后执行一段时间后就弹出执行失败的对话框，日志记录的错误信息是“正在中止线程”。
 查错过程：1、根据“AspNet 正在中止线程“进行搜索，得到的结果基本都是跟”Response.End“有关的，但我的代码中没有Response.End，所以基本可以排除；
 2、因为使用JQ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-11-21T16:00:00.000Z">2013-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -148,9 +156,6 @@ jQuery简介简介jQuery是一个兼容多浏览器的javascript库，核心理�
 系统默认是只能上传10兆以内的文件，客户自己修改了webconfig文件后发现此问题。
 通过Fiddler2跟踪页面得出乱码内容为“您要找的资源已被删除、已更名或暂时不可用”，然后通过Google得出结论如下：
 在IIS7中出了修改webconfig的配置外还需要修改C:\Windows\System32\...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-21T16:00:00.000Z">2013-03-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2013/03/sql-query-for-xml-path/"><article class="md">
-<h2 class="post-title">SQL查询-将列转换成字符串（for xml path）</h2><div class="excerpt"><p>背景最近做一报表，因为查询的SQL很长很复杂，导致直接查询出现异常，后来想到将大量重复的只是查询条件不同的子查询放到函数中去做，无奈需要的参数不能传进函数中，因为参数格式类似如：’ProjGUID1’,’ProjGUID2’ 这样，这是报表工具生成的，无法修改。现在就要想办法让参数能传进函数中或是换用其他的方式。
-思路1、首先想到的是用存储过程，但是在报表工具中调试不通，存储过程不能得到有效...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-18T16:00:00.000Z">2013-03-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a><div class="line"></div><a class="more-item" href="/2023/04/share-some-website-and-tools-202304/"><div class="cap"><time>2023-06-19</time><span>成长</span></div><span class="title">分享几个网站和工具（202304）</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,10 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/07/use-sp-xml-preparedocument-processing-xml-documents/"><article class="md">
+<h2 class="post-title">使用sp_xml_preparedocument处理XML文档</h2><div class="excerpt"><p>有时会在存储过程中处理一些XML格式的数据，所以会用到sp_xml_preparedocument，他可以将XML数据进行读取，然后使用 MSXML 分析器 (Msxmlsql.dll) 对其进行分析。我们就可以很容易的在存储过程中得到XML中我们想要的数据。下面的代码就是使用sp_xml_preparedocument读取XML：
+12345678910111213141516DECLAR...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-22T16:00:00.000Z">2011-07-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/"><article class="md">
 <h2 class="post-title">使用MicroSoft CLR Debug来调试较大项目</h2><div class="excerpt"><p>在以前的开发中，调试时很自然的会直接按F5进行调试，有时项目部署在IIS中也只是将项目的服务器指向IIS，仍然是将整个项目运行设置断点进行调试。最近遇到了一个问题，项目很大，直接F5运行会导致VS卡死，这种时候使用MicroSoft CLR Debug来进行调试是最合适不过了。
 首先打开MicroSoft CLR Debug
 
@@ -162,10 +165,6 @@ Discuz是以虚拟目录的方式加载网站中，整合Discuz到网站中进�
 Discuz所在的目录需要添加NETWORK SERVICE 和IIS_User这两个账户的权限。
 Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为虚拟目录的名称。
 由于我网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-31T16:00:00.000Z">2011-04-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
-<h2 class="post-title">在SqlServer 2008中将数据导成脚本</h2><div class="excerpt"><p>当我们想将数据库搬到另一个环境中运行时，如果数据库的版本一样我们可以直接选择附加的方式，而如果实验环境中的数据库版本比当前数据库低，就无法附加了。这时要向将数据全部导过去就需要使用脚本的方式，像Sqldbx就可以将数据库中的数据导出成脚本。本文将说下怎样直接在SqlServer 2008中将数据导出成脚本。
-具体步骤：
-1 打开SqlServer 2008 ，选择需要将数据导出到脚本的数据库...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-30T16:00:00.000Z">2011-03-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

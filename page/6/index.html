@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a><div class="line"></div><a class="more-item" href="/2023/04/share-some-website-and-tools-202304/"><div class="cap"><time>2023-06-19</time><span>成长</span></div><span class="title">分享几个网站和工具（202304）</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,20 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2022/07/three-people-and-one-car-driving-in-tibet/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2022/08/microservices-transaction-management/"><article class="md">
+<h2 class="post-title">微服务：事务管理</h2><div class="excerpt"><p>几乎所有的信息管理系统都会涉及到事务，事务的目的是为了保证数据的一致性，这里说的一致性是数据库状态的一致性。
+说到数据库状态的一致性，相信大家都会想到 ACID ：
+
+原子性（Atomic）：在一个事件的多个数据库操作中，要么同时成功，要么同时失败，例如：转账业务；
+
+隔离性（Isolation）：不同的业务之间处理数据相互独立，互不影响
+
+持久性（Durability）：正常提交的数据能够被持久化，不丢失数据，比如 mysql 天然就能持久化，redis 、 rabbitmq 也能通过设置进行持久化；
+
+一致性（Consistency）：最终的数据正确，所以说是通过 AID 这些手段来保证了 C 。
+
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-08-01T00:20:20.000Z">2022-08-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2022/07/three-people-and-one-car-driving-in-tibet/"><article class="md">
 <h2 class="post-title">三个人一台车自驾西藏</h2><div class="excerpt"><p>一直都有去西藏的想法，去年换了坦克 300，自驾 318 便提上了日程。7 月小孩放暑假，同时领导也批准了我较长时间的请假。于是三个人，一台车，7 月 9 号开始了自驾之旅。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-07-26T00:20:20.000Z">2022-07-26</time></span><span class="cap breadcrumb">旅行</span><div>
 </article></a><a class="post-card post " href="/2022/07/read-cognitive-awakening/"><article class="md">
 <h2 class="post-title">读《认知觉醒》</h2><div class="excerpt"><p>最近发的几篇文章是跟个人成长和工具相关，突然想起几个月前读的《认知觉醒》，这本书从内在和外在两个大的维度让我们在个人精进的道路上可以少走弯路。
@@ -147,8 +160,6 @@
 </article></a><a class="post-card post " href="/2022/05/microservices-how-do-services-communicate/"><article class="md">
 <h2 class="post-title">微服务：服务间如何通信？</h2><div class="excerpt"><p>在微服务架构中，会将一个完整的应用程序拆分成一组服务。这些服务之间需要经过协作，通过接口调用，才能组成一个完整的应用。
 不同的服务部署在不同的机器上，或者同一个机器的多个容器中，进程间的通信就不可避免了，也变得非常重要。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-05-16T00:10:55.000Z">2022-05-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2022/05/structured-thinking/"><article class="md">
-<h2 class="post-title">结构化思维</h2><div class="excerpt"><p>在说结构化思维之前，先看下面两个小案例：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-05-10T00:08:42.000Z">2022-05-10</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
