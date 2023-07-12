@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a><div class="line"></div><a class="more-item" href="/2023/05/four-books-read-in-may/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">五月读的四本书</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,13 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2013/03/sql-query-for-xml-path/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2013/03/iis7-upload-issue/"><article class="md">
+<h2 class="post-title">IIS7上传出现乱码问题解决</h2><div class="excerpt"><p>最近查一个bug，客户那边将上传超过30兆的文件时，上传页面出现乱码，如下图所示：
+
+系统默认是只能上传10兆以内的文件，客户自己修改了webconfig文件后发现此问题。
+通过Fiddler2跟踪页面得出乱码内容为“您要找的资源已被删除、已更名或暂时不可用”，然后通过Google得出结论如下：
+在IIS7中出了修改webconfig的配置外还需要修改C:\Windows\System32\...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-21T16:00:00.000Z">2013-03-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/03/sql-query-for-xml-path/"><article class="md">
 <h2 class="post-title">SQL查询-将列转换成字符串（for xml path）</h2><div class="excerpt"><p>背景最近做一报表，因为查询的SQL很长很复杂，导致直接查询出现异常，后来想到将大量重复的只是查询条件不同的子查询放到函数中去做，无奈需要的参数不能传进函数中，因为参数格式类似如：’ProjGUID1’,’ProjGUID2’ 这样，这是报表工具生成的，无法修改。现在就要想办法让参数能传进函数中或是换用其他的方式。
 思路1、首先想到的是用存储过程，但是在报表工具中调试不通，存储过程不能得到有效...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-03-18T16:00:00.000Z">2013-03-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2013/02/read-facebook/"><article class="md">
@@ -141,9 +147,6 @@
 </article></a><a class="post-card post " href="/2012/10/gen-reg-in-vs2010-and-vs2008/"><article class="md">
 <h2 class="post-title">VS2010和VS2008使用不同编译方式在64位机器生成注册表对比</h2><div class="excerpt"><p>最近写一个小工具用到了使用C#来进行注册表的操作，使用C#来进行注册表的操作需要引入命名空间Microsoft.Win32，关于操作注册表的帮助类可以参考RegHelper.cs。下面分别使用VS2010和VS2008使用Any CPU、X64、X86和Itanium进行编译，运行在32位机器和64位机器进行对比。看下面一段代码：
 1234string subkey = @&quot;sof...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-10-13T16:00:00.000Z">2012-10-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2012/09/c-net-1-0-4-0/"><article class="md">
-<h2 class="post-title">C# & .NET 1.0-4.0</h2><div class="excerpt"><p>学习和使用.NET平台已有六七个年头了，05年开始学习.NET的时候，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。
-从我从业的经历来看VS2003和VS2008是使用的比较多的，一些历史遗留的老项目由种种原因没有升级，依然在使用VS2003。我现在所在的公司也...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-09-01T16:00:00.000Z">2012-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

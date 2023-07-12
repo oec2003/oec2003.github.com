@@ -1,3 +1,4 @@
+http://fwhyy.com/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/
 http://fwhyy.com/2023/07/b-end-software-common-knowledge-sorting/
 http://fwhyy.com/2023/06/the-feeling-of-using-logseq-for-a-year/
 http://fwhyy.com/2023/06/talk-about-drive/
@@ -97,4 +98,3 @@ http://fwhyy.com/2021/09/12-questions-to-understand-redis/
 http://fwhyy.com/2021/09/mastering-good-learning-methods/
 http://fwhyy.com/2021/08/improve-mental-strength/
 http://fwhyy.com/2021/08/i-recently-read-two-low-code-books/
-http://fwhyy.com/2021/08/dotnet5-exec-node-js/
