@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/reading-fast-reading-techniques/"><div class="cap"><time>2023-07-19</time><span>读书</span></div><span class="title">读《快速阅读术》</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,10 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/12/an-example-in-respect-to-multithreading/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/12/design-patterns-notes-15-command-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(15)—命令模式（行为型）</h2><div class="excerpt"><p>Gof定义将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
+动机在软件构建过程中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合——比如需要对行为进行“记录、撤销/重做（undo/redo）、事务”等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将“行为请求者”与“行为实现者”解耦？将一组行为...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-29T16:00:00.000Z">2009-12-30</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/an-example-in-respect-to-multithreading/"><article class="md">
 <h2 class="post-title">关于多线程的一个例子（UI实时显示）</h2><div class="excerpt"><p>在开发Window应用程序的时候，经常需要在界面上显示出已经执行到什么步骤了，拿一个简单例子来说，创建一个Winform程序，在窗体上访一个Button和一个Label，点击Button时做100次循环，在Label上实时显示当前循环的次数。一种简单的做法就是使用Application.DoEvents，代码如下：
 123456789private void btnTest_Click(ob...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-19T16:00:00.000Z">2009-12-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2009/12/design-patterns-notes-14-template-method-pattern/"><article class="md">
@@ -141,9 +144,6 @@ Subject：该类中定义了一些RealSubj...</p></div><div class="meta cap"><sp
 </article></a><a class="post-card post " href="/2009/12/design-patterns-notes-8-bridge-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(8)—桥接模式（结构型）</h2><div class="excerpt"><p>Gof定义将抽象部分与实现部分分离，使他们都可以独立地变化。
 先来看一个简单的例子，假设我们需要开发一个同时支持PC和手机的坦克游戏，游戏在PC和手机上的功能都一样，有同样的类型，有同样的功能需求变化，而这些游戏中的坦克有多种不同的型号：T50 T60等。根据面向对象的思想，我们可以很容易设计一个坦克(Tank)的抽象类，然后不同的型号都继承抽象类，并且PC和手机上的图形绘制，操作等都是不相...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-30T16:00:00.000Z">2009-12-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/the-programmer-how-to-learn-english/"><article class="md">
-<h2 class="post-title">程序员怎样学习英语</h2><div class="excerpt"><p>英语的重要性已经毋庸置疑，对于程序员来说更甚，一些最新的技术资料是英文的，如果想进入外企英语也是一个很重要的条件。对于程序员来说怎样学习好英语，在此谈一下我的一些学习经验。希望对英语像我这样不怎么好的朋友有所帮助，也欢迎大家提出意见和建议。
-英语的学习不外乎“听说读写”，按照通常的英语学习来说“听说读写”这个顺序是有道理的，语言最大的用处就是用来交流，听说排在首位无可厚非。不过对于程序员来说...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-27T16:00:00.000Z">2009-11-28</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>

@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a><div class="line"></div><a class="more-item" href="/2023/04/read-continuous-architecture-practices/"><div class="cap"><time>2023-06-19</time><span>读书</span></div><span class="title">读《持续架构实践》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/reading-fast-reading-techniques/"><div class="cap"><time>2023-07-19</time><span>读书</span></div><span class="title">读《快速阅读术》</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,18 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2017/09/angular-four-cross-domain-problem-solving/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2017/10/the-adventures-of-mongodb/"><article class="md">
+<h2 class="post-title">MongoDB历险记</h2><div class="excerpt"><p>一直在使用MongoDB来做为底层的数据存储，一直也没有出现什么问题。但就在MongoDB上市之际，一客户的MongoDB挂了,原因很复杂，大概有下面的一些原因和操作：
+
+客户的存储做过迁移；
+服务器打补丁做过重启；
+服务器重启后其中有一台的存储盘丢失；
+MongoDB的所有服务都恢复后，在一个很短的时间内是正常的，测试在这期间做过Web端和PC客户端端测试；
+当测试通知文件不能上传时，发现一台服务器端MongoDB服务不能正常启动，紧接着另一台也不能正常启动；
+此时MongoDB已彻底瘫痪。
+
+上面就是整个事故的经过，发生在周六的夜里九十点钟，接下来就是长达一天一夜的修复工作。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-10-24T15:56:57.000Z">2017-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/09/angular-four-cross-domain-problem-solving/"><article class="md">
 <h2 class="post-title">Angular4跨域问题解决</h2><div class="excerpt"><p>之前在使用Angular1.x的时候就碰到过跨域的问题，在博文《Angularjs跨域调用Asp.Net WebAPI》中有做过介绍。本文介绍下在Angular4中解决跨域问题的两种方法。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-11T15:56:42.000Z">2017-09-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2017/09/run-netcore-two-in-mac-docker/"><article class="md">
 <h2 class="post-title">在Mac的Docker中运行DotNetCore2.0</h2><div class="excerpt"><p>最近学习Angular4，服务端准备使用DotNetCore API来实现，本文简单介绍下在Mac中怎样将DotNetCore程序部署在Docker中，并使用Nginx做反向代理让程序可以跑起来。
@@ -151,8 +162,6 @@
 通过F12查看OWA预览Word的界面，发现Word的每一页会被渲染在一个Img中展示，如下图：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-04-07T16:01:55.000Z">2017-04-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2017/01/CSharp-add-edit-fields-to-PDF/"><article class="md">
 <h2 class="post-title">C#给PDF添加编辑域</h2><div class="excerpt"><p>PDF文档通常是不能编辑的，但有些时候需要在PDF文档中填写日期或签名之类，就需要在PDF有能编辑的文本域，本文介绍怎样用C#来实现这一功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-01-04T15:02:20.000Z">2017-01-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/10/Reading-soft-skills-learning-to-improve-productivity/"><article class="md">
-<h2 class="post-title">读《软技能》：自学提高生产力</h2><div class="excerpt"><p>《软技能》这本书内容较多，在读《软技能》：敏捷个人管理一文中主要谈的是个人管理方面的内容，本文将对怎样进行个人管理、怎样提高生产里进行一点思考。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-10-25T14:29:32.000Z">2016-10-25</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
