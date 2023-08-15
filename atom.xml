@@ -6,7 +6,7 @@
   <link href="http://fwhyy.com/atom.xml" rel="self"/>
   
   <link href="http://fwhyy.com/"/>
-  <updated>2023-07-19T00:29:01.263Z</updated>
+  <updated>2023-08-15T07:03:19.861Z</updated>
   <id>http://fwhyy.com/</id>
   
   <author>
@@ -15,6 +15,76 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>B 端软件：怎样进行竞品分析</title>
+    <link href="http://fwhyy.com/2023/08/b-end-software-how-to-conduct-competitor-analysis/"/>
+    <id>http://fwhyy.com/2023/08/b-end-software-how-to-conduct-competitor-analysis/</id>
+    <published>2023-08-14T01:01:35.000Z</published>
+    <updated>2023-08-15T07:03:19.861Z</updated>
+    
+    <content type="html"><![CDATA[<p>不管是从零开始做一款软件，还是在现有的软件中进行功能迭代，都少不了去找一些类似的软件和功能进行研究，这个就叫竞品分析。</p><p>竞品分析（Competitive Analysis）来源于商业和市场营销领域。指对目标客户群体中提供相似产品或服务的竞争对手的系统分析与研究。</p><p>作为一个 B 端产品经理，在日常工作中也经常会需要进行竞品分析。下面谈谈我对竞品分析的一些理解。</p><span id="more"></span><h2 id="竞品分析的目的"><a href="#竞品分析的目的" class="headerlink" title="竞品分析的目的"></a>竞品分析的目的</h2><p>1、如果你新进入一个行业，竞品分析可以让你快速地了解行业知识和相关的业务。</p><p>2、如果为了设计一个既强大又易用的功能而绞尽脑汁，那竞品分析可以为你打开思路。</p><p>3、多看看外面的世界，对设计产品时的思维方式、思考角度很有帮助，避免闭门造车。</p><h2 id="避坑"><a href="#避坑" class="headerlink" title="避坑"></a>避坑</h2><p>在做竞品分析之前，一定要先搞清楚两个点。</p><p>1、所设计的软件或产品的目标用户是谁？</p><p>2、针对目标用户，哪些是核心功能？哪些是辅助功能？</p><p>例如，同样是低代码产品，是偏技术人员使用还是偏业务人员使用，不同的侧重在功能设计时操作逻辑可能完全不同。</p><p>所以，在做竞品分析的时候，不能只是将功能原封不动地抄过来，否则最终会迭代成四不像。我们分析出来的结果只能作为决策的参考信息，而不应当成为决策的决定性依据。</p><h2 id="竞品的类型"><a href="#竞品的类型" class="headerlink" title="竞品的类型"></a>竞品的类型</h2><p>1、直接竞品：指的就是主要功能和核心用户群都基本相同的产品。 </p><p>研究直接竞品，可以直观地帮助我们看到自家产品与对方产品在功能、业务流程、用户体验上的直接区别，直观地看到自己在哪些点做的好，在哪些点做的不好。这种直观的对比，可以更清晰地进行功能的改进和规划，少走弯路。</p><p>2、间接竞品：间接竞品有两类：</p><ul><li><p>一类是用户群相同，主要功能不同</p></li><li><p>一类是主要功能类似，但用户群不同</p></li></ul><blockquote><p>例如：你做的低代码产品是面向头部客户、采用私有化部署的方式进行业务落地。那么像明道云、氚云等就属于功能类似，用户群不同。因为他们是  SaaS  模式，面向中小企业。</p><p>像泛微也是面向头部客户、也可以采用私有化部署，但他的业务主要还是  OA  相关，这种就属于用户相同，主要功能不相同。</p></blockquote><p>间接竞品能帮助我们获取一些框架外的参考或灵感，有助于打破常规，出圈突破。</p><h2 id="竞品分析关键点"><a href="#竞品分析关键点" class="headerlink" title="竞品分析关键点"></a>竞品分析关键点</h2><p>1、确定目标</p><ul><li><p>搞清楚做竞品分析的目的是什么?</p></li><li><p>是为了调整产品策略还是优化产品的用户体验?</p></li><li><p>是为了产品整体功能的横向拓展还是某个特定功能的纵向深入优化？</p></li><li><p>最后的分析报告是给谁用？UI  设计？产品经理？工程师？还是老板？</p></li></ul><p>就跟阅读一样，带着这些目的和问题，会更高效。只有想清楚了这些问题，在选择竞品、搜集资料、对比分析时才会有的放矢。</p><p>2、结合第一点中的问题和思考，按照上面归纳的竞品的类型，合理选择竞品。</p><p>3、对比分析</p><ul><li>结合不同的竞品，整理功能列表，颗粒度尽可能小</li><li>将功能重合度高的进行优先级排序</li><li>如果这些重合度高的功能在我们自己的产品中还没有，那就可以重点分析了</li></ul><h2 id="分析过程中的方式方法"><a href="#分析过程中的方式方法" class="headerlink" title="分析过程中的方式方法"></a>分析过程中的方式方法</h2><p>1、当我们去试用一个竞品时，可以先把主流程完整地走一遍，在这个过程中，结合目标问题，总结出总体架构，每个产品都有自己的一条核心主线，掌握这条主线就很容易顺藤摸瓜去了解全部。</p><p>2、发现和自己产品不太一样的功能或者操作体验时，去思考竞品中的设计能解决什么问题？可以切中什么样的场景？</p><p>3、如果推导出了场景，先将自己假想成一个小白用户，遇到这样的场景时，期望能有什么样的功能来满足需求。然后想想如果自己是这个产品的负责人、设计者，会用什么方案来解决？跟竞品的设计会有什么样的差异？</p><p>4、自己的产品在业务落地时，肯定会遇到各种各样客户个性化要求，面对这些客户问题，在竞品中有没有更好的解决方案？</p><p>5、当然在过程中，也可以采用自己熟悉的工具加以辅助，例如：SWOT 分析法、用户体验五要素分析法、PEST 模型等等。</p><h2 id="收集信息的渠道"><a href="#收集信息的渠道" class="headerlink" title="收集信息的渠道"></a>收集信息的渠道</h2><p>了解更多的信息渠道，可以更全方位地了解到竞品的公司情况、产品功能等。</p><p>1、能直接试用的，最好的方式就是注册账号去进行试用。</p><p>2、部分功能对免费用户不开放时，可以去查看帮助文档、视频教程。</p><p>3、找到竞品产品的公众号、视频号、微博、官网案例等，去翻阅历史信息，可以了解竞品的发展历程、功能选择的取舍。</p><p>4、通过一些专业咨询网站，可以从侧面了解到竞品的信息，还可以了解行业信息。例如：智研咨询、艾瑞咨询、36氪企服点评等。</p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>竞品分析是一件耗费精力的事情，也是一项需要有耐心的工作。需要通过科学的分析方法，为产品设计提供实用的参考价值，这些价值最后会体现为良好的用户体验、完整的功能闭环和更好的营收。</p><p>至于竞品分析的结果怎么呈现，我觉得不太重要，重要的是中间分析的过程和结论。至于结果怎么呈现，看报告写给谁用？再来决定是采用表格、图表、还是文档的形式。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;不管是从零开始做一款软件，还是在现有的软件中进行功能迭代，都少不了去找一些类似的软件和功能进行研究，这个就叫竞品分析。&lt;/p&gt;
+&lt;p&gt;竞品分析（Competitive Analysis）来源于商业和市场营销领域。指对目标客户群体中提供相似产品或服务的竞争对手的系统分析与研究。&lt;/p&gt;
+&lt;p&gt;作为一个 B 端产品经理，在日常工作中也经常会需要进行竞品分析。下面谈谈我对竞品分析的一些理解。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="产品" scheme="http://fwhyy.com/categories/%E4%BA%A7%E5%93%81/"/>
+    
+    
+    <category term="B 端软件" scheme="http://fwhyy.com/tags/b-%E7%AB%AF%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="竞品分析" scheme="http://fwhyy.com/tags/%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>B 端软件：产品经理正确打开方式</title>
+    <link href="http://fwhyy.com/2023/08/the-correct-opening-method-for-the-b-end-software-product-manager/"/>
+    <id>http://fwhyy.com/2023/08/the-correct-opening-method-for-the-b-end-software-product-manager/</id>
+    <published>2023-08-02T01:53:13.000Z</published>
+    <updated>2023-08-15T06:58:26.124Z</updated>
+    
+    <content type="html"><![CDATA[<p>早些年 B 端软件流行瀑布式开发，以给客户提供解决方案为目的，没有成熟的产品，以定制化的方式进行交付，这里面有一个重要的岗位衔接着客户和开发，就是：需求分析师。</p><span id="more"></span><p>现在 B 端软件有很多的业务型产品软件、也有很多平台型产品软件，需求分析师变少了，产品经理变多了。</p><p>本文聊聊 B 端软件开发中的产品经理应该做些什么？</p><p>疫情前面试过不少产品经理，大部分提到 APP 、小程序的设计如数家珍，但涉及到 B 端软件就有点力不从心了，说明 B 端软件和 C 端有着很大的区别：</p><p>1、C 端软件服务于个人；B 端软件服务于企业、组织。</p><p>2、C  端软件更注重体验，希望简单易用，像微信，全国人民都在使用、抖音，三岁小孩都知道手指往上滑；B 端软件更注重效率，能给企业带来价值，降本增效。</p><p>3、C 端软件的使用角色相对单一，就是使用软件的个人；B 端软件有上层决策者、中层管理者、下层普通员工，会涉及到不同角色的工作台、权限、数据视图、操作流程等。</p><p>4、C 端软件要么花时间、要么花钱，尽管如此，每个人还是自愿花时间和金钱在上面；B 端软件能帮企业赚钱或省钱，但对普通员工来说，不一定是友好的，可能会改变工作习惯或增加工作量，需要自上而下，宣传、培训到最后熟练使用。</p><p>5、C 端软件通常凸显核心功能，其他辅助；B 端软件可能存在业务对使用人群有所偏重，但都很重要。</p><p>6、C 端软件使用简单，迁移成本低，导致有些笔记类软件担心用户流失，开放度小，限制导入导出数据；B 端软件从采购初期企业就有各种考虑，到最终上线使用，会经历一个相对长的时间、会涉及很多不同的业务部门，迁移成本高。所以很多战略项目即使不赚钱也要先把坑占着，后面才能做二期、三期。</p><p>正是因为有着很大的差别，所以在设计 B 端软件的时候，思考的方式、角度、侧重点都不一样，了解这些差别，能帮助产品经理更好地理解 B 端产品。</p><p>对 B 端产品经理来说，去设计一款 B 端软件，也是有章法可寻的，例如：拿开发具备低代码能力的  aPaaS  平台来说：</p><p>1、搞清楚开发的软件最终用户是业务人员还是技术人员？</p><p>2、搞清楚软件是私有化部署还是  SaaS  模式提供服务？还是需要同时支持两种？</p><p>3、了解  aPaaS  平台、低代码的概念、基本业务逻辑和实现原理，现在低代码已经烂大街了，资料非常地多。</p><p>4、做竞品分析，现在各种云产品都可以注册试用，即使有些付费功能不能用，也可以通过帮助文档了解功能详情和设计思路。做竞品分析的目的不是去抄功能，而是结合软件的最终目标，提升自己对业务的理解。</p><p>5、理清核心功能脉络，在企业级应用中，可以分四个部分：</p><ul><li>浏览器打开的界面中的各种交互和 UI 展现</li><li>审批流</li><li>业务流</li><li>集成扩展能力</li></ul><p>根据四个点可以去思考：</p><ul><li>界面的交互怎么样才能比较灵活？UI  风格怎样适应不同的行业？</li><li>审批中是自动流转还是手动选择下一节点和处理人？审批是独立挂载还是和数据模型集成在一起？</li><li>业务流的触发点有哪些？界面的交互和业务流怎么高效结合？</li><li>需要具备哪些扩展能力？</li></ul><p>6、上面提到了在 B 端软件中有高层、中层、底层不同的角色，不同的角色看到的工作台不一样、数据不一样、功能菜单、按钮不一样，需要设计既能满足业务又能操作简单的权限体系。</p><p>7、除了核心功能这条主线，还需要考虑一些辅助能力，比如：日志、监控、预警、配置等。</p><p>8、所有功能梳理完后，需要从中摘出一条最小可执行的单元，也就是  MVP，然后进行原型设计，包括：页面操作逻辑、交互规则。</p><p>9、拉着技术的前后端负责人，进行宣讲，听听意见，如果涉及到实现问题也能提前进行沟通。</p><p>10、方案确定后，配合 UI 进行高清图的设计，包括颜色、精细布局、字体、字号，整体效果出来后可以再进行一轮沟通和讨论。</p><p>上面是举例说明了产品经理做事的步骤，在实践这些步骤时，产品经理需要具备一些基本能力：</p><p>1、学习能力：从没接触过 B 端软件，到能熟练掌握概念、业务流程等需要有极强的学习和理解能力。</p><p>2、沟通能力：要能理解需求方的要求，也要和技术进行实现相关的沟通。</p><p>3、专业知识：如果是做垂直行业软件需要熟悉对应行业的业务、如果是通用性需要了解行业共性的知识、其他还包括专业工具的使用、软件开发流程等。</p><p>4、抽象思维：需求方在提需求时，往往会赠送一个解决方案，产品经理这时就不能照单全收，需要有自己的思考，挖出背后真实需求，并转化为软件中的一个功能。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;早些年 B 端软件流行瀑布式开发，以给客户提供解决方案为目的，没有成熟的产品，以定制化的方式进行交付，这里面有一个重要的岗位衔接着客户和开发，就是：需求分析师。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="产品" scheme="http://fwhyy.com/categories/%E4%BA%A7%E5%93%81/"/>
+    
+    
+    <category term="B 端软件" scheme="http://fwhyy.com/tags/b-%E7%AB%AF%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="产品经理" scheme="http://fwhyy.com/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎样在  Github  中使用免密登录？</title>
+    <link href="http://fwhyy.com/2023/07/how-to-use-password-free-login-in-github/"/>
+    <id>http://fwhyy.com/2023/07/how-to-use-password-free-login-in-github/</id>
+    <published>2023-07-23T01:49:05.000Z</published>
+    <updated>2023-08-15T06:51:41.607Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在互联网上注册各种网站，密码经常会忘记，非常麻烦。以前还能各网站使用同一密码，虽然不太安全，但好记。现在各种网站的密码规则变强，还都不太一样，记密码就更难了。</p><p>如果有一种方式，能免密登录，就可以解决记不住密码的烦恼了。</p><span id="more"></span><h2 id="什么是免密登录？"><a href="#什么是免密登录？" class="headerlink" title="什么是免密登录？"></a>什么是免密登录？</h2><p>免密登录其实我们每天都在使用。</p><p>手机上按下指纹、或者刷个脸就能进入系统，类似这样的操作就是免密登录，只不过在  PC  使用浏览器访问网站时，大多都还是需要使用账号密码登录，为了安全性，可能还需要输入各种稀奇古怪的验证码。</p><p>现在有一种无需输入密码的解决方案：Passkey 。</p><h2 id="什么是-Passkey-？"><a href="#什么是-Passkey-？" class="headerlink" title="什么是 Passkey ？"></a>什么是 Passkey ？</h2><p>1、Passkey  不需要使用密码，而是使用密钥，接入了  Passkey 的网站会保存用户的公钥，登陆时用户使用私钥。</p><p>2、用户不需要知道私钥是什么，也不需要在登录时输入私钥，私钥通过「身份管理器」来提供。</p><p>2、「身份管理器」负责生成密钥，私钥自己保管，公钥提供给网站，「身份管理器」通常指指纹识别、人脸识别、或一些专用设备。</p><p>3、用户登录，网站会向「身份管理器」发请求，身份管理器验证身份（指纹、人脸识别）后允许使用私钥。</p><p>4、对用户来说就是按下指纹就登录网站了。</p><p>5、Passkey 的官网地址为：<a href="https://www.passkeys.io/">https://www.passkeys.io/</a> ，可以去进行体验。</p><h2 id="如何在-Github-中使用？"><a href="#如何在-Github-中使用？" class="headerlink" title="如何在  Github  中使用？"></a>如何在  Github  中使用？</h2><p>1、点击「头像」-&gt;「Feature preview」-&gt;「Passkeys」，将 Passkeys  功能开启，如下图：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655666.webp"></p><p>2、点击「头像」-&gt;「Settings」，进行设置：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655807.webp"></p><p>3、开启了  Passkeys  功能后，在「Password and authentication」设置中就可以看到  Passkeys  的设置，如下图：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655985.webp"></p><p>4、点击「Add a passkey」后会出现  Github  的登录确认：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655819.webp"></p><p>5、确认后点击「Add passkey」按钮：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221656679.webp"></p><p>6、因为我的使用场景是  Mac  上的  Chrome  浏览器，我选择的是「此设备」：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655038.webp"></p><p>7、根据向导继续，会弹出指纹校验的界面，在电脑上进行指纹识别就可以了：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655571.webp"></p><p>8、指纹识别成功后，如下图：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655331.webp"></p><p>9、可以看到在  Passkeys  中成功加入了我的身份信息：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221655885.webp"></p><p>10、现在可以退出  Github  来试试新的登录方式了，点击使用  Passkey  方式，进行指纹识别就可以成功登录了：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202307221656776.webp"></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>希望  Passkey  能被更多的网站接入，这样就可以解决记密码的烦恼了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;我们在互联网上注册各种网站，密码经常会忘记，非常麻烦。以前还能各网站使用同一密码，虽然不太安全，但好记。现在各种网站的密码规则变强，还都不太一样，记密码就更难了。&lt;/p&gt;
+&lt;p&gt;如果有一种方式，能免密登录，就可以解决记不住密码的烦恼了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="http://fwhyy.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Github" scheme="http://fwhyy.com/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>读《快速阅读术》</title>
@@ -407,80 +477,6 @@
     
     
     <category term="ChatGPT" scheme="http://fwhyy.com/tags/chatgpt/"/>
-    
-    <category term="AI" scheme="http://fwhyy.com/tags/ai/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ChatGPT 应用合集</title>
-    <link href="http://fwhyy.com/2023/03/chatgpt-app-collection/"/>
-    <id>http://fwhyy.com/2023/03/chatgpt-app-collection/</id>
-    <published>2023-03-13T02:26:54.000Z</published>
-    <updated>2023-06-19T08:56:22.614Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近用了一些 ChatGPT 的周边产品，挑几个感觉不错的分享下。</p><span id="more"></span><h2 id="1、Poe"><a href="#1、Poe" class="headerlink" title="1、Poe"></a>1、Poe</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117617.webp"></p><p>地址：<a href="https://poe.com/">https://poe.com</a></p><p>Poe 内置了 Sage、Claude、Dragonfly、和 ChatGPT 。其中，Sage 是基于 ChatGPT 简化版本的 AI 机器人。目前 Poe 移动端只支持 iOS，而且是非国区的，不过网页版可以用。</p><p>目前使用频率比较高的一个工具。</p><h2 id="2、Aski"><a href="#2、Aski" class="headerlink" title="2、Aski"></a>2、Aski</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117989.webp"></p><p>地址：<a href="https://aski.ai/">https://aski.ai/</a></p><p>Aski 是一款基于 OpenAI 的 GPT-3 自然语言处理模型的中文 AI 问答服务。回答快速，几乎无延迟。在问答服务之外，<strong>Aski</strong> 还提供了内容创作服务，支持内容写作、优化，最近又推出了绘画功能。目前，Aski 支持网页端、移动端。</p><p>缺点是收费，注册账号送 10 个 AI 币，有点太少了。</p><h2 id="3、风声雨声"><a href="#3、风声雨声" class="headerlink" title="3、风声雨声"></a>3、风声雨声</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117755.webp"></p><p>地址：<a href="https://fsys.app/translate">https://fsys.app/translate</a></p><p>可以对 epub 、txt 书籍进行翻译，亮点是提供书籍搜索功能，下载好书籍后，将书籍上传到系统，点击开始即可。</p><p>我尝试了下 Working Backwards 这本书，上传完成后根据字数有一个价格的估算，这本书的估算为 6.36 元，不算太贵。</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191118148.webp"></p><h2 id="4、ChatHub"><a href="#4、ChatHub" class="headerlink" title="4、ChatHub"></a>4、ChatHub</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117959.webp"></p><p>这是 Chrome 浏览器的一个插件。</p><p>使用这个插件可以一次提问，同时获得 ChatGPT 和 New Bing 的回答。ChatGPT 需要配置自己的 Key 才可以。</p><h2 id="5、OpenGpt：一个AI应用合集"><a href="#5、OpenGpt：一个AI应用合集" class="headerlink" title="5、OpenGpt：一个AI应用合集"></a>5、OpenGpt：一个AI应用合集</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117960.webp"></p><p>地址：<a href="https://open-gpt.app/">https://open-gpt.app/</a></p><p>这个网站现在有 1000 多个应用，比如：写诗、取名、修改错别字、翻译等，按照使用场景分的很细，也可创建自己的应用。</p><p>每天每个用户免费使用 10 次，使用 自己的 API key 可以解除限制。</p><h2 id="6、you-com-的-chat-模块"><a href="#6、you-com-的-chat-模块" class="headerlink" title="6、you.com 的 chat 模块"></a>6、you.com 的 chat 模块</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117951.webp"></p><p>地址：<a href="https://you.com/">https://you.com</a></p><p>you.com 是一个搜索引擎，Chat 是这款搜索引擎中的一个模块。在 Chat 模块进行搜索，中间区域给给出一个最优答案，右侧也会有通过搜索引擎返回的结果列表。</p><h2 id="7、chatpdf"><a href="#7、chatpdf" class="headerlink" title="7、chatpdf"></a>7、chatpdf</h2><p>地址：<a href="https://www.chatpdf.com/">https://www.chatpdf.com/</a></p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117552.webp"></p><p>可以分析 PDF 文件的内容，提取内容，通过问答的方式对 PDF 内容进行学习，不过免费版有一些限制：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117482.webp"></p><p>所以我将《凤凰架构》这本书摘录了不到 50 页，上传后效果如下：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117786.webp"></p><h2 id="8、pandagpt"><a href="#8、pandagpt" class="headerlink" title="8、pandagpt"></a>8、pandagpt</h2><p>地址：<a href="https://www.pandagpt.io/">https://www.pandagpt.io/</a></p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117261.webp"></p><p>这个和 ChatPDF 有点类似，也是可以帮助我们来阅读 PDF 文件，免费版我将 《凤凰架构》整本书都上传成功了。同样，也是通过问答的方式进行使用：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117188.webp"></p><h2 id="9、周报生成器"><a href="#9、周报生成器" class="headerlink" title="9、周报生成器"></a>9、周报生成器</h2><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191117832.webp"></p><p>地址：<a href="https://weeklyreport.avemaria.fun/zh">https://weeklyreport.avemaria.fun/zh</a></p><p>将一周所做的事情罗列下，就能生成一份很详细的周报，稍微改改就能用，有周报困扰的同学可以试试。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;最近用了一些 ChatGPT 的周边产品，挑几个感觉不错的分享下。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="http://fwhyy.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="工具" scheme="http://fwhyy.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="ChatGPT" scheme="http://fwhyy.com/tags/chatgpt/"/>
-    
-    <category term="分享" scheme="http://fwhyy.com/tags/%E5%88%86%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《沸腾十五年》</title>
-    <link href="http://fwhyy.com/2023/03/read-boiling-for-fifteen-years/"/>
-    <id>http://fwhyy.com/2023/03/read-boiling-for-fifteen-years/</id>
-    <published>2023-03-09T02:24:40.000Z</published>
-    <updated>2023-06-19T02:27:00.428Z</updated>
-    
-    <content type="html"><![CDATA[<p>《沸腾十五年》记录了中国互联网行业从 1995 年到 2009 年的发展历程，深入探讨了互联网行业的商业模式、技术发展、市场竞争等方面的问题，讲述了一群热血青年使用技术改变世界的故事。</p><span id="more"></span><p>它不仅仅是一本关于初代互联网人的创业史，也是一本关于互联网大佬们背后故事的八卦书，让读者有机会深入了解这个行业以及参与者的历史、文化和精神。</p><p>书中的大佬们的创业故事让人佩服，看得让人热血沸腾，但更令人佩服的是本书的作者——林军，他是互联网行业的资深媒体人和创业者，他用自己的亲身经历和深入采访，还原了那段波澜壮阔的时代，也挖掘了很多幕后的信息，让我们对现在已经耳熟能详的企业有更深的理解。</p><p>书中的内容非常丰富，与此同时，我也在这个时代的浪潮中不断接受互联网的洗礼。接下来，我想分享一些我印象深刻的事情：</p><p>1、1995 年被称为中国互联网元年，随着中国电信开通了北京、上海两个 Internet 节点，打开了互联网世界的大门，此时的我刚刚小学毕业，印象中电子产品有电子手表和俄罗斯方块的掌上游戏机，在相对落后的农村，电脑连听都没听说过。</p><p>2、随后的几年，丁磊从电信局离职，创办了网易；王志东创办四通利方，然后和华渊合并变成了大家所熟知的新浪；张朝阳也从硅谷回国，便有了搜狐的诞生，这就是当年互联网的三大门户网站。现在我还清晰地记得，高中时学校所在的镇上有了网吧，去上网时会将一些网址抄写到小本本上，三大门户肯定是在其中的。</p><p>3、除了浏览网页，另一个很流行的活动是使用 QQ 进行聊天。当时，还能申请到 7 位数的 QQ 号。马化腾在做 QQ 的时候肯定没有想到如今能有如此体量，更想不到现在微信成了国民应用。QQ 的厉害还体现在架构上，1998 年张志东设计的 QQ 架构在 10 几年后用户量级过亿仍然适用，真的是不可思议。</p><p>4、从产品本身来说，QQ 最初只是模仿了 ICQ ，但在模仿之后并没有止步于简单的复制或跟随他人的步伐，而是根据中国市场和用户需求不断进化。这就是创新，包括后来的团购、各类互联网 SaaS 应用，大多都是先模仿国外的产品，然后进行本土化改造。所以说，学习好英语非常重要，会打开另一扇门，获得更多的信息，利用好这个信息差，就会创造出很多的机会。</p><p>5、2010 年的 3Q 大战曾轰动一时，其中一方是奇虎360，创始人周鸿祎在早些年还弄过一个产品叫 3721，被很多网友诟病，被称为流氓软件，其背后的原因是为了流量而忽略了用户体验，在网页中利用脚本强制弹窗让用户安装插件，小白用户点击同意莫名其妙安装了软件，资深用户点击拒绝，下次打开网页还会继续弹窗，确实挺讨厌的。最后，3721 被雅虎收购。</p><p>6、一上大学，就有了自己的电脑，计算机专业成了一个买电脑很好的理由。宿舍里电话线拨号上网，印象最深的就是网速特别慢。那会，姚明加入 NBA ，一堆人凑在电脑前，看着不断缓冲且模糊的直播画面，也津津有味。</p><p>7、大学期间，因为网速慢，将资源下载到本地变成了刚需，出现了很多像华军、天空这类的资源站，也出现了很多下载工具：网际快车、网络蚂蚁、快驴等，但迅雷后来者居上，成为了当时最受欢迎的下载工具，就是因为下载速度快。哪怕没有占得先机，在一个用户痛点上下功夫，做到极致，也是有机会的。</p><p>8、百度一直被吐槽，著名的骨灰级程序员左耳朵耗子曾写过一篇文章《作环保的程序员，从不用百度开始》，可见对百度的痛恨之深。尽管如此，百度是我接触互联网时用的第一个搜索引擎，现在使用人数应该也是最多的，特别是非技术人员。</p><p>9、书中讲述李彦宏签订第一轮投资前，投资人和李彦宏的对话令我印象深刻，投资人对李彦宏说：“搜索引擎技术的前三名，一定有你”。在吐槽的背后，不能忽视百度的技术能力，最近 ChatGPT 很火，冯大辉也在公众号文章提到百度在 ChatGPT 这个风口会更能占得先机，在自然语言处理（NLP）领域，百度是唯一一家拥有全栈 AI 技术架构的公司，而且也推出了类 ChatGPT 的服务：文心一言。</p><p>10、豆瓣在互联网绝对是一个独特的存在，创始人阿北是个文艺青年，所以豆瓣一直都有着文艺的气质。技术上也比较激进，选择了当时还比较小众的 Python ，在成熟技术和新技术之间一定是选择新技术，因为他们认为新的技术出现必然是为了解决原有成熟技术的某些问题。豆瓣对开源是积极拥抱的态度，优先选择开源技术，自研技术只要是非业务相关的也全部开源。</p><p>11、豆瓣的开源精神是融入到骨子里、文化中的，印象比较深刻的是内部自发的开源项目 Code，工程师喝酒聊天聊需求，然后自发地认领，做完后提交 pull request ，就这样用业余时间做了一个基于 git 版本控制系统的协作平台，现在在 GitHub 上开源了。</p><p>12、我 2007 年成为豆瓣用户，那会已经工作了，到现在十几年，虽然不算是深度用户，但也一直陪伴着，用的多的功能还是刚推出时的电影、书籍。</p><p>13、开心网的火爆是在 2008 年到 2009 年，当时在一家小公司，有着一个很好的老板和关系融洽的同事们，每天工作之余偷菜、停车，不亦乐乎，现在都还很怀念那段时光。看完本书才发现原来当时的真假开心网是因为资金不足没有买到正牌域名。</p><p>14、读完后，发现书中的创业者或者企业家，要么有高学历，要么拥有强大的家庭背景，或者出国留学过，这些因素在他们的创业路上提供了很多便捷，普通人如果想要取得这样的成绩，除了要付出加倍的努力外，更多的是需要运气。</p><p>15、在这本书结束的 2009 年后，互联网仍然在飞速地进步和发展着，包括人工智能、移动互联网、区块链、5G、元宇宙、Web3，还有最近火爆的 ChatGPT 更是一项具有革命性的技术创新。我相信技术的进步能让我们变得更加自由。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;《沸腾十五年》记录了中国互联网行业从 1995 年到 2009 年的发展历程，深入探讨了互联网行业的商业模式、技术发展、市场竞争等方面的问题，讲述了一群热血青年使用技术改变世界的故事。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="读书" scheme="http://fwhyy.com/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-    <category term="读书" scheme="http://fwhyy.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-    <category term="互联网" scheme="http://fwhyy.com/tags/%E4%BA%92%E8%81%94%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用微软的 New Bing</title>
-    <link href="http://fwhyy.com/2023/03/try-microsoft-new-bing/"/>
-    <id>http://fwhyy.com/2023/03/try-microsoft-new-bing/</id>
-    <published>2023-03-06T00:13:47.000Z</published>
-    <updated>2023-06-19T02:24:20.711Z</updated>
-    
-    <content type="html"><![CDATA[<p>ChatGPT 现在大家都已经非常熟悉了了，走到哪都能听到讨论的声音，是基于 GPT3.5 的一个语言模型。微软在 2 月推出的新必应（New Bing）是一个基于 GPT4（猜测）模型的搜索和聊天工具，它可以提供更准确和实时的搜索结果，并且集成了Edge 浏览器的数据资源。</p><p>最近申请了 New Bing 简单试用  ，觉得还挺不错的。</p><h2 id="申请"><a href="#申请" class="headerlink" title="申请"></a>申请</h2><p>可以按照下面的步骤来进行新必应（New Bing）的申请：</p><p>1、先下载并安装 Edge 浏览器 dev 版本，在：<a href="https://www.microsoftedgeinsider.com/zh-cn/download/dev">Microsoft Edge 预览体验成员 (microsoftedgeinsider.com)</a>  进行下载安装：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008420.webp"></p><p>2、打开浏览器的设置-&gt;关于，可以进行 New Bing 使用的申请：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008517.webp"></p><p>3、登录后加入候补名单：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008380.webp"></p><p>4、然后就是等待，很幸运，一天的时间就通过了申请，使用界面如下：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008300.webp"></p><h2 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h2><p>New Bing 的主题功能分为聊天、撰写和见解。</p><h3 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h3><p>和 ChatGPT 类似，使用问答的形式进行交互，除了基础的输入框进行提问外，还能设置响应的语气。</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008948.webp"></p><h3 id="撰写"><a href="#撰写" class="headerlink" title="撰写"></a>撰写</h3><p>将文字的创作单独剥离出来，提供更多的配置选项，更方便使用：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008833.webp"></p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><h3 id="实时性"><a href="#实时性" class="headerlink" title="实时性"></a>实时性</h3><p>在聊天功能中，虽然和 ChatGPT 一样都是问答的模式，但它可以实时访问网络数据，找到 ChatGPT 没见过的数据，更加实时。</p><p>例如：我们分别让 New Bing 和 ChatGPT 评价下春节档的电影《满江红》就能看出区别了。</p><p>ChatGPT 并不知道春节上映的电影《满江红》，因为它的语言模型是 2021 年训练的，但可怕的是 ChatGPT 并不知道自己不知道，仍然会胡说八道一通。</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008681.webp"></p><p>而在 New Bing 中，能够搜索到最新的信息，还能给出出处链接：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008192.webp"></p><h3 id="互动性"><a href="#互动性" class="headerlink" title="互动性"></a>互动性</h3><p>在问答的过程中 ，New Bing 会给出一些推荐的关键词来和我们进行互动，我们可以通过给出的关键词进一步和 New Bing 进行互动，也可以自己输入新的问题。</p><h3 id="准确性"><a href="#准确性" class="headerlink" title="准确性"></a>准确性</h3><p>New Bing 会根据你提的问题结合搜搜引擎和基础语言模型，最终组成答案进行输出，而且在答案中会给出来源出处，点击链接可以进入到原始网页进行查看。</p><h3 id="文章总结"><a href="#文章总结" class="headerlink" title="文章总结"></a>文章总结</h3><p>在网页中打开一篇文章，可以让 New Bing 来协助我们进行阅读，总结文章的内容。</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008153.webp"></p><h2 id="遗憾"><a href="#遗憾" class="headerlink" title="遗憾"></a>遗憾</h2><p>1、2 月 18 日，微软通过官方博客宣布，基于 AI 的新版必应对话功能将加入问答限额，每天最多回答 50 次问题，每次连续对话最多回答 5 个问题。微软称，根据统计，绝大多数用户都能在 5 轮问答内找到满意答案，只有大约 1% 的对话产生超过 50 条消息；定期清除对话记录有助于避免模型产生混淆。</p><p>2、回答的效果上好像也做了些调整，变得相对严肃，记得刚出来时，看了 B 站一个视频，它的风格是这样的：</p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008278.webp"></p><p><img src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306191008563.webp"></p><p>3、账号容易被封，就在我写这篇文章的时候，我的账号已经是不能使用了，一些网友给出的最有效的解决方式就是申请一个新的账号。</p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>ChatGPT、New Bing、国内的 MOSS、Google 的 Bard ，Notion 也推出了 AI ，相信很快，更多的、更易用的各种应用都会来到我们身边，真的感觉 AI 新纪元要来临了。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;ChatGPT 现在大家都已经非常熟悉了了，走到哪都能听到讨论的声音，是基于 GPT3.5 的一个语言模型。微软在 2 月推出的新必应（New Bing）是一个基于 GPT4（猜测）模型的搜索和聊天工具，它可以提供更准确和实时的搜索结果，并且集成了Edge 浏览器的数据资源</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="http://fwhyy.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="工具" scheme="http://fwhyy.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
     <category term="AI" scheme="http://fwhyy.com/tags/ai/"/>
     

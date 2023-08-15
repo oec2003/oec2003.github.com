@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/07/reading-fast-reading-techniques/"><div class="cap"><time>2023-07-19</time><span>读书</span></div><span class="title">读《快速阅读术》</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-common-knowledge-sorting/"><div class="cap"><time>2023-07-05</time><span>产品</span></div><span class="title">B 端软件：常见知识梳理</span></a><div class="line"></div><a class="more-item" href="/2023/06/the-feeling-of-using-logseq-for-a-year/"><div class="cap"><time>2023-06-28</time><span>成长</span></div><span class="title">Logseq：使用一年的感受</span></a><div class="line"></div><a class="more-item" href="/2023/06/galaxy-kirin-system-installation-middleware/"><div class="cap"><time>2023-06-20</time><span>技术</span></div><span class="title">银河麒麟系统安装中间件</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/08/b-end-software-how-to-conduct-competitor-analysis/"><div class="cap"><time>2023-08-15</time><span>产品</span></div><span class="title">B 端软件：怎样进行竞品分析</span></a><div class="line"></div><a class="more-item" href="/2023/08/the-correct-opening-method-for-the-b-end-software-product-manager/"><div class="cap"><time>2023-08-15</time><span>产品</span></div><span class="title">B 端软件：产品经理正确打开方式</span></a><div class="line"></div><a class="more-item" href="/2023/07/how-to-use-password-free-login-in-github/"><div class="cap"><time>2023-08-15</time><span>技术</span></div><span class="title">怎样在  Github  中使用免密登录？</span></a><div class="line"></div><a class="more-item" href="/2023/07/reading-fast-reading-techniques/"><div class="cap"><time>2023-07-19</time><span>读书</span></div><span class="title">读《快速阅读术》</span></a><div class="line"></div><a class="more-item" href="/2023/07/b-end-software-sorting-out-knowledge-on-innovation-and-localization/"><div class="cap"><time>2023-07-12</time><span>产品</span></div><span class="title">B 端软件：信创、国产化知识梳理</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,20 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2010/02/some-tips-of-sqlserver/"><article class="md">
+<h2 class="post-title">SqlServer数据库的语句及一些操作整理</h2><div class="excerpt"><p>临近年终，在工作之余对工作和学习中遇到的问题以及常用的一些知识点做了些整理，以备后用。本文涉及的内容为数据库,算是对开发总结(1)—数据库一文的补充。
+1 对于主键设置了Identity的表，在删除表中数据后再往表中插入数据，Identity列不是从1起始了，如果想删除数据后Indentity列仍从1起始，可以用下面代码来删除数据。
+12truncate table tablenameDBC...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-01T16:00:00.000Z">2010-02-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-23-strategy-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(23)—策略者模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一系列算法，把它们一个个封装起来，并且使它们可互相替换。该模式使得算法可独立于使用它的客 户而变化。
+动机在软件构建过程中，某些对象使用的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使对象变得异常复杂；而且有时候支持不使用的算法也是一个性能负担。如何在运行时根据需要透明地更改对象的算法？将算法与对象本身解耦，从而避免上述问题？看下面的策略者模式的结构图和基本代...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-30T16:00:00.000Z">2010-01-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-22-state-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(22)—状态模式（行为型）</h2><div class="excerpt"><p>Gof定义允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。
+动机在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。如何在运行时根据对象的状态来透明地更改对象的行为？而不会为对象操作和状态转化之间引入紧耦合？看下面状态模式的结构图和代码。
+状态模式结构图：
+
+日常生活中我们常见...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-27T16:00:00.000Z">2010-01-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(20)—职责链模式（行为型）</h2><div class="excerpt"><p>Gof定义使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递请求，直到有一个对象处理它为止。
 动机在软件构建过程中，一个请求可能被多个对象处理，但是每个请求在运行时只能有一个接受者，如果显式指定，将必不可少地带来请求发送者与接受者的紧耦合。如何使请求的发送者不需要指定具体的接受者？让请求的接受者自己在运行时决定来处理请求，从而使两者...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-26T16:00:00.000Z">2010-01-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2010/01/design-patterns-notes-21-memo-pattern/"><article class="md">
@@ -134,18 +147,6 @@ Lable：
 下面看下解释器模式的结构图：
 
 基本...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-18T16:00:00.000Z">2010-01-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/wuhan-goodbye/"><article class="md">
-<h2 class="post-title">武汉 再见</h2><div class="excerpt"><p>从毕业到现在一直呆在武汉，已经两年多了，经历了两个公司，现在的这个公司虽小，但氛围很好，和同事也关系也相处得非常融洽，最重要的是有一个人品极佳的经理，从他身上我也学到了很多。所以说这一年多的时间里我过得还不错，我很高兴在这样的公司工作这么长时间。
-然而现在我却要离开，这个想法也是最近的几个月萌发的，我必须去大城市闯一闯，因为我已经不再年轻，在不闯就真的没机会了，目标城市北京，原因有三：
-
-我...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-11T16:00:00.000Z">2010-01-12</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2010/01/jquery-upload-plugin-uploadify-use-explanation/"><article class="md">
-<h2 class="post-title">jQuery上传插件Uploadify使用详解</h2><div class="excerpt"><p>本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。
-
-官方下...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/the-first-snow-of-2010/"><article class="md">
-<h2 class="post-title">2010年的第一场雪</h2><div class="excerpt"><p>
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
