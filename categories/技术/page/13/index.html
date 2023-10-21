@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/08/plugin-development-implement-picgo-image-to-webp-format/"><div class="cap"><time>2023-08-28</time><span>技术</span></div><span class="title">插件开发：实现 PicGo 图片转 webp 格式</span></a><div class="line"></div><a class="more-item" href="/2023/08/software-recommendation-mac-artifact-raycast/"><div class="cap"><time>2023-08-28</time><span>成长</span></div><span class="title">软件推荐：Mac神器  Raycast</span></a><div class="line"></div><a class="more-item" href="/2023/08/b-end-software-how-to-conduct-competitor-analysis/"><div class="cap"><time>2023-08-15</time><span>产品</span></div><span class="title">B 端软件：怎样进行竞品分析</span></a><div class="line"></div><a class="more-item" href="/2023/08/the-correct-opening-method-for-the-b-end-software-product-manager/"><div class="cap"><time>2023-08-15</time><span>产品</span></div><span class="title">B 端软件：产品经理正确打开方式</span></a><div class="line"></div><a class="more-item" href="/2023/07/how-to-use-password-free-login-in-github/"><div class="cap"><time>2023-08-15</time><span>技术</span></div><span class="title">怎样在  Github  中使用免密登录？</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/10/how-to-design-the-api/"><div class="cap"><time>2023-10-21</time><span>技术</span></div><span class="title">如何设计 API？</span></a><div class="line"></div><a class="more-item" href="/2023/10/this-national-day-we-set-off-again-wuhan-pingtan/"><div class="cap"><time>2023-10-21</time><span>旅行</span></div><span class="title">这个国庆，又出发了（武汉-平潭）</span></a><div class="line"></div><a class="more-item" href="/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/"><div class="cap"><time>2023-10-21</time><span>产品</span></div><span class="title">B 端软件：开发转产品经理可能遇到的坑</span></a><div class="line"></div><a class="more-item" href="/2023/09/from-marathon-to-trail-running-a-new-challenge/"><div class="cap"><time>2023-10-21</time><span>跑步</span></div><span class="title">从马拉松到越野跑：一次新的挑战</span></a><div class="line"></div><a class="more-item" href="/2023/09/share-some-website-and-tools-202309/"><div class="cap"><time>2023-10-21</time><span>成长</span></div><span class="title">分享几个网站和工具（202309）</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,19 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2013/09/using-htmlagilitypack/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2014/01/connect-to-rtx-server-application-the-sdk-to-connect-sdk-server-error-problem-solution/"><article class="md">
+<h2 class="post-title">连接RTX服务器出现“应用SDK:连接SDK服务器错误”问题解决</h2><div class="excerpt"><p>腾讯通的官方有个示例可以使用程序来进行腾讯通客户端的登录，大致原理是这样：
+
+从服务端验证用户名是否存在；
+根据用户名从服务端生成key；
+根据key值调用脚本启动腾讯通客户端。
+
+在本机安装好腾讯通的客户端和服务器，运行实例程序，可以正常跑起来，将服务器安装在虚机中，就会报“(0xFFFFBA9E): 应用SDK:连接SDK服务器错误”的错误，原因是服务器端对IP地址有限制，修改配置文件，...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2014-01-08T16:00:00.000Z">2014-01-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/11/aspnet-stoped-thread-method/"><article class="md">
+<h2 class="post-title">Asp.Net正在中止线程引发的问题</h2><div class="excerpt"><p>Asp.Net做的一个同步程序，同步的方法是通过JQuery的Ajax调用，同步过程大概要执行20多分钟，程序部署到服务器后执行一段时间后就弹出执行失败的对话框，日志记录的错误信息是“正在中止线程”。
+查错过程：1、根据“AspNet 正在中止线程“进行搜索，得到的结果基本都是跟”Response.End“有关的，但我的代码中没有Response.End，所以基本可以排除；
+2、因为使用JQ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-11-21T16:00:00.000Z">2013-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2013/09/using-htmlagilitypack/"><article class="md">
 <h2 class="post-title">HTML解析组件HtmlAgilityPack使用</h2><div class="excerpt"><p>HtmlAgilityPack是一个开源的解析HTML元素的类库，最大的特点是可以通过XPath来解析HMTL，如果您以前用C#操作过XML，那么使用起HtmlAgilityPack也会得心应手。目前最新版本为1.4.6,下载地址如下：
 http://htmlagilitypack.codeplex.com/
 使用介绍下面以一个简单的例子来介绍下HtmlAgilityPack的使用，对于As...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2013-09-14T16:00:00.000Z">2013-09-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -146,12 +158,6 @@ jQuery简介简介jQuery是一个兼容多浏览器的javascript库，核心理�
 </article></a><a class="post-card post " href="/2012/10/gen-reg-in-vs2010-and-vs2008/"><article class="md">
 <h2 class="post-title">VS2010和VS2008使用不同编译方式在64位机器生成注册表对比</h2><div class="excerpt"><p>最近写一个小工具用到了使用C#来进行注册表的操作，使用C#来进行注册表的操作需要引入命名空间Microsoft.Win32，关于操作注册表的帮助类可以参考RegHelper.cs。下面分别使用VS2010和VS2008使用Any CPU、X64、X86和Itanium进行编译，运行在32位机器和64位机器进行对比。看下面一段代码：
 1234string subkey = @&quot;sof...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-10-13T16:00:00.000Z">2012-10-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2012/09/c-net-1-0-4-0/"><article class="md">
-<h2 class="post-title">C# & .NET 1.0-4.0</h2><div class="excerpt"><p>学习和使用.NET平台已有六七个年头了，05年开始学习.NET的时候，当时网上的资源不像现在这样丰富，所以去电脑城买了张盗版的VS2005的光盘，安装时才发现是VS2003，当时有一种被坑的感觉，但也正是如此，让我有了一个完整的.NET的学习生涯。
-从我从业的经历来看VS2003和VS2008是使用的比较多的，一些历史遗留的老项目由种种原因没有升级，依然在使用VS2003。我现在所在的公司也...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-09-01T16:00:00.000Z">2012-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2012/04/the-replace-method-in-js/"><article class="md">
-<h2 class="post-title">JS中的Replace方法</h2><div class="excerpt"><p>最近查一个bug，原因是JS中的Replace方法造成的，当将一个字符串中有处需要替换时，一般会用到JS中的Replace方法，Replace方法的第一个参数如果是传的字符串，只会替换第一处。代码如下：
-12var str = &quot;0CEA65D5-DB8E-4876-A6F8-C88AC7F0E185,E846C244-8A19-4374-879B-0B1DC08D1747,6CB...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2012-04-15T16:00:00.000Z">2012-04-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>B 端软件：开发转产品经理可能遇到的坑 - 冯威的博客</title>
+
+  
+    <meta name="description" content="有一类产品经理是由开发工程师转岗而来。就拿我来说，自从管理产品团队后，经常会和团队的产品经理进行新功能的讨论、会考虑产品未来的发展方向和路径，慢慢的我的工作重心也更多的偏向产品设计。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B 端软件：开发转产品经理可能遇到的坑">
+<meta property="og:url" content="http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="有一类产品经理是由开发工程师转岗而来。就拿我来说，自从管理产品团队后，经常会和团队的产品经理进行新功能的讨论、会考虑产品未来的发展方向和路径，慢慢的我的工作重心也更多的偏向产品设计。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-26T01:37:57.000Z">
+<meta property="article:modified_time" content="2023-10-21T09:39:35.982Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="B 端软件">
+<meta property="article:tag" content="产品经理">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E8%BD%AC%E5%8F%98"><span class="toc-text">思维转变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81%E7%A9%BA%E6%9D%AF%E5%BF%83%E6%80%81"><span class="toc-text">保持空杯心态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%9F%E9%80%9A"><span class="toc-text">沟通</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%96%E6%8E%98%E7%9C%9F%E5%AE%9E%E9%9C%80%E6%B1%82"><span class="toc-text">挖掘真实需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E5%AD%A6%E4%B9%A0"><span class="toc-text">持续学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8D%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="toc-text">注重业务场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-09-26T01:37:57.000Z">2023-09-26</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>B 端软件：开发转产品经理可能遇到的坑</span></h1>
+<p>有一类产品经理是由开发工程师转岗而来。就拿我来说，自从管理产品团队后，经常会和团队的产品经理进行新功能的讨论、会考虑产品未来的发展方向和路径，慢慢的我的工作重心也更多的偏向产品设计。</p>
+<span id="more"></span>
+
+<p>本文就聊聊从开发工程师转变为产品经理可能会遇到的问题。</p>
+<h2 id="思维转变"><a href="#思维转变" class="headerlink" title="思维转变"></a>思维转变</h2><p>开发工程师大多是工程思维。</p>
+<p>产品经理需要的是产品思维。</p>
+<p>前些天，在团队内部的一个需求讨论会上，产品经理和开发工程师都有参与，我提出一个需求的 UI  交互思路，开发工程师马上指出：“如果这样做的话，实现上某某地方会调整比较大；某某地方新增的部分实现比较复杂。” </p>
+<p>这就是典型的思考方式没有在一个维度上，从产品的角度，需要考虑的是功能交互的合理性、怎样才能真正解决用户的痛点。在这个前提之下，再考虑应该怎么实现，该怎样去做取舍。</p>
+<p>工程思维更关注效率、如何实现，也就是「How」；而产品思维更关注场景、用户的真实需求，也就是「Why」。 在具体的产品开发中，产品思维和工程思维都很重要，需要将两者结合起来。</p>
+<p>产品思维需要工程的配合与支撑，但如果只有工程思维，最后可能会做出一堆无用的功能。</p>
+<h2 id="保持空杯心态"><a href="#保持空杯心态" class="headerlink" title="保持空杯心态"></a>保持空杯心态</h2><p>不要以为自己的开发经验就是优势，而忽视了产品经理所需要的其他知识和技能。应该将你具备的开发技能变成加分项，而不要变成束缚。</p>
+<p>除了我们熟悉的开发技能，还需要补齐产品经理的基础知识，如市场分析、需求分析、用户研究、产品设计、项目管理等，并且不断学习和实践。</p>
+<h2 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h2><p>对开发工程师来说，沟通能力也很重要，只不过平时的工作只需要按照要求高质量编写代码就行，不会刻意在这个方面去做提升。</p>
+<p>产品经理就不一样，对内要和开发团队进行沟通，对外要和需求方进行沟通，沟通能力是一个必备技能。</p>
+<p>在公司中，不同职位与不同资历的人，彼此的认知都不同，作为产品经理，需要团结团队里的每一个人，让大家朝着同一个目标努力。</p>
+<p>产品经理需要跟所有人解释，某件事的重要性，某个功能为什么存在，某件事为什么要那么做等等。而且，因为认知的差别，你与每个人的沟通方式也要有差别，找到合适的沟通方式才能获得对方支持。</p>
+<h2 id="挖掘真实需求"><a href="#挖掘真实需求" class="headerlink" title="挖掘真实需求"></a>挖掘真实需求</h2><p>客户往往在提需求的时候还会赠送一个解决方案，会告诉你怎么做，而没有说为什么要这么做。开发工程师擅长的就是按照一个实现方案将功能实现。</p>
+<p>当转为产品经理后，就不能被客户牵着鼻子走，需要去挖掘客户背后的真实需求，之前看《有效需求分析》时有个例子现在还记忆深刻：</p>
+<blockquote>
+<p>晚上小孩吵着说要吃饼干，最后给了点面包，小孩吃完就乖乖睡着了，在这里吃饼干是方案，需求是小孩的肚子饿了，当没有饼干时，可以使用第二种方案，给他吃面包也可以解决这个需求问题。</p>
+</blockquote>
+<p>搞懂了小孩的真实需求是肚子饿，而不是吃饼干或面包，事情就好办多。所以，只有了解了真实背景，挖掘了客户背后的诉求，才能设计出能够解决客户痛点的产品功能。</p>
+<h2 id="持续学习"><a href="#持续学习" class="headerlink" title="持续学习"></a>持续学习</h2><p>程序员就是一个需要持续学习的职业，不过当工作需要的技能非常熟练后，往往就疏于学习了。当转产品经理后更是需要有持续学习的能力。</p>
+<p>如果做的是平台型产品，功能不断迭代，需要将不同类型的客户需求收集、分析、转化为平台功能，客户的类型在变化、客户的使用习惯也可能变化，不学习难以应对这种变化。</p>
+<p>如果做的是业务型产品，你需要快速熟悉和了解一个行业，才能和客户、业务专家平等对话，在《麦肯锡方法》中介绍快速了解一个行业可以按下面三个步骤：</p>
+<p>1、总结行业的 100 个关键词；</p>
+<p>2、找三五个专家访谈，了解各种行业问题；</p>
+<p>3、找三五本行业专业书籍，仔细阅读并找出共性。</p>
+<p>上面的三个步骤就是学习的过程。</p>
+<h2 id="注重业务场景"><a href="#注重业务场景" class="headerlink" title="注重业务场景"></a>注重业务场景</h2><p>很多时候，开发工程师把一个功能的代码写完，提交测试了，可能还不清楚这个功能具体是做什么用的。这是因为看到的是点而不是面。</p>
+<p>当转为产品经理后，就需要有全局的思维，从宏观上来思考问题，以满足实际业务场景为目的，然后再逐步分解到具体的功能点。如果还是像做开发时那样，产品会变成一堆零碎功能的堆砌，看似很强大，实则是四不像。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>从开发工程师到产品经理，是一个比较大的跨越，首先需要提高认知维度，知道产品经理和开发工程师的不同，然后再转变思维模式，思维模式变了，最终做事的方式方法自然就会发生变化。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/&title=B 端软件：开发转产品经理可能遇到的坑 - 冯威的博客&summary=有一类产品经理是由开发工程师转岗而来。就拿我来说，自从管理产品团队后，经常会和团队的产品经理进行新功能的讨论、会考虑产品未来的发展方向和路径，慢慢的我的工作重心也更多的偏向产品设计。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=B 端软件：开发转产品经理可能遇到的坑 - 冯威的博客&amp;body=http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/09/from-marathon-to-trail-running-a-new-challenge/">从马拉松到越野跑：一次新的挑战<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/10/this-national-day-we-set-off-again-wuhan-pingtan/">这个国庆，又出发了（武汉-平潭）<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

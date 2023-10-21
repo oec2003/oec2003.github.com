@@ -1,3 +1,10 @@
+http://fwhyy.com/2023/10/how-to-design-the-api/
+http://fwhyy.com/2023/10/this-national-day-we-set-off-again-wuhan-pingtan/
+http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/
+http://fwhyy.com/2023/09/from-marathon-to-trail-running-a-new-challenge/
+http://fwhyy.com/2023/09/share-some-website-and-tools-202309/
+http://fwhyy.com/2023/08/cnblogs-hold-on/
+http://fwhyy.com/2023/08/plugin-development-implement-picgo-image-to-webp-format-1/
 http://fwhyy.com/2023/08/plugin-development-implement-picgo-image-to-webp-format/
 http://fwhyy.com/2023/08/software-recommendation-mac-artifact-raycast/
 http://fwhyy.com/2023/08/b-end-software-how-to-conduct-competitor-analysis/
@@ -91,10 +98,3 @@ http://fwhyy.com/2022/01/huawei-cloud-server-deployment/
 http://fwhyy.com/2021/12/get-up-at-four-crazy-or-self-disciplined/
 http://fwhyy.com/2021/12/what-is-the-experience-of-running-100-days-in-a-row/
 http://fwhyy.com/2021/12/object-oriented-design-principles-2/
-http://fwhyy.com/2021/12/object-oriented-design-principles-1/
-http://fwhyy.com/2021/11/agile-development-from-theory-to-team-landing/
-http://fwhyy.com/2021/11/nike-air-zoom-tempo-next/
-http://fwhyy.com/2021/11/object-oriented-basic-knowledge/
-http://fwhyy.com/2021/11/service-arrangement-in-zero-code-platform/
-http://fwhyy.com/2021/11/do-you-still-need-to-learn-design-patterns-now/
-http://fwhyy.com/2021/10/how-should-we-change-our-thinking-when-using-zero-code/
