@@ -1,3 +1,8 @@
+http://fwhyy.com/2023/11/marathon-pb-review/
+http://fwhyy.com/2023/11/dotnet-8/
+http://fwhyy.com/2023/11/prometheus-monitoring-middleware/
+http://fwhyy.com/2023/11/install-prometheus/
+http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/
 http://fwhyy.com/2023/10/how-to-design-the-api/
 http://fwhyy.com/2023/10/this-national-day-we-set-off-again-wuhan-pingtan/
 http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-encounter-pitfalls/
@@ -93,8 +98,3 @@ http://fwhyy.com/2022/02/2021-year-end-summary/
 http://fwhyy.com/2022/01/book-recommendation-202201/
 http://fwhyy.com/2022/01/huawei-cloud-server-deployment-3/
 http://fwhyy.com/2022/01/read-study-hard/
-http://fwhyy.com/2022/01/huawei-cloud-server-deployment-2/
-http://fwhyy.com/2022/01/huawei-cloud-server-deployment/
-http://fwhyy.com/2021/12/get-up-at-four-crazy-or-self-disciplined/
-http://fwhyy.com/2021/12/what-is-the-experience-of-running-100-days-in-a-row/
-http://fwhyy.com/2021/12/object-oriented-design-principles-2/

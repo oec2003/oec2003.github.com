@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>聊聊六边形架构 - 冯威的博客</title>
+
+  
+    <meta name="description" content="指导我们写出漂亮代码有一种方式是学习设计模式，自从 Gof 四人组的《设计模式》出版后，各类设计模式的书层出不穷。熟读这类书籍，对面试肯定是有帮助的，但代码能力是否有大的长进就不一定了，如果没能理解背后的思想，去生搬硬套，只会起反作用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊六边形架构">
+<meta property="og:url" content="http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="指导我们写出漂亮代码有一种方式是学习设计模式，自从 Gof 四人组的《设计模式》出版后，各类设计模式的书层出不穷。熟读这类书籍，对面试肯定是有帮助的，但代码能力是否有大的长进就不一定了，如果没能理解背后的思想，去生搬硬套，只会起反作用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840474.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840495.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840282.webp">
+<meta property="article:published_time" content="2023-10-24T00:27:49.000Z">
+<meta property="article:modified_time" content="2023-11-24T08:31:17.549Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="架构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840474.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84%EF%BC%9F"><span class="toc-text">什么是六边形架构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%92%8C%E9%80%82%E9%85%8D%E5%99%A8"><span class="toc-text">端口和适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3"><span class="toc-text">端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8"><span class="toc-text">适配器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AB%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84%EF%BC%9F"><span class="toc-text">为什么叫六边形架构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">六边形架构的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8E%9F%E5%88%99"><span class="toc-text">六边形架构的原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%92%8C-DDD-%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">和 DDD 、微服务的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99"><span class="toc-text">一些资料</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-10-24T00:27:49.000Z">2023-10-24</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>聊聊六边形架构</span></h1>
+<p>指导我们写出漂亮代码有一种方式是学习设计模式，自从 Gof 四人组的《设计模式》出版后，各类设计模式的书层出不穷。熟读这类书籍，对面试肯定是有帮助的，但代码能力是否有大的长进就不一定了，如果没能理解背后的思想，去生搬硬套，只会起反作用。</p>
+<span id="more"></span>
+<p>背后的思想就是指面向对象的原则：</p>
+<ul>
+<li>单一职责原则（SRP）</li>
+<li>开放封闭原则（OCP）</li>
+<li>里氏替换原则（LSP）</li>
+<li>接口隔离原则（ISP）</li>
+<li>依赖倒置原则（DIP）</li>
+</ul>
+<p>这些原则就是告诉我们应该怎么合理地组织类和方法。最终使我们开发的程序能够满足：可扩展、可复用、可阅读。只是看这些原则比较抽象，最近看了下六边形架构，我认为对代码的编写有很好的指导作用，下面就聊聊六边形架构。</p>
+<h2 id="什么是六边形架构？"><a href="#什么是六边形架构？" class="headerlink" title="什么是六边形架构？"></a>什么是六边形架构？</h2><p>六边形架构（Hexagonal Architecture），也被称为端口与适配器架构（Ports and Adapters Architecture），是一种软件架构模式，旨在实现高内聚、低耦合和可测试性的应用程序设计。该架构由 Alistair Cockburn 发明，他是敏捷宣言的签署者之一。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840474.webp"></p>
+<p>从上图可以看出有内外两层六边形，深蓝色和浅蓝色。</p>
+<ul>
+<li>内层（深蓝色）：负责领域内的业务逻辑，相对独立，不用关注任何外部依赖或技术细节，也不用关心外部的客户端和服务，我们定义为领域层。</li>
+<li>外层（浅蓝色）：完成外部应用、基础资源等的交互和访问，负责获取不同的业务域的数据，进行业务逻辑的组装，我们定义为应用层。</li>
+</ul>
+<p>上图中的紫色部分的 context 是我们在实践过程中添加的，在应用层中进行逻辑组装时，如果没有业务上下文的概念，很多方法会导致被重复调用，所以在业务入口会进行上下文的初始化，将长下文贯穿整个调用链。</p>
+<h2 id="端口和适配器"><a href="#端口和适配器" class="headerlink" title="端口和适配器"></a>端口和适配器</h2><p>六边形架构也被称为端口与适配器架构，端口和适配器是两个非常关键且重要的概念。</p>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>端口是应用程序定义的接口，必须由外界实现，以便应用程序可以接收或发送信息，进行解耦。这个接口是广义的，不光是指 Interface，WebAPI 接口，一些类的公共方法也属于接口的范畴。</p>
+<p>端口有分为两种：</p>
+<ul>
+<li><p>入站端口：业务服务对外暴露的公有方法；</p>
+</li>
+<li><p>出站端口：出站端口只一组方法的接口定义，提供一种规范，供出站适配器来实现。</p>
+</li>
+</ul>
+<p>使用端口和适配器进行处理应用程序的输入和输出，端口只是一种抽象，是应用程序在不了解任何内容的情况下与外界交互的一种方式。</p>
+<p>例如：如果想要进行数据库的读取和写入，不是直接操作数据库，而是在接口中定义读取和写入的方法。应用程序不需要知道数据来自哪里，需要写到什么地方去，可能是数据库，也可能是文件系统或缓存，甚至会同时操作。</p>
+<h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><p>适配器是连接应用程序核心和外部接口的桥梁。它负责将外部请求转换为应用程序核心可以理解的格式，并将核心的响应转换为外部接口可以接受的格式。</p>
+<p>适配器也分为两种：</p>
+<ul>
+<li>入站适配器：通常就是对外的 RestAPI，通过调用入站端口来处理外部的请求，也可以是消息队列的消费者，进行一些事件的监听，来处理异步业务，当接收到消息时也是调用入站端口来进行处理；</li>
+<li>出站适配器：出站适配器实现出站接口，调用外部的服务来实现一个完整的业务逻辑，出站适配器也可以是消息队列的生产者。</li>
+</ul>
+<p>当要将数据保存到数据库中时，适配器从接口定义的数据格式中获取数据，并将其转换为可以写入数据库的内容，重要的是，无论在适配器中怎么变化，核心域和接口不会发生变化。这就非常有用，将应用程序的核心逻辑和外部存储隔离开了。</p>
+<p>正是由于端口和适配器的存在，程序变得稳定和容易变化。</p>
+<h2 id="为什么叫六边形架构？"><a href="#为什么叫六边形架构？" class="headerlink" title="为什么叫六边形架构？"></a>为什么叫六边形架构？</h2><p>为什么是叫六边形架构？而不是三角形、圆形、正方形呢？</p>
+<p>目前没有明确的理由说明为什么是六边形，而不是其他的形状。或许只是因为六边形比较好看。又或许，一个小的六边形代表这一个模块，一个系统有很多这种模块组成，模块之间有输入输出的交互，就像蜂窝一样。</p>
+<p>而蜂窝正好是六边形的。</p>
+<h2 id="六边形架构的特点"><a href="#六边形架构的特点" class="headerlink" title="六边形架构的特点"></a>六边形架构的特点</h2><p>通过六边形架构，应用程序核心成为了架构的中心，具有清晰的边界和职责，可以独立于外部接口进行测试和演进。外部接口和适配器负责处理与外部系统的交互，使应用程序核心保持独立和可复用。主要有以下特点：</p>
+<ul>
+<li>高内聚和低耦合：应用程序核心独立于外部依赖，使得不同部分的修改不会对其他部分产生影响，提高了代码的可维护性。</li>
+<li>可测试性：应用程序核心可以轻松地进行单元测试，因为它不依赖于具体的外部接口或技术细节。</li>
+<li>可扩展性：通过添加新的适配器，可以很容易地与新的外部系统进行集成，而不会对应用程序核心产生影响。</li>
+</ul>
+<h2 id="六边形架构的原则"><a href="#六边形架构的原则" class="headerlink" title="六边形架构的原则"></a>六边形架构的原则</h2><p>当我们谈论六边形架构时，有几个核心原则需要考虑。这些原则指导我们持续优化软件架构，使系统的各个模块能够独立地演化和变化，同时保持其整体的稳定性。</p>
+<p>1、分离关注点：六边形架构将系统划分为不同的层次，每个层次都有其特定的职责和关注点。这种分离使得每个组件可以专注于自身的任务，降低了耦合性，提高了模块的可复用性和可测试性。</p>
+<p>2、内外部分离：六边形架构将系统划分为内部和外部两个六边形，分别代表核心业务逻辑和外部接口。内部六边形负责处理核心业务逻辑，而外部六边形则负责处理业务整合和外部系统的交互。这种内外部分离的设计使得系统更容易扩展和适应变化。</p>
+<p>3、依赖注入：六边形架构鼓励使用依赖注入来管理组件之间的依赖关系。通过依赖注入，组件的依赖关系可以在运行时进行配置，而不是在编译时固定。这样可以实现组件之间的松耦合，并且方便进行替换和测试。</p>
+<p>4、接口驱动：六边形架构强调基于接口编程，通过定义清晰的接口和协议来促进组件之间的通信。接口的使用可以提高组件的可替换性和可测试性，并支持多态性和可扩展性。</p>
+<p>5、测试驱动：六边形架构鼓励在开发过程中采用测试驱动开发（TDD）的方法。通过编写测试用例来定义组件的行为，然后逐步实现和改进组件以满足测试的要求。这种测试驱动的开发方法有助于保证系统的质量和稳定性。</p>
+<p>根据这些原则，可以发现，这些就是在文章开头提到的哪些面向对象的原则。通过六边形架构的包装，更具备实操性。</p>
+<h2 id="和-DDD-、微服务的关系"><a href="#和-DDD-、微服务的关系" class="headerlink" title="和 DDD 、微服务的关系"></a>和 DDD 、微服务的关系</h2><p>在网上查相关资料，六边形架构往往都跟 DDD 、微服务在一起被提及。他们之间其实没有很必然的联系。</p>
+<p>就像微服务和 DDD 一样，也没有必然联系，因为：</p>
+<p>1、DDD 中子域和限界上下文的概念可以对应到微服务中的服务；</p>
+<p>2、微服务中一个服务可以由一个团队进行开发，DDD 的一个领域模型也是建议由一个独立的团队负责。</p>
+<p>所以，微服务和领域驱动开发（DDD）常常会一起提及，在学习的时候，也会两种一起学，互相配合能够更好地落地。</p>
+<p>如果说，微服务是架构风格、DDD 是架构设计方法、那么六边形架构就是一种具体的指导编码的架构实践。</p>
+<h2 id="一些资料"><a href="#一些资料" class="headerlink" title="一些资料"></a>一些资料</h2><p>1、VS 的 HexagonalX 扩展</p>
+<p>在 VS 中可以安装六边形架构的扩展，安装后在创建项目时就会多出六边形架构的项目类型可供选择。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840495.webp"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202310231840282.webp" alt="image-20231023183747985"></p>
+<p>2、几个 GitHub 上的示例项目和文章</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alesimoes/hexagonal-clean-architecture">https://github.com/alesimoes/hexagonal-clean-architecture</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ivanpaulovich/clean-architecture-manga">https://github.com/ivanpaulovich/clean-architecture-manga</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.allegro.tech/2020/05/hexagonal-architecture-by-example.html">https://blog.allegro.tech/2020/05/hexagonal-architecture-by-example.html</a></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/&title=聊聊六边形架构 - 冯威的博客&summary=指导我们写出漂亮代码有一种方式是学习设计模式，自从 Gof 四人组的《设计模式》出版后，各类设计模式的书层出不穷。熟读这类书籍，对面试肯定是有帮助的，但代码能力是否有大的长进就不一定了，如果没能理解背后的思想，去生搬硬套，只会起反作用。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=聊聊六边形架构 - 冯威的博客&amp;body=http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/10/how-to-design-the-api/">如何设计 API？<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/11/install-prometheus/">监控利器：普罗米修斯介绍和安装<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

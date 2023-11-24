@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>.NET8 正式发布， C#12  新变化 - 冯威的博客</title>
+
+  
+    <meta name="description" content="在  .NET Conf  2023  大会上，.NET 8 正式发布了，.NET 8 是一个长期支持（LTS）版本，这意味着可以获得三年的支持和补丁。我们也计划将框架从 .NET Core3.1 升级到 8 ，关于如何升级等升级完成后再来分享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".NET8 正式发布， C#12  新变化">
+<meta property="og:url" content="http://fwhyy.com/2023/11/dotnet-8/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在  .NET Conf  2023  大会上，.NET 8 正式发布了，.NET 8 是一个长期支持（LTS）版本，这意味着可以获得三年的支持和补丁。我们也计划将框架从 .NET Core3.1 升级到 8 ，关于如何升级等升级完成后再来分享。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902851.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902664.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161905910.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902548.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902374.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902368.webp">
+<meta property="article:published_time" content="2023-11-17T08:38:50.000Z">
+<meta property="article:modified_time" content="2023-11-24T08:40:14.838Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="DotNet">
+<meta property="article:tag" content="dotNet8">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902851.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%A2%9E%E5%BC%BA"><span class="toc-text">序列化增强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%86%85%E7%BD%AE%E6%94%AF%E6%8C%81"><span class="toc-text">其他类型的内置支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">接口层次结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%AD%96%E7%95%A5"><span class="toc-text">命名策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8-API-%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96%E5%88%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">调用 API 直接获取到对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%A2%9E%E5%BC%BA"><span class="toc-text">随机数增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E7%9A%84%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">新增的提高性能的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E5%A2%9E%E5%BC%BA"><span class="toc-text">依赖注入增强</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-11-17T08:38:50.000Z">2023-11-17</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>.NET8 正式发布， C#12  新变化</span></h1>
+<p>在  .NET Conf  2023  大会上，.NET 8 正式发布了，.NET 8 是一个长期支持（LTS）版本，这意味着可以获得三年的支持和补丁。我们也计划将框架从 .NET Core3.1 升级到 8 ，关于如何升级等升级完成后再来分享。</p>
+<span id="more"></span>
+<p>要使用 .NET 8 ，需要安装相关的 SDK，可以在这个地址进行下载：<a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0%EF%BC%8C%E6%88%96%E8%80%85%E5%B0%86">https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0，或者将</a> VS2022 升级到 17.8 。</p>
+<p>虽然 8 又带来了很多方面的增强，比如：人工智能、云原生、性能、native AOT  等，但我还是最关注  C# 语言和一些框架层面的变化，下面介绍下 C# 12 和框架中的我认为比较实用的新增功能，全部更新说明可以看官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/core/whats-new/dotnet-8">https://learn.microsoft.com/zh-cn/dotnet/core/whats-new/dotnet-8</a> 。</p>
+<h2 id="序列化增强"><a href="#序列化增强" class="headerlink" title="序列化增强"></a>序列化增强</h2><h3 id="其他类型的内置支持"><a href="#其他类型的内置支持" class="headerlink" title="其他类型的内置支持"></a>其他类型的内置支持</h3><p>1、可以对附加类型：Half、Int128、UInt128 进行序列化，在 .NET 7 中对这些类型序列化时不会报错，但内容不能正常获取；</p>
+<p>2、可以对 ReadOnlyMemory<T> 、Memory<T>  类型进行序列化；</p>
+<p>3、当  T  的类型为  byte  时，序列化结果为  base64，否则为  json 数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using System.Text.Json;</span><br><span class="line">//输出：[65500,170141183460469231731687303715884105727,340282366920938463463374607431768211455]</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(new object[] &#123; Half.MaxValue, Int128.MaxValue, UInt128.MaxValue &#125;));</span><br><span class="line">//输出：&quot;AQIDBAUG&quot;</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize&lt;ReadOnlyMemory&lt;byte&gt;&gt;(new byte[] &#123; 1,2,3,4,5,6&#125;));</span><br><span class="line">//输出：[1,2,3]</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize&lt;Memory&lt;int&gt;&gt;(new int[] &#123; 1, 2, 3 &#125;)); </span><br></pre></td></tr></table></figure>
+
+<h4 id="接口层次结构"><a href="#接口层次结构" class="headerlink" title="接口层次结构"></a>接口层次结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">IDerived value = new DerivedImplement &#123; Base = 0, Derived = 1 &#125;;</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(value));</span><br><span class="line">//输出：&#123;&quot;Base&quot;:0,&quot;Derived&quot;:1&#125;</span><br><span class="line"></span><br><span class="line">public interface IBase</span><br><span class="line">&#123;</span><br><span class="line">    public int Base &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface IDerived : IBase</span><br><span class="line">&#123;</span><br><span class="line">    public int Derived &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DerivedImplement : IDerived</span><br><span class="line">&#123;</span><br><span class="line">    public int Base &#123; get; set; &#125;</span><br><span class="line">    public int Derived &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1、上面代码中 IDerived 接口继承了 IBase 接口后，就拥有两个属性了；</p>
+<p>2、在之前的版本（3.1、6、7）中使用包含两个属性的接口 IDerived 来接收对象的实例化，然后进行序列化，得到的结果只有：{Derived”:1} ，继承过来的属性 Base 不能被识别；</p>
+<p>3、在 8 中得到了改进，可以得到期望的结果，值得注意的是，如果之前使用了变通方式来进行处理，升级后需要有针对性进行测试和调整。</p>
+<h3 id="命名策略"><a href="#命名策略" class="headerlink" title="命名策略"></a>命名策略</h3><p>下图是 8  中序列化时对命名策略的支持：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902851.webp"></p>
+<p>在之前的版本：3.1、6、7  中都只支持 CamelCase 。在  8  中新增的策略如下：</p>
+<ul>
+<li>KebabCaseLower：小写中划线，例如：user-name</li>
+<li>KebabCaseUpper：大写中划线，例如：USER-NAME</li>
+<li>SnakeCaseLower：小写中划线，例如：user_name</li>
+<li>SnakeCaseUpper：大写中划线，例如：USER_NAME</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var options1 = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    PropertyNamingPolicy = JsonNamingPolicy.KebabCaseLower,</span><br><span class="line">&#125;;</span><br><span class="line">var options2 = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    PropertyNamingPolicy = JsonNamingPolicy.KebabCaseUpper,</span><br><span class="line">&#125;;</span><br><span class="line">var options3 = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,</span><br><span class="line">&#125;;</span><br><span class="line">var options4 = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseUpper,</span><br><span class="line">&#125;;</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(new UserInfo() &#123; UserName = &quot;oec2003&quot; &#125;, options1));</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(new UserInfo() &#123; UserName = &quot;oec2003&quot; &#125;, options2));</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(new UserInfo() &#123; UserName = &quot;oec2003&quot; &#125;, options3));</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(new UserInfo() &#123; UserName = &quot;oec2003&quot; &#125;, options4));</span><br><span class="line"></span><br><span class="line">public class UserInfo</span><br><span class="line">&#123;</span><br><span class="line">    public string? UserName &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902664.webp"></p>
+<h3 id="调用-API-直接获取到对象"><a href="#调用-API-直接获取到对象" class="headerlink" title="调用 API 直接获取到对象"></a>调用 API 直接获取到对象</h3><p>现在有一个接口返回如下图中的数据：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161905910.webp"></p>
+<p>如果是在 8 以前的版本中获取该接口的数据，需要先获取到接口内容，然后进行反序列化，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const string RequestUri = &quot;http://localhost:5145/user&quot;;</span><br><span class="line">using var client = new HttpClient();</span><br><span class="line">var stream =await client.GetStreamAsync(RequestUri);</span><br><span class="line">//反序列化</span><br><span class="line">var users = JsonSerializer.DeserializeAsyncEnumerable&lt;UserInfo&gt;(stream);</span><br><span class="line">await foreach(UserInfo user in users)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;姓名：&#123;user.userName&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Console.ReadKey();</span><br><span class="line"></span><br><span class="line">public record UserInfo(string userName);</span><br></pre></td></tr></table></figure>
+
+<p>在版本 8  中可以直接调用 GetFromJsonAsAsyncEnumerable 方法直接得到对象，无需进行反序列化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const string RequestUri = &quot;http://localhost:5145/user&quot;;</span><br><span class="line">using var client = new HttpClient();</span><br><span class="line">IAsyncEnumerable&lt;UserInfo&gt; users = client.GetFromJsonAsAsyncEnumerable&lt;UserInfo&gt;(RequestUri);</span><br><span class="line"></span><br><span class="line">await foreach (UserInfo user in users)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;姓名： &#123;user.userName&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Console.ReadKey();</span><br><span class="line"></span><br><span class="line">public record UserInfo(string userName);</span><br></pre></td></tr></table></figure>
+
+<p>上面两种代码的结果一样，如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902548.webp"></p>
+<h2 id="随机数增强"><a href="#随机数增强" class="headerlink" title="随机数增强"></a>随机数增强</h2><p>1、在 8 中对随机数类 Random 提供了 GetItems<T>() 方法，可以根据指定的数量在提供的一个集合中随机抽取数据项生成一个新的集合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ReadOnlySpan&lt;string&gt; colors = new[]&#123;&quot;Red&quot;,&quot;Green&quot;,&quot;Blue&quot;,&quot;Black&quot;&#125;;</span><br><span class="line"></span><br><span class="line">string[] t1 = Random.Shared.GetItems(colors, 10);</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(t1));</span><br><span class="line"></span><br><span class="line">//输出：[&quot;Black&quot;,&quot;Green&quot;,&quot;Blue&quot;,&quot;Blue&quot;,&quot;Green&quot;,&quot;Blue&quot;,&quot;Green&quot;,&quot;Black&quot;,&quot;Green&quot;,&quot;Blue&quot;]</span><br><span class="line">//每次都会不一样</span><br><span class="line">Console.ReadKey();</span><br></pre></td></tr></table></figure>
+
+<p>2、通过 Random 提供的 Shuffle<T>() 方法，可以将一个集合中的数据项的顺序打乱：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string[] colors = new[]&#123;&quot;Red&quot;,&quot;Green&quot;,&quot;Blue&quot;,&quot;Black&quot;&#125;;</span><br><span class="line">Random.Shared.Shuffle(colors);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(colors));</span><br><span class="line"></span><br><span class="line">Console.ReadKey();</span><br></pre></td></tr></table></figure>
+
+<h2 id="新增的提高性能的类型"><a href="#新增的提高性能的类型" class="headerlink" title="新增的提高性能的类型"></a>新增的提高性能的类型</h2><p>1、新增了 FrozenDictionary&lt;TKey,TValue&gt; 和 FrozenSet<T> ，这两个类型在 System.Collections.Frozen 命名空间下，创建这两种类型的集合后，就不允许对键和值进行任何更改，因此可以实现更快的读取操作。</p>
+<p>下面是使用 BenchmarkDotNet  对 FrozenDictionary 和 Dictionary 进行测试的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">BenchmarkRunner.Run&lt;FrozenDicTest&gt;();</span><br><span class="line">Console.ReadKey();</span><br><span class="line"></span><br><span class="line">[SimpleJob(RunStrategy.ColdStart, iterationCount:5)]</span><br><span class="line">public class FrozenDicTest</span><br><span class="line">&#123;</span><br><span class="line">    public static Dictionary&lt;string, string&gt; dic = new() &#123;</span><br><span class="line">        &#123; &quot;name1&quot;,&quot;oec2003&quot;&#125;,</span><br><span class="line">        &#123; &quot;name2&quot;,&quot;oec2004&quot;&#125;,</span><br><span class="line">        &#123; &quot;name3&quot;,&quot;oec2005&quot;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    public static FrozenDictionary&lt;string, string&gt; fdic = dic.ToFrozenDictionary();</span><br><span class="line"></span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestDic()</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0; i &lt; 100000000; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dic.TryGetValue(&quot;name&quot;, out _);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestFDic()</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0; i &lt; 100000000; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            fdic.TryGetValue(&quot;name&quot;, out _);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从测试结果看，效果还是很明显的：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902374.webp"></p>
+<p>2、新增的 System.Buffers.SearchValues<T> 类，可以用来进行字符串的查找和匹配，相比较  string  类型的操作，性能有大幅提升，下面还是用 BenchmarkDotNet 进行测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">BenchmarkRunner.Run&lt;SearchValuesTest&gt;();</span><br><span class="line">Console.ReadKey();</span><br><span class="line"></span><br><span class="line">[SimpleJob(RunStrategy.ColdStart, iterationCount: 5)]</span><br><span class="line">public class SearchValuesTest</span><br><span class="line">&#123;</span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestString()</span><br><span class="line">    &#123;</span><br><span class="line">        var str = &quot;!@#$%^&amp;*()_1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;</span><br><span class="line">        for (int i = 0; i &lt; 100000000; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            str.Contains(&quot;z&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestSearchValues()</span><br><span class="line">    &#123;</span><br><span class="line">        var sv = SearchValues.Create(&quot;!@#$%^&amp;*()_1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;u8);</span><br><span class="line">        byte b = (byte)&quot;z&quot;[0];</span><br><span class="line">        for (int i = 0; i &lt; 100000000; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sv.Contains(b);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从运行结果看，有大约 5 倍的的提升：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202311161902368.webp"></p>
+<h2 id="依赖注入增强"><a href="#依赖注入增强" class="headerlink" title="依赖注入增强"></a>依赖注入增强</h2><p>在 8 之前的版本中，依赖注入写法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var builder = WebApplication.CreateBuilder(args);</span><br><span class="line"></span><br><span class="line">builder.Services.AddTransient&lt;IUser, UserA&gt;();</span><br><span class="line"> </span><br><span class="line">var app = builder.Build();</span><br><span class="line"></span><br><span class="line">app.MapGet(&quot;/user&quot;, (IUser user) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    return $&quot;hello , &#123;user.GetName()&#125;&quot;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.Run();</span><br><span class="line"></span><br><span class="line">internal interface IUser</span><br><span class="line">&#123;</span><br><span class="line">    string GetName();</span><br><span class="line">&#125;</span><br><span class="line">internal class UserA: IUser</span><br><span class="line">&#123;</span><br><span class="line">    public string GetName() =&gt; &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 IUser 接口有两个实现，上面代码中的写法就只能获取到最后一个注册类的实例，要实现一个接口多个实现类的注入，还需要写一些额外的代码，比较繁琐。</p>
+<p>版本 8 中添加了注入关键字，可以很方便实现，看下面代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var builder = WebApplication.CreateBuilder(args);</span><br><span class="line"></span><br><span class="line">builder.Services.AddKeyedSingleton&lt;IUser, UserA&gt;(&quot;A&quot;);</span><br><span class="line">builder.Services.AddKeyedSingleton&lt;IUser, UserB&gt;(&quot;B&quot;);</span><br><span class="line"></span><br><span class="line">var app = builder.Build();</span><br><span class="line"></span><br><span class="line">app.MapGet(&quot;/user1&quot;, ([FromKeyedServices(&quot;A&quot;)] IUser user) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    return $&quot;hello , &#123;user?.GetName()&#125;&quot;;</span><br><span class="line">&#125;);</span><br><span class="line">app.MapGet(&quot;/user2&quot;, ([FromKeyedServices(&quot;B&quot;)] IUser user) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    return $&quot;hello , &#123;user?.GetName()&#125;&quot;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.Run();</span><br><span class="line"></span><br><span class="line">internal interface IUser</span><br><span class="line">&#123;</span><br><span class="line">    string GetName();</span><br><span class="line">&#125;</span><br><span class="line">internal class UserA: IUser</span><br><span class="line">&#123;</span><br><span class="line">    public string GetName() =&gt; &quot;oec2003&quot;;</span><br><span class="line">&#125;</span><br><span class="line">internal class UserB : IUser</span><br><span class="line">&#123;</span><br><span class="line">    public string GetName() =&gt; &quot;oec2004&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2023/11/dotnet-8/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2023/11/dotnet-8/&title=.NET8 正式发布， C#12  新变化 - 冯威的博客&summary=在  .NET Conf  2023  大会上，.NET 8 正式发布了，.NET 8 是一个长期支持（LTS）版本，这意味着可以获得三年的支持和补丁。我们也计划将框架从 .NET Core3.1 升级到 8 ，关于如何升级等升级完成..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=.NET8 正式发布， C#12  新变化 - 冯威的博客&amp;body=http://fwhyy.com/2023/11/dotnet-8/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2023/11/dotnet-8/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/11/prometheus-monitoring-middleware/">监控利器：普罗米修斯监控中间件(Nginx、Redis、MySql 等)<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/11/marathon-pb-review/">半马连续两周 PB 后的复盘<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
