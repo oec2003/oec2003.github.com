@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/11/marathon-pb-review/"><div class="cap"><time>2023-11-24</time><span>跑步</span></div><span class="title">半马连续两周 PB 后的复盘</span></a><div class="line"></div><a class="more-item" href="/2023/11/dotnet-8/"><div class="cap"><time>2023-11-24</time><span>技术</span></div><span class="title">.NET8 正式发布， C#12  新变化</span></a><div class="line"></div><a class="more-item" href="/2023/11/prometheus-monitoring-middleware/"><div class="cap"><time>2023-11-24</time><span>技术</span></div><span class="title">监控利器：普罗米修斯监控中间件(Nginx、Redis、MySql 等)</span></a><div class="line"></div><a class="more-item" href="/2023/11/install-prometheus/"><div class="cap"><time>2023-11-24</time><span>技术</span></div><span class="title">监控利器：普罗米修斯介绍和安装</span></a><div class="line"></div><a class="more-item" href="/2023/10/talk-about-hexagonal-architecture/"><div class="cap"><time>2023-11-24</time><span>技术</span></div><span class="title">聊聊六边形架构</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/02/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-20</time><span>读书</span></div><span class="title">reading-methods-of-taking-notes</span></a><div class="line"></div><a class="more-item" href="/2024/01/private-image-warehouse-harbor-installation-and-use/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">私有镜像仓库 Harbor 安装和使用</span></a><div class="line"></div><a class="more-item" href="/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">利用 Github Actions 同步佳明国内到国际</span></a><div class="line"></div><a class="more-item" href="/2024/01/do-something-seriously-and-deeply-starting-from-running/"><div class="cap"><time>2024-02-20</time><span>思考</span></div><span class="title">认真深入做一件事，从跑步开始</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,35 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2017/08/docker-learning-installing-images/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2017/10/the-adventures-of-mongodb/"><article class="md">
+<h2 class="post-title">MongoDB历险记</h2><div class="excerpt"><p>一直在使用MongoDB来做为底层的数据存储，一直也没有出现什么问题。但就在MongoDB上市之际，一客户的MongoDB挂了,原因很复杂，大概有下面的一些原因和操作：
+
+客户的存储做过迁移；
+服务器打补丁做过重启；
+服务器重启后其中有一台的存储盘丢失；
+MongoDB的所有服务都恢复后，在一个很短的时间内是正常的，测试在这期间做过Web端和PC客户端端测试；
+当测试通知文件不能上传时，发现一台服务器端MongoDB服务不能正常启动，紧接着另一台也不能正常启动；
+此时MongoDB已彻底瘫痪。
+
+上面就是整个事故的经过，发生在周六的夜里九十点钟，接下来就是长达一天一夜的修复工作。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-10-24T15:56:57.000Z">2017-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/09/angular-four-cross-domain-problem-solving/"><article class="md">
+<h2 class="post-title">Angular4跨域问题解决</h2><div class="excerpt"><p>之前在使用Angular1.x的时候就碰到过跨域的问题，在博文《Angularjs跨域调用Asp.Net WebAPI》中有做过介绍。本文介绍下在Angular4中解决跨域问题的两种方法。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-11T15:56:42.000Z">2017-09-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/09/run-netcore-two-in-mac-docker/"><article class="md">
+<h2 class="post-title">在Mac的Docker中运行DotNetCore2.0</h2><div class="excerpt"><p>最近学习Angular4，服务端准备使用DotNetCore API来实现，本文简单介绍下在Mac中怎样将DotNetCore程序部署在Docker中，并使用Nginx做反向代理让程序可以跑起来。
+具体步骤如下
+安装Docker
+拉取DotNetCore镜像
+使用VS For Mac创建DotNetCore应用
+发布应用到Docker
+安装Nginx
+配置Nginx代理Docker中的DotNetCore应用
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-09T15:37:32.000Z">2017-09-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/09/mi-push-to-csharp/"><article class="md">
+<h2 class="post-title">C#中实现小米推送</h2><div class="excerpt"><p>移动端的消息推送有很多互联网产品可以用，例如：极光、个推、小米推送等。对于安卓手机，推送需要做各种适配，开始我们使用的是极光，发现在小米手机上，当App退出到后台，就经常不能收到消息，所以决定将小米推送集成到App中。
+遗憾的是小米推送官方并不支持C#，所以需要很对Java版本的实现用IKVM来做一些转化。转换后在Net程序中一共需要引用7个Dll文件，如下图：
+
+相关Dll文件和示例代码已...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-02T01:35:44.000Z">2017-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/08/docker-learning-installing-images/"><article class="md">
 <h2 class="post-title">Docker学习-安装镜像</h2><div class="excerpt"><p>Docker现在已不是什么新鲜事物了，Windows Server2016已经内置了Docker，对于我来说，我只想让Docker来帮我解决运行环境的问题。
 我们的产品部署起来会依赖很多的第三方产品：SqlServer、MongoDB、Redis、RabbitMQ等，各种软件等安装，数据库的还原，每次部署都会耗费大量的时间。为了能使部署更加的方便，我们的设想是这样的：
 
@@ -136,14 +164,6 @@ Microsoft .Net Remoting系列专题之二：Marshal、Disconnect与生命周期�
 Microsoft .Net Remoting系列专题之三：Remoting事件处理全接触
 最近解决公司一个老平台的问题，该平台中使用了 Remoting 技术，现有的环境大致如下：
 1、Remoting 服务和 Web 都是部署在局域网；2、多台 Web 都是通过内网 IP 和端口来访问 Remoting 。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-06T14:01:52.000Z">2016-09-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/03/csharp-with-signature-dll-crack/"><article class="md">
-<h2 class="post-title">C# 带签名dll破解</h2><div class="excerpt"><p>首先申明，本文只是从技术的角度来分析下怎样破解带签名的C#写的dll文件。大家如有遇到收费的软件或类库还是应该去购买正版，程序员何苦为难程序员呢。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-03-08T16:00:00.000Z">2016-03-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/01/word-owa-online-editor-from-gridfs/"><article class="md">
-<h2 class="post-title">OWA实现Word在线编辑（以GridFs存储文件）</h2><div class="excerpt"><p>OWA全称Office Web App，是用来做Office文档预览的一个很好的工具，通过一些配置文件的设置还可以实现Excel、PowerPoint的在线编辑功能，但对Word在线编辑并不支持。GitHub上有大牛实现了Word的在线编辑，不过文件必须是物理文件，本文在此基础上做了些扩展可以支持文件存储在分布式文件系统中，本文以GridFs为例。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-01-25T16:00:00.000Z">2016-01-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/01/angularjs-cross-domain-call-webapi-asp-net/"><article class="md">
-<h2 class="post-title">Angularjs跨域调用Asp.Net WebAPI</h2><div class="excerpt"><p>之前写过一篇使用jQuery跨域调用WebAPI的博客《jQuery跨域调用Asp.Net Web API》,但最近使用Angularjs来调用WebAPI发现之前的方法行不通。本文主要介绍解决使用Angularjs调用WebAPI的跨域问题。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-01-05T16:00:00.000Z">2016-01-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2015/12/aspnet-webapi-shi-pin-miao-bo/"><article class="md">
-<h2 class="post-title">Asp.Net WebAPI 视频秒播</h2><div class="excerpt"><p>看标题知道本文是关于WebAPI和视频播放的，关于在Web上使用的视频播放插件有很多，像flowplayer、jdplayer等等。使用这些控件通常使用服务器上物理文件的相对路径或是一个API地址返回一个视频流。通常情况下视频播放控件会将视频流全部加载后才开始播放，当视频文件较大时，这个等待时间是不能接受的，本文主要介绍怎样实现秒播。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2015-12-11T16:00:00.000Z">2015-12-12</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

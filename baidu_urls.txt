@@ -1,3 +1,10 @@
+http://fwhyy.com/2024/02/redis-for-operating-sentinel-mode-in-net/
+http://fwhyy.com/2024/02/reading-methods-of-taking-notes/
+http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/
+http://fwhyy.com/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/
+http://fwhyy.com/2024/01/do-something-seriously-and-deeply-starting-from-running/
+http://fwhyy.com/2023/12/dotnet-3-upgrade-to-dotnet-8/
+http://fwhyy.com/2023/12/the-first-wild-in-my-life/
 http://fwhyy.com/2023/11/marathon-pb-review/
 http://fwhyy.com/2023/11/dotnet-8/
 http://fwhyy.com/2023/11/prometheus-monitoring-middleware/
@@ -91,10 +98,3 @@ http://fwhyy.com/2022/03/recommend-a-card-note-taking-tool/
 http://fwhyy.com/2022/03/do-we-need-to-switch-from-monomer-to-microservice/
 http://fwhyy.com/2022/02/book-recommendation-202202/
 http://fwhyy.com/2022/02/20th-anniversary-of-net/
-http://fwhyy.com/2022/02/centos-install-k8s-deploy-net6/
-http://fwhyy.com/2022/02/why-do-i-like-it-typora/
-http://fwhyy.com/2022/02/hexo-stellar/
-http://fwhyy.com/2022/02/2021-year-end-summary/
-http://fwhyy.com/2022/01/book-recommendation-202201/
-http://fwhyy.com/2022/01/huawei-cloud-server-deployment-3/
-http://fwhyy.com/2022/01/read-study-hard/

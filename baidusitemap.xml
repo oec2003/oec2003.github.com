@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://fwhyy.com/2024/02/redis-for-operating-sentinel-mode-in-net/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/02/reading-methods-of-taking-notes/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/01/do-something-seriously-and-deeply-starting-from-running/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/12/dotnet-3-upgrade-to-dotnet-8/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/12/the-first-wild-in-my-life/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
     <loc>http://fwhyy.com/2023/11/marathon-pb-review/</loc>
     <lastmod>2023-11-24</lastmod>
   </url>
@@ -14,10 +46,6 @@
   </url>
   <url>
     <loc>http://fwhyy.com/2023/11/install-prometheus/</loc>
-    <lastmod>2023-11-24</lastmod>
-  </url>
-  <url>
-    <loc>http://fwhyy.com/2023/10/talk-about-hexagonal-architecture/</loc>
     <lastmod>2023-11-24</lastmod>
   </url>
   <url>

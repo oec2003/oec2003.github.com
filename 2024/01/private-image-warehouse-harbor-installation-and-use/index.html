@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>私有镜像仓库 Harbor 安装和使用 - 冯威的博客</title>
+
+  
+    <meta name="description" content="介绍我们如果需要部署一个私有镜像仓库来使用，最简单的就是 registry ，一行命令就可以运行在 Docker 中，但功能也比较弱，如果想要私有镜像仓库功能更丰富些，可以使用 Harbor 。 本文简单介绍下 Harbor 的安装和使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="私有镜像仓库 Harbor 安装和使用">
+<meta property="og:url" content="http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="介绍我们如果需要部署一个私有镜像仓库来使用，最简单的就是 registry ，一行命令就可以运行在 Docker 中，但功能也比较弱，如果想要私有镜像仓库功能更丰富些，可以使用 Harbor 。 本文简单介绍下 Harbor 的安装和使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211420800.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652475.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652147.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652376.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651644.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651253.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651958.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651628.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651491.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651701.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650424.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650780.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650809.webp">
+<meta property="article:published_time" content="2024-01-22T09:28:51.000Z">
+<meta property="article:modified_time" content="2024-02-20T09:30:20.383Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="镜像仓库">
+<meta property="article:tag" content="Harbor">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211420800.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2024-01-22T09:28:51.000Z">2024-01-22</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>私有镜像仓库 Harbor 安装和使用</span></h1>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我们如果需要部署一个私有镜像仓库来使用，最简单的就是 registry ，一行命令就可以运行在 Docker 中，但功能也比较弱，如果想要私有镜像仓库功能更丰富些，可以使用 Harbor 。</p>
+<p>本文简单介绍下 Harbor 的安装和使用。</p>
+<span id="more"></span>
+
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>服务器：CentOS 7 ，Harbor 部署在内网，通过 nginx 反向代理发布到外网使用</li>
+<li>Harbor：2.9.1</li>
+<li>docker：23.0.5</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1、如果没有安装 wget ，先执行下面命令安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br></pre></td></tr></table></figure>
+
+<p>2、下载包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/goharbor/harbor/releases/download/v2.9.1/harbor-offline-installer-v2.9.1.tgz</span><br></pre></td></tr></table></figure>
+
+<p>如果无法通过 wget 进行下载，可以直接到 Github 网站：<a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/releases/">https://github.com/goharbor/harbor/releases/</a> 进行下载，然后拷贝到服务器中：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211420800.webp"></p>
+<p>3、执行下面命令进行解压：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf harbor-offline-installer-v2.9.1.tgz</span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652475.webp"></p>
+<p>4、执行下面命令新建目录，并将程序文件复制到目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/harbor</span><br><span class="line">mv harbor/* /opt/harbor</span><br><span class="line">cd /opt/harbor</span><br></pre></td></tr></table></figure>
+
+<p>5、修改 Harbor 配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -ar harbor.yml.tmpl harbor.yml</span><br><span class="line">vi harbor.yml</span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652147.webp"></p>
+<ul>
+<li>hostname：如果只是内网访问，设置为内网 IP，如果需要外网访问，就必须设置为外网域名或 IP</li>
+<li>port：Web 访问的端口</li>
+</ul>
+<p>6、编辑完配置文件，接下来在 <code>harbor</code> 目录下安装 Harbor。先进行预处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./prepare</span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211652376.webp"></p>
+<p>7、执行下面命令进行安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651644.webp"></p>
+<p>8、稍等一会，执行 <code>docker-compose ps</code> ,如果所有容器的状态都是 healthy ，说明正常：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651253.webp"></p>
+<p>9、登录后界面如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651958.webp"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1、内网不能登录</p>
+<p>安装完成后，在外网使用 docker login 发现不能正常登录，于是先进内网进行验证，发现内网也不能登陆，提示信息如下：</p>
+<blockquote>
+<p>[root@localhost data]# docker login 172.16.10.103:9998<br>Username: admin<br>Password:<br>Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://172.16.10.103:9998/v2/&quot;">https://172.16.10.103:9998/v2/&quot;</a>: http: server gave HTTP response to HTTPS client</p>
+</blockquote>
+<p>需要将内网服务器 IP 和端口配置到 daemon.json 文件中，执行下面命令进行配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; &quot;insecure-registries&quot;:[&quot;172.16.10.103:9998&quot;]</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+
+<p>然后执行下面命令重启生效：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>再次登录：</p>
+<blockquote>
+<p>[root@localhost docker]# docker login 172.16.10.103:9998<br>Username: admin<br>Password:<br>WARNING! Your password will be stored unencrypted in /root/.docker/config.json.<br>Configure a credential helper to remove this warning. See<br><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/login/#credentials-store">https://docs.docker.com/engine/reference/commandline/login/#credentials-store</a></p>
+<p>Login Succeeded</p>
+</blockquote>
+<p>这个不仅仅是内网，哪台机器需要进行登录操作，都需要进行上面的配置。</p>
+<p>2、外网不能登录</p>
+<p>当内网正常后，发现外网依然不能正常登录，提示如下：</p>
+<blockquote>
+<p>fengwei@fengweideMBP ~ % docker login hub.fwhyy.com:1234<br>Username: admin<br>Password:<br>Error response from daemon: Get “<a target="_blank" rel="noopener" href="http://hub.fwhyy.com:1234/v2/&quot;">http://hub.fwhyy.com:1234/v2/&quot;</a>: Get “<a target="_blank" rel="noopener" href="http://172.16.10.103:9998/service/token?account=admin&amp;client_id=docker&amp;offline_token=true&amp;service=harbor-registry&quot;">http://172.16.10.103:9998/service/token?account=admin&amp;client_id=docker&amp;offline_token=true&amp;service=harbor-registry&quot;</a>: context deadline exceeded (Client.Timeout exceeded while awaiting headers) (Client.Timeout exceeded while awaiting headers)</p>
+</blockquote>
+<p>解决这个问题需要修改 harbor.yml 配置，将 hostname 修改为外网的 IP 或域名（不需要加端口）：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651628.webp"></p>
+<p>将 external_url 修改为外网访问的地址（需要加上端口）：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651491.webp"></p>
+<p>修改完后需要重启 Harbor，执行下面命令进行重启：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/harbor</span><br><span class="line">./prepare</span><br><span class="line">docker-compose down -v</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>外网服务器的 nginx 配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">1234</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  hub.fwhyy.com;</span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">2000M</span>;</span><br><span class="line">    <span class="attribute">gzip</span>  <span class="literal">on</span>;</span><br><span class="line"></span><br><span class="line">   <span class="attribute">location</span> / &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://172.16.10.103:9998;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Upgrade $http_upgrade;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrate&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> referer $http_referer;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">     <span class="attribute">location</span> /v2/ &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://172.16.10.103:9998/v2/;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Upgrade $http_upgrade;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrate&quot;</span>;</span><br><span class="line"></span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> referer $http_referer;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">     <span class="attribute">location</span> /service/ &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://172.16.10.103:9998/service/;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Upgrade $http_upgrade;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrate&quot;</span>;</span><br><span class="line">        </span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> referer $http_referer;</span><br><span class="line">      <span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">    <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">        <span class="attribute">root</span>   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>Harbor 里功能比较多，常用的有项目、用户管理、项目定额。</p>
+<ul>
+<li>项目：可以针对不同的项目单独创建，每个项目都有自己的镜像地址</li>
+<li>用户管理：可以维护用户，不同的项目可以设置不同的维护人员</li>
+<li>项目定额：设置项目对应的镜像仓库最大空间容量</li>
+</ul>
+<p>下面就按照步骤将一个镜像推送到 Harbor 中。</p>
+<p>1、在用户管理中创建名称为 images_admin 的用户：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211651701.webp"></p>
+<p>2、在项目中创建名称为 fw 的项目，并添加 images_admin 为项目的维护人员：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650424.webp"></p>
+<p>3、在项目定额中设置项目的配额大小为 2GB：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650780.webp"></p>
+<p>4、先以一个 nginx 镜像为例，直接推送试试，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag nginx:latest hub.fwhyy.com:1234/fw/nginx:latest</span><br><span class="line">docker push hub.fwhyy.com:1234/fw/nginx:latest</span><br></pre></td></tr></table></figure>
+
+<p>因为没有登录，会提示没有权限推送：</p>
+<blockquote>
+<p>The push refers to repository [hub.fwhyy.com:1234/fw/nginx]<br>b074db3b55e1: Preparing<br>e50c68532c4a: Preparing<br>f6ba584ca3ec: Preparing<br>01aaa195cdad: Preparing<br>2a13e6a7cca6: Preparing<br>370869eba6e9: Waiting<br>7292cf786aa8: Waiting<br>unauthorized: unauthorized to access repository: fw/nginx, action: push: unauthorized to access repository: fw/nginx, action: push</p>
+</blockquote>
+<p>5、使用下面命令进行登录后再进行推送：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker login hub.fwhyy.com:1234</span><br><span class="line"># 输入用户名密码</span><br><span class="line">docker tag nginx:latest hub.fwhyy.com:1234/fw/nginx:latest</span><br><span class="line">docker push hub.fwhyy.com:1234/fw/nginx:latest</span><br></pre></td></tr></table></figure>
+
+<p>登录后，就可以正常推送了，登录进入系统，可以看到在项目的镜像仓库中已经可以看到了：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202401211650809.webp"></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/&title=私有镜像仓库 Harbor 安装和使用 - 冯威的博客&summary=介绍我们如果需要部署一个私有镜像仓库来使用，最简单的就是 registry ，一行命令就可以运行在 Docker 中，但功能也比较弱，如果想要私有镜像仓库功能更丰富些，可以使用 Harbor 。
+本文简单介绍下 Harbor 的安装和..."><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=私有镜像仓库 Harbor 安装和使用 - 冯威的博客&amp;body=http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/">利用 Github Actions 同步佳明国内到国际<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2024/02/reading-methods-of-taking-notes/">reading-methods-of-taking-notes<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
