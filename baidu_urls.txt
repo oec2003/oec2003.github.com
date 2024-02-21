@@ -1,8 +1,8 @@
-http://fwhyy.com/2024/02/redis-for-operating-sentinel-mode-in-net/
 http://fwhyy.com/2024/02/reading-methods-of-taking-notes/
 http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/
 http://fwhyy.com/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/
 http://fwhyy.com/2024/01/do-something-seriously-and-deeply-starting-from-running/
+http://fwhyy.com/2023/12/redis-for-operating-sentinel-mode-in-net/
 http://fwhyy.com/2023/12/dotnet-3-upgrade-to-dotnet-8/
 http://fwhyy.com/2023/12/the-first-wild-in-my-life/
 http://fwhyy.com/2023/11/marathon-pb-review/
