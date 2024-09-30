@@ -1,6 +1,6 @@
-http://fwhyy.com/2024/10/what-is-rag/
 http://fwhyy.com/2024/09/introduction-to-openai-o1/
 http://fwhyy.com/2024/09/the-busy-trap/
+http://fwhyy.com/2024/09/what-is-rag/
 http://fwhyy.com/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/
 http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/
 http://fwhyy.com/2024/08/read-the-way-of-huawei-project-management/

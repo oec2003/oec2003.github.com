@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/what-is-rag/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">什么是 RAG？</span></a><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,12 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-1-index/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-2-singleton-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(2)—单件模式（创建型）</h2><div class="excerpt"><p>Gof 定义保证一个类仅有一个实例，并提供一个该实例的全局访问点。
+动机保证在系统中只存在一个实例，这样才能保证逻辑的正确性和良好的效率。
+单件模式单线程环境下实现看下面一段代码：
+1234567891011121314151617public class Singleton&#123;    private static Singleton _instance;    //定义为私有，让类...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-18T16:00:00.000Z">2009-11-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-1-index/"><article class="md">
 <h2 class="post-title">设计模式笔记(1)—开篇（文章索引）</h2><div class="excerpt"><p>概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。
 面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。
 设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。
@@ -144,8 +149,6 @@
 CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
 
 通常我们在使用方法的时候，方法的参数是按值传递的，如果传递的参数是引用类型...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-15T16:00:00.000Z">2009-07-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/07/ajaxpro-autocomplete-function-implementation/"><article class="md">
-<h2 class="post-title">AjaxPro版自动完成（Autocomplete）功能实现</h2><div class="excerpt"><p>07年的时候写过一篇有关自动完成(Atuocomplete)的文章 asp.net Ajax —AutoComplete控件使用 ，那篇文章中使用的是Asp.net Ajax ControlTollKit中的一个控件，虽然那时对里面几十个控件都研究过，不过遗憾的是在实际开发中确从未用到过，鉴于现在Ajaxpro的易用性和普遍性，本文将使用ajaxpro来实现自动完成的功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-12T16:00:00.000Z">2009-07-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 
