@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -109,52 +109,45 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-6-prototype-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(6)—原型模式（创建型）</h2><div class="excerpt"><p>Gof定义使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。
-动机在软件系统中，经常面临着“某些结构复杂的对象”的创建工作，但由于需求的变化，这些对象将成面临着剧烈的变化，但他们拥有比较稳定一致的接口。
-假设在一些打斗游戏场景中，有这样一些角色，普通(NormalActor),可以飞的(FlyActor)，可以潜水的(WaterActor)
-123public abstra...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-23T16:00:00.000Z">2009-11-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-5-factory-method-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(5)—工厂方法模式（创建型）</h2><div class="excerpt"><p>Gof定义定义一种用于创建对象的借口，让子类决定实例化哪一个类，Factory Method使得一个类的实例化延迟到子类。
-动机在软件系统中，经常面临着“某个对象”的创建工作；由于需求的变化，这个对象经常面临着剧烈的变化，但是它却拥有比较稳定的借口。
-假设有这样的一个场景，有一个汽车类和一个汽车测试框架类，汽车测试框架负责对汽车来进行测试，通常情况下我们会想下面这样写。
-1234567891...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-21T16:00:00.000Z">2009-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-4-generator-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(4)—生成器模式（创建型）</h2><div class="excerpt"><p>Gof定义将一个复杂对象的构建与其表示相分离，使其同样的构建过程可以创建不同的表示。
-动机在软件系统中，有时侯面临着一个复杂对象的创建工作，这个发展对象通常是由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂的对象的各个部分经常面临着巨大的变化，但是将他们组合起来的算法相对稳定。
-还是拿游戏中的房屋作为例子来讲，房屋由门、窗户、墙、地板、天花板组成。这些组成部分可能是经常要发生变化...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-20T16:00:00.000Z">2009-11-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(3)—抽象工厂模式（创建型）</h2><div class="excerpt"><p>Gof定义提供一个借口，让该接口负责创建一系列_相关或者相互依赖的对象_，无需指定他们具体的类。
-动机在软件系统中经常面临着_一系列相互依赖的对象_的创建的工作，同时由于需求的变化，往往存在着更对系列对象的创建。
-常规的对象创建的方法，直接使用new关键字
-1Road road = new Road();
+  <div class="post-list post"><a class="post-card post " href="/2010/01/design-patterns-notes-17-mediator-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(17)—中介者模式（行为型）</h2><div class="excerpt"><p>Gof定义用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式的相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
+动机在软件构建过程中，经常会出现多个对象互相关联交互的情况，对象之间常常会维持一种复杂的引用关系，如果遇到一些需求的更改，这种直接的引用关系将面临不断的变化。在这种情况下，我们可使用一个“中介对象”来管理对象间的关联关系，避免相互交互的对象之间的紧耦合引用...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-19T16:00:00.000Z">2010-01-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-16-interpreter-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(16)—解释器模式（行为型）</h2><div class="excerpt"><p>Gof定义给定一个语言，定义它的文法的一种表示，并定义一种解释器，这个解释器使用该表示来解释语言中的句 子。
+动机在软件构建过程中，如果某一特定领域的问题比较复杂，类似的模式不断重复出现，如果使用普通的编程方式来实现将面临非常频繁的变化。在这种情况下，将特定领域的问题表达为某种语法规则下的句子，然后构建一个解释器来解释这样的句子，从而达到解决问题的目的。
+下面看下解释器模式的结构图：
 
-这样直接new会有一个问题，不能应对具体实例化类型的变化，比如说有不同的Road类型...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/vs-font-recommended/"><article class="md">
-<h2 class="post-title">VS中的经典字体推荐</h2><div class="excerpt"><p>每天编码眼睛看着vs，一个好的字体和背景色能使我们的心情更愉悦，眼睛的疲劳度也随之降低。
-微软发布过针对VS2005的编程字体Consolas，个人感觉这个字体还不错，可以点击下面链接下载
-猛击这里下载对于背景色我比较喜欢浅黄色，据说能保护眼睛，虽然有点夸张但确实比纯白色看着要舒服。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-2-singleton-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(2)—单件模式（创建型）</h2><div class="excerpt"><p>Gof 定义保证一个类仅有一个实例，并提供一个该实例的全局访问点。
-动机保证在系统中只存在一个实例，这样才能保证逻辑的正确性和良好的效率。
-单件模式单线程环境下实现看下面一段代码：
-1234567891011121314151617public class Singleton&#123;    private static Singleton _instance;    //定义为私有，让类...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-18T16:00:00.000Z">2009-11-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-1-index/"><article class="md">
-<h2 class="post-title">设计模式笔记(1)—开篇（文章索引）</h2><div class="excerpt"><p>概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。
-面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。
-设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。
-面向对象设计模式是“好的面向对象设计”，所谓“好的面向对象设计”是那些可以满足“因对变化，提高复用的设计”。
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-17T16:00:00.000Z">2009-11-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/experience-vs2010-improvements/"><article class="md">
-<h2 class="post-title">体验vs2010 （功能改进篇）</h2><div class="excerpt"><p>下午在使用vs2010进行了一些简单的编码体验，下面谈一下和以前版本的一些不同的地方，仅限于工具的使用方面，有关Net4.0方面的知识将在以后深入研究。
-首先来看下创建项目的对话框，在左边的Installed Templates里多出了几个选项，如Cloud Service、F#等。点击左边栏中的C#，在右边的模板列表中可以看到Silverlight、asp.net mvc2 已经集成在其中...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-23T16:00:00.000Z">2009-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/experience-vs2010-installation/"><article class="md">
-<h2 class="post-title">体验VS2010（安装篇）</h2><div class="excerpt"><p>本来是打算等到vs2010正式版出来之后再安装vs2010体验，不过鉴于才2g多的大小，就提前下载安装了，下面的是安装过程中的一些截图。和以前装vs2008不同的是，在安装过程中，出现了两次重启电脑。必须重启后才能继续安装。安装的东西很多所以时间也比装vs2008长了不少。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-23T16:00:00.000Z">2009-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/visual-studio-2010-beta-2-download-address-publicly/"><article class="md">
-<h2 class="post-title">Visual Studio 2010 Beta 2 公开下载地址</h2><div class="excerpt"><p>前天就在博客园见了lyj的那篇介绍Visual Studio 2010 Beta 2的文章了，今天终于开发下载了。下载地址：http://msdn.microsoft.com/en-us/vstudio/dd582936.aspx
-看了下别人的安装截图感觉漂亮了不少，不过我还是想等到正式版出来后再下载安装，希望到时能换一个配置好点的本本，现在的这个已经陪伴我三四年的老本跑起来确实很吃力啊。
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-21T16:00:00.000Z">2009-10-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+基本...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-18T16:00:00.000Z">2010-01-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/wuhan-goodbye/"><article class="md">
+<h2 class="post-title">武汉 再见</h2><div class="excerpt"><p>从毕业到现在一直呆在武汉，已经两年多了，经历了两个公司，现在的这个公司虽小，但氛围很好，和同事也关系也相处得非常融洽，最重要的是有一个人品极佳的经理，从他身上我也学到了很多。所以说这一年多的时间里我过得还不错，我很高兴在这样的公司工作这么长时间。
+然而现在我却要离开，这个想法也是最近的几个月萌发的，我必须去大城市闯一闯，因为我已经不再年轻，在不闯就真的没机会了，目标城市北京，原因有三：
+
+我...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-11T16:00:00.000Z">2010-01-12</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2010/01/jquery-upload-plugin-uploadify-use-explanation/"><article class="md">
+<h2 class="post-title">jQuery上传插件Uploadify使用详解</h2><div class="excerpt"><p>本文Uploadify版本为2.1.0，已经过时，截止（2016-09-25）最新版本3.2.1的详细介绍请移步《jQuery上传插件Uploadify使用详解(3.2.1)》Uploadify是jQuery的一个上传插件，实现的效果非常不错，带进度显示。不过官方提供的实例时php版本的，本文将详细介绍Uploadify在Aspnet中的使用，您也可以点击下面的链接进行演示或下载。
+
+官方下...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/01/the-first-snow-of-2010/"><article class="md">
+<h2 class="post-title">2010年的第一场雪</h2><div class="excerpt"><p>
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-05T16:00:00.000Z">2010-01-06</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-15-command-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(15)—命令模式（行为型）</h2><div class="excerpt"><p>Gof定义将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
+动机在软件构建过程中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合——比如需要对行为进行“记录、撤销/重做（undo/redo）、事务”等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将“行为请求者”与“行为实现者”解耦？将一组行为...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-29T16:00:00.000Z">2009-12-30</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/an-example-in-respect-to-multithreading/"><article class="md">
+<h2 class="post-title">关于多线程的一个例子（UI实时显示）</h2><div class="excerpt"><p>在开发Window应用程序的时候，经常需要在界面上显示出已经执行到什么步骤了，拿一个简单例子来说，创建一个Winform程序，在窗体上访一个Button和一个Label，点击Button时做100次循环，在Label上实时显示当前循环的次数。一种简单的做法就是使用Application.DoEvents，代码如下：
+123456789private void btnTest_Click(ob...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-19T16:00:00.000Z">2009-12-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-14-template-method-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(14)—模板方法模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个 算法的结构即可重定义该算法的某些特定步骤。
+动机在软件构建过程中，对于某一项任务，它常常有稳定的整体操作结构，但各个子步骤却有很多改变的需求，或者由于固有的原因（比如框架与应用之间的关系）而无法和任务的整体结构同时实现。如何在确定稳定操作结构的前提下，来灵活应对各个子步骤的变...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-13T16:00:00.000Z">2009-12-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/in-js-method-return-multiple-values-of-the-three-methods/"><article class="md">
+<h2 class="post-title">在JS方法中返回多个值的三种方法</h2><div class="excerpt"><p>在使用JS编程中，有时需要在一个方法返回两个个或两个以上的数据，用下面的几种方法都可以实现：
+1 使用数组的方式，如下：
+12345678910111213141516171819202122&lt;html&gt;&lt;head&gt;    &lt;title&gt;JS函数返回多个值--oec2003&lt;/title&gt;&lt;/head&gt;&lt;body&gt;   ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-10T16:00:00.000Z">2009-12-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-13-proxy-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(13)—代理模式（结构型）</h2><div class="excerpt"><p>Gof定义为其他对象提供一种代理以控制对这个对象的访问。
+动机在面向对象系统中，有些对象由于某种原因（比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外的访问等），直接访问会给使用者、或者系统结构带来很多麻烦。如何在不失去透明操作对象的同时来管理/控制这些对象特有的复杂性？增加一层间接层是软件开发中常见的解决方式。看下结构图：
+
+Subject：该类中定义了一些RealSubj...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-09T16:00:00.000Z">2009-12-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -162,7 +155,7 @@
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      44<span class='sep'></span>54
+      44<span class='sep'></span>56
     </div>
     <a class='paginator next' href='/page/45/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>

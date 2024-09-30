@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,32 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2010/04/http-error-500-19-internal-server-error-solution/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2010/05/using-loadrunner-test-wms/"><article class="md">
+<h2 class="post-title">使用LoadRunner测试WMS</h2><div class="excerpt"><p>LoadRunner是一款非常强大的测试工具，本文为笔者在对LoadRunner有了初步了解后对WMS的压力测试过程，因为接触时间比较短，不对之处欢迎大家指出。由于Licence的原因，对WMS的测试只支持最多100个虚拟用户。下面就开始测试了。
+1 要有一个可用的WMS的地址，可以在本机的流媒体服务中创建，也可以使用远程的。2 打开LoadRunner8.1，并运行窗口中点击Create/...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-05-20T16:00:00.000Z">2010-05-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/05/add-the-default-distribution-point-wms/"><article class="md">
+<h2 class="post-title">WMS中添加默认发布点</h2><div class="excerpt"><p>当我们在服务器中安装了WMS后会自动创建一个默认的点播发布点，对应的目录为C:\WMPub\WMRoot，当然我们也可以根据需要更改。有这个默认发布点，就可以通过mms://ServerName/MediaName  这种方式来访问C:\WMPub\WMRoot目录中的音视频文件。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-05-18T16:00:00.000Z">2010-05-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/05/in-a-batch-file-to-start-the-mediaplayer-play-set-files/"><article class="md">
+<h2 class="post-title">在批处理文件中启动MediaPlayer播放制定文件</h2><div class="excerpt"><p>我们知道在运行可以使用wmplayer指令来启动一个MediaPlayer，如果需要让MediaPlayer播放制定的文件或是一个制定的流媒体发布点，我们可以使用如下的命令格式
+12wmplayer “mms://WIN-FW.MiGu.com/12530”wmplayer “C:\wmpub\wmroot\legacy_content_clip.wmv”
+
+但是在运行中来执行命令需要手动去...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-05-04T16:00:00.000Z">2010-05-05</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/04/win2008-computer-cannot-be-added-to-the-domain-of-the-solution/"><article class="md">
+<h2 class="post-title">Win2008计算机不能添加到域的解决方法</h2><div class="excerpt"><p>最近接触了一点win2008活动目录，所谓万事开头难，本来很简单的事情在刚刚接触时就很费劲。
+在远程的一台机子上成功安装了AD后，想将本机添加到域中，试了很多次都不行，出现下面的错误：
+
+查了很久的msdn文档，说的都不是很清楚，也许是我对dns的理解不够深入，最后得知原来是dns的指向问题。假如安装了AD的机子的IP为192.168.1.50，就将需要添加到域中的机子的dns设置为192....</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-04-27T16:00:00.000Z">2010-04-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/04/win2008-remote-desktop-installation-ad-after-log-in-problem-solving/"><article class="md">
+<h2 class="post-title">Win2008远程桌面安装AD后的登录问题解决</h2><div class="excerpt"><p>问题本机操作系统为Win2008 ，远程连接的两台机子A和B的的系统也都为Win2008。先远程连接B，然后在B中远程连接A，在A上安装了AD，安装完要求重启A，A重启后再远程连接A，输入正确的密码不能登录了
+解决方法其实很简单，将B添加到域中，然后重启B就可以了
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-04-26T16:00:00.000Z">2010-04-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/04/use-expression-encoder-3-to-webdav-publishing-media-file/"><article class="md">
+<h2 class="post-title">使用Expression Encoder 3发布媒体文件到WebDAV</h2><div class="excerpt"><p>使用环境Windows Server 2008
+IIS7.0  Microsoft
+Expression Encoder3
+准备在IIS7.0中没有自带WebDAV，可以通过下面的链接进行下载安装，后两个为补丁。
+Microsoft WebDAV Extension for IIS 7.0 (x86)Microsoft WebDAV Extension for IIS 7.0 (x64)Up...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-04-19T16:00:00.000Z">2010-04-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2010/04/http-error-500-19-internal-server-error-solution/"><article class="md">
 <h2 class="post-title">HTTP 错误 500.19 – Internal Server Error 错误解决方法</h2><div class="excerpt"><p>刚在本机部署了一个WebService测试，浏览的时候出现了“HTTP 错误 500.19 – Internal Server Error ”错误，如下图：
 
 经过检查发现是由于先安装vs2008后安装iis的缘故，只需重新注册下AspNet就可以了，具体步骤如下
@@ -128,28 +153,6 @@
 点击下载有关此版本详细的介绍请看ScottGu的博文 。
 博客园的SZW对该文进行了翻译 ：http://www.cnblogs.com/szw/archive/2010/02/05/1664704.html
 当然也可以...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-04T16:00:00.000Z">2010-02-05</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/02/design-patterns-notes-25-summary/"><article class="md">
-<h2 class="post-title">设计模式笔记(25)—总结</h2><div class="excerpt"><p>断断续续经历了几个月的时间将WebCast的设计模式讲座重新完整听了一遍，并做了笔记，才有了这个设计模式笔记系列，本系列的文章大部分只是给出了基本代码的实现，而并没有去衍生其他的一些例子，笔者认为通过基本的代码实现就能够了解到模式的应用场景，弄出些花哨的例子反倒会让人眼花缭乱，可能并达不到预期的效果，毕竟在实际的应用中我们不是去套用模式。本文作为该系列的最后一篇，将对设计模式做个总结。
-首先...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-02T16:00:00.000Z">2010-02-03</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/02/design-patterns-notes-24-visitor-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(24)—访问者模式（行为型）</h2><div class="excerpt"><p>Gof定义表示一个作用于某对象结构中的各元素的操作。它可以在不改变各元素的类的前提下定义作用于这些元素的新的操作。
-动机在软件构建过程中，由于需求的改变，某些类层次结构中常常需要增加新的行为（方法），如果直接在基类中做这样的更改，将会给子类带来很繁重的变更负担，甚至破坏原有设计。如何在不更改类层次结构的前提下，在运行时根据需要透明地为类层次结构上的各个类动态添加新的操作，从而避免上述问题？请...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-01T16:00:00.000Z">2010-02-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/02/some-tips-of-sqlserver/"><article class="md">
-<h2 class="post-title">SqlServer数据库的语句及一些操作整理</h2><div class="excerpt"><p>临近年终，在工作之余对工作和学习中遇到的问题以及常用的一些知识点做了些整理，以备后用。本文涉及的内容为数据库,算是对开发总结(1)—数据库一文的补充。
-1 对于主键设置了Identity的表，在删除表中数据后再往表中插入数据，Identity列不是从1起始了，如果想删除数据后Indentity列仍从1起始，可以用下面代码来删除数据。
-12truncate table tablenameDBC...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-02-01T16:00:00.000Z">2010-02-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-23-strategy-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(23)—策略者模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一系列算法，把它们一个个封装起来，并且使它们可互相替换。该模式使得算法可独立于使用它的客 户而变化。
-动机在软件构建过程中，某些对象使用的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使对象变得异常复杂；而且有时候支持不使用的算法也是一个性能负担。如何在运行时根据需要透明地更改对象的算法？将算法与对象本身解耦，从而避免上述问题？看下面的策略者模式的结构图和基本代...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-30T16:00:00.000Z">2010-01-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-22-state-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(22)—状态模式（行为型）</h2><div class="excerpt"><p>Gof定义允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。
-动机在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。如何在运行时根据对象的状态来透明地更改对象的行为？而不会为对象操作和状态转化之间引入紧耦合？看下面状态模式的结构图和代码。
-状态模式结构图：
-
-日常生活中我们常见...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-27T16:00:00.000Z">2010-01-28</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/01/design-patterns-notes-20-chain-of-responsibility-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(20)—职责链模式（行为型）</h2><div class="excerpt"><p>Gof定义使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递请求，直到有一个对象处理它为止。
-动机在软件构建过程中，一个请求可能被多个对象处理，但是每个请求在运行时只能有一个接受者，如果显式指定，将必不可少地带来请求发送者与接受者的紧耦合。如何使请求的发送者不需要指定具体的接受者？让请求的接受者自己在运行时决定来处理请求，从而使两者...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-01-26T16:00:00.000Z">2010-01-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -109,65 +109,68 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/01/installation-of-the-net-framework-3-0-and-sharepoint-2007/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解四：安装.NET Framework 3.0和SharePoint 2007</h2><div class="excerpt"><p>终于到了SharePoint2007安装的最后一步了，.NET Framework 3.0在官网可以下载，不过需要连接到网络才可以安装，SharePoint2007我下载的是官网的半年试用版，但安装的时候居然要求输入序列号，随便搜了一个顺利通过，嘿嘿！下面是下载链接地址和序列号
-.NETFramework3.0：http://www.microsoft.com/downloads/zh-cn...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-10T16:00:00.000Z">2011-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/iis-install/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解一：IIS安装</h2><div class="excerpt"><p>由于工作需要最近准备研究下SharePoint，SharePoint的最新版本为2010，但由于硬件环境所致我打算从2007开始学。首先准备详细介绍下SharePoint2007的安装过程。
-本次安装是在Windows2003 sp2的虚拟机上进行，安装SharePoint2007 先后分为以下几个步骤
+  <div class="post-list post"><a class="post-card post " href="/2011/06/retreat-to-the-javascript-code-reserved/"><article class="md">
+<h2 class="post-title">给Javascript代码“预留退路”</h2><div class="excerpt"><p>所谓给Javascript代码“预留退路”意思就是当用户将浏览器的Javascript功能禁用的时候，页面中使用了Javascript的地方要能够以变通的方式得以运行，而不能让用户看到出错或是点击某按钮而毫无反应，这也是用户体验很重要的一部分。
+举个简单的例子来说，点击页面中的一个链接可以弹出一个新的页面，我们通常会使用window.open，代码如下：
+123456&lt;a href=&...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-15T16:00:00.000Z">2011-06-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/"><article class="md">
+<h2 class="post-title">未在本地计算机上注册“Microsoft.Jet.OleDb.4.0”提供程序 错误解决</h2><div class="excerpt"><p>最近在做一个导入Excel数据到数据库的程序出现了如下错误：
 
-安装IIS等一些组件
-安装AD（活动目录）及DNS
-安装SqlServer2005
-安...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-09T16:00:00.000Z">2011-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/installation-of-ad-and-dns/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解二：安装AD（活动目录）及DNS</h2><div class="excerpt"><p>在上一篇SharePoint2007安装图文详解一：安装IIS及相关组件中已经介绍了IIS及相关组件的安装，本篇将详细介绍AD（活动目录）的安装。
-打开“管理您的服务器”，点击“添加或删除角色”
+运行环境
+数据库：SqlServer2008 R2
+OS：Windows Server 2008 R2
+IIS：IIS7
 
-点击“添加或删除角色”后弹出“配置你的服务器向导”对话框
+解决方法在应用程序对用的应用程序池的高级设置中设置“启用32位应用程序”为“True”
 
-点击下一步进入如下对话框
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-14T16:00:00.000Z">2011-06-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/windows-service-in-windows-7-cant-install-solution/"><article class="md">
+<h2 class="post-title">Windows服务在Win7中不能安装的解决方法</h2><div class="excerpt"><p>用C#写的Windows服务在Win7中安装时出现如下错误：
 
-数秒后，进入到下面视图
+解决方法：
+1 安装服务的脚本写在bat文件中，一定要注意路径，如下
+123456D:\Project\JXW\Code\WorkFlow\FlowServer\installutil.exe  D:\Project\JXW\Code\WorkFlow\FlowServer\FlowServer.exepausenet star...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-23T16:00:00.000Z">2011-05-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/additional-database-failure-5120-error/"><article class="md">
+<h2 class="post-title">附加数据库失败 操作系统错误5</h2><div class="excerpt"><p>环境数据库版本：SqlServer2008 R2 32位
+附加文件的版本：SqlServer2008 R2 64位</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-21T16:00:00.000Z">2011-05-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/anniversary/"><article class="md">
+<h2 class="post-title">纪念日--领证</h2><div class="excerpt"><p>今天是2011年5月20日，我和老婆领证了。
+原计划早早的去排头一个，但最终还是到9点多才到的婚姻登记处，人还挺多，也许是这个日子的原因。
+搞清楚流程后我们就排队等待审核，好不容易等到我们了，谁知我的户口本竟然不合格，因为上面的相关信息不是机打的而是手写了，说是按照相关对顶必须是机打的，当时心里那个急啊，我忙说我们那里比较落后没有电脑都是手写的，那人说你别骗我，我办过你们那个地方的就是机打的，我直接无语了。后来说了半天的好话，才同意给我们办但证先不能给我们，等我把户口本拿回去更新后才能给我们证。尽管如此，我和老婆还是感到很高兴。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-19T16:00:00.000Z">2011-05-20</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
+<h2 class="post-title">在VS2010中将AspNet网站编译成一个DLL</h2><div class="excerpt"><p>在VS2010中创建一个网站，部署时网站的dll是动态生成的，每次编译产生的dll的名称都不一样，这样会导致在部署时必须将aspx页面和dll一起部署，尽管有时你可能只修改了后台代码。这样就变得很不方便，在VS2010中可以借助一个插件是网站生成一个固定名称的dll。
+1 从下面的链接地址中下载 Visual Studio® 2010 Web Deployment Projects
+http...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-04-05T16:00:00.000Z">2011-04-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/"><article class="md">
+<h2 class="post-title">Asp.Net站点整合Discuz论坛实现同步注册和单点登录</h2><div class="excerpt"><p>最近在一个小站中整合了Discuz论坛，查阅了些资料后实现了同步注册和单点登录。
+Discuz是以虚拟目录的方式加载网站中，整合Discuz到网站中进行安装要注意一下几个问题：
 
-选择“域控制器”后点击“下一步”
 
-点击“下一步”
+Discuz所在的目录需要添加NETWORK SERVICE 和IIS_User这两个账户的权限。
+Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为虚拟目录的名称。
+由于我网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-31T16:00:00.000Z">2011-04-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
+<h2 class="post-title">在SqlServer 2008中将数据导成脚本</h2><div class="excerpt"><p>当我们想将数据库搬到另一个环境中运行时，如果数据库的版本一样我们可以直接选择附加的方式，而如果实验环境中的数据库版本比当前数据库低，就无法附加了。这时要向将数据全部导过去就需要使用脚本的方式，像Sqldbx就可以将数据库中的数据导出成脚本。本文将说下怎样直接在SqlServer 2008中将数据导出成脚本。
+具体步骤：
+1 打开SqlServer 2008 ，选择需要将数据导出到脚本的数据库...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-30T16:00:00.000Z">2011-03-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/03/sql2008-modify-and-save-the-table-structure-error/"><article class="md">
+<h2 class="post-title">SQL2008修改并保存表结构时报错的解决(阻止保存要求重新创建表的更改)</h2><div class="excerpt"><p>今天在SqlServer2008中修改表结构时，弹出下面对话框阻止我保存
 
-随之便出现下面的对话框
+解决此问题方法为：
+1 打开SqlServer2008工具—&gt;选项
+2 在弹出的对话框中去掉“阻止保存要求重新创建表的更改”，如下图
 
-点...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-09T16:00:00.000Z">2011-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/the-two-methods-get-the-wordpress-plugin-and-code-reply-email-notification/"><article class="md">
-<h2 class="post-title">插件和代码两种方法搞定WordPress回复邮件通知</h2><div class="excerpt"><p>为了更好的互动，当有人在博客中评论时，我们肯定是希望能够马上知晓，WordPress中默认不提供这样的功能，需要通过插件或是添加代码的方式来实现。
-使用插件使用插件的方式非常简单，安装好插件在后台做相应的配置就好了。现在比较流行的插件是WordPress Thread Comment，下面详细介绍下步骤
-1 下载解压后上传到plugin目录中。
-2 进入WordPress后台，在“设置”选项...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-06T16:00:00.000Z">2011-01-07</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2011/01/back-in-the-2010-plan-2011/"><article class="md">
-<h2 class="post-title">回顾2010 计划2011</h2><div class="excerpt"><p>2010年对于我来说是不平凡的一年。
-2010年我脱离了单身，找到了属于我的幸福。
-2010年我不远千里从武汉来到北京，一方面寻求事业上的发展，同时和小妹也算有个照应。
-2010年3月2号是个很特别的日子，就是在这一天我脱离了单身。也是在这一天我们相聚又别离了，我来了北京，她仍在武汉。1个月后我在北京西站接到了她，从此便开始了近一年的甜蜜蜗居生活。
-北京的工作相对于武汉来说有更多的机会，所以...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-04T16:00:00.000Z">2011-01-05</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
-</article></a><a class="post-card post " href="/2011/01/build-personal-blog-using-wordpress/"><article class="md">
-<h2 class="post-title">用WordPress搭建个人博客小记</h2><div class="excerpt"><p>最近用WordPress搭建了一个个人博客，将这几年在博客园、CSDN、新浪上的一些博文都搬到了新的博客中。以后不管是技术还是非技术的文章都将发布在新的博客中。下面简单说下这次搭建个人博客的经历。
-域名08年的时候就申请过一个域名www.oec2003.cn，但一直没有看到性价比比较好的空间，所以该域名一直处于闲置中。去年圣诞节前夕，看到易网库做活动空间打75折，因为之前免费试用过他们的空间...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-03T16:00:00.000Z">2011-01-04</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2010/12/jquery-boxy-plug-in-pop-up-the-four-edges-of-images-in-ie-dont-show/"><article class="md">
-<h2 class="post-title">jQuery boxy插件弹出框的四个边角图片在IE中不显示问题的解决</h2><div class="excerpt"><p>jQuery boxy插件很好用，但也会出现一些问题，比如弹出框的边角在IE中不能显示。本博文将来解决这个问题。将boxy插件引用到项目中后会有一个boxy.css文件和jquery.boxy.js文件。在boxy.css文件中有给弹出框设置四个角图片的样式，如下图：
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-08T16:00:00.000Z">2011-03-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/03/excel-import-database-external-table-is-not-desired-format-mistakes-of-the-solution/"><article class="md">
+<h2 class="post-title">Excel导入数据库出现“外部表不是预期的格式”错误的解决方法</h2><div class="excerpt"><p>下图为出错的界面
 
-不做任何修改在Chrome浏览器下没有问题，如下：
+出错的原因是因为Excel的格式不是标准的Excel格式，像我出现这个错误的原因就是使用的Excel是用程序导出的Excel。
+解决此问题方法很简单：
 
-在网上查了一些资料，说将css文件中的图片路径给位全路径可以解决问题...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-12-08T16:00:00.000Z">2010-12-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/11/add-a-bookmark-to-a-pdf-document/"><article class="md">
-<h2 class="post-title">给PDF文档添加书签</h2><div class="excerpt"><p>我们在阅读纸质的书时，一般都会使用书签来标识看到什么地方以便下次看时可以方便的找到。如果是在电脑上阅读PDF文档，我们同样希望能够给PDF文档做些标记，不过默认情况下PDF是不支持标记的。下面就来介绍一种方法可以在PDF文档中添加书签。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-11-19T16:00:00.000Z">2010-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/11/use-jquery-boxy-plug-in-confirmation-box-in-the-aspnet/"><article class="md">
-<h2 class="post-title">jQuery boxy插件的确认框在AspNet中的应用</h2><div class="excerpt"><p>jQuery有不少弹出框的插件，boxy应该算的上是功能和效果都还不错的一款了。先来看一张效果图吧。
+将格式不标准的Excel另存为一个标准格式。
+如果Excel是用程序导出的，可以修改导出程序，将其导出为标准格式。
 
-在Web开发中经常会使用到Alert和Confirm弹出框，在Asp.Net中的删除按钮上我们常常会加上删除的确认提示，以避免误删除数据，就像上面图片那样。我们一般会写出这样的代码。
-12345678910111213141516&lt;html xmlns=&quot;http://ww...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-11-19T16:00:00.000Z">2010-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2010/11/csharp-a-friend-assembly/"><article class="md">
-<h2 class="post-title">C#:友元程序集</h2><div class="excerpt"><p>C#中的访问修饰符Internal可以说是介于Public和Private之间，可以使类型在同程序集中可以被互相访问。但有时会有这样的需求，我们希望一个程序集中的类型可以被外部的某些程序集可以访问，这时当然不能设置成Public，否则可以被所有的外部程序集访问。要达到上述要求我们可以使用友元程序集。
-下面用一个简单的例子来介绍下友元程序集。
-1 在一个解决方案中创建两个类库项目TestA和T...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2010-11-14T16:00:00.000Z">2010-11-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-07T16:00:00.000Z">2011-03-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -175,7 +178,7 @@
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      35<span class='sep'></span>54
+      35<span class='sep'></span>56
     </div>
     <a class='paginator next' href='/page/36/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>

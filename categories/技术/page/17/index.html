@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,43 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2011/06/retreat-to-the-javascript-code-reserved/"><article class="md">
+<h2 class="post-title">给Javascript代码“预留退路”</h2><div class="excerpt"><p>所谓给Javascript代码“预留退路”意思就是当用户将浏览器的Javascript功能禁用的时候，页面中使用了Javascript的地方要能够以变通的方式得以运行，而不能让用户看到出错或是点击某按钮而毫无反应，这也是用户体验很重要的一部分。
+举个简单的例子来说，点击页面中的一个链接可以弹出一个新的页面，我们通常会使用window.open，代码如下：
+123456&lt;a href=&...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-15T16:00:00.000Z">2011-06-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/"><article class="md">
+<h2 class="post-title">未在本地计算机上注册“Microsoft.Jet.OleDb.4.0”提供程序 错误解决</h2><div class="excerpt"><p>最近在做一个导入Excel数据到数据库的程序出现了如下错误：
+
+运行环境
+数据库：SqlServer2008 R2
+OS：Windows Server 2008 R2
+IIS：IIS7
+
+解决方法在应用程序对用的应用程序池的高级设置中设置“启用32位应用程序”为“True”
+
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-14T16:00:00.000Z">2011-06-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/windows-service-in-windows-7-cant-install-solution/"><article class="md">
+<h2 class="post-title">Windows服务在Win7中不能安装的解决方法</h2><div class="excerpt"><p>用C#写的Windows服务在Win7中安装时出现如下错误：
+
+解决方法：
+1 安装服务的脚本写在bat文件中，一定要注意路径，如下
+123456D:\Project\JXW\Code\WorkFlow\FlowServer\installutil.exe  D:\Project\JXW\Code\WorkFlow\FlowServer\FlowServer.exepausenet star...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-23T16:00:00.000Z">2011-05-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/additional-database-failure-5120-error/"><article class="md">
+<h2 class="post-title">附加数据库失败 操作系统错误5</h2><div class="excerpt"><p>环境数据库版本：SqlServer2008 R2 32位
+附加文件的版本：SqlServer2008 R2 64位</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-21T16:00:00.000Z">2011-05-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
+<h2 class="post-title">在VS2010中将AspNet网站编译成一个DLL</h2><div class="excerpt"><p>在VS2010中创建一个网站，部署时网站的dll是动态生成的，每次编译产生的dll的名称都不一样，这样会导致在部署时必须将aspx页面和dll一起部署，尽管有时你可能只修改了后台代码。这样就变得很不方便，在VS2010中可以借助一个插件是网站生成一个固定名称的dll。
+1 从下面的链接地址中下载 Visual Studio® 2010 Web Deployment Projects
+http...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-04-05T16:00:00.000Z">2011-04-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/"><article class="md">
+<h2 class="post-title">Asp.Net站点整合Discuz论坛实现同步注册和单点登录</h2><div class="excerpt"><p>最近在一个小站中整合了Discuz论坛，查阅了些资料后实现了同步注册和单点登录。
+Discuz是以虚拟目录的方式加载网站中，整合Discuz到网站中进行安装要注意一下几个问题：
+
+
+Discuz所在的目录需要添加NETWORK SERVICE 和IIS_User这两个账户的权限。
+Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为虚拟目录的名称。
+由于我网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-31T16:00:00.000Z">2011-04-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/03/data-into-the-sql-script-in-sqlserver-2008/"><article class="md">
 <h2 class="post-title">在SqlServer 2008中将数据导成脚本</h2><div class="excerpt"><p>当我们想将数据库搬到另一个环境中运行时，如果数据库的版本一样我们可以直接选择附加的方式，而如果实验环境中的数据库版本比当前数据库低，就无法附加了。这时要向将数据全部导过去就需要使用脚本的方式，像Sqldbx就可以将数据库中的数据导出成脚本。本文将说下怎样直接在SqlServer 2008中将数据导出成脚本。
 具体步骤：
 1 打开SqlServer 2008 ，选择需要将数据导出到脚本的数据库...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-30T16:00:00.000Z">2011-03-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -137,54 +173,6 @@
 <h2 class="post-title">VirtualPC2007的文件复制到其他电脑不能打开的问题解决</h2><div class="excerpt"><p>在使用VirtualPC的时候，我一般都习惯保存当前状态的方式关机，这样在下次使用的时候可以保证继续我上次的工作状态。最近我将保存状态的VirtualPC2007的文件拷贝到另一台电脑中，然后用VirtualPC2007去添加，我选择的是已经存在的虚机，这时会报一个错误，如下图：
 
 经过查询得知，解决此问题的方法为启动VirtualPC后，按照添加新的虚机的方法去做，直到提示要选择硬盘的时候...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-03T16:00:00.000Z">2011-03-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/02/sql-server-does-not-support-the-user-instance-login-flag/"><article class="md">
-<h2 class="post-title">解决“此版本的 SQL Server 不支持用户实例登录标志。该连接将关闭”问题</h2><div class="excerpt"><p>错误提示
-
-出现此错误的原因为在webconfig连接字符串中的;User Instance设置为True了，将;User Instance值修改为false即可解决此问题。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-02-21T16:00:00.000Z">2011-02-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/solve-gridview-long-export-excel-such-as-digital-display/"><article class="md">
-<h2 class="post-title">解决AspNet中DataGrid GridView等列表控件导出Excel长数字显示成科学计数法的问题</h2><div class="excerpt"><p>大家都知道，在Excel中，当一个单元格中的值为一长串数字，而且该单元格又不是文本格式的时候，这一长串数字会以科学计数法的方式显示，这给我们的阅读带来了障碍。如果是直接在Excel中编辑数据，手动将格式改为“文本”即可，但要是用程序导出的Excel，手动去改就显得很麻烦了。简单的方法就是在程序中导出Excel的时候就设置列为“文本”格式。
-AspNet中将DataGrid，GridView等...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-22T16:00:00.000Z">2011-01-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/the-latest-microsoft-web-development-tools-webmatrix-simple-introduction-and-installation/"><article class="md">
-<h2 class="post-title">微软最新的 Web 开发工具WebMatrix的简单介绍及安装</h2><div class="excerpt"><p>今天很给力，微软Asp.Net团队同时发布了WebMatrix,Razor,MVC3以及Orchard四个产品，其中WebMatrix 是微软最新的 Web 开发工具，它包含了构建网站所需要的一切元素。您可以从开源 Web 项目或者内置的 Web 模板开始，也可以直接从无到有编写代码。简单并且完全是免费的。开发网站从来没有如此简单。
-什么介绍也没有官方的详细，我就将官网的介绍文字引用过来吧，...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-13T16:00:00.000Z">2011-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-related-service-startup/"><article class="md">
-<h2 class="post-title">在SharePoint2007中创建站点一：相关服务的启动</h2><div class="excerpt"><p>在程序中打开“SharePoint3.0管理中心”
-
-点击“SharePoint3.0管理中心”会弹出要求输入用户名和密码的对话框
-
-输入用户名和密码（注意用户名需要是域名加上用户名），点击“确定”
-
-在上图中可以看出，服务器场配置未完成，所以先来配置服务器场。在“服务器场拓扑结构”下的“服务器”下点击服务器名称，上图中为“FENGWEI ”
-
-单击“Office SharePoint Se...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-12T16:00:00.000Z">2011-01-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-configuration/"><article class="md">
-<h2 class="post-title">SharePoint2007配置</h2><div class="excerpt"><p>在前面的文章中已经介绍了SharePoint2007的安装，本篇将详细介绍下SharePoint2007的配置。首先从程序中打开SharePoint2007的配置向导。
-
-向导启动后的界面如下
-
-点击“下一步”
-
-上图中提示需要启动或重启几个相关服务，点击“是”
-
-因为我们是在安装第一台SharePoint服务器，所以选择第二项“否，我希望创建新的服务器场”，点击“下一步”
-
-“数据库服务器...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-11T16:00:00.000Z">2011-01-12</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/install-sqlserver2005/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解三：安装SqlServer2005</h2><div class="excerpt"><p>SharePoint2007 中的很多功能会用到数据库，如分析服务，报表服务等。本文介绍SqlServer2005的安装，数据库的安装很简单，基本上安装默认选项点击下一步即可，需要注意的地方在下面会提到。
-现在就开始安装SqlServer2005 ，运行Setup.exe
-
-选中“我接受许可条款和条件”，点击“下一步”
-
-点击“安装”
-
-点击“下一步”
-
-点击“下一步”
-
-点击“下一步”
-
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-10T16:00:00.000Z">2011-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

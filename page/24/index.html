@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -109,43 +109,32 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2017/09/mi-push-to-csharp/"><article class="md">
-<h2 class="post-title">C#中实现小米推送</h2><div class="excerpt"><p>移动端的消息推送有很多互联网产品可以用，例如：极光、个推、小米推送等。对于安卓手机，推送需要做各种适配，开始我们使用的是极光，发现在小米手机上，当App退出到后台，就经常不能收到消息，所以决定将小米推送集成到App中。
-遗憾的是小米推送官方并不支持C#，所以需要很对Java版本的实现用IKVM来做一些转化。转换后在Net程序中一共需要引用7个Dll文件，如下图：
-
-相关Dll文件和示例代码已...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-02T01:35:44.000Z">2017-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/09/some-of-the-pits-in-hexo/"><article class="md">
-<h2 class="post-title">Hexo的一些坑</h2><div class="excerpt"><p>最近在研究Angular4，将Mac上的node和npm都升级为了最新版本，当使用hexo的时候发现报错，当即决定将hexo也升级最新版本。
-升级完hexo，将所有的博客迁移过来，执行hexo g，hexo s，很顺利，没有任何问题，马上执行hexo d发布到服务器，发现页面显示如下图：
-
-查看本地环境的public目录，发现生成的html页面的代码就如上图，但本地运行又是正常的。一个直接的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-01T00:36:34.000Z">2017-09-01</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2017/08/docker-learning-installing-images/"><article class="md">
-<h2 class="post-title">Docker学习-安装镜像</h2><div class="excerpt"><p>Docker现在已不是什么新鲜事物了，Windows Server2016已经内置了Docker，对于我来说，我只想让Docker来帮我解决运行环境的问题。
-我们的产品部署起来会依赖很多的第三方产品：SqlServer、MongoDB、Redis、RabbitMQ等，各种软件等安装，数据库的还原，每次部署都会耗费大量的时间。为了能使部署更加的方便，我们的设想是这样的：
-
-在Docker中安装这些工具软件
-打包Docker，拷贝到客户环境中导入
-在Web界面中进行简单的向导配置
-
-本文主要介绍在Docker中安装这些工具软件。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-08-31T02:47:45.000Z">2017-08-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/05/Luo-And-nut-Pro/"><article class="md">
-<h2 class="post-title">老罗和坚果Pro</h2><div class="excerpt"><p>上大学时因为老罗语录认识了老罗，到后来的牛博网、英语培训，直到5年前开始做手机，一直在关注，每一场的公开演讲、发布会都看过直播或是在第一时间看重播。首要的原因当然还是因为老罗的相声讲的好，就像当初把老罗语录当相声段子听一样。
-听了那么多的发布会，看了那么多的微创新，其实一直都有点心动。就在前不久，机会来了，老罗的坚果Pro发布，我的iPhone6 Plus的屏也很合时机的摔碎了。等我下单的时候，已经需要全款预约了，貌似卖的很火暴，但发货速度很快，有一种库存满满的感觉。玩了差不多1个礼拜，谈谈感受吧。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-05-25T16:02:08.000Z">2017-05-26</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2017/04/Marathon/"><article class="md">
-<h2 class="post-title">马拉松</h2><div class="excerpt"><p>马拉松，42.195公里，一个令人望而生畏的距离，而我在今年的4月10号，一个风雨交加的天气里征服了他，我很开心。
-2016年，武汉举办首届马拉松，被称为汉马，我报名了12公里的健康跑，有幸中签了。在此之前最远就跑过10公里，而且是在十几年前，所以12公里对我来说也是一个挑战。赛前一段时间的训练，加上比赛是的那种氛围，12公里还是很轻松的拿下了。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-04-20T14:46:55.000Z">2017-04-20</time></span><span class="cap breadcrumb" style="color:#A2CD5A">跑步</span><div>
-</article></a><a class="post-card post " href="/2017/04/adding-watermark-to-owa/"><article class="md">
-<h2 class="post-title">OWA实现添加水印</h2><div class="excerpt"><p>OWA全称Office Web App，是用来做Office文档预览的一个很好的工具。现在客户有要求，需要在预览界面中添加水印。想起之前写的一篇文章《Office Web APP预览去掉顶部菜单》，就是通过修改样式来控制OWA的预览界面的。
-通过F12查看OWA预览Word的界面，发现Word的每一页会被渲染在一个Img中展示，如下图：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-04-07T16:01:55.000Z">2017-04-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2017/01/CSharp-add-edit-fields-to-PDF/"><article class="md">
-<h2 class="post-title">C#给PDF添加编辑域</h2><div class="excerpt"><p>PDF文档通常是不能编辑的，但有些时候需要在PDF文档中填写日期或签名之类，就需要在PDF有能编辑的文本域，本文介绍怎样用C#来实现这一功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-01-04T15:02:20.000Z">2017-01-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/10/Reading-soft-skills-learning-to-improve-productivity/"><article class="md">
-<h2 class="post-title">读《软技能》：自学提高生产力</h2><div class="excerpt"><p>《软技能》这本书内容较多，在读《软技能》：敏捷个人管理一文中主要谈的是个人管理方面的内容，本文将对怎样进行个人管理、怎样提高生产里进行一点思考。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-10-25T14:29:32.000Z">2016-10-25</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
-</article></a><a class="post-card post " href="/2016/10/reading-soft-skills-agile-personal-management/"><article class="md">
-<h2 class="post-title">读《软技能》：敏捷个人管理</h2><div class="excerpt"><p>《软技能》是一本写给技术人员的非技术类书籍，即使你不写代码，读读这本书也可以受益不少。书中涉猎甚广，甚至有理财、健身、心理等内容。读完这本书，有一种相见恨晚的感觉。
-本书通篇在讲各个方面个人的成长，个人成长就需要自己对自己进行管理，敏捷的思想我认为核心就是快速迭代，用到个人身上就是要有很多的小目标，以迭代的方式向前进，最终实现大目标，这种方式可以让我们能快速试错，及时调整方向；也能让我们能快速看到一些成果，激励自己向前。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-10-15T14:53:26.000Z">2016-10-15</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
-</article></a><a class="post-card post " href="/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/"><article class="md">
-<h2 class="post-title">jQuery上传插件Uploadify使用详解(3.2.1)</h2><div class="excerpt"><p>六年前，因为工作中使用到 jQuery 的上传组件 Uploadify ，写了一篇《JQuery上传插件Uploadify使用详解》的博客来介绍 Uploadify ，其实只是将官方文档简单翻译了下。几年下来居然有50多万的访问量，而且每天通过各种搜索引擎有大几百的朋友会访问到这篇文章。六年时间 Uploadify 从当时的2.1.0到了现在的3.2.1，变化还是挺大，为了对访问到之前那篇博客的朋友还有点价值，特写此篇。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-25T10:57:49.000Z">2016-09-25</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+  <div class="post-list post"><a class="post-card post " href="/2018/08/Do-we-really-need-KPI/"><article class="md">
+<h2 class="post-title">我们真的需要KPI吗?</h2><div class="excerpt"><p>前言工作十几年，经历过不少的公司，每个公司都有自己的管理方法，其中大公司比较偏爱使用KPI考核，小公司则直接靠人来管理。下面谈谈之前公司KPI考核制度和现在「松散」管理的对比。
+严格的KPI制度之前的公司在武汉研发中心有大概五六百的技术人员，每个团队的项目经理只考虑需求沟通、任务分配和资源协调。完全不用管团队成员是否有认真干活，员工的管理依赖KPI制度。当时开发岗的考核制度大致如下：
+工作量...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-08-03T14:51:21.000Z">2018-08-03</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2018/07/read-amiba-management/"><article class="md">
+<h2 class="post-title">读《阿米巴经营》</h2><div class="excerpt"><p>《阿米巴经营》的作者稻盛和夫一生中创建了2家500强企业，并在70多岁高龄接管日航，扭转亏损的局面，是一位传奇人物。他根据自己的管理思想独创了阿米巴经营方式。《阿米巴经营》一书是他一生智慧的结晶。
+阿米巴经营法总结一下有以下几点：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-07-23T23:02:33.000Z">2018-07-24</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
+</article></a><a class="post-card post " href="/2018/07/modify-the-background-color-of-vs-code/"><article class="md">
+<h2 class="post-title">修改VS Code背景色</h2><div class="excerpt"><p>一直以来都是在Windows下进行开发，VS自定义的字体和背景色已经跟了我十来年了，最近已渐渐不使用Mac下的Windows虚拟机了，主力开发工具就变成了VS Code For Mac和Visual Studio For Mac。没有了之前的背景色还真不习惯，下面介绍怎样修改Mac下的VS Code和VS的背景色。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-07-21T15:04:03.000Z">2018-07-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/07/gitLab-combined-with-jenkins-to-build-automated-deployment/"><article class="md">
+<h2 class="post-title">GitLab配合Jenkins打造自动化部署</h2><div class="excerpt"><p>GitLab有CI和CD功能模块，但我对Jenkins更熟悉些，所以先使用Jenkins将自动发布搭建起来，后面再继续研究GitLab的CI和CD功能。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-07-14T03:20:31.000Z">2018-07-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/07/how-can-we-stick-to-it/"><article class="md">
+<h2 class="post-title">坚持很难？是不是没找对方法</h2><div class="excerpt"><p>最近听到了很多关于坚持的话题。
+1、公司的年中会议上，几位领导人的讲话都提到了我们需要找准方向，坚持下去。2、在dotNET 跨平台的群里，有群友问怎样才能成为像张善友这样的大牛？张善友的回答是：我做技术近20年，坚持每天学习新技术半小时，坚持晚上11点睡觉，早上6点起床。3、在逻辑思维的公众号中，罗胖坚持每天早上6点半发布一条有价值的60秒语音，就这么一件事，他坚持了2000多天。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-07-10T15:17:40.000Z">2018-07-10</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2018/06/The-public-number-Ihave-been-paying-attention-to-over-the-years-1/"><article class="md">
+<h2 class="post-title">这些年我关注的公众号</h2><div class="excerpt"><p>在现在这样一个信息大爆炸的时代，我们可以用各种途径和方式来获取想要的信息，而且你会发现重要的信息往往都会重复出现，所以我现在主要用来获取技术方面信息的途径是微信公众号。公众号的关注也是动态变化的，时常会关注一些新的公众号，也有些会被清理掉。下面是几年下来一直持续关注的技术公众号，排名不分先后。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-06-27T15:45:39.000Z">2018-06-27</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
+</article></a><a class="post-card post " href="/2018/06/docker-common-commands/"><article class="md">
+<h2 class="post-title">Docker 常用命令</h2><div class="excerpt"><p>学习Docker有段时间了，所有的操作都是在命令行下，如果不是每天都在使用，很容易忘记命令。本文将以学习Docker的角度，从前到后，将一些常用的Docker命令记录下来，算是个备忘。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-06-08T23:49:07.000Z">2018-06-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/06/Use-the-Merge-Request-working-mode-in-GitLab-in-the-team/"><article class="md">
+<h2 class="post-title">在团队中使用GitLab中的Merge Request工作模式</h2><div class="excerpt"><p>在工作中使用Git已有5年多的时间了，Git分布式的工作机制以及强大的分支功能使得在团队中推广使用没有受到什么阻碍。一直以来都是采用的分支管理模式，我把项目的开发分为三个阶段：开发、测试和上线。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-31T23:49:45.000Z">2018-06-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/05/CentOS7-install-GitLab/"><article class="md">
+<h2 class="post-title">CentOS7安装GitLab</h2><div class="excerpt"><p>一直以来源代码一直都放在码云上，但最近码云开始收费了，免费版本的私有项目的成员限制在5个，这远远不够用了。所以需要搭建自己的Git服务器，下面内容为安装经过，记录一下：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-27T14:18:21.000Z">2018-05-27</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2018/05/recent-writing-plan/"><article class="md">
+<h2 class="post-title">近期写作计划</h2><div class="excerpt"><p>写博客很多年了，都是想到哪写到哪，更多的是些学习的记录，缺少思考性的东西。最近开通微信公众号:不止dotNET，希望能将工作和学习中更多的思考分享出来。
+做产品或项目，都会事先制定开发计划，按照计划往前走，确保最终达成目标。公众号也可以看作是一个特殊的产品，只不过这个产品没有时间节点，需要的是我们持续的思考、学习，并且能够长期的输出。本文就先来制定一个短期的写作计划。
+在开篇时说过，文章大概...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2018-05-24T14:43:40.000Z">2018-05-24</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -153,7 +142,7 @@
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      24<span class='sep'></span>54
+      24<span class='sep'></span>56
     </div>
     <a class='paginator next' href='/page/25/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>

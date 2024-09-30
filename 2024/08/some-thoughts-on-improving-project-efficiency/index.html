@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>对提升项目效率的一点思考 - 冯威的博客</title>
+
+  
+    <meta name="description" content="在一个软件企业中，项目实施效率非常重要，它关乎企业的竞争力，影响项目交付的速度和质量，关系到企业的盈利能力，甚至决定着企业的生死。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对提升项目效率的一点思考">
+<meta property="og:url" content="http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="在一个软件企业中，项目实施效率非常重要，它关乎企业的竞争力，影响项目交付的速度和质量，关系到企业的盈利能力，甚至决定着企业的生死。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-20T00:17:14.000Z">
+<meta property="article:modified_time" content="2024-09-30T16:20:00.962Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="效率">
+<meta property="article:tag" content="思考">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E7%8E%87%E4%BD%8E%E4%B8%8B%E7%9A%84%E6%A0%B9%E6%BA%90%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-text">效率低下的根源在哪里？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">数据驱动的根因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD%EF%BC%9A%E6%B5%81%E7%A8%8B%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81%E5%B7%A5%E5%85%B7"><span class="toc-text">应对措施：流程、资源、工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BC%98%E5%8C%96%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%88%B6%E5%BA%A6"><span class="toc-text">1、优化流程与制度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-text">2、最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%94%B9%E8%BF%9B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-text">3、改进项目管理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%9C%89%E6%95%88%E5%BA%94%E5%AF%B9%E9%9C%80%E6%B1%82%E5%8F%98%E6%9B%B4"><span class="toc-text">4、有效应对需求变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8A%A0%E5%BC%BA%E5%9B%A2%E9%98%9F%E6%B2%9F%E9%80%9A%E4%B8%8E%E5%8D%8F%E4%BD%9C"><span class="toc-text">5、加强团队沟通与协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%B7%A5%E5%85%B7%E5%8C%96"><span class="toc-text">6、工具化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a></div><div id="post-meta">发布于&nbsp;<time datetime="2024-08-20T00:17:14.000Z">2024-08-20</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>对提升项目效率的一点思考</span></h1>
+<p>在一个软件企业中，项目实施效率非常重要，它关乎企业的竞争力，影响项目交付的速度和质量，关系到企业的盈利能力，甚至决定着企业的生死。</p>
+<span id="more"></span>
+
+<p>但当项目交付出现问题时，很多时候会粗暴地归结到人的能力上，要么人多了，要么人差了，那是不是两个差的换一个好的就能解决问题呢？</p>
+<p>我觉得未必，有问题得找原因，找到原因，才能对症下药。</p>
+<h2 id="效率低下的根源在哪里？"><a href="#效率低下的根源在哪里？" class="headerlink" title="效率低下的根源在哪里？"></a>效率低下的根源在哪里？</h2><p>在解决问题之前，我们必须先分析出其根源，否则改进措施很可能会事倍功半、南辕北辙。为此，我们需要问自己以下几个关键问题：</p>
+<p>1、项目合同金额是否合理？ 下面一些情况是不合理的：</p>
+<ul>
+<li>新销售为了首次开单，故意压低价格</li>
+<li>为了某个战略客户，低价中标占坑</li>
+<li>报价时没有考虑到产品研发的成本</li>
+</ul>
+<p>金额低，没有钱赚，分不了项目奖金，积极性自然就不高。</p>
+<p>2、说开发效率低到底指的是什么？ 这一问题往往有多个方面的因素，包括：</p>
+<ul>
+<li>研发人员技术能力的不足</li>
+</ul>
+<ul>
+<li>流程与制度的不完善</li>
+<li>团队沟通与协作的不顺畅</li>
+<li>任务分配的不合理</li>
+<li>实施方案的不是最优解</li>
+<li>员工积极性的不足</li>
+<li>工作量评估的误差</li>
+<li>频繁的需求变更</li>
+</ul>
+<p>3、管理层的决策与执行是否到位？ 从部门负责人到项目经理，是否都能以客户价值为导向，并以降低公司成本为目标？</p>
+<h2 id="数据驱动的根因分析"><a href="#数据驱动的根因分析" class="headerlink" title="数据驱动的根因分析"></a>数据驱动的根因分析</h2><p>有效的分析离不开数据支撑。我们需要从以下几个方面收集数据：</p>
+<ul>
+<li>项目的合同金额与投入成本，包括上线前的开发成本及验收前的调整成本</li>
+<li>项目成员的具体工作内容</li>
+<li>每个项目的盈亏情况</li>
+<li>重点成本因素，如差旅、需求反复、特定需求的工作量评估超出预期等</li>
+</ul>
+<p>只有掌握了这些数据，才能科学地分析出问题的根源，并制定有针对性的应对措施。</p>
+<h2 id="应对措施：流程、资源、工具"><a href="#应对措施：流程、资源、工具" class="headerlink" title="应对措施：流程、资源、工具"></a>应对措施：流程、资源、工具</h2><h3 id="1、优化流程与制度"><a href="#1、优化流程与制度" class="headerlink" title="1、优化流程与制度"></a>1、优化流程与制度</h3><p>流程和制度是保障项目顺利进行的关键。通过回顾过去的项目，尤其是那些曾暴露出问题的项目，我们可以识别出流程中的薄弱环节，并加以优化。此外，通过与同行分享经验，吸取教训，也能有效提升流和改进现有流程。</p>
+<p>严格遵守公司流程，对公司来说可以减少很多低级错误的出现；对个人来说，是一种强有力的后盾，起到保护自己的作用。</p>
+<h3 id="2、最佳实践"><a href="#2、最佳实践" class="headerlink" title="2、最佳实践"></a>2、最佳实践</h3><p>我们现在做的低代码平台进过这么多年的沉淀，能力变得越来越强，同时功能点也非常多，会导致达到同样一个目的会有很多种不同的路径。如果只是让项目经理或开发独自去完成，就有可能受限于他们的经验。</p>
+<p>在长期的项目实践中，会积累了大量的经验和最佳实践。然而，在具体的项目中，由于个体经验的差异，可能导致不同的实现路径。如果缺乏集体讨论和经验分享，就可能错失效率提升的机会。因此，在项目需求调研后，进行一次集中讨论会，以确定最优的实现方案是非常必要的。</p>
+<h3 id="3、改进项目管理模式"><a href="#3、改进项目管理模式" class="headerlink" title="3、改进项目管理模式"></a>3、改进项目管理模式</h3><p>举个例子：软件开发周期分为很多的步骤，有两个大的步骤是需求调研和代码开发。需求分析师调研完成后，形成需求文档，开发根据文档进行开发。这个过程看着就像是生产线上的两个环节，上下游直间定义好输入输出标准，就可以无缝对接。</p>
+<p>按照上面的逻辑，一个部门专门和客户沟通，产出需求文档，一个部门专门做开发，是不是效率就高了呢？还真不一定，特别对于中小软件企业。</p>
+<p>1、文档的颗粒度太粗，会导致沟通成本巨大，颗粒度太细，就会增加产出需求文档的时间成本，甚至出现开发等需求的情况。</p>
+<p>2、对一些中小软件企业来说，一些不大的项目，项目经理、需求、开发、运维都是一个人就搞定了，分成多个部门后，小型项目也需要涉及到多人，效率是降低的。</p>
+<p>所以说，现有的项目管理模式是否最优？是值得思考的一个问题。</p>
+<h3 id="4、有效应对需求变更"><a href="#4、有效应对需求变更" class="headerlink" title="4、有效应对需求变更"></a>4、有效应对需求变更</h3><p>我一直以为客户不会故意为难我们，之所以我们感觉客户总是在进行变更。一个原因是没有解决用户的痛点问题。</p>
+<blockquote>
+<p>某项目的项目经理每天收集到很多的优化调整，项目经理按客户提出的逐一记录，并加班加点按时处理这些优化，最后却迟迟不能上线，因为客户领导最关注的一个页面没有完成。</p>
+</blockquote>
+<p>以这个例子来说，感觉上有很多的变更，但如果分清主次，把领导最关注的事情完成好，肯定是能顺利上线，至于业务提出的各种优化可能有很多是伪需求，是不需要处理的。</p>
+<p>需求变更是项目过程中非常常见。我们需要明确客户的核心需求，避免在次要需求上浪费过多时间和资源。只有解决了用户的关键痛点，才能真正减少不必要的变更，提高项目上线效率。</p>
+<h3 id="5、加强团队沟通与协作"><a href="#5、加强团队沟通与协作" class="headerlink" title="5、加强团队沟通与协作"></a>5、加强团队沟通与协作</h3><p>1、有的技术人员过于“独立思考”了，其实我认为独立思考和反馈、沟通是不冲突的。</p>
+<p>2、团队成员平时都在忙于各个项目，如果团队或公司又没有组织团建活动，成员之间很多都不熟悉，在需要寻求帮助时，第一时间肯定是身边熟悉的人。</p>
+<p>对此，有几个建议：</p>
+<p>1、项目内部定期讨论会，听取团队成员的反馈和建议，再忙，一周一个小时总是能挤出来的。</p>
+<p>2、不同项目之间可以定期分享，每个人在参与项目过程中总有自己的理解和感悟，分享出来对自己是一种锻炼，对其他人肯定也有帮助，再忙，一两个月半天时间总是有的，关键是能持续去做。</p>
+<p>3、说服老板，多在工作日组织一些团建活动。</p>
+<h3 id="6、工具化"><a href="#6、工具化" class="headerlink" title="6、工具化"></a>6、工具化</h3><p>当项目出现事故时，最终归因都是人的原因，是人的能力不行导致。整体效率不高也归因于人的能力。</p>
+<p>一种简单的方式就是换人，还有一种方法就是工具化。很多时候，工具比人要稳定和可靠。</p>
+<p>1、重复的、有规律可循的操作理论上都能工具化。我们的低代码平台在早期的时候，平台升级或发布应用时，部分操作需要手动执行 SQL。现在开发了专门的运维工具，里面包含应用发布、平台升级等功能，可以提升发布效率，也可以规避一些低级错误。</p>
+<p>2、在项目实施过程中应该也有很多的场景可以进行工具化，来提升效率。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>人、公司在变、客户也在变，效率的提升我觉得是一个长期持续的事情，需要不断进行思考、发现问题、分析问题、找解决措施、实践。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/&title=对提升项目效率的一点思考 - 冯威的博客&summary=在一个软件企业中，项目实施效率非常重要，它关乎企业的竞争力，影响项目交付的速度和质量，关系到企业的盈利能力，甚至决定着企业的生死。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=对提升项目效率的一点思考 - 冯威的博客&amp;body=http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2024/08/some-thoughts-on-improving-project-efficiency/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2024/08/read-the-way-of-huawei-project-management/">读《华为项目管理之道》<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/">在 .NET8 中获取 k8s 集群的 namespace id<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

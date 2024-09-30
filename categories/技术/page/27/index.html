@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,41 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/06/use-zedgraph-in-the-web/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/07/clr-via-csharp-learning-notes-5-the-performance-of-the-static-constructor/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（5） 静态构造函数的性能</h2><div class="excerpt"><p>
+CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+在上一篇《CLR Via C# 学习笔记（4） 方法 构造函数 》中讲到了...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-07T16:00:00.000Z">2009-07-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/07/clr-via-csharp-learning-notes-5-methods-the-constructor/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（4） 方法 构造函数</h2><div class="excerpt"><p>
+《CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+构造函数是可以将类型实例初始化为有效状态的特殊方法。构造函数在元数据中通...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-02T16:00:00.000Z">2009-07-03</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/aspnet-instead-of-eval-in-two-ways/"><article class="md">
+<h2 class="post-title">Asp.Net中替代Eval的两种方式</h2><div class="excerpt"><p>在asp.net中的数据绑定中，我们经常会用到Eval，不过大家都知道Eval绑定是通过反射来实现的， 而反射势必会对性能造成一定的影响。不过有两种替代的方式来实现绑定数据，对性能略有提高。
+1 当数据源为DataTable时，用下面的方式:
+后台代码
+12345678910111213141516protected void Page_Load(object sender, EventAr...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-25T16:00:00.000Z">2009-06-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-3-constants-and-fields/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（3） 常量和字段（const readonly）</h2><div class="excerpt"><p>
+《CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+常量和字段都是类型的数据成员，但是区别却是很大的。
+
+常量的值永远不会改...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-21T16:00:00.000Z">2009-06-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（2） 装箱和拆箱</h2><div class="excerpt"><p>
+CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+装箱和拆箱是已经被嚼烂的两个概念了，并且在一些面试中也经常考到。
+
+装箱：...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-17T16:00:00.000Z">2009-06-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-1-primitive-types/"><article class="md">
+<h2 class="post-title">CLR Via C# 学习笔记（1） 基元类型 值类型 引用类型</h2><div class="excerpt"><p>
+CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+
+首先了解下什么是基元类型，基元类型是编译器直接支持的数据类型，像我们平时经...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-16T16:00:00.000Z">2009-06-17</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/06/use-zedgraph-in-the-web/"><article class="md">
 <h2 class="post-title">ZedGraph在Web中的使用</h2><div class="excerpt"><p>上一篇SQL实现分组统计查询（按月、小时分组） 中介绍了按月和小时为单位怎样实现分组查询，在本文中会实现将上文查询的结果以图表的形式显示在页面上。在页面上显示图标有很多种解决方案，office的owc组建、自己写代码、或者是第三方的控件。本文中将使用ZedGraph控件来实现。选择ZedGraph有两个原因：
 
 该控件是开源的，在必要的时候可以根据自己的需要来修改；
@@ -128,24 +162,6 @@
 4 准备工作已经做完，现在就可以来试试jquery的智能提示了，用vs2008新建...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-05-19T16:00:00.000Z">2009-05-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a><a class="post-card post " href="/2009/05/sqlserver2005-additional-database-for-read-only-solutions/"><article class="md">
 <h2 class="post-title">Sqlserver2005附加数据库为只读的解决方法</h2><div class="excerpt"><p>症状：在sqlserver2005中附加数据库时，附加的数据库会变成只读的，只能进行查询操作。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-05-07T16:00:00.000Z">2009-05-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/04/aspnet-recursive-implementation-of-css-menu/"><article class="md">
-<h2 class="post-title">Asp.net中递归实现CSS菜单</h2><div class="excerpt"><p>现在网络上有各种各样的非常漂亮的css菜单，不过大多都是静态的，菜单项都是在页面中写死的，这样就不是很灵活，每次要修改菜单都要去修改页面，下面就介绍一个从数据库中读取菜单项的动态css菜单的例子。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-04-17T16:00:00.000Z">2009-04-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/an-introduction-to-the-sample-to-nhibernate/"><article class="md">
-<h2 class="post-title">NHibernate入门级示例（增 删 改）</h2><div class="excerpt"><p>NHibernate相信大家都已非常熟悉，园子里有很多高手写了相关的系列文章，不过我还是NHibernate的一名初学者，在此将一个晚上学习成果分享一下，一个很简单的利用NHibernate实现增删改的例子。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-19T16:00:00.000Z">2009-01-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/aspnet-2-0-the-eval-method-of-explanation/"><article class="md">
-<h2 class="post-title">Asp.net 2.0的Eval方法详解</h2><div class="excerpt"><p>实际上Eval方法是TemplateControl的，而System.Web.UI.Page和System.Web.UI.UserControl都继承于TemplateControl，所以我们可以在Page和UserControl上直接调用个方法。Page.Eval方法可以帮助我们更好的撰写数据绑定表达式，在ASP.NET   1.x时代，数据绑定表达式的一般形式是：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-13T16:00:00.000Z">2009-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/aspnet-access-database-connection/"><article class="md">
-<h2 class="post-title">Asp.Net 连接Access数据库</h2><div class="excerpt"><p>自学程序以来，一直使用的都是sqlserver数据库，最近帮一朋友做一个access的demo，发现在数据库的连接方面就存在很大差异，在web.config中配置好连接字符串，然后在后台取，在此我的做法是存两个值，将Provider和assess数据库文件的路径分开存，如下：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-09T16:00:00.000Z">2009-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/eliminate-the-prompt-window/"><article class="md">
-<h2 class="post-title">消除window.close()的提示窗口</h2><div class="excerpt"><p>Window.close()这句脚本是用来关闭当前窗口，如果是在window.open的窗口中执行Window.close()，将会很顺利地将窗口关闭，但如果是在一非window.open打开的窗口中执行Window.close()，将会弹出一个提示窗口，如下：
-
-要在程序中消除这个提示框也很简单，不过在IE6和IE7稍有不同
-
-IE6
-
-12345678910111213141516171...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-07T16:00:00.000Z">2009-01-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/01/response-redirect-in-a-new-window-open-3-0-extension-methods/"><article class="md">
-<h2 class="post-title">Response.Redirect在新窗口打开 && 3.0扩展方法</h2><div class="excerpt"><p>Response.Rederect在默认情况下是在本页跳转，所以除了在js中用window.open 或是给A标签添加target属性之外，在后台似乎不能来打开新的页面，其实不然，通过设置form的target属性同样可以让Response.Rederect所指向的url在新的窗口打开。下面用三种方法来实现。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-01-06T16:00:00.000Z">2009-01-07</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 

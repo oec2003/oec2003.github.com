@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Kubesphere 使用实践 - 冯威的博客</title>
+
+  
+    <meta name="description" content="容器化部署，尤其是利用 Docker 技术，已成为现代软件部署的标配。我们可以通过简单的命令如 run 直接启动容器，或者使用编排工具如 docker-compose 和 Kubernetes（简称 k8s）等来简化操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubesphere 使用实践">
+<meta property="og:url" content="http://fwhyy.com/2024/05/kubesphere-usage-practice/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="容器化部署，尤其是利用 Docker 技术，已成为现代软件部署的标配。我们可以通过简单的命令如 run 直接启动容器，或者使用编排工具如 docker-compose 和 Kubernetes（简称 k8s）等来简化操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281458084.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459221.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459706.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459949.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459501.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459590.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459038.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500944.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500256.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500263.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500854.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500157.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281501179.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281505331.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624747.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624575.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624605.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281625187.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626873.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626700.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626894.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626782.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281627474.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281628907.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281629934.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281630531.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281630064.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281631262.webp">
+<meta property="article:published_time" content="2024-05-29T00:45:33.000Z">
+<meta property="article:modified_time" content="2024-09-30T15:47:03.313Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="Kubernetes">
+<meta property="article:tag" content="Kubesphere">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="CI&#x2F;CD">
+<meta property="article:tag" content="K8S">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281458084.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#KubeSphere-%E4%BB%8B%E7%BB%8D"><span class="toc-text">KubeSphere 介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="toc-text">安装准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E8%A6%81%E6%B1%82"><span class="toc-text">节点要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-text">安装  Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="toc-text">安装依赖项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%92%8C-DNS-%E8%A6%81%E6%B1%82"><span class="toc-text">网络和 DNS 要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-kubekey"><span class="toc-text">下载  kubekey</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KubeSphere-%E4%BD%BF%E7%94%A8"><span class="toc-text">KubeSphere 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD"><span class="toc-text">创建工作负载</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2024-05-29T00:45:33.000Z">2024-05-29</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Kubesphere 使用实践</span></h1>
+<p>容器化部署，尤其是利用 Docker 技术，已成为现代软件部署的标配。我们可以通过简单的命令如 <code>run</code> 直接启动容器，或者使用编排工具如 <code>docker-compose</code> 和 <strong>Kubernetes</strong>（简称 <strong>k8s</strong>）等来简化操作。</p>
+<span id="more"></span>
+
+<p><strong>Kubernetes</strong> 是一个开源的容器编排平台，最初由 Google 设计开发，目前由 <strong>Cloud Native Computing Foundation</strong>（CNCF）维护。它旨在简化容器化应用的部署、扩展、管理和自动化，帮助用户更高效地构建、交付和运行应用程序。虽然 Kubernetes 功能强大，但其复杂性对一些用户来说是个挑战。</p>
+<p>接下来，让我们引入本文的主角——<strong>KubeSphere</strong>。</p>
+<h3 id="KubeSphere-介绍"><a href="#KubeSphere-介绍" class="headerlink" title="KubeSphere 介绍"></a>KubeSphere 介绍</h3><p><strong>KubeSphere</strong> 可以理解为 Kubernetes 的扩展和增强，它提供了更多功能和解决方案，以简化和优化 Kubernetes 的使用。KubeSphere 提供了丰富的工具和服务，包括 DevOps、多租户管理、服务网格、存储、日志监控等，帮助用户轻松构建、部署和管理云原生应用。</p>
+<p>KubeSphere 能在 Kubernetes 基础上构建的更完整的云原生全栈解决方案，它进一步简化和增强了 Kubernetes 的功能，提供更广泛的支持和服务。</p>
+<p>以下是 KubeSphere 官网对其的定义：</p>
+<blockquote>
+<p>KubeSphere 的愿景是打造一个以 Kubernetes 为内核的云原生分布式操作系统。它的架构支持第三方应用与云原生生态组件的即插即用（plug-and-play）集成，实现多云与多集群环境下云原生应用的统一分发和运维管理。</p>
+</blockquote>
+<p>更多关于 KubeSphere 的信息，请访问其官方网站：<a target="_blank" rel="noopener" href="https://kubesphere.io/zh/">KubeSphere 官网</a>。</p>
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>对于刚接触 KubeSphere 并想快速上手该容器平台的用户，All-in-One 安装模式是最佳的选择，它能够帮助您零配置快速部署 KubeSphere 和 Kubernetes 。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
+<li>CentOS：7.4.1708/7.9，8 GB 内存、4 核 CPU </li>
+<li>Docker：23.0.5</li>
+<li>Kubernetes：1.22.12</li>
+<li>KubeSphere：3.4.0</li>
+</ul>
+<h3 id="节点要求"><a href="#节点要求" class="headerlink" title="节点要求"></a>节点要求</h3><p>1、节点必须能够通过 SSH 连接。<br>2、节点上可以使用 sudo/cur1/openss1 命令。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281458084.webp"></p>
+<h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装  Docker"></a>安装  Docker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">sudo yum-config-manager --enable docker-ce-edge</span><br><span class="line"></span><br><span class="line">sudo yum -y install docker-ce</span><br><span class="line"></span><br><span class="line">systemctl start docker</span><br><span class="line">chkconfig docker on</span><br></pre></td></tr></table></figure>
+
+<p>安装完成  docker  后，需要对  docker  进行配置，执行下面命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">	&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>然后执行：systemctl restart docker ，重启  docker  让配置生效。</p>
+<h3 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h3><p>Kubekey 是用 Go 语言开发的一款全新的安装工具，代替了以前基于 ansible 的安装程序。KubeKey 为用户提供了灵活的安装选择，可以分别安装 KubeSphere 和 Kubernetes 或二者同时安装，既方便又高效。</p>
+<p>KubeKey 可以将 Kubernetes 和 KubeSphere 一同安装。针对不同的 Kubernetes 版本，需要安装的依赖项可能有所不同。</p>
+<p>执行下面命令安装相关依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install socat conntrack ebtables ipset</span><br></pre></td></tr></table></figure>
+
+<h3 id="网络和-DNS-要求"><a href="#网络和-DNS-要求" class="headerlink" title="网络和 DNS 要求"></a>网络和 DNS 要求</h3><p>1、请确保 /etc/resolv.conf 中的 DNS 地址可用，否则，可能会导致集群中的 DNS 出现问题。使用命令：cat /etc/resolv.conf 查看：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459221.webp"></p>
+<p>也可以使用命令  nslookup <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 进行测试，出现下图说明正常：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459706.webp"></p>
+<p>2、关闭防火墙。</p>
+<p>先用命令 firewall-cmd –state 查看防火墙的状态，如果是  running ，就使用下面命令进行关闭：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+
+<p>3、检查 SELinux 是否关闭，输入命令 sestatus 进行查看：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459949.webp"></p>
+<p>上图中是开启状态，编辑配置文件：vi /etc/selinux/config ：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459501.webp"></p>
+<p>修改完成后，重启服务器生效。</p>
+<h3 id="下载-kubekey"><a href="#下载-kubekey" class="headerlink" title="下载  kubekey"></a>下载  kubekey</h3><p>k8s 和 kubesphere 的安装是使用  kubekey  这个工具，所以先安装  kubekey 。不管你是否能访问 Github 和 Google ，先执行下面命令切换区域，会省去很多麻烦：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export KKZONE=cn</span><br></pre></td></tr></table></figure>
+
+<p>从 GitHub Release Page 下载 KubeKey 或直接使用以下命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sfL https://get-kk.kubesphere.io | VERSION=v3.0.13 sh -</span><br></pre></td></tr></table></figure>
+
+<p>成功后如下图，并在当前目录中有一个绿色的  kk  目录：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459590.webp"></p>
+<p>如果  kk  目录的权限不够，需要使用下面命令进行授权：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x kk</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1、在  root 目录中输入 ./kk ，可以看到一些常用的命令和不同的安装方式说明：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281459038.webp"></p>
+<p>2、下面命令是同时安装  k8s  和 kubesphere，安装前会先进行环境的检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kk create cluster --with-kubernetes v1.22.12 --with-kubesphere v3.4.0</span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500944.webp"></p>
+<p>安装中：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500256.webp"></p>
+<p>最后的安装  kubesphere  要等待很久：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500263.webp"></p>
+<p>关键是等了很长的时间，也没有得到安装成功的提示，查询后得知可能是 CentOS 系统版本中的依赖跟 KubeKey 有冲突导致，我使用的是：CentOS Linux release 7.4.1708 (Core) ，**建议使用 CentOS 7.9 **。</p>
+<p>3、创建新的虚拟机，安装 CentOS 7.9 系统，我是在 Mac 上使用 Parallels 进行虚拟机的安装，安装过程中出现下面问题：</p>
+<ul>
+<li><p>红屏</p>
+</li>
+<li><p>Not asking for VNC because we don’t have a network 提示的错误信息</p>
+</li>
+</ul>
+<p>可以通过下面设置解决：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500854.webp"></p>
+<p>4、CentOS 7.9 安装好后，按照上面的步骤重新安装了一遍，这一次安装成功，kubesphere 的访问地址和用户名密码都会在安装成功的提示中输出：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281500157.webp"></p>
+<p>5、登录后如下图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281501179.webp"></p>
+<p>6、特别注意，虚拟机的配置至少 4 核、8gb 内存，我一开始只给了 2 核（默认），运行后，监控中的有些节点是不能正常启动的，当调整为 4 核后，就都正常了：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281505331.webp"></p>
+<h2 id="KubeSphere-使用"><a href="#KubeSphere-使用" class="headerlink" title="KubeSphere 使用"></a>KubeSphere 使用</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 查看哪些 pod 启动了，使用 -A 参数表示获取所有命名空间下的 Pod</span><br><span class="line">kubectl get pod -A </span><br><span class="line"># 详细描述指定命名空间中特定 Pod 的信息</span><br><span class="line">kubectl describe pod pod名称 -n 命名空间</span><br><span class="line"># 获取指定命名空间（这里是 kube-system 命名空间）中的所有 Pod 列表</span><br><span class="line">kubectl get pods -n kube-system</span><br><span class="line"># 获取 Kubernetes 集群中所有节点（Node）的列表</span><br><span class="line">kubectl get nodes</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建工作负载"><a href="#创建工作负载" class="headerlink" title="创建工作负载"></a>创建工作负载</h3><p>1、在工作负载中添加有状态副本集，填写基本信息：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624747.webp"></p>
+<p>2、进行容器设置，首先选择容器，可以直接输入 mysql 进行搜索，然后选择需要安装的数据库版本：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624575.webp"></p>
+<p>3、设置环境变量，时区、root 密码等：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281624605.webp"></p>
+<p>4、配置存储挂载：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281625187.webp"></p>
+<p>5、挂载配置文件：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626873.webp"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626700.webp"></p>
+<p>6、使用前需要创建服务，当我们创建一个有状态的副本集后，默认创建了一个服务：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626894.webp"></p>
+<p>默认是集群内部访问，在容器的控制台使用 DNS 名称，可以进行登录：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281626782.webp"></p>
+<p>7、如果需要外部访问，需要创建一个服务，选择指定工作负载：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281627474.webp"></p>
+<p>8、按照下图所示找到有状态副本集进行指定：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281628907.webp"></p>
+<p>9、配置服务名称和端口：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281629934.webp"></p>
+<p>10、设置访问模式：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281630531.webp"></p>
+<p>11、外部访问，注意服务创建后，会生成一个外部访问的端口</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281630064.webp"></p>
+<p>12、使用客户端工具连接：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202405281631262.webp"></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2024/05/kubesphere-usage-practice/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2024/05/kubesphere-usage-practice/&title=Kubesphere 使用实践 - 冯威的博客&summary=容器化部署，尤其是利用 Docker 技术，已成为现代软件部署的标配。我们可以通过简单的命令如 run 直接启动容器，或者使用编排工具如 docker-compose 和 Kubernetes（简称 k8s）等来简化操作。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=Kubesphere 使用实践 - 冯威的博客&amp;body=http://fwhyy.com/2024/05/kubesphere-usage-practice/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2024/05/kubesphere-usage-practice/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2024/05/read-strong-wind-blows/">读《强风吹拂》<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2024/06/mongodb-password-setting/">MongoDB密码设置<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

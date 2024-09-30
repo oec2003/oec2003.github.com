@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">introduction-to-openai-o1</span></a><div class="line"></div><a class="more-item" href="/2024/10/what-is-rag/"><div class="cap"><time>2024-10-01</time></div><span class="title">what-is-rag</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
 </div>
 
 
@@ -109,60 +109,49 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/07/clr-via-csharp-learning-notes-5-the-performance-of-the-static-constructor/"><article class="md">
-<h2 class="post-title">CLR Via C# 学习笔记（5） 静态构造函数的性能</h2><div class="excerpt"><p>
-CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
+  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-4-generator-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(4)—生成器模式（创建型）</h2><div class="excerpt"><p>Gof定义将一个复杂对象的构建与其表示相分离，使其同样的构建过程可以创建不同的表示。
+动机在软件系统中，有时侯面临着一个复杂对象的创建工作，这个发展对象通常是由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂的对象的各个部分经常面临着巨大的变化，但是将他们组合起来的算法相对稳定。
+还是拿游戏中的房屋作为例子来讲，房屋由门、窗户、墙、地板、天花板组成。这些组成部分可能是经常要发生变化...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-20T16:00:00.000Z">2009-11-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(3)—抽象工厂模式（创建型）</h2><div class="excerpt"><p>Gof定义提供一个借口，让该接口负责创建一系列_相关或者相互依赖的对象_，无需指定他们具体的类。
+动机在软件系统中经常面临着_一系列相互依赖的对象_的创建的工作，同时由于需求的变化，往往存在着更对系列对象的创建。
+常规的对象创建的方法，直接使用new关键字
+1Road road = new Road();
 
-在上一篇《CLR Via C# 学习笔记（4） 方法 构造函数 》中讲到了...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-07T16:00:00.000Z">2009-07-08</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/07/clr-via-csharp-learning-notes-5-methods-the-constructor/"><article class="md">
-<h2 class="post-title">CLR Via C# 学习笔记（4） 方法 构造函数</h2><div class="excerpt"><p>
-《CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
-
-构造函数是可以将类型实例初始化为有效状态的特殊方法。构造函数在元数据中通...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-07-02T16:00:00.000Z">2009-07-03</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/aspnet-instead-of-eval-in-two-ways/"><article class="md">
-<h2 class="post-title">Asp.Net中替代Eval的两种方式</h2><div class="excerpt"><p>在asp.net中的数据绑定中，我们经常会用到Eval，不过大家都知道Eval绑定是通过反射来实现的， 而反射势必会对性能造成一定的影响。不过有两种替代的方式来实现绑定数据，对性能略有提高。
-1 当数据源为DataTable时，用下面的方式:
-后台代码
-12345678910111213141516protected void Page_Load(object sender, EventAr...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-25T16:00:00.000Z">2009-06-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-3-constants-and-fields/"><article class="md">
-<h2 class="post-title">CLR Via C# 学习笔记（3） 常量和字段（const readonly）</h2><div class="excerpt"><p>
-《CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
-
-常量和字段都是类型的数据成员，但是区别却是很大的。
-
-常量的值永远不会改...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-21T16:00:00.000Z">2009-06-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-2-boxing-and-unboxing/"><article class="md">
-<h2 class="post-title">CLR Via C# 学习笔记（2） 装箱和拆箱</h2><div class="excerpt"><p>
-CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
-
-装箱和拆箱是已经被嚼烂的两个概念了，并且在一些面试中也经常考到。
-
-装箱：...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-17T16:00:00.000Z">2009-06-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/clr-via-csharp-learning-notes-1-primitive-types/"><article class="md">
-<h2 class="post-title">CLR Via C# 学习笔记（1） 基元类型 值类型 引用类型</h2><div class="excerpt"><p>
-CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理解，而且很多内容也忘记了，现在准备重新看一遍，并将看过的部分写出来，因为写的过程也是一个加深理解的过程。本系列算是学习的一个记录吧，也可以方便以后自己查阅，如果对大家还有些帮助的话，我就很高兴了。书我是选择性的看的，所以顺序和书中的顺序可能不一样。
-
-首先了解下什么是基元类型，基元类型是编译器直接支持的数据类型，像我们平时经...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-16T16:00:00.000Z">2009-06-17</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/use-zedgraph-in-the-web/"><article class="md">
-<h2 class="post-title">ZedGraph在Web中的使用</h2><div class="excerpt"><p>上一篇SQL实现分组统计查询（按月、小时分组） 中介绍了按月和小时为单位怎样实现分组查询，在本文中会实现将上文查询的结果以图表的形式显示在页面上。在页面上显示图标有很多种解决方案，office的owc组建、自己写代码、或者是第三方的控件。本文中将使用ZedGraph控件来实现。选择ZedGraph有两个原因：
-
-该控件是开源的，在必要的时候可以根据自己的需要来修改；
-该控件所显示的图片是绘出...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-05T16:00:00.000Z">2009-06-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/06/sql-implementation-group-statistical-query/"><article class="md">
-<h2 class="post-title">SQL实现分组统计查询（按月、小时分组）</h2><div class="excerpt"><p>首先创建数据表1234567Create table Counter(    CounterID int identity(1,1) not null,    IP varchar(20),    AccessDateTime datetime,    AccessCount int)
-
-该表在这儿只是演示使用，所以只提供了最基本的字段:IP地址，访问时间和访问次数。如果每访问一次就插入一条...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-06-03T16:00:00.000Z">2009-06-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/05/in-setting-the-jquery-vs2008-intellisense/"><article class="md">
-<h2 class="post-title">在vs2008中设置jquery智能提示</h2><div class="excerpt"><p>1  要确保您的vs2008已经打了sp1补丁，可以点击这里下载
-2  下载 jQuery-vsdoc.js ，如果您安装了asp.net mvc ，可以在mvc的项目下的srcipts目下找到，或是点击这里下载。
-
-3 下载安装一个vs2008支持 -vsdoc.js 智能提示的一个补丁 ，可以点击这里下载
-4 准备工作已经做完，现在就可以来试试jquery的智能提示了，用vs2008新建...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-05-19T16:00:00.000Z">2009-05-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/05/recommend-a-small-screenshots-tools/"><article class="md">
-<h2 class="post-title">推荐一款小巧的截图工具</h2><div class="excerpt"><p>用过很多的截图工具，发现FastStone算是比较出色的一款，无论是功能还是易用性都非常不错。在最新的版本中还添加了屏幕录制功能。
-下载地址
-用户名:www.orsoon.com注册码:KPYME-ISDUO-CSBYM-MNHEB
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-05-14T16:00:00.000Z">2009-05-15</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+这样直接new会有一个问题，不能应对具体实例化类型的变化，比如说有不同的Road类型...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/vs-font-recommended/"><article class="md">
+<h2 class="post-title">VS中的经典字体推荐</h2><div class="excerpt"><p>每天编码眼睛看着vs，一个好的字体和背景色能使我们的心情更愉悦，眼睛的疲劳度也随之降低。
+微软发布过针对VS2005的编程字体Consolas，个人感觉这个字体还不错，可以点击下面链接下载
+猛击这里下载对于背景色我比较喜欢浅黄色，据说能保护眼睛，虽然有点夸张但确实比纯白色看着要舒服。
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-2-singleton-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(2)—单件模式（创建型）</h2><div class="excerpt"><p>Gof 定义保证一个类仅有一个实例，并提供一个该实例的全局访问点。
+动机保证在系统中只存在一个实例，这样才能保证逻辑的正确性和良好的效率。
+单件模式单线程环境下实现看下面一段代码：
+1234567891011121314151617public class Singleton&#123;    private static Singleton _instance;    //定义为私有，让类...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-18T16:00:00.000Z">2009-11-19</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-1-index/"><article class="md">
+<h2 class="post-title">设计模式笔记(1)—开篇（文章索引）</h2><div class="excerpt"><p>概念设计模式描述了软件设计过程中某一类常见问题的一般性的解决方案。
+面向对象的设计模式描述了面向对象设计过程中，在特定场景下类与相互通讯的对象之间常见的组织关系。
+设计模式与面向对象面向对象设计模式解决的是“类与相互通信的对象之间的组织关系。包括他们的角色、职责、协作方式几个方面。
+面向对象设计模式是“好的面向对象设计”，所谓“好的面向对象设计”是那些可以满足“因对变化，提高复用的设计”。
+...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-17T16:00:00.000Z">2009-11-18</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/10/experience-vs2010-improvements/"><article class="md">
+<h2 class="post-title">体验vs2010 （功能改进篇）</h2><div class="excerpt"><p>下午在使用vs2010进行了一些简单的编码体验，下面谈一下和以前版本的一些不同的地方，仅限于工具的使用方面，有关Net4.0方面的知识将在以后深入研究。
+首先来看下创建项目的对话框，在左边的Installed Templates里多出了几个选项，如Cloud Service、F#等。点击左边栏中的C#，在右边的模板列表中可以看到Silverlight、asp.net mvc2 已经集成在其中...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-23T16:00:00.000Z">2009-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/10/experience-vs2010-installation/"><article class="md">
+<h2 class="post-title">体验VS2010（安装篇）</h2><div class="excerpt"><p>本来是打算等到vs2010正式版出来之后再安装vs2010体验，不过鉴于才2g多的大小，就提前下载安装了，下面的是安装过程中的一些截图。和以前装vs2008不同的是，在安装过程中，出现了两次重启电脑。必须重启后才能继续安装。安装的东西很多所以时间也比装vs2008长了不少。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-23T16:00:00.000Z">2009-10-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/10/visual-studio-2010-beta-2-download-address-publicly/"><article class="md">
+<h2 class="post-title">Visual Studio 2010 Beta 2 公开下载地址</h2><div class="excerpt"><p>前天就在博客园见了lyj的那篇介绍Visual Studio 2010 Beta 2的文章了，今天终于开发下载了。下载地址：http://msdn.microsoft.com/en-us/vstudio/dd582936.aspx
+看了下别人的安装截图感觉漂亮了不少，不过我还是想等到正式版出来后再下载安装，希望到时能换一个配置好点的本本，现在的这个已经陪伴我三四年的老本跑起来确实很吃力啊。
+...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-21T16:00:00.000Z">2009-10-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/10/powerful-vs-plug-in-resharper/"><article class="md">
+<h2 class="post-title">强大的VS插件—Resharper</h2><div class="excerpt"><p>ReSharper是一款Visual.net的插件，主要提升VS.net代码编辑能力，包括对C#、VB.net、XML、XAML和ASP.net，并包括这些语言的交叉关联引用。ReSharper让Visual Studio开发人员更加便捷，包括代码分析、单元测试方案、Goto Symbol支持、To-do探测器等各种特性，ReSharper可以说是辅助Visual Studio开发的一把瑞士...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-16T16:00:00.000Z">2009-10-17</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/10/rare-small-company-activities-badminton-match/"><article class="md">
+<h2 class="post-title">难得的公司小活动—羽毛球比赛</h2><div class="excerpt"><p>前几天人事就通知在这周末公司内部组织一次羽毛球比赛，确实非常期待啊，毕竟好久都没怎么运动了。
+昨天下午下班后我们就来到了光谷体育馆的羽毛球馆，先进行了一些热身就进行了分组比赛，我的搭档是公司的一位女同事，水平当然是没我好了，呵呵！！！ 在经过一轮紧张激烈的比赛后，我们很幸运的拿到了第一，不过说实话我的羽毛球水平实在是不怎么样啊，运气比较好而已啦。
+除了拿到冠军外感到最高兴的是身体得到锻炼。
+...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-16T16:00:00.000Z">2009-10-17</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -170,7 +159,7 @@ CLR Via C#》这本书以前就粗略看过两遍，但一直都没能深入理�
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      46<span class='sep'></span>54
+      46<span class='sep'></span>56
     </div>
     <a class='paginator next' href='/page/47/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>
