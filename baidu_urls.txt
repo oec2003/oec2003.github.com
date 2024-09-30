@@ -1,3 +1,6 @@
+http://fwhyy.com/2024/03/lets-briefly-talk-about-cloud-native/
+http://fwhyy.com/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/
+http://fwhyy.com/2024/02/2023-summary/
 http://fwhyy.com/2024/02/reading-methods-of-taking-notes/
 http://fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/
 http://fwhyy.com/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/
@@ -95,6 +98,3 @@ http://fwhyy.com/2022/03/book-recommendation-202203/
 http://fwhyy.com/2022/03/how-to-split-services/
 http://fwhyy.com/2022/03/reread-continuous-delivery-2-0/
 http://fwhyy.com/2022/03/recommend-a-card-note-taking-tool/
-http://fwhyy.com/2022/03/do-we-need-to-switch-from-monomer-to-microservice/
-http://fwhyy.com/2022/02/book-recommendation-202202/
-http://fwhyy.com/2022/02/20th-anniversary-of-net/

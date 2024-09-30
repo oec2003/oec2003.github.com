@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a><div class="line"></div><a class="more-item" href="/2024/01/private-image-warehouse-harbor-installation-and-use/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">私有镜像仓库 Harbor 安装和使用</span></a><div class="line"></div><a class="more-item" href="/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">利用 Github Actions 同步佳明国内到国际</span></a><div class="line"></div><a class="more-item" href="/2024/01/do-something-seriously-and-deeply-starting-from-running/"><div class="cap"><time>2024-02-20</time><span>思考</span></div><span class="title">认真深入做一件事，从跑步开始</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,26 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2017/05/Luo-And-nut-Pro/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2017/09/mi-push-to-csharp/"><article class="md">
+<h2 class="post-title">C#中实现小米推送</h2><div class="excerpt"><p>移动端的消息推送有很多互联网产品可以用，例如：极光、个推、小米推送等。对于安卓手机，推送需要做各种适配，开始我们使用的是极光，发现在小米手机上，当App退出到后台，就经常不能收到消息，所以决定将小米推送集成到App中。
+遗憾的是小米推送官方并不支持C#，所以需要很对Java版本的实现用IKVM来做一些转化。转换后在Net程序中一共需要引用7个Dll文件，如下图：
+
+相关Dll文件和示例代码已...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-02T01:35:44.000Z">2017-09-02</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/09/some-of-the-pits-in-hexo/"><article class="md">
+<h2 class="post-title">Hexo的一些坑</h2><div class="excerpt"><p>最近在研究Angular4，将Mac上的node和npm都升级为了最新版本，当使用hexo的时候发现报错，当即决定将hexo也升级最新版本。
+升级完hexo，将所有的博客迁移过来，执行hexo g，hexo s，很顺利，没有任何问题，马上执行hexo d发布到服务器，发现页面显示如下图：
+
+查看本地环境的public目录，发现生成的html页面的代码就如上图，但本地运行又是正常的。一个直接的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-09-01T00:36:34.000Z">2017-09-01</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2017/08/docker-learning-installing-images/"><article class="md">
+<h2 class="post-title">Docker学习-安装镜像</h2><div class="excerpt"><p>Docker现在已不是什么新鲜事物了，Windows Server2016已经内置了Docker，对于我来说，我只想让Docker来帮我解决运行环境的问题。
+我们的产品部署起来会依赖很多的第三方产品：SqlServer、MongoDB、Redis、RabbitMQ等，各种软件等安装，数据库的还原，每次部署都会耗费大量的时间。为了能使部署更加的方便，我们的设想是这样的：
+
+在Docker中安装这些工具软件
+打包Docker，拷贝到客户环境中导入
+在Web界面中进行简单的向导配置
+
+本文主要介绍在Docker中安装这些工具软件。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-08-31T02:47:45.000Z">2017-08-31</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2017/05/Luo-And-nut-Pro/"><article class="md">
 <h2 class="post-title">老罗和坚果Pro</h2><div class="excerpt"><p>上大学时因为老罗语录认识了老罗，到后来的牛博网、英语培训，直到5年前开始做手机，一直在关注，每一场的公开演讲、发布会都看过直播或是在第一时间看重播。首要的原因当然还是因为老罗的相声讲的好，就像当初把老罗语录当相声段子听一样。
 听了那么多的发布会，看了那么多的微创新，其实一直都有点心动。就在前不久，机会来了，老罗的坚果Pro发布，我的iPhone6 Plus的屏也很合时机的摔碎了。等我下单的时候，已经需要全款预约了，貌似卖的很火暴，但发货速度很快，有一种库存满满的感觉。玩了差不多1个礼拜，谈谈感受吧。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2017-05-25T16:02:08.000Z">2017-05-26</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
 </article></a><a class="post-card post " href="/2017/04/Marathon/"><article class="md">
@@ -127,17 +146,6 @@
 本书通篇在讲各个方面个人的成长，个人成长就需要自己对自己进行管理，敏捷的思想我认为核心就是快速迭代，用到个人身上就是要有很多的小目标，以迭代的方式向前进，最终实现大目标，这种方式可以让我们能快速试错，及时调整方向；也能让我们能快速看到一些成果，激励自己向前。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-10-15T14:53:26.000Z">2016-10-15</time></span><span class="cap breadcrumb" style="color:#e8930c">读书</span><div>
 </article></a><a class="post-card post " href="/2016/09/jquery-upload-plugin-uploadify-3-2-1-use-explanation/"><article class="md">
 <h2 class="post-title">jQuery上传插件Uploadify使用详解(3.2.1)</h2><div class="excerpt"><p>六年前，因为工作中使用到 jQuery 的上传组件 Uploadify ，写了一篇《JQuery上传插件Uploadify使用详解》的博客来介绍 Uploadify ，其实只是将官方文档简单翻译了下。几年下来居然有50多万的访问量，而且每天通过各种搜索引擎有大几百的朋友会访问到这篇文章。六年时间 Uploadify 从当时的2.1.0到了现在的3.2.1，变化还是挺大，为了对访问到之前那篇博客的朋友还有点价值，特写此篇。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-25T10:57:49.000Z">2016-09-25</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/09/use-exceptionLess/"><article class="md">
-<h2 class="post-title">使用ExceptionLess</h2><div class="excerpt"><p>ExceptionLess是一款免费开源的分布式日志收集框架，DotNet的几乎所有类型的程序都可以支持，并且还提供了接口，可以很方便的在js中进行日志的推送。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-13T15:03:26.000Z">2016-09-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2016/09/Talk-about-overtime/"><article class="md">
-<h2 class="post-title">谈谈加班</h2><div class="excerpt"><p>今天谈谈加班这个敏感的话题，相信大家在职场中都或多或少的经历过加班。特别是 IT 这个行业，加班更是家常便饭。加班通常有这么四类：</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-08T15:22:06.000Z">2016-09-08</time></span><span class="cap breadcrumb" style="color:#CD3278">思考</span><div>
-</article></a><a class="post-card post " href="/2016/09/remoting-external-access/"><article class="md">
-<h2 class="post-title">Remoting 外网访问</h2><div class="excerpt"><p>Remoting 是一种很古老的分布式技术，如果不清楚的可以参考下面三篇博客，写的非常详细：
-Microsoft .Net Remoting系列专题之一:.Net Remoting基础篇
-Microsoft .Net Remoting系列专题之二：Marshal、Disconnect与生命周期以及跟踪服务
-Microsoft .Net Remoting系列专题之三：Remoting事件处理全接触
-最近解决公司一个老平台的问题，该平台中使用了 Remoting 技术，现有的环境大致如下：
-1、Remoting 服务和 Web 都是部署在局域网；2、多台 Web 都是通过内网 IP 和端口来访问 Remoting 。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2016-09-06T14:01:52.000Z">2016-09-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -145,7 +153,7 @@ Microsoft .Net Remoting系列专题之三：Remoting事件处理全接触
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      24<span class='sep'></span>53
+      24<span class='sep'></span>54
     </div>
     <a class='paginator next' href='/page/25/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>

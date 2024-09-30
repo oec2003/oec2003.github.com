@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://fwhyy.com/2024/03/lets-briefly-talk-about-cloud-native/</loc>
+    <lastmod>2024-09-30</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/</loc>
+    <lastmod>2024-09-30</lastmod>
+  </url>
+  <url>
+    <loc>http://fwhyy.com/2024/02/2023-summary/</loc>
+    <lastmod>2024-09-30</lastmod>
+  </url>
+  <url>
     <loc>http://fwhyy.com/2023/12/redis-for-operating-sentinel-mode-in-net/</loc>
     <lastmod>2024-02-21</lastmod>
   </url>

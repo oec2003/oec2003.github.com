@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a><div class="line"></div><a class="more-item" href="/2024/01/private-image-warehouse-harbor-installation-and-use/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">私有镜像仓库 Harbor 安装和使用</span></a><div class="line"></div><a class="more-item" href="/2024/01/using-github-actions-to-synchronize-jiamings-domestic-and-international-operations/"><div class="cap"><time>2024-02-20</time><span>技术</span></div><span class="title">利用 Github Actions 同步佳明国内到国际</span></a><div class="line"></div><a class="more-item" href="/2024/01/do-something-seriously-and-deeply-starting-from-running/"><div class="cap"><time>2024-02-20</time><span>思考</span></div><span class="title">认真深入做一件事，从跑步开始</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/03/lets-briefly-talk-about-cloud-native/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">简单聊聊云原生</span></a><div class="line"></div><a class="more-item" href="/2024/03/in-another-method-for-dynamically-executing-nodejs-code-in-dotnet/"><div class="cap"><time>2024-09-30</time><span>技术</span></div><span class="title">在.NET中动态执行Nodejs代码的另一种方法</span></a><div class="line"></div><a class="more-item" href="/2024/02/2023-summary/"><div class="cap"><time>2024-09-30</time><span>思考</span></div><span class="title">2023 年终总结</span></a><div class="line"></div><a class="more-item" href="/2023/12/redis-for-operating-sentinel-mode-in-net/"><div class="cap"><time>2024-02-21</time><span>技术</span></div><span class="title">.NET中操作哨兵模式的Redis（哨兵和Redis示例配置密码）</span></a><div class="line"></div><a class="more-item" href="/2024/02/reading-methods-of-taking-notes/"><div class="cap"><time>2024-02-21</time><span>读书</span></div><span class="title">读《笔记的方法》</span></a></div></div>
 </div>
 
 
@@ -109,7 +109,21 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/11/design-patterns-notes-6-prototype-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(6)—原型模式（创建型）</h2><div class="excerpt"><p>Gof定义使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。
+动机在软件系统中，经常面临着“某些结构复杂的对象”的创建工作，但由于需求的变化，这些对象将成面临着剧烈的变化，但他们拥有比较稳定一致的接口。
+假设在一些打斗游戏场景中，有这样一些角色，普通(NormalActor),可以飞的(FlyActor)，可以潜水的(WaterActor)
+123public abstra...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-23T16:00:00.000Z">2009-11-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-5-factory-method-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(5)—工厂方法模式（创建型）</h2><div class="excerpt"><p>Gof定义定义一种用于创建对象的借口，让子类决定实例化哪一个类，Factory Method使得一个类的实例化延迟到子类。
+动机在软件系统中，经常面临着“某个对象”的创建工作；由于需求的变化，这个对象经常面临着剧烈的变化，但是它却拥有比较稳定的借口。
+假设有这样的一个场景，有一个汽车类和一个汽车测试框架类，汽车测试框架负责对汽车来进行测试，通常情况下我们会想下面这样写。
+1234567891...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-21T16:00:00.000Z">2009-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-4-generator-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(4)—生成器模式（创建型）</h2><div class="excerpt"><p>Gof定义将一个复杂对象的构建与其表示相分离，使其同样的构建过程可以创建不同的表示。
+动机在软件系统中，有时侯面临着一个复杂对象的创建工作，这个发展对象通常是由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂的对象的各个部分经常面临着巨大的变化，但是将他们组合起来的算法相对稳定。
+还是拿游戏中的房屋作为例子来讲，房屋由门、窗户、墙、地板、天花板组成。这些组成部分可能是经常要发生变化...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-20T16:00:00.000Z">2009-11-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(3)—抽象工厂模式（创建型）</h2><div class="excerpt"><p>Gof定义提供一个借口，让该接口负责创建一系列_相关或者相互依赖的对象_，无需指定他们具体的类。
 动机在软件系统中经常面临着_一系列相互依赖的对象_的创建的工作，同时由于需求的变化，往往存在着更对系列对象的创建。
 常规的对象创建的方法，直接使用new关键字
@@ -141,18 +155,6 @@
 <h2 class="post-title">Visual Studio 2010 Beta 2 公开下载地址</h2><div class="excerpt"><p>前天就在博客园见了lyj的那篇介绍Visual Studio 2010 Beta 2的文章了，今天终于开发下载了。下载地址：http://msdn.microsoft.com/en-us/vstudio/dd582936.aspx
 看了下别人的安装截图感觉漂亮了不少，不过我还是想等到正式版出来后再下载安装，希望到时能换一个配置好点的本本，现在的这个已经陪伴我三四年的老本跑起来确实很吃力啊。
 ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-21T16:00:00.000Z">2009-10-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/powerful-vs-plug-in-resharper/"><article class="md">
-<h2 class="post-title">强大的VS插件—Resharper</h2><div class="excerpt"><p>ReSharper是一款Visual.net的插件，主要提升VS.net代码编辑能力，包括对C#、VB.net、XML、XAML和ASP.net，并包括这些语言的交叉关联引用。ReSharper让Visual Studio开发人员更加便捷，包括代码分析、单元测试方案、Goto Symbol支持、To-do探测器等各种特性，ReSharper可以说是辅助Visual Studio开发的一把瑞士...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-16T16:00:00.000Z">2009-10-17</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/10/rare-small-company-activities-badminton-match/"><article class="md">
-<h2 class="post-title">难得的公司小活动—羽毛球比赛</h2><div class="excerpt"><p>前几天人事就通知在这周末公司内部组织一次羽毛球比赛，确实非常期待啊，毕竟好久都没怎么运动了。
-昨天下午下班后我们就来到了光谷体育馆的羽毛球馆，先进行了一些热身就进行了分组比赛，我的搭档是公司的一位女同事，水平当然是没我好了，呵呵！！！ 在经过一轮紧张激烈的比赛后，我们很幸运的拿到了第一，不过说实话我的羽毛球水平实在是不怎么样啊，运气比较好而已啦。
-除了拿到冠军外感到最高兴的是身体得到锻炼。
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-16T16:00:00.000Z">2009-10-17</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2009/10/words-in-the-table-in-the-database-multi-line-merged-into-a-column/"><article class="md">
-<h2 class="post-title">在数据库中将字表中的多行合并到一列中</h2><div class="excerpt"><p>几年前就做过这样的查询，在最近的项目中又遇到这样的需求，在此记录一下。
-假设有一个文章表Post和一个评论表Comments，可以对文章进行多次评论，现在希望在对Post表查询时能将Post的所有评论内容组合到一个字段中显示。
-首先创建表Post和Comments
-123456789101112131415create table Post(    [PostID] int identity...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-10-14T16:00:00.000Z">2009-10-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -160,7 +162,7 @@
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      44<span class='sep'></span>53
+      44<span class='sep'></span>54
     </div>
     <a class='paginator next' href='/page/45/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>
