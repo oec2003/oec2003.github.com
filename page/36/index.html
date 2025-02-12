@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">OpenAI o1 ，我试用一周多所了解到的</span></a><div class="line"></div><a class="more-item" href="/2024/09/what-is-rag/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">什么是 RAG？</span></a><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2025/02/deepseek-r1-makes-a-stunning-debut-from-introduction-to-use/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">DeepSeek R1震撼登场：从介绍到使用</span></a><div class="line"></div><a class="more-item" href="/2025/01/2024-yearend-summary/"><div class="cap"><time>2025-02-12</time><span>思考</span></div><span class="title">2024 年终总结</span></a><div class="line"></div><a class="more-item" href="/2025/01/why-can-single-threaded-redis-be-so-efficient/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">为什么单线程的Redis也能如此高效？</span></a><div class="line"></div><a class="more-item" href="/2025/01/from-environment-setup-to-project-execution-a-quick-guide-to-getting-started-with-python-and-flask/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">从环境搭建到项目运行：Python 和 Flask 快速上手指南</span></a><div class="line"></div><a class="more-item" href="/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用</span></a></div></div>
 </div>
 
 
@@ -109,77 +109,62 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2011/03/chm-file-locking/"><article class="md">
-<h2 class="post-title">CHM文件的锁定</h2><div class="excerpt"><p>刚从皮皮书屋下载了一本关于HTTP的书《HTTP: The Definitive Guide》，下完打开发现内容无法显示
+  <div class="post-list post"><a class="post-card post " href="/2011/07/use-sp-xml-preparedocument-processing-xml-documents/"><article class="md">
+<h2 class="post-title">使用sp_xml_preparedocument处理XML文档</h2><div class="excerpt"><p>有时会在存储过程中处理一些XML格式的数据，所以会用到sp_xml_preparedocument，他可以将XML数据进行读取，然后使用 MSXML 分析器 (Msxmlsql.dll) 对其进行分析。我们就可以很容易的在存储过程中得到XML中我们想要的数据。下面的代码就是使用sp_xml_preparedocument读取XML：
+12345678910111213141516DECLAR...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-22T16:00:00.000Z">2011-07-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/07/use-microsoft-clr-debug-to-debug-larger-projects/"><article class="md">
+<h2 class="post-title">使用MicroSoft CLR Debug来调试较大项目</h2><div class="excerpt"><p>在以前的开发中，调试时很自然的会直接按F5进行调试，有时项目部署在IIS中也只是将项目的服务器指向IIS，仍然是将整个项目运行设置断点进行调试。最近遇到了一个问题，项目很大，直接F5运行会导致VS卡死，这种时候使用MicroSoft CLR Debug来进行调试是最合适不过了。
+首先打开MicroSoft CLR Debug
 
-开始还以为是文件损坏还是其他什么原因，google一下后才知道是因为文件被锁定了，只要解锁就可以正常访问。
-在文件上点击右键，选择属性，在常规选项卡中点击“解除锁定”
+打开后界面如下
 
-再次打开文件，就可以正常显示了。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-03T16:00:00.000Z">2011-03-04</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
-</article></a><a class="post-card post " href="/2011/03/virtualpc2007-file-is-copied-to-the-other-computer-cant-open-the-problem-solving/"><article class="md">
-<h2 class="post-title">VirtualPC2007的文件复制到其他电脑不能打开的问题解决</h2><div class="excerpt"><p>在使用VirtualPC的时候，我一般都习惯保存当前状态的方式关机，这样在下次使用的时候可以保证继续我上次的工作状态。最近我将保存状态的VirtualPC2007的文件拷贝到另一台电脑中，然后用VirtualPC2007去添加，我选择的是已经存在的虚机，这时会报一个错误，如下图：
+从项目中选择一个需要调试的文件，并在需要调试的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-19T16:00:00.000Z">2011-07-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/07/give-the-pdf-bookmarks-production/"><article class="md">
+<h2 class="post-title">Foxit Reader–给PDF制作书签</h2><div class="excerpt"><p>作为一名软件开发人员，平时免不了会在网上下载PDF版的书籍进行充电。英文版的还好，通常都会带有书签，但是中文版的特别是扫面版基本上都没有书签，这样给阅读带了很大的不方便，下面推荐的这款软件就可以给PDF制作书签。
+Foxit Reader
 
-经过查询得知，解决此问题的方法为启动VirtualPC后，按照添加新的虚机的方法去做，直到提示要选择硬盘的时候...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-03T16:00:00.000Z">2011-03-04</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/02/sql-server-does-not-support-the-user-instance-login-flag/"><article class="md">
-<h2 class="post-title">解决“此版本的 SQL Server 不支持用户实例登录标志。该连接将关闭”问题</h2><div class="excerpt"><p>错误提示
+官网：http://www.fuxinsoftware.com.cn/
+下载地址：http://www.fuxinsoftware.com.cn/dow...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-07-09T16:00:00.000Z">2011-07-10</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2011/06/retreat-to-the-javascript-code-reserved/"><article class="md">
+<h2 class="post-title">给Javascript代码“预留退路”</h2><div class="excerpt"><p>所谓给Javascript代码“预留退路”意思就是当用户将浏览器的Javascript功能禁用的时候，页面中使用了Javascript的地方要能够以变通的方式得以运行，而不能让用户看到出错或是点击某按钮而毫无反应，这也是用户体验很重要的一部分。
+举个简单的例子来说，点击页面中的一个链接可以弹出一个新的页面，我们通常会使用window.open，代码如下：
+123456&lt;a href=&...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-15T16:00:00.000Z">2011-06-16</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/06/not-registered-on-the-local-computer-microsoft-jet-oledb-4/"><article class="md">
+<h2 class="post-title">未在本地计算机上注册“Microsoft.Jet.OleDb.4.0”提供程序 错误解决</h2><div class="excerpt"><p>最近在做一个导入Excel数据到数据库的程序出现了如下错误：
 
-出现此错误的原因为在webconfig连接字符串中的;User Instance设置为True了，将;User Instance值修改为false即可解决此问题。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-02-21T16:00:00.000Z">2011-02-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/solve-gridview-long-export-excel-such-as-digital-display/"><article class="md">
-<h2 class="post-title">解决AspNet中DataGrid GridView等列表控件导出Excel长数字显示成科学计数法的问题</h2><div class="excerpt"><p>大家都知道，在Excel中，当一个单元格中的值为一长串数字，而且该单元格又不是文本格式的时候，这一长串数字会以科学计数法的方式显示，这给我们的阅读带来了障碍。如果是直接在Excel中编辑数据，手动将格式改为“文本”即可，但要是用程序导出的Excel，手动去改就显得很麻烦了。简单的方法就是在程序中导出Excel的时候就设置列为“文本”格式。
-AspNet中将DataGrid，GridView等...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-22T16:00:00.000Z">2011-01-23</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/the-latest-microsoft-web-development-tools-webmatrix-simple-introduction-and-installation/"><article class="md">
-<h2 class="post-title">微软最新的 Web 开发工具WebMatrix的简单介绍及安装</h2><div class="excerpt"><p>今天很给力，微软Asp.Net团队同时发布了WebMatrix,Razor,MVC3以及Orchard四个产品，其中WebMatrix 是微软最新的 Web 开发工具，它包含了构建网站所需要的一切元素。您可以从开源 Web 项目或者内置的 Web 模板开始，也可以直接从无到有编写代码。简单并且完全是免费的。开发网站从来没有如此简单。
-什么介绍也没有官方的详细，我就将官网的介绍文字引用过来吧，...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-13T16:00:00.000Z">2011-01-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-related-service-startup/"><article class="md">
-<h2 class="post-title">在SharePoint2007中创建站点一：相关服务的启动</h2><div class="excerpt"><p>在程序中打开“SharePoint3.0管理中心”
+运行环境
+数据库：SqlServer2008 R2
+OS：Windows Server 2008 R2
+IIS：IIS7
 
-点击“SharePoint3.0管理中心”会弹出要求输入用户名和密码的对话框
+解决方法在应用程序对用的应用程序池的高级设置中设置“启用32位应用程序”为“True”
 
-输入用户名和密码（注意用户名需要是域名加上用户名），点击“确定”
+</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-06-14T16:00:00.000Z">2011-06-15</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/windows-service-in-windows-7-cant-install-solution/"><article class="md">
+<h2 class="post-title">Windows服务在Win7中不能安装的解决方法</h2><div class="excerpt"><p>用C#写的Windows服务在Win7中安装时出现如下错误：
 
-在上图中可以看出，服务器场配置未完成，所以先来配置服务器场。在“服务器场拓扑结构”下的“服务器”下点击服务器名称，上图中为“FENGWEI ”
+解决方法：
+1 安装服务的脚本写在bat文件中，一定要注意路径，如下
+123456D:\Project\JXW\Code\WorkFlow\FlowServer\installutil.exe  D:\Project\JXW\Code\WorkFlow\FlowServer\FlowServer.exepausenet star...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-23T16:00:00.000Z">2011-05-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/additional-database-failure-5120-error/"><article class="md">
+<h2 class="post-title">附加数据库失败 操作系统错误5</h2><div class="excerpt"><p>环境数据库版本：SqlServer2008 R2 32位
+附加文件的版本：SqlServer2008 R2 64位</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-21T16:00:00.000Z">2011-05-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/05/anniversary/"><article class="md">
+<h2 class="post-title">纪念日--领证</h2><div class="excerpt"><p>今天是2011年5月20日，我和老婆领证了。
+原计划早早的去排头一个，但最终还是到9点多才到的婚姻登记处，人还挺多，也许是这个日子的原因。
+搞清楚流程后我们就排队等待审核，好不容易等到我们了，谁知我的户口本竟然不合格，因为上面的相关信息不是机打的而是手写了，说是按照相关对顶必须是机打的，当时心里那个急啊，我忙说我们那里比较落后没有电脑都是手写的，那人说你别骗我，我办过你们那个地方的就是机打的，我直接无语了。后来说了半天的好话，才同意给我们办但证先不能给我们，等我把户口本拿回去更新后才能给我们证。尽管如此，我和老婆还是感到很高兴。</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-05-19T16:00:00.000Z">2011-05-20</time></span><span class="cap breadcrumb" style="color:#EEE688">成长</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-website-compiled-into-a-dll-in-vs2010/"><article class="md">
+<h2 class="post-title">在VS2010中将AspNet网站编译成一个DLL</h2><div class="excerpt"><p>在VS2010中创建一个网站，部署时网站的dll是动态生成的，每次编译产生的dll的名称都不一样，这样会导致在部署时必须将aspx页面和dll一起部署，尽管有时你可能只修改了后台代码。这样就变得很不方便，在VS2010中可以借助一个插件是网站生成一个固定名称的dll。
+1 从下面的链接地址中下载 Visual Studio® 2010 Web Deployment Projects
+http...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-04-05T16:00:00.000Z">2011-04-06</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2011/04/aspnet-site-integration-discuz-bbs-sync-reg-and-sso/"><article class="md">
+<h2 class="post-title">Asp.Net站点整合Discuz论坛实现同步注册和单点登录</h2><div class="excerpt"><p>最近在一个小站中整合了Discuz论坛，查阅了些资料后实现了同步注册和单点登录。
+Discuz是以虚拟目录的方式加载网站中，整合Discuz到网站中进行安装要注意一下几个问题：
 
-单击“Office SharePoint Se...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-12T16:00:00.000Z">2011-01-13</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/sharepoint2007-configuration/"><article class="md">
-<h2 class="post-title">SharePoint2007配置</h2><div class="excerpt"><p>在前面的文章中已经介绍了SharePoint2007的安装，本篇将详细介绍下SharePoint2007的配置。首先从程序中打开SharePoint2007的配置向导。
 
-向导启动后的界面如下
-
-点击“下一步”
-
-上图中提示需要启动或重启几个相关服务，点击“是”
-
-因为我们是在安装第一台SharePoint服务器，所以选择第二项“否，我希望创建新的服务器场”，点击“下一步”
-
-“数据库服务器...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-11T16:00:00.000Z">2011-01-12</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/install-sqlserver2005/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解三：安装SqlServer2005</h2><div class="excerpt"><p>SharePoint2007 中的很多功能会用到数据库，如分析服务，报表服务等。本文介绍SqlServer2005的安装，数据库的安装很简单，基本上安装默认选项点击下一步即可，需要注意的地方在下面会提到。
-现在就开始安装SqlServer2005 ，运行Setup.exe
-
-选中“我接受许可条款和条件”，点击“下一步”
-
-点击“安装”
-
-点击“下一步”
-
-点击“下一步”
-
-点击“下一步”
-
-...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-10T16:00:00.000Z">2011-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/installation-of-the-net-framework-3-0-and-sharepoint-2007/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解四：安装.NET Framework 3.0和SharePoint 2007</h2><div class="excerpt"><p>终于到了SharePoint2007安装的最后一步了，.NET Framework 3.0在官网可以下载，不过需要连接到网络才可以安装，SharePoint2007我下载的是官网的半年试用版，但安装的时候居然要求输入序列号，随便搜了一个顺利通过，嘿嘿！下面是下载链接地址和序列号
-.NETFramework3.0：http://www.microsoft.com/downloads/zh-cn...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-10T16:00:00.000Z">2011-01-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2011/01/iis-install/"><article class="md">
-<h2 class="post-title">SharePoint2007安装图文详解一：IIS安装</h2><div class="excerpt"><p>由于工作需要最近准备研究下SharePoint，SharePoint的最新版本为2010，但由于硬件环境所致我打算从2007开始学。首先准备详细介绍下SharePoint2007的安装过程。
-本次安装是在Windows2003 sp2的虚拟机上进行，安装SharePoint2007 先后分为以下几个步骤
-
-安装IIS等一些组件
-安装AD（活动目录）及DNS
-安装SqlServer2005
-安...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-01-09T16:00:00.000Z">2011-01-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+Discuz所在的目录需要添加NETWORK SERVICE 和IIS_User这两个账户的权限。
+Discuz根目录下的DNT.config文件需要修改，将/修改为/BBS/，BBS为虚拟目录的名称。
+由于我网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2011-03-31T16:00:00.000Z">2011-04-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
   <div class='paginator-wrap dis-select'>
@@ -187,7 +172,7 @@ AspNet中将DataGrid，GridView等...</p></div><div class="meta cap"><span class
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
     </a>
     <div class='paginator current'>
-      36<span class='sep'></span>56
+      36<span class='sep'></span>57
     </div>
     <a class='paginator next' href='/page/37/'>
       <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>

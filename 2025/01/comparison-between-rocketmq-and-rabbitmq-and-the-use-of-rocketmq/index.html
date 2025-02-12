@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用 - 冯威的博客</title>
+
+  
+    <meta name="description" content="消息队列在项目中会经常用到，目前我们使用的是 RabbitMQ，但在 Java 技术栈下，RocketMQ 使用的比较多。下面比较下 RabbitMQ 和 RocketMQ。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用">
+<meta property="og:url" content="http://fwhyy.com/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="消息队列在项目中会经常用到，目前我们使用的是 RabbitMQ，但在 Java 技术栈下，RocketMQ 使用的比较多。下面比较下 RabbitMQ 和 RocketMQ。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202501011909246.webp">
+<meta property="article:published_time" content="2025-01-02T10:28:00.000Z">
+<meta property="article:modified_time" content="2025-02-12T08:27:33.312Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="RocketMQ">
+<meta property="article:tag" content="消息队列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202501011909246.webp">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ-%E5%92%8C-RocketMQ-%E5%AF%B9%E6%AF%94"><span class="toc-text">RabbitMQ 和 RocketMQ 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5%E5%92%8C%E6%9E%B6%E6%9E%84"><span class="toc-text">1、设计理念和架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%80%A7%E8%83%BD"><span class="toc-text">2、性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%89%B9%E6%80%A7"><span class="toc-text">3、特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%88%9B%E6%96%B0%E7%82%B9"><span class="toc-text">4、创新点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81Exchange-%E5%92%8C-Topic-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">5、Exchange 和 Topic 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-compose-%E9%83%A8%E7%BD%B2-RocketMQ"><span class="toc-text">Docker-compose 部署 RocketMQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-text">代码示例</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2025-01-02T10:28:00.000Z">2025-01-02</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用</span></h1>
+<p>消息队列在项目中会经常用到，目前我们使用的是 RabbitMQ，但在 Java 技术栈下，RocketMQ 使用的比较多。下面比较下 RabbitMQ 和 RocketMQ。</p>
+<span id="more"></span>
+
+<h2 id="RabbitMQ-和-RocketMQ-对比"><a href="#RabbitMQ-和-RocketMQ-对比" class="headerlink" title="RabbitMQ 和 RocketMQ 对比"></a>RabbitMQ 和 RocketMQ 对比</h2><h3 id="1、设计理念和架构"><a href="#1、设计理念和架构" class="headerlink" title="1、设计理念和架构"></a>1、设计理念和架构</h3><p>RabbitMQ： </p>
+<p>基于 AMQP（Advanced Message Queuing Protocol）协议，使用 Erlang 语言开发。Erlang 的天生高并发和容错性使得 RabbitMQ 在稳定性方面表现出色。RabbitMQ 的核心概念是 Exchange（交换机）和 Queue（队列），消息通过 Exchange 路由到 Queue，再由消费者消费。这种模型非常灵活，支持多种消息路由模式。</p>
+<p>RocketMQ：</p>
+<p>源于阿里巴巴，后捐献给 Apache 基金会，所以现在的官网是：<a target="_blank" rel="noopener" href="https://rocketmq.apache.org/">https://rocketmq.apache.org/</a> 。使用 Java 语言开发，更贴近 Java 技术栈。RocketMQ 的核心概念是 Topic（主题），消息发送到 Topic，消费者订阅 Topic 进行消费。RocketMQ 的设计目标是高吞吐量、低延迟和高可靠性，适合大规模分布式系统。</p>
+<p>RocketMQ 的设计理念更偏向于解决互联网场景下的具体问题，如海量消息处理、消息顺序性等。</p>
+<h3 id="2、性能"><a href="#2、性能" class="headerlink" title="2、性能"></a>2、性能</h3><p>吞吐量：RocketMQ 在吞吐量方面通常优于 RabbitMQ，尤其是在高并发场景下。RocketMQ 的设计更偏向于高吞吐的消息传递，而 RabbitMQ 更注重消息的可靠性和灵活性。</p>
+<p>延迟：两者在延迟方面都表现不错，但在极端高负载情况下，RocketMQ 的延迟可能更低一些。</p>
+<p>不过在 ToB 的一些业务场景，RabbitMQ 是可以胜任的。</p>
+<h3 id="3、特性"><a href="#3、特性" class="headerlink" title="3、特性"></a>3、特性</h3><p>消息路由：RabbitMQ 支持多种 Exchange 类型（Direct、Topic、Fanout、Headers），提供更丰富的消息路由策略。RocketMQ 主要使用 Topic 进行消息路由，相对简单。</p>
+<p>消息过滤：RocketMQ 支持基于 Tag 和 SQL 的消息过滤，方便消费者按需订阅消息。RabbitMQ 的消息过滤相对较弱。</p>
+<p>事务消息：RocketMQ 提供了分布式事务消息的支持，可以保证消息生产和本地事务的原子性。RabbitMQ 没有直接提供事务消息的支持，需要通过其他方式实现。</p>
+<p>延迟消息：RocketMQ 支持延迟消息，可以实现定时任务等功能。RabbitMQ 通过插件可以实现类似功能。</p>
+<p>监控和管理：RocketMQ 和 RabbitMQ 都提供了丰富的监控指标和管理工具，相比之下我更喜欢 RocketMQ 的管理工具。</p>
+<h3 id="4、创新点"><a href="#4、创新点" class="headerlink" title="4、创新点"></a>4、创新点</h3><p>RabbitMQ:</p>
+<ul>
+<li>插件系统设计灵活，易于扩展</li>
+<li>虚拟主机（vhost）概念，实现多租户隔离</li>
+<li>内存和磁盘节点的混合部署方案</li>
+</ul>
+<p>RocketMQ:</p>
+<ul>
+<li>基于文件的消息存储系统，避免了缓存未刷盘导致的消息丢失</li>
+<li>Pull 模式和长轮询机制的结合，平衡了实时性和性能</li>
+<li>消息过滤支持在 Broker 端完成，减少网络传输开销</li>
+</ul>
+<h3 id="5、Exchange-和-Topic-的区别"><a href="#5、Exchange-和-Topic-的区别" class="headerlink" title="5、Exchange 和 Topic 的区别"></a>5、Exchange 和 Topic 的区别</h3><p>RabbitMQ的 Exchange 和 RocketMQ 的 Topic 在消息路由机制上有以下主要区别：</p>
+<p>概念和角色</p>
+<p>RabbitMQ Exchange 是一个路由组件，负责接收生产者发送的消息并将其路由到一个或多个队列，作为消息的”交换机”，它不存储消息，只负责消息的路由转发，需要通过 binding key 与 Queue 建立绑定关系。</p>
+<p>RocketMQ Topic 是消息的逻辑分类，直接作为消息的存储和投递单元，包含多个消息队列（MessageQueue），用于存储消息，消费者直接订阅 Topic 即可接收消息。</p>
+<p>RabbitMQ 的 key 绑定和 Exchange、队列的关系，一开始不太容易理解，相比之下 RocketMQ 的 Topic 和队列关系更清晰。</p>
+<p>路由方式</p>
+<p>RabbitMQ Exchange 支持四种路由策略，路由更加灵活，可以实现复杂的消息分发模式</p>
+<ul>
+<li>Direct：根据routing key精确匹配</li>
+<li>Topic：根据routing key的模式匹配</li>
+<li>Fanout：广播到所有绑定的队列</li>
+<li>Headers：根据消息属性匹配</li>
+</ul>
+<p>RocketMQ Topic 采用发布/订阅模式，更加简单直接，通过Tag机制实现消息过滤。支持消息队列的负载均衡。</p>
+<p>消息存储</p>
+<p>RabbitMQ Exchange 不存储消息，消息存储在 Queue 中，消息一旦被路由到 Queue 就与Exchange 无关。</p>
+<p>RocketMQ Topic 直接存储消息，每个 Topic 包含多个消息队列。消息存储在 CommitLog 中，通过 ConsumeQueue 建立索引。</p>
+<h2 id="Docker-compose-部署-RocketMQ"><a href="#Docker-compose-部署-RocketMQ" class="headerlink" title="Docker-compose 部署 RocketMQ"></a>Docker-compose 部署 RocketMQ</h2><p>同样是使用容器进行部署，RabbitMQ 一个容器搞定，RocketMQ 需要两个容器（NameServer 和 Broker），如果需要 web 管理工具，还需要再单独部署一个容器。</p>
+<p>当进行集群模式部署时，RocketMQ 的下载包中有各种集群模式的示例配置文件，这对新手非常友好。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202501011909246.webp"></p>
+<p>下面是部署 RocketMQ 的 docker-comopose 文件的内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义自定义网络</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">rmq_network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br><span class="line">    <span class="attr">ipam:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">subnet:</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.0</span><span class="string">/24</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment"># RocketMQ Name Server</span></span><br><span class="line">  <span class="attr">namesrv:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/rocketmq:5.1.4</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">rmqnamesrv</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="attr">rmq_network:</span></span><br><span class="line">        <span class="attr">ipv4_address:</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.2</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9876</span><span class="string">:9876</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data/namesrv/logs:/home/rocketmq/logs</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">mqnamesrv</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">JAVA_OPT_EXT=-server</span> <span class="string">-Xms512m</span> <span class="string">-Xmx512m</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># RocketMQ Broker</span></span><br><span class="line">  <span class="attr">broker:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/rocketmq:5.3.1</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">rmqbroker</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="attr">rmq_network:</span></span><br><span class="line">        <span class="attr">ipv4_address:</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.3</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10909</span><span class="string">:10909</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10911</span><span class="string">:10911</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10912</span><span class="string">:10912</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data/broker/logs:/home/rocketmq/logs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data/broker/store:/home/rocketmq/store</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf/broker.conf:/home/rocketmq/conf/broker.conf</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">mqbroker</span> <span class="string">-c</span> <span class="string">/home/rocketmq/conf/broker.conf</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">JAVA_OPT_EXT=-server</span> <span class="string">-Xms512m</span> <span class="string">-Xmx512m</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">namesrv</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># RocketMQ Dashboard </span></span><br><span class="line">  <span class="attr">dashboard:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apacherocketmq/rocketmq-dashboard:1.0.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">rmqdashboard</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="attr">rmq_network:</span></span><br><span class="line">        <span class="attr">ipv4_address:</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.4</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">19080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">namesrv</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>broker.conf 的内容如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># broker集群名称</span></span><br><span class="line">brokerClusterName = DefaultCluster</span><br><span class="line"><span class="meta"># broker名称</span></span><br><span class="line">brokerName = broker-a</span><br><span class="line"><span class="meta"># broker编号，0表示master，大于0表示slave</span></span><br><span class="line">brokerId = <span class="number">0</span></span><br><span class="line"># 删除过期文件时间点，默认是凌晨<span class="number">4</span>点</span><br><span class="line">deleteWhen = <span class="number">04</span></span><br><span class="line"># 文件保留时间，默认<span class="number">48</span>小时</span><br><span class="line">fileReservedTime = <span class="number">48</span></span><br><span class="line"><span class="meta"># broker角色，ASYNC_MASTER=异步复制Master，SYNC_MASTER=同步双写Master，SLAVE=slave节点</span></span><br><span class="line">brokerRole = ASYNC_MASTER</span><br><span class="line"># 刷盘方式，ASYNC_FLUSH=异步刷盘，SYNC_FLUSH=同步刷盘</span><br><span class="line">flushDiskType = ASYNC_FLUSH</span><br><span class="line"># nameServer地址，分号分割</span><br><span class="line">namesrvAddr = namesrv:<span class="number">9876</span></span><br><span class="line"># 在发送消息时，自动创建服务器不存在的topic，默认创建的队列数</span><br><span class="line">defaultTopicQueueNums = <span class="number">4</span></span><br><span class="line"># 是否允许 Broker 自动创建Topic，建议线下开启，线上关闭</span><br><span class="line">autoCreateTopicEnable = <span class="literal">true</span></span><br><span class="line"># 是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭</span><br><span class="line">autoCreateSubscriptionGroup = <span class="literal">true</span></span><br><span class="line"># brokerIP1 注意：本地测试使用本机的宿主机的IP</span><br><span class="line">brokerIP1=<span class="number">192.168</span><span class="number">.1</span><span class="number">.109</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>对于消息队列，单播、广播、重试，这三种场景用的比较多。下面就看看这三个场景是怎么实现的。</p>
+<p>1、创建生产者 Service 类来处理消息的发送：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageProducerService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// RocketMQ消息主题</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_UNICAST = <span class="string">&quot;topic-unicast&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_BROADCAST = <span class="string">&quot;topic-broadcast&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_RETRY = <span class="string">&quot;topic-retry&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RocketMQTemplate rocketMQTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送单播消息（点对点）</span></span><br><span class="line"><span class="comment">     * 单播消息会被消费组中的某一个消费者消费</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendUnicastMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line">        rocketMQTemplate.convertAndSend(TOPIC_UNICAST, message);</span><br><span class="line">        log.info(<span class="string">&quot;Unicast message sent: &#123;&#125;&quot;</span>, message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送广播消息</span></span><br><span class="line"><span class="comment">     * 广播消息会被所有订阅该主题的消费者消费</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendBroadcastMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line">        rocketMQTemplate.convertAndSend(TOPIC_BROADCAST, message);</span><br><span class="line">        log.info(<span class="string">&quot;Broadcast message sent: &#123;&#125;&quot;</span>, message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送需要重试的消息</span></span><br><span class="line"><span class="comment">     * 使用异步发送方式，并在回调中处理发送结果</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendRetryMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line">        rocketMQTemplate.asyncSend(TOPIC_RETRY, message, <span class="keyword">new</span> SendCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(SendResult sendResult)</span> </span>&#123;</span><br><span class="line">                log.info(<span class="string">&quot;Retry message sent successfully: &#123;&#125;, result: &#123;&#125;&quot;</span>, message, sendResult);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onException</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                log.error(<span class="string">&quot;Failed to send retry message: &#123;&#125;, error: &#123;&#125;&quot;</span>, message, throwable.getMessage());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2、创建消费者 Service 类来处理消息的接收：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageConsumerService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// RocketMQ消息主题</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_UNICAST = <span class="string">&quot;topic-unicast&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_BROADCAST = <span class="string">&quot;topic-broadcast&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC_RETRY = <span class="string">&quot;topic-retry&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 单播消息消费者</span></span><br><span class="line"><span class="comment">     * consumeMode默认为CONCURRENTLY（并发消费）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Service</span></span><br><span class="line">    <span class="meta">@RocketMQMessageListener(</span></span><br><span class="line"><span class="meta">            topic = TOPIC_UNICAST,</span></span><br><span class="line"><span class="meta">            consumerGroup = &quot;unicast-consumer-group&quot;</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnicastMessageListener</span> <span class="keyword">implements</span> <span class="title">RocketMQListener</span>&lt;<span class="title">MessageEvent</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            log.info(<span class="string">&quot;Received unicast message: &#123;&#125;&quot;</span>, message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 广播消息消费者</span></span><br><span class="line"><span class="comment">     * messageModel设置为BROADCASTING表示广播模式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Service</span></span><br><span class="line">    <span class="meta">@RocketMQMessageListener(</span></span><br><span class="line"><span class="meta">            topic = TOPIC_BROADCAST,</span></span><br><span class="line"><span class="meta">            consumerGroup = &quot;broadcast-consumer-group&quot;,</span></span><br><span class="line"><span class="meta">            messageModel = MessageModel.BROADCASTING</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BroadcastMessageListener</span> <span class="keyword">implements</span> <span class="title">RocketMQListener</span>&lt;<span class="title">MessageEvent</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line">            log.info(<span class="string">&quot;Received broadcast message: &#123;&#125;&quot;</span>, message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 重试消息消费者</span></span><br><span class="line"><span class="comment">     * 配置了重试次数和重试间隔</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Service</span></span><br><span class="line">    <span class="meta">@RocketMQMessageListener(</span></span><br><span class="line"><span class="meta">            topic = TOPIC_RETRY,</span></span><br><span class="line"><span class="meta">            consumerGroup = &quot;retry-consumer-group&quot;,</span></span><br><span class="line"><span class="meta">            maxReconsumeTimes = 3,    // 最大重试次数</span></span><br><span class="line"><span class="meta">            delayLevelWhenNextConsume = 2  // 重试间隔级别</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RetryMessageListener</span> <span class="keyword">implements</span> <span class="title">RocketMQListener</span>&lt;<span class="title">MessageEvent</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(MessageEvent message)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 模拟处理失败的情况</span></span><br><span class="line">                <span class="keyword">if</span> (message.getContent().contains(<span class="string">&quot;error&quot;</span>)) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Processing failed, will retry&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                log.info(<span class="string">&quot;Received retry message: &#123;&#125;&quot;</span>, message);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;Error processing message: &#123;&#125;, error: &#123;&#125;&quot;</span>, message, e.getMessage());</span><br><span class="line">                <span class="keyword">throw</span> e; <span class="comment">// 抛出异常触发重试机制</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3、创建 MessageController 来进行测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/messages&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MessageProducerService producerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/unicast&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sendUnicastMessage</span><span class="params">(<span class="meta">@RequestParam</span> String content)</span> </span>&#123;</span><br><span class="line">        MessageEvent message = <span class="keyword">new</span> MessageEvent()</span><br><span class="line">                .setId(UUID.randomUUID().toString())</span><br><span class="line">                .setContent(content)</span><br><span class="line">                .setTimestamp(System.currentTimeMillis());</span><br><span class="line">        producerService.sendUnicastMessage(message);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Unicast message sent successfully&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/broadcast&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sendBroadcastMessage</span><span class="params">(<span class="meta">@RequestParam</span> String content)</span> </span>&#123;</span><br><span class="line">        MessageEvent message = <span class="keyword">new</span> MessageEvent()</span><br><span class="line">                .setId(UUID.randomUUID().toString())</span><br><span class="line">                .setContent(content)</span><br><span class="line">                .setTimestamp(System.currentTimeMillis());</span><br><span class="line">        producerService.sendBroadcastMessage(message);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Broadcast message sent successfully&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/retry&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sendRetryMessage</span><span class="params">(<span class="meta">@RequestParam</span> String content)</span> </span>&#123;</span><br><span class="line">        MessageEvent message = <span class="keyword">new</span> MessageEvent()</span><br><span class="line">                .setId(UUID.randomUUID().toString())</span><br><span class="line">                .setContent(content)</span><br><span class="line">                .setTimestamp(System.currentTimeMillis());</span><br><span class="line">        producerService.sendRetryMessage(message);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Retry message sent successfully&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/&title=RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用 - 冯威的博客&summary=消息队列在项目中会经常用到，目前我们使用的是 RabbitMQ，但在 Java 技术栈下，RocketMQ 使用的比较多。下面比较下 RabbitMQ 和 RocketMQ。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用 - 冯威的博客&amp;body=http://fwhyy.com/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2024/12/summary-of-openais-12-consecutive-days-of-ai-press-conferences/">OpenAI 连续 12 天 AI 发布会汇总<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2025/01/from-environment-setup-to-project-execution-a-quick-guide-to-getting-started-with-python-and-flask/">从环境搭建到项目运行：Python 和 Flask 快速上手指南<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

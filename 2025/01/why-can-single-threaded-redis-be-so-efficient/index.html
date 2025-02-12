@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>为什么单线程的Redis也能如此高效？ - 冯威的博客</title>
+
+  
+    <meta name="description" content="提起 Redis，一个印象就是速度很快的开源内存数据库，而且还是单线程的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么单线程的Redis也能如此高效？">
+<meta property="og:url" content="http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/index.html">
+<meta property="og:site_name" content="冯威的博客">
+<meta property="og:description" content="提起 Redis，一个印象就是速度很快的开源内存数据库，而且还是单线程的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-17T12:29:00.000Z">
+<meta property="article:modified_time" content="2025-02-12T08:30:04.120Z">
+<meta property="article:author" content="oec2003">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="冯威的博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/oec2003/hblog-images/img/202306161645155.webp" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" style="font-size: 1.50rem;">冯威的博客</div><div class="sub normal cap">公众号：不止dotNET</div><div class="sub hover cap" style="opacity:0">临渊羡鱼不如退而结网</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">专栏</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%9F%E5%BA%A6%E8%BF%98%E5%BE%88%E5%BF%AB%EF%BC%9F"><span class="toc-text">单线程为什么速度还很快？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-6-0-%E5%8F%88%E9%87%87%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-text">为什么 6.0 又采用了多线程？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%8F%90%E5%8D%87%E7%BD%91%E7%BB%9C-I-O-%E6%80%A7%E8%83%BD"><span class="toc-text">1、提升网络 I&#x2F;O 性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%A9%E7%94%A8%E5%A4%9A%E6%A0%B8-CPU"><span class="toc-text">2、利用多核 CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BF%9D%E6%8C%81%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">3、保持核心逻辑的简单性和一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%BC%98%E5%8C%96%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8"><span class="toc-text">4、优化资源利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%A6%82%E4%BD%95%E5%9C%A8-Redis-6-0-%E4%B8%AD%E5%90%AF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-text">5、如何在 Redis 6.0 中启用多线程？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%BA%86%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="toc-text">修改了开源协议，有什么替代方案</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div><div id="post-meta">发布于&nbsp;<time datetime="2025-01-17T12:29:00.000Z">2025-01-17</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>为什么单线程的Redis也能如此高效？</span></h1>
+<p>提起 Redis，一个印象就是速度很快的开源内存数据库，而且还是单线程的。</p>
+<span id="more"></span>
+
+<p>但印象有时会骗人：</p>
+<p>1、redis 6.0 后采用了多线程</p>
+<p>2、redis 7.4 之后修改了开源协议</p>
+<h2 id="单线程为什么速度还很快？"><a href="#单线程为什么速度还很快？" class="headerlink" title="单线程为什么速度还很快？"></a>单线程为什么速度还很快？</h2><p>1、Redis 的客户端调用服务器经过三个过程：发送命令、执行命令和返回结果。在命令执行阶段，由于 Redis 处理命令是单线程的，在服务器上到达的所有命令不会立即被执行。所有命令都进入队列并按顺序执行。多个客户端发送的命令执行顺序不确定。但是可以确定的是两个命令不会同时执行，避免了并发问题。这是 Redis 的基本单线程模型。</p>
+<p>2、Redis 完全基于内存，数据存储在内存中。大多数请求都是纯内存操作，所以速度非常快。与传统的磁盘文件数据存储相比，Redis 避免了通过磁盘 I/O 读取数据到内存的开销。</p>
+<p>3、使用单线程可以节省很多上下文切换和 CPU 消耗的时间，没有竞争条件，不需要考虑各种锁定问题，并且不会因为死锁而导致性能开销。此外，它还允许使用各种「线程不安全」的命令，例如 Lpush。</p>
+<p>4、需要注意的是，当我们强调单线程时，我们指的是使用一个线程来处理网络 I/O 和键值对读写。换句话说，一个线程处理所有网络请求。但 Redis 的其他功能，如持久性、异步删除和集群数据同步，实际上是由额外的线程执行。也就是说即便是在 6.0 之前的版本，也不是绝对的单线程。</p>
+<p>5、Redis 虽然是纯内存操作，但仍然会涉及到网络 I/O 和磁盘 I/O（持久化操作），Redis 使用非阻塞 I/O 和 I/O 多路复用技术（如 <code>select</code>、<code>poll</code>、<code>epoll</code>）来处理大量的并发连接。这意味着一个线程可以同时监听多个客户端的连接请求，并在有数据可读或可写时进行处理。这种方式避免了线程在等待 I/O 操作完成时的阻塞，从而提高了系统的并发处理能力。</p>
+<ul>
+<li>非阻塞 I/O：允许程序在 I/O 操作未完成时继续执行其他任务。</li>
+<li>I/O 多路复用：通过单线程监控多个 I/O 操作，提升高并发下的效率。</li>
+</ul>
+<p>6、官方对单线程的解释是：因为 CPU 不是 Redis 的瓶颈，最有可能的是机器内存或网络带宽。由于单线程易于实现，并且 CPU 不会成为瓶颈，采用单线程解决方案是有意义的。</p>
+<h2 id="为什么-6-0-又采用了多线程？"><a href="#为什么-6-0-又采用了多线程？" class="headerlink" title="为什么 6.0 又采用了多线程？"></a>为什么 6.0 又采用了多线程？</h2><p>Redis 在 6.0 版本引入多线程支持，主要是为了应对现代硬件架构的变化和日益复杂的业务需求，同时解决单线程模型在高并发场景下的性能瓶颈。</p>
+<h3 id="1、提升网络-I-O-性能"><a href="#1、提升网络-I-O-性能" class="headerlink" title="1、提升网络 I/O 性能"></a>1、提升网络 I/O 性能</h3><p>Redis 的主要性能瓶颈在于网络 I/O，尤其是在高并发场景下，单线程模型难以高效处理大量的网络请求。虽然 Redis 使用了 I/O 多路复用技术（如 <code>epoll</code>）来优化网络处理，但随着硬件性能的提升，单线程的网络 I/O 处理能力逐渐成为瓶颈。</p>
+<p>通过引入多线程，Redis 可以将网络 I/O 操作（如读取客户端请求和写回响应）分配到多个线程并行处理，从而显著提升网络吞吐量和降低延迟。</p>
+<h3 id="2、利用多核-CPU"><a href="#2、利用多核-CPU" class="headerlink" title="2、利用多核 CPU"></a>2、利用多核 CPU</h3><p>现在的服务器普遍配备多核 CPU，而 Redis 的单线程模型只能利用一个 CPU 核心，无法充分发挥硬件的性能潜力。通过引入多线程，Redis 可以将网络 I/O 任务分配到多个线程，充分利用多核 CPU 的计算能力，从而提高整体性能。</p>
+<h3 id="3、保持核心逻辑的简单性和一致性"><a href="#3、保持核心逻辑的简单性和一致性" class="headerlink" title="3、保持核心逻辑的简单性和一致性"></a>3、保持核心逻辑的简单性和一致性</h3><p>Redis 6.0 的多线程模型采用了混合设计：网络 I/O 操作由多个线程并行处理，而命令执行仍然由单线程顺序执行。这种设计既保留了单线程模型的简单性和一致性优势（如避免线程安全问题、保证命令的原子性），又通过多线程提升了网络 I/O 的性能。和之前的版本相比，只是将更多的事情由多线程来处理。</p>
+<h3 id="4、优化资源利用"><a href="#4、优化资源利用" class="headerlink" title="4、优化资源利用"></a>4、优化资源利用</h3><p>在高负载场景下，单线程模型可能导致 CPU 和内存资源的浪费。通过引入多线程，Redis 可以更高效地利用系统资源，减少请求的等待时间，从而提升整体性能。</p>
+<h3 id="5、如何在-Redis-6-0-中启用多线程？"><a href="#5、如何在-Redis-6-0-中启用多线程？" class="headerlink" title="5、如何在 Redis 6.0 中启用多线程？"></a>5、如何在 Redis 6.0 中启用多线程？</h3><p>默认情况下，Redis 的多线程是禁用的，如果要启用多线程功能，需要修改 Redis 的配置文件,涉及到两个配置项：</p>
+<p>io-threads：</p>
+<ul>
+<li>该选项用于设置 I/O 线程的数量</li>
+<li>默认值为 <code>1</code>，即不启用多线程</li>
+<li>如果设置为大于 <code>1</code> 的值，Redis 会启用多线程来处理网络 I/O</li>
+<li>建议将 <code>io-threads</code> 设置为小于 CPU 核心数的值，通常为 CPU 核心数的 1/2 到 2/3。</li>
+</ul>
+<p>io-threads-do-reads：</p>
+<ul>
+<li>该选项用于控制是否启用多线程处理读操作</li>
+<li>默认值为 <code>no</code>，即不启用多线程读操作</li>
+<li>如果需要启用多线程读操作，可以将其设置为 <code>yes</code></li>
+</ul>
+<p>配置示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 启用多线程，设置 I/O 线程数为 4</span><br><span class="line">io-threads 4</span><br><span class="line"></span><br><span class="line"># 启用多线程处理读操作</span><br><span class="line">io-threads-do-reads yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改了开源协议，有什么替代方案"><a href="#修改了开源协议，有什么替代方案" class="headerlink" title="修改了开源协议，有什么替代方案"></a>修改了开源协议，有什么替代方案</h2><p>Redis 从 7.4 版本开始修改了开源协议，从 BSD 变更为 RSALv2 和 SSPLv1 双重许可，这意味着 Redis 在 OSI（开放源代码促进会）定义下不再被视为严格的开源软件。</p>
+<p>这一变更对云服务商和开发者产生了较大影响，尤其是那些依赖 Redis 提供商业服务的厂商。</p>
+<p>可以使用 Valkey 进行代替，Valkey 由 Linux 基金会支持，采用 BSD 许可证，确保了项目的开源性质。自 2024 年 3 月由 Redis 项目的贡献者和 Linux 基金会联合发起以来，Valkey 已经得到了包括亚马逊云科技在内的 40 多家公司的支持和贡献。</p>
+<p>我现在在研究的 RAGFlow 使用的就是 Valkey 。下面是 RAGFlow 中部署 Valkey 的 docker-compose 部分代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">redis:</span><br><span class="line">  image: valkey/valkey:8</span><br><span class="line">  container_name: ragflow-redis</span><br><span class="line">  command: redis-server --requirepass $&#123;REDIS_PASSWORD&#125; --maxmemory 128mb --maxmemory-policy allkeys-lru</span><br><span class="line">  env_file: .env</span><br><span class="line">  ports:</span><br><span class="line">    - $&#123;REDIS_PORT&#125;:6379</span><br><span class="line">  volumes:</span><br><span class="line">    - redis_data:/data</span><br><span class="line">  networks:</span><br><span class="line">    - ragflow</span><br><span class="line">  restart: on-failure</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section><section id="share"><div class="header"><span>分享文章</span></div><div class="body"><div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/" /></div><div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/b32ef3da1162a.svg"/></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/&title=为什么单线程的Redis也能如此高效？ - 冯威的博客&summary=提起 Redis，一个印象就是速度很快的开源内存数据库，而且还是单线程的。"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/80c07e4dbb303.svg"/></a><a class="social share-item email" href="mailto:?subject=为什么单线程的Redis也能如此高效？ - 冯威的博客&amp;body=http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/a1b00e20f425d.svg"/></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/social/8411ed322ced6.svg"/></a></div><div class="qrcode" id="qrcode-wechat" style="visibility:hidden;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/index.html"/></div></div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2025/01/from-environment-setup-to-project-execution-a-quick-guide-to-getting-started-with-python-and-flask/">从环境搭建到项目运行：Python 和 Flask 快速上手指南<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2025/01/2024-yearend-summary/">2024 年终总结<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="oec2003/hblog-comments" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客主页</span><a href="/">主页</a></div><div class="sitemap-group"><span class="fs14">博客</span><a href="/blog/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs14">Wiki</span><a href="/wiki/">所有专栏</a><a href="/notes/">便签</a></div><div class="sitemap-group"><span class="fs14">联系</span><a href="/about/">关于我</a><a target="_blank" rel="noopener" href="https://github.com/oec2003">GitHub</a></div></div><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://fwhyy.com/">@oec2003</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

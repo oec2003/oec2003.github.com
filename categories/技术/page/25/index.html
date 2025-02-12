@@ -67,7 +67,7 @@
 <div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">遇见就是缘分</span></div><div class="widget-body fs14"><p>读书、跑步、旅行、写代码，简单而持续的进行着。公众号：不止dotNET</p>
 </div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2024/09/introduction-to-openai-o1/"><div class="cap"><time>2024-10-01</time><span>成长</span></div><span class="title">OpenAI o1 ，我试用一周多所了解到的</span></a><div class="line"></div><a class="more-item" href="/2024/09/what-is-rag/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">什么是 RAG？</span></a><div class="line"></div><a class="more-item" href="/2024/09/the-busy-trap/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">忙碌的陷阱</span></a><div class="line"></div><a class="more-item" href="/2024/08/in-retrieve-the-namespace-id-of-the-k8s-cluster-in-net8/"><div class="cap"><time>2024-10-01</time><span>技术</span></div><span class="title">在 .NET8 中获取 k8s 集群的 namespace id</span></a><div class="line"></div><a class="more-item" href="/2024/08/some-thoughts-on-improving-project-efficiency/"><div class="cap"><time>2024-10-01</time><span>思考</span></div><span class="title">对提升项目效率的一点思考</span></a></div></div>
+<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="line"></div><a class="more-item" href="/2025/02/deepseek-r1-makes-a-stunning-debut-from-introduction-to-use/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">DeepSeek R1震撼登场：从介绍到使用</span></a><div class="line"></div><a class="more-item" href="/2025/01/2024-yearend-summary/"><div class="cap"><time>2025-02-12</time><span>思考</span></div><span class="title">2024 年终总结</span></a><div class="line"></div><a class="more-item" href="/2025/01/why-can-single-threaded-redis-be-so-efficient/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">为什么单线程的Redis也能如此高效？</span></a><div class="line"></div><a class="more-item" href="/2025/01/from-environment-setup-to-project-execution-a-quick-guide-to-getting-started-with-python-and-flask/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">从环境搭建到项目运行：Python 和 Flask 快速上手指南</span></a><div class="line"></div><a class="more-item" href="/2025/01/comparison-between-rocketmq-and-rabbitmq-and-the-use-of-rocketmq/"><div class="cap"><time>2025-02-12</time><span>技术</span></div><span class="title">RocketMQ 和 RabbitMQ 的比较以及 RocketMQ 的使用</span></a></div></div>
 </div>
 
 
@@ -111,7 +111,28 @@
   </nav>
 </div>
 
-  <div class="post-list post"><a class="post-card post " href="/2009/12/design-patterns-notes-11-appearance-pattern/"><article class="md">
+  <div class="post-list post"><a class="post-card post " href="/2009/12/design-patterns-notes-15-command-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(15)—命令模式（行为型）</h2><div class="excerpt"><p>Gof定义将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
+动机在软件构建过程中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合——比如需要对行为进行“记录、撤销/重做（undo/redo）、事务”等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将“行为请求者”与“行为实现者”解耦？将一组行为...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-29T16:00:00.000Z">2009-12-30</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/an-example-in-respect-to-multithreading/"><article class="md">
+<h2 class="post-title">关于多线程的一个例子（UI实时显示）</h2><div class="excerpt"><p>在开发Window应用程序的时候，经常需要在界面上显示出已经执行到什么步骤了，拿一个简单例子来说，创建一个Winform程序，在窗体上访一个Button和一个Label，点击Button时做100次循环，在Label上实时显示当前循环的次数。一种简单的做法就是使用Application.DoEvents，代码如下：
+123456789private void btnTest_Click(ob...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-19T16:00:00.000Z">2009-12-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-14-template-method-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(14)—模板方法模式（行为型）</h2><div class="excerpt"><p>Gof定义定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个 算法的结构即可重定义该算法的某些特定步骤。
+动机在软件构建过程中，对于某一项任务，它常常有稳定的整体操作结构，但各个子步骤却有很多改变的需求，或者由于固有的原因（比如框架与应用之间的关系）而无法和任务的整体结构同时实现。如何在确定稳定操作结构的前提下，来灵活应对各个子步骤的变...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-13T16:00:00.000Z">2009-12-14</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/in-js-method-return-multiple-values-of-the-three-methods/"><article class="md">
+<h2 class="post-title">在JS方法中返回多个值的三种方法</h2><div class="excerpt"><p>在使用JS编程中，有时需要在一个方法返回两个个或两个以上的数据，用下面的几种方法都可以实现：
+1 使用数组的方式，如下：
+12345678910111213141516171819202122&lt;html&gt;&lt;head&gt;    &lt;title&gt;JS函数返回多个值--oec2003&lt;/title&gt;&lt;/head&gt;&lt;body&gt;   ...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-10T16:00:00.000Z">2009-12-11</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-13-proxy-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(13)—代理模式（结构型）</h2><div class="excerpt"><p>Gof定义为其他对象提供一种代理以控制对这个对象的访问。
+动机在面向对象系统中，有些对象由于某种原因（比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外的访问等），直接访问会给使用者、或者系统结构带来很多麻烦。如何在不失去透明操作对象的同时来管理/控制这些对象特有的复杂性？增加一层间接层是软件开发中常见的解决方式。看下结构图：
+
+Subject：该类中定义了一些RealSubj...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-09T16:00:00.000Z">2009-12-10</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-12-flyweight-pattern/"><article class="md">
+<h2 class="post-title">设计模式笔记(12)—享元模式（结构型）</h2><div class="excerpt"><p>Gof定义运用共享技术有效地支持大量细粒度的对象。
+动机采用纯粹对象方案的问题在于大量细粒度的对象会很快充斥在系统中，从而带来很高的运行时代价——主要指内存需求方面的代价。如何在避免大量细粒度对象问题的同时，让外部客户程序仍然能够透明地使用面向对象的方式来进行操作？这需要用到享元模式，不过应用享元模式是需要进行评估的，也就是说在当前情况下是否会对系统造成性能上的影响，如果会那么就是用，下面先...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-08T16:00:00.000Z">2009-12-09</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
+</article></a><a class="post-card post " href="/2009/12/design-patterns-notes-11-appearance-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(11)—外观模式（结构型）</h2><div class="excerpt"><p>Gof定义为子系统中的一组接口提供一个一致的界面，Façade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。
 先来看个小例子，假设我们需要开发一个坦克模拟系统用于模拟坦克车在各种作战环境中的行为，其中坦克系统由引擎、控制器、车轮、车身等各子系统构成。就会有下面这些类的产生
 1234public class Wheel&#123; &#125;public class Engin...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-12-06T16:00:00.000Z">2009-12-07</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
@@ -125,36 +146,6 @@
 </article></a><a class="post-card post " href="/2009/12/design-patterns-notes-8-bridge-pattern/"><article class="md">
 <h2 class="post-title">设计模式笔记(8)—桥接模式（结构型）</h2><div class="excerpt"><p>Gof定义将抽象部分与实现部分分离，使他们都可以独立地变化。
 先来看一个简单的例子，假设我们需要开发一个同时支持PC和手机的坦克游戏，游戏在PC和手机上的功能都一样，有同样的类型，有同样的功能需求变化，而这些游戏中的坦克有多种不同的型号：T50 T60等。根据面向对象的思想，我们可以很容易设计一个坦克(Tank)的抽象类，然后不同的型号都继承抽象类，并且PC和手机上的图形绘制，操作等都是不相...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-30T16:00:00.000Z">2009-12-01</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-7-adapter-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(7)—适配器模式（结构型）</h2><div class="excerpt"><p>Gof定义将一个类的接口转换成客户所希望的另一个接口。适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
-动机在软件系统中，由于应用环境的变化，常常要将“一些现存的对象”放在心的环境中应用，但是新环境要求的接口是这些现存对象所不满足的。
-适配的意思是在不改变原有实现的基础上，将原先不兼容的接口转换为兼容的接口。在我们的生活中有着很多适配器的例子，笔记本的电源适配器、一些卡的...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-25T16:00:00.000Z">2009-11-26</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-6-prototype-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(6)—原型模式（创建型）</h2><div class="excerpt"><p>Gof定义使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。
-动机在软件系统中，经常面临着“某些结构复杂的对象”的创建工作，但由于需求的变化，这些对象将成面临着剧烈的变化，但他们拥有比较稳定一致的接口。
-假设在一些打斗游戏场景中，有这样一些角色，普通(NormalActor),可以飞的(FlyActor)，可以潜水的(WaterActor)
-123public abstra...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-23T16:00:00.000Z">2009-11-24</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-5-factory-method-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(5)—工厂方法模式（创建型）</h2><div class="excerpt"><p>Gof定义定义一种用于创建对象的借口，让子类决定实例化哪一个类，Factory Method使得一个类的实例化延迟到子类。
-动机在软件系统中，经常面临着“某个对象”的创建工作；由于需求的变化，这个对象经常面临着剧烈的变化，但是它却拥有比较稳定的借口。
-假设有这样的一个场景，有一个汽车类和一个汽车测试框架类，汽车测试框架负责对汽车来进行测试，通常情况下我们会想下面这样写。
-1234567891...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-21T16:00:00.000Z">2009-11-22</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-4-generator-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(4)—生成器模式（创建型）</h2><div class="excerpt"><p>Gof定义将一个复杂对象的构建与其表示相分离，使其同样的构建过程可以创建不同的表示。
-动机在软件系统中，有时侯面临着一个复杂对象的创建工作，这个发展对象通常是由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂的对象的各个部分经常面临着巨大的变化，但是将他们组合起来的算法相对稳定。
-还是拿游戏中的房屋作为例子来讲，房屋由门、窗户、墙、地板、天花板组成。这些组成部分可能是经常要发生变化...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-20T16:00:00.000Z">2009-11-21</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/design-patterns-notes-3-abstract-factory-pattern/"><article class="md">
-<h2 class="post-title">设计模式笔记(3)—抽象工厂模式（创建型）</h2><div class="excerpt"><p>Gof定义提供一个借口，让该接口负责创建一系列_相关或者相互依赖的对象_，无需指定他们具体的类。
-动机在软件系统中经常面临着_一系列相互依赖的对象_的创建的工作，同时由于需求的变化，往往存在着更对系列对象的创建。
-常规的对象创建的方法，直接使用new关键字
-1Road road = new Road();
-
-这样直接new会有一个问题，不能应对具体实例化类型的变化，比如说有不同的Road类型...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
-</article></a><a class="post-card post " href="/2009/11/vs-font-recommended/"><article class="md">
-<h2 class="post-title">VS中的经典字体推荐</h2><div class="excerpt"><p>每天编码眼睛看着vs，一个好的字体和背景色能使我们的心情更愉悦，眼睛的疲劳度也随之降低。
-微软发布过针对VS2005的编程字体Consolas，个人感觉这个字体还不错，可以点击下面链接下载
-猛击这里下载对于背景色我比较喜欢浅黄色，据说能保护眼睛，虽然有点夸张但确实比纯白色看着要舒服。
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2009-11-19T16:00:00.000Z">2009-11-20</time></span><span class="cap breadcrumb" style="color:#1E90FF">技术</span><div>
 </article></a></div>
   
 
