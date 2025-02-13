@@ -1,3 +1,4 @@
+http://fwhyy.com/2025/02/plugin-development-implement-obsidian-synchronization-to-hexo/
 http://fwhyy.com/2025/02/deepseek-r1-makes-a-stunning-debut-from-introduction-to-use/
 http://fwhyy.com/2025/01/2024-yearend-summary/
 http://fwhyy.com/2025/01/why-can-single-threaded-redis-be-so-efficient/
@@ -50,7 +51,6 @@ http://fwhyy.com/2023/09/b-side-software-development-to-product-managers-may-enc
 http://fwhyy.com/2023/09/from-marathon-to-trail-running-a-new-challenge/
 http://fwhyy.com/2023/09/share-some-website-and-tools-202309/
 http://fwhyy.com/2023/08/cnblogs-hold-on/
-http://fwhyy.com/2023/08/plugin-development-implement-picgo-image-to-webp-format-1/
 http://fwhyy.com/2023/08/plugin-development-implement-picgo-image-to-webp-format/
 http://fwhyy.com/2023/08/software-recommendation-mac-artifact-raycast/
 http://fwhyy.com/2023/08/b-end-software-how-to-conduct-competitor-analysis/
